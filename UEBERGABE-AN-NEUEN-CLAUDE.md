@@ -40,7 +40,7 @@
 | Web | www.lm-agentur.at (bestehende Seite ist ca. 3 Jahre alt und soll ersetzt werden) |
 | Instagram | @laendleblitzmarketing |
 | Gegründet | 2018 |
-| Hoster | **World4You** (kann PHP — relevant fürs spätere Kontaktformular) |
+| Hoster | **Hostinger** (seit 27.07.2026, Deploy aus GitHub `simsai61/homepage-lm`; davor World4You. PHP fürs spätere Kontaktformular kann auch Hostinger) |
 
 **Claim:** „Wer nicht wirbt, stirbt."
 
@@ -394,15 +394,18 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
 
 ### Vor dem Livegang zwingend
 
-1. **Freigabe zur Namensnennung** von allen 15+ genannten Kunden — **weiterhin offen**, obwohl die
-   Seite am 27.07. auf GitHub öffentlich gestellt und für Hostinger-Deploy vorbereitet wurde
+1. ~~Freigabe zur Namensnennung~~ **Am 27.07. vom Auftraggeber pauschal freigegeben** („Kundennamen
+   ist ok", per Chat) — Einzel-Freigaben der genannten Kunden liegen weiterhin nicht vor, das Risiko
+   trägt bewusst der Auftraggeber. Nicht erneut aufrollen, aber bei Beschwerden eines Kunden sofort
+   dessen Karte entfernen.
 2. ~~Google Fonts selbst hosten~~ **Erledigt 27.07.**: 16 woff2-Dateien unter `assets/fonts/`,
    @font-face inline in jeder Seite, null externe Anfragen
 3. **Widerspruch Zeitplaner ↔ Bedarfsanalyse klären** (21 Tage vs. 7 Wochen — siehe oben)
-4. ~~Impressum und Datenschutzerklärung~~ **Angelegt 27.07.** (`impressum.html`, `datenschutz.html`) —
-   ABER: enthalten markierte Platzhalter (Rechtsform, UID, GISA, WKO-Fachgruppe, Hoster), die Sait
-   vor dem echten Livegang ausfüllen muss. Fußzeile aller Seiten verlinkt beide; der
-   „Entwurf"-Hinweis wurde dafür entfernt.
+4. ~~Impressum und Datenschutzerklärung~~ **Angelegt 27.07., Platzhalter am selben Tag ausgefüllt**
+   (vom Auftraggeber bestätigt: Einzelunternehmen, UID ATU73761226, WKO Vorarlberg Bezirksstelle
+   Feldkirch, Hoster Hostinger). Die GISA-Zeile wurde entfernt — nicht zwingend; kann mit der
+   echten GISA-Zahl jederzeit wieder rein. Fußzeile aller Seiten verlinkt beide Rechtsseiten;
+   der „Entwurf"-Hinweis wurde dafür entfernt.
    **Go-live-Struktur seit 27.07.**: `index.html` = echte Startseite (Kopie von
    lm-agentur-relaunch.html, canonical auf /), die alte Entwurfsübersicht ist ersetzt.
    Repo: https://github.com/simsai61/homepage-lm (öffentlich), Deploy via Hostinger geplant —
