@@ -2171,37 +2171,54 @@
   function skip(){ finish(); }
 
   /* Reißleine: egal was passiert, nach 4,5 s ist das Overlay weg */
-  var bail = setTimeout(finish, 4500);
+  var bail = setTimeout(finish, 3600);
   window.addEventListener('keydown', skip);
   window.addEventListener('pointerdown', skip);
+
+  /* Safari verschluckt einzelne Easing-Angaben und feuert onfinish nicht zuverlässig.
+     Deshalb: jede Animation einzeln absichern (mit linear als Rückfallebene) und
+     jeden Schritt zusätzlich per Timer anstoßen — was schon lief, wird übersprungen. */
+  function anim(el, frames, opts){
+    try { return el.animate(frames, opts); }
+    catch(e){
+      try {
+        var o = {}; for (var k in opts) o[k] = opts[k];
+        o.easing = 'linear';
+        return el.animate(frames, o);
+      } catch(e2){ return null; }
+    }
+  }
 
   function run(){
     if (done) return;
     if (!bolt.animate) { finish(); return; }   /* sehr alte Browser */
 
     /* 1 — Einschlag: von oben herein, beschleunigend wie echter Blitz */
-    var strike = bolt.animate([
+    var strike = anim(bolt, [
       { transform:'translate(-50%,-50%) translateY(-72vh) scaleY(1.5)', opacity:0 },
       { transform:'translate(-50%,-50%) translateY(-30vh) scaleY(1.35)', opacity:1, offset:.45 },
       { transform:'translate(-50%,-50%) translateY(0) scaleY(1)', opacity:1 }
     ], { duration:210, easing:'cubic-bezier(.7,0,.9,.4)', fill:'forwards' });
+    if (!strike) { finish(); return; }
 
-    strike.onfinish = function(){
-      if (done) return;
+    var weiter = false;
+    function danach(){
+      if (weiter || done) return;
+      weiter = true;
 
       /* 2 — Aufblitzen plus kurzes Zittern */
-      flash.animate([
+      anim(flash, [
         { opacity:0 }, { opacity:1, offset:.12 }, { opacity:.5, offset:.4 }, { opacity:0 }
       ], { duration:520, easing:'cubic-bezier(.2,0,.4,1)' });
 
-      wrap.animate([
+      anim(wrap, [
         { transform:'translate(0,0)' }, { transform:'translate(-4px,3px)', offset:.15 },
         { transform:'translate(5px,-2px)', offset:.3 }, { transform:'translate(-2px,1px)', offset:.5 },
         { transform:'translate(0,0)' }
       ], { duration:260, easing:'ease-out' });
 
       /* 3 — Claim flackert an wie eine Leuchtröhre und bleibt stehen */
-      claim.animate([
+      anim(claim, [
         { opacity:0 }, { opacity:1, offset:.08 }, { opacity:.15, offset:.16 },
         { opacity:1, offset:.26 }, { opacity:.4, offset:.32 }, { opacity:1, offset:.42 },
         { opacity:1 }
@@ -2210,7 +2227,7 @@
       /* 4 — Claim wieder weg, dann kommt die Seite aus dem Dunkel hervor */
       setTimeout(function(){
         if (done) return;
-        claim.animate([{opacity:1},{opacity:0}],
+        anim(claim, [{opacity:1},{opacity:0}],
           { duration:420, easing:'cubic-bezier(.4,0,.2,1)', fill:'forwards' });
       }, 1500);
 
@@ -2230,17 +2247,20 @@
             scale = Math.max(.12, (tr.height * 0.7) / br.height);
           }
         }
-        var fly = bolt.animate([
+        var fly = anim(bolt, [
           { transform:'translate(-50%,-50%) translate(0,0) scale(1)', opacity:1 },
           { transform:'translate(-50%,-50%) translate('+dx+'px,'+dy+'px) scale('+scale+')', opacity:0 }
         ], { duration:620, easing:'cubic-bezier(.16,1,.3,1)', fill:'forwards' });
 
-        fly.onfinish = function(){ clearTimeout(bail); finish(); };
+        if (fly) fly.onfinish = function(){ clearTimeout(bail); finish(); };
+        setTimeout(function(){ clearTimeout(bail); finish(); }, 700);
       }, 1820);
-    };
+    }
+
+    strike.onfinish = danach;
+    setTimeout(danach, 300);   /* Netz, falls onfinish ausbleibt (Safari) */
   }
 
-  /* Erst starten, wenn ein Bild gemalt wurde — sonst ruckelt der Einschlag */
   requestAnimationFrame(function(){ requestAnimationFrame(run); });
 })();
 </script>
