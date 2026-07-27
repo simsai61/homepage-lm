@@ -406,7 +406,7 @@
   h1.hero-h1 .ln:nth-child(3) > span{transition-delay:.18s}
   /* Schild aus: gedämpft wie eine nicht angesteuerte Leuchtröhre */
   .sichtbar{color:#5C4B36;position:relative;display:inline-block;transition:color .45s ease}
-  .lit .sichtbar{color:var(--peach);animation:signOn 1.5s steps(1,end) .55s both}
+  .lit .sichtbar{color:var(--peach);text-shadow:0 0 34px rgba(242,166,90,.6),0 0 78px rgba(232,98,143,.32);animation:signOn 1.5s steps(1,end) .55s backwards}
   @keyframes signOn{
     0%{opacity:.18;text-shadow:none}
     12%{opacity:1;text-shadow:0 0 22px rgba(242,166,90,.65)}
