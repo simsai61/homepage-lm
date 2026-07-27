@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Werbetechnik &amp; Werbeagentur Vorarlberg | Ländle Blitz Marketing</title>
+<meta name="description" content="Werbetechnik &amp; Komplettpakete für Neueröffnungen in Vorarlberg: Leuchtreklame, Beschriftung, Arbeitsbekleidung. Montage vom Chef selbst – Anfrage per WhatsApp.">
+<link rel="canonical" href="https://www.lm-agentur.at/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#14171F">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ländle Blitz Marketing">
+<meta property="og:title" content="Werbetechnik &amp; Werbeagentur Vorarlberg | Ländle Blitz Marketing">
+<meta property="og:description" content="Werbetechnik &amp; Komplettpakete für Neueröffnungen in Vorarlberg: Leuchtreklame, Beschriftung, Arbeitsbekleidung. Montage vom Chef selbst – Anfrage per WhatsApp.">
+<meta property="og:url" content="https://www.lm-agentur.at/">
+<meta property="og:image" content="https://www.lm-agentur.at/assets/bilder/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_AT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var de = document.documentElement;
+  de.className += ' rv';
+  /* Blitz-Intro läuft bei jedem Aufruf der Startseite — aber NICHT, wenn der Besucher
+     nur von einer Unterseite zurückkommt. Der ist schon mitten im Besuch. */
+  try{
+    var reduce   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var vonIntern = document.referrer &&
+                    document.referrer.indexOf(location.origin + '/') === 0 &&
+                    document.referrer.split('#')[0].split('?')[0] !== location.href.split('#')[0].split('?')[0];
+    if (!reduce && !vonIntern) de.className += ' bolt-on';
+  }catch(e){ /* im Zweifel kein Intro — die Seite darunter ist fertig */ }
+})();
+</script>
+<style>
+  :root{
+    --bg:#14171F; --surface:#1B1F2A; --surface-2:#20252F;
+    --glow:#E8628F; --glow-dim:#6B3346; --peach:#F2A65A; --magenta:#C93C77;
+    --text:#F2F1EA; --muted:#8A8F9E; --line:#2C3140;
+    --brand-gradient:linear-gradient(135deg,#F2A65A 0%,#E8628F 55%,#C93C77 100%);
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --ease-out:cubic-bezier(.16,1,.3,1);
+    --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:36px; --sp-5:56px; --sp-6:88px; --sp-7:128px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif; font-size:17px; line-height:1.6;
+    overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.02em}
+  :focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:2px}
+
+  .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--peach);display:inline-flex;align-items:center;gap:9px;
+  }
+  .tag::before{content:'';width:22px;height:1px;background:var(--peach);opacity:.6}
+
+  .section-head{max-width:760px;margin-bottom:var(--sp-5)}
+  .section-head h2{font-size:clamp(30px,4.4vw,52px);margin:var(--sp-2) 0 var(--sp-2)}
+  .section-head p{color:var(--muted);font-size:clamp(16px,1.6vw,19px);max-width:62ch}
+
+  /* overflow-x:clip statt hidden — clip erzeugt keinen Scroll-Container und lässt
+     overflow-y sichtbar. Nötig, weil die hereinfliegenden Karten (.fly) während der
+     Animation seitlich aus dem Bild ragen und sonst die Seite verschiebbar machen. */
+  section{padding:var(--sp-7) 0;position:relative;overflow-x:clip}
+  @media (max-width:760px){
+    :root{--sp-7:72px; --sp-6:56px; --sp-5:40px}
+  }
+
+  /* ---------- BLITZ-INTRO ----------
+     Liegt als Schicht ÜBER der fertigen Seite. Wird nur eingeblendet, wenn
+     html.bolt-on gesetzt ist — das passiert im <head> nur bei erstem Besuch
+     der Sitzung und ohne "reduzierte Bewegung". Ohne JavaScript: kein Overlay. */
+  .bolt-intro{display:none}
+  html.bolt-on .bolt-intro{
+    display:block;position:fixed;inset:0;z-index:200;
+    pointer-events:auto;overflow:hidden;
+  }
+  html.bolt-on{overflow:hidden}          /* nur während des Intros */
+  html.bolt-done{overflow:visible}
+  html.bolt-done .bolt-intro{display:none}
+
+  .bi-veil{
+    position:absolute;inset:0;background:#0F1218;
+    transition:opacity .5s cubic-bezier(.4,0,.2,1);
+  }
+  .bolt-intro.reveal .bi-veil{opacity:0}
+
+  .bi-flash{
+    position:absolute;inset:-20%;opacity:0;pointer-events:none;
+    background:radial-gradient(circle at 50% 46%,
+      rgba(255,255,255,.95) 0%, rgba(255,236,190,.7) 14%,
+      rgba(242,166,90,.35) 30%, transparent 62%);
+  }
+  .bi-bolt{
+    position:absolute;left:50%;top:40%;
+    width:clamp(84px,15vw,170px);height:auto;
+    color:#F2A65A;
+    transform:translate(-50%,-50%) translateY(-72vh) scaleY(1.5);
+    opacity:0;
+    filter:drop-shadow(0 0 26px rgba(242,166,90,.75)) drop-shadow(0 0 70px rgba(232,98,143,.45));
+    will-change:transform,opacity;
+  }
+  .bi-claim{
+    position:absolute;left:50%;top:63%;transform:translateX(-50%);
+    width:min(92vw,760px);text-align:center;
+    font-family:'IBM Plex Mono',monospace;font-weight:500;
+    font-size:clamp(13px,2.9vw,27px);
+    letter-spacing:.2em;text-transform:uppercase;line-height:1.5;
+    color:#F2A65A;opacity:0;
+    text-shadow:0 0 26px rgba(242,166,90,.6),0 0 68px rgba(232,98,143,.32);
+    will-change:opacity;
+  }
+
+  /* ---------- REVEAL ---------- */
+  html.rv .rev{opacity:0;transform:translateY(26px)}
+  .rev{transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);transition-delay:var(--d,0ms)}
+  /* muss die html.rv-Versteckregel überbieten, sonst bleibt alles unsichtbar */
+  html.rv .rev.in{opacity:1;transform:none}
+
+  /* ---------- HINEINFLIEGEN (Kerngeschäft) ----------
+     Zwei Wege: scrollgesteuert wo der Browser es kann (der Nutzer fährt die
+     Bewegung selbst), sonst klassisch ausgelöst über den Observer. */
+  html.rv .fly{opacity:0}
+  html.rv .fly.from-l{transform:translateX(-72px)}
+  html.rv .fly.from-r{transform:translateX(72px)}
+  .fly{transition:opacity .6s var(--ease-out),transform .9s var(--ease-out);transition-delay:var(--d,0ms)}
+  html.rv .fly.in{opacity:1;transform:none}
+
+  @keyframes flyFromL{from{opacity:0;transform:translateX(-72px)} to{opacity:1;transform:none}}
+  @keyframes flyFromR{from{opacity:0;transform:translateX(72px)}  to{opacity:1;transform:none}}
+  @keyframes riseUp  {from{opacity:0;transform:translateY(52px) scale(.965)} to{opacity:1;transform:none}}
+
+  @supports (animation-timeline: view()){
+    @media (prefers-reduced-motion: no-preference){
+      html.rv .fly, html.rv .fly.in{
+        opacity:1;transform:none;transition:none;   /* Observer-Zustand neutralisieren */
+        animation:flyFromL linear both;
+        animation-timeline:view();
+        animation-range:entry var(--rs,4%) entry var(--re,72%);
+      }
+      html.rv .fly.from-r, html.rv .fly.from-r.in{animation-name:flyFromR}
+
+      html.rv .rise, html.rv .rise.in{
+        opacity:1;transform:none;transition:none;
+        animation:riseUp linear both;
+        animation-timeline:view();
+        animation-range:entry var(--rs,6%) entry var(--re,66%);
+      }
+    }
+  }
+
+  /* ---------- AUFSTEIGEN (Leistungen) ---------- */
+  html.rv .rise{opacity:0;transform:translateY(52px) scale(.965)}
+  .rise{transition:opacity .6s var(--ease-out),transform .8s var(--ease-out);transition-delay:var(--d,0ms)}
+  html.rv .rise.in{opacity:1;transform:none}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:80;
+    background:rgba(20,23,31,.72);backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
+  }
+  header.stuck{border-bottom-color:var(--line);background:rgba(20,23,31,.92)}
+  nav{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);padding:14px 0}
+  .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .brand .mark{width:clamp(126px,15vw,164px);color:var(--text);transition:color .3s}
+  .brand:hover .mark{color:#fff}
+  .nav-links{display:flex;gap:clamp(18px,2.4vw,32px);font-size:14.5px;color:var(--muted)}
+  .nav-links a{position:relative;padding:4px 0;transition:color .25s}
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;
+    background:var(--glow);transform:scaleX(0);transform-origin:right;
+    transition:transform .4s var(--ease-out);
+  }
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+  .nav-cta{
+    background:var(--glow);color:#22101A;font-weight:600;font-size:14.5px;
+    padding:11px 20px;border-radius:3px;white-space:nowrap;
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(232,98,143,.34);background:#f07ba2}
+  .nav-cta:active{transform:translateY(0)}
+  /* Anfrage-Punkt nur im Mobilmenü — auf dem Desktop übernimmt das der nav-cta */
+  .nav-kontakt{display:none}
+  .burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;flex-shrink:0}
+  .burger span{display:block;width:22px;height:2px;background:var(--text);position:relative;transition:background .2s}
+  .burger span::before,.burger span::after{
+    content:'';position:absolute;left:0;width:22px;height:2px;background:var(--text);
+    transition:transform .35s var(--ease-out);
+  }
+  .burger span::before{top:-7px} .burger span::after{top:7px}
+  header.open .burger span{background:transparent}
+  header.open .burger span::before{transform:translateY(7px) rotate(45deg)}
+  header.open .burger span::after{transform:translateY(-7px) rotate(-45deg)}
+  @media (max-width:900px){
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+      background:rgba(20,23,31,.98);border-bottom:1px solid var(--line);
+      padding:0 clamp(20px,5vw,40px);
+      max-height:0;overflow:hidden;transition:max-height .45s var(--ease-out);
+    }
+    /* großzügig über der Inhaltshöhe — sonst wird der letzte Menüpunkt gekappt */
+    header.open .nav-links{max-height:560px}
+    .nav-links a{padding:16px 0;border-bottom:1px solid var(--line);font-size:16px}
+    .nav-links a:last-child{border-bottom:none}
+    .burger{display:flex}
+    .nav-cta{display:none}
+    .nav-links .nav-kontakt{display:block;color:var(--glow);font-weight:600}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:clamp(70px,11vh,120px) 0 var(--sp-6);
+    min-height:min(94vh,880px);display:flex;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+  .hero-bg .glowfield{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 52% 44% at 22% 26%,rgba(232,98,143,.16),transparent 66%),
+      radial-gradient(ellipse 44% 40% at 84% 66%,rgba(242,166,90,.10),transparent 68%);
+    opacity:0;transition:opacity 1.4s ease;
+  }
+  .lit .hero-bg .glowfield{opacity:1}
+  .hero-bg .grid{
+    position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(#2C3140 1px,transparent 1px),linear-gradient(90deg,#2C3140 1px,transparent 1px);
+    background-size:76px 76px;
+    -webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 42%,#000 8%,transparent 72%);
+    mask-image:radial-gradient(ellipse 62% 58% at 50% 42%,#000 8%,transparent 72%);
+  }
+  .hero-bg .tri{position:absolute;top:-10px;right:-10px;width:min(320px,40vw);height:min(320px,40vw);opacity:.15;
+    -webkit-mask-image:linear-gradient(225deg,#000 12%,transparent 72%);
+    mask-image:linear-gradient(225deg,#000 12%,transparent 72%)}
+  .hero .wrap{position:relative;z-index:1;width:100%}
+
+  .hero-top{
+    display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2) var(--sp-3);
+    margin-bottom:var(--sp-4);
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:clamp(11px,1.3vw,13px);
+    letter-spacing:.26em;text-transform:uppercase;color:var(--peach);
+  }
+  h1.hero-h1{
+    font-size:clamp(40px,8.2vw,92px);line-height:.98;letter-spacing:-.035em;
+    text-transform:uppercase;margin-bottom:var(--sp-4);
+  }
+  /* Maske fürs Hochschieben — Padding verhindert, dass Umlaute und Unterlängen gekappt werden */
+  h1.hero-h1 .ln{display:block;overflow:hidden;padding:.14em 0 .1em;margin:-.14em 0 -.1em}
+  /* Einblendung (.intro) ist bewusst vom Leuchtzustand (.lit) getrennt —
+     sonst würde der Schalter den Text nach unten aus dem Bild schieben */
+  h1.hero-h1 .ln > span{display:block;transform:translateY(115%);transition:transform 1s var(--ease-out)}
+  .intro h1.hero-h1 .ln > span{transform:none}
+  /* Maske freigeben, sobald das Hochschieben durch ist — sonst kappt sie den Leuchtschein */
+  .intro-done h1.hero-h1 .ln{overflow:visible}
+  h1.hero-h1 .ln:nth-child(2) > span{transition-delay:.09s}
+  h1.hero-h1 .ln:nth-child(3) > span{transition-delay:.18s}
+  /* Schild aus: gedämpft wie eine nicht angesteuerte Leuchtröhre */
+  .sichtbar{color:#5C4B36;position:relative;display:inline-block;transition:color .45s ease}
+  .lit .sichtbar{color:var(--peach);animation:signOn 1.5s steps(1,end) .55s both}
+  @keyframes signOn{
+    0%{opacity:.18;text-shadow:none}
+    12%{opacity:1;text-shadow:0 0 22px rgba(242,166,90,.65)}
+    18%{opacity:.2;text-shadow:none}
+    26%{opacity:1;text-shadow:0 0 26px rgba(242,166,90,.7)}
+    30%{opacity:.35;text-shadow:none}
+    38%{opacity:1;text-shadow:0 0 30px rgba(242,166,90,.75),0 0 62px rgba(232,98,143,.4)}
+    44%{opacity:.6;text-shadow:0 0 12px rgba(242,166,90,.4)}
+    100%{opacity:1;text-shadow:0 0 34px rgba(242,166,90,.6),0 0 78px rgba(232,98,143,.32)}
+  }
+  .hero-sub{color:var(--muted);font-size:clamp(16.5px,1.9vw,20px);max-width:56ch;margin-bottom:var(--sp-4)}
+  .hero-sub strong{color:var(--text);font-weight:600}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:3px;font-weight:600;font-size:15.5px;
+    min-height:48px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,border-color .25s;
+  }
+  .btn-primary{background:var(--glow);color:#22101A}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(232,98,143,.36);background:#f07ba2}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--glow-dim);transform:translateY(-2px);background:var(--surface)}
+  .btn:active{transform:translateY(0)}
+  .btn svg{width:16px;height:16px;flex-shrink:0}
+
+  /* Schild-Schalter */
+  .sign-toggle{
+    display:inline-flex;align-items:center;gap:11px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    color:var(--muted);
+    border:1px solid var(--line);padding:9px 16px 9px 12px;border-radius:100px;
+    min-height:44px;user-select:none;
+    transition:border-color .25s,color .25s,background .25s;
+  }
+  .sign-toggle:hover{border-color:var(--glow-dim);color:var(--text);background:var(--surface)}
+  .sign-toggle .switch{
+    width:36px;height:20px;border-radius:100px;background:#2C3140;
+    position:relative;flex-shrink:0;transition:background .35s var(--ease);
+  }
+  .sign-toggle .switch::after{
+    content:'';position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;
+    background:#8A8F9E;transition:transform .35s var(--ease),background .35s var(--ease);
+  }
+  .sign-toggle.on .switch{background:var(--glow-dim)}
+  .sign-toggle.on .switch::after{transform:translateX(16px);background:var(--peach)}
+
+  .hero-proof{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;
+    gap:var(--sp-3) clamp(20px,3vw,40px);
+    margin-top:var(--sp-5);padding-top:var(--sp-3);border-top:1px solid var(--line);
+    max-width:940px;
+  }
+  @media (max-width:820px){.hero-proof{grid-template-columns:1fr}}
+  .hero-proof li{display:flex;align-items:center;gap:13px}
+  .hero-proof .ic{
+    width:40px;height:40px;flex-shrink:0;
+    border:1px solid var(--line);border-radius:10px;
+    display:flex;align-items:center;justify-content:center;color:var(--peach);
+    transition:border-color .35s,color .35s,transform .4s var(--ease);
+  }
+  .hero-proof li:hover .ic{border-color:var(--glow-dim);color:var(--glow);transform:translateY(-2px)}
+  .hero-proof .ic svg{width:20px;height:20px}
+  .hero-proof b{
+    display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);
+  }
+  .hero-proof span{
+    display:block;font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.35;
+  }
+
+  /* ---------- KOMPLETTPAKET (Bento) ---------- */
+  .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+  .cell{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:var(--sp-3);position:relative;overflow:hidden;
+    transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s;
+  }
+  .cell:hover{border-color:var(--glow-dim);transform:translateY(-3px);background:var(--surface-2)}
+  .cell h3{font-size:19px;margin-bottom:8px;letter-spacing:-.01em}
+  .cell p{color:var(--muted);font-size:15px;line-height:1.55}
+  .cell .num{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;
+    color:var(--glow);margin-bottom:14px;display:block;
+  }
+  .cell-lg{grid-column:span 6}
+  .cell-md{grid-column:span 4}
+  .cell-sm{grid-column:span 3}
+  .cell-full{grid-column:span 12}
+  .cell-feature{
+    grid-column:span 6;
+    display:flex;flex-direction:column;justify-content:space-between;gap:var(--sp-3);min-height:260px;
+  }
+  .cell-feature .big{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(46px,7vw,80px);line-height:.9;letter-spacing:-.04em;
+    background:var(--brand-gradient);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .pkg-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--sp-2)}
+  .pill{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;
+    padding:7px 13px;border:1px solid var(--line);border-radius:100px;color:var(--muted);
+    transition:border-color .3s,color .3s;
+  }
+  .cell:hover .pill{border-color:var(--glow-dim);color:var(--text)}
+  @media (max-width:900px){
+    .cell-lg,.cell-feature{grid-column:span 12}
+    .cell-md,.cell-sm{grid-column:span 6}
+  }
+  @media (max-width:560px){ .cell-md,.cell-sm{grid-column:span 12} }
+
+  .proof-head{max-width:720px;margin:var(--sp-6) 0 var(--sp-3)}
+  .proof-head h3{font-size:clamp(24px,3.2vw,36px);margin:var(--sp-2) 0 12px}
+  .proof-head p{color:var(--muted);font-size:16.5px}
+
+  /* ---------- SLIDER (wiederverwendbar) ---------- */
+  .gal{position:relative}
+  .gal-track{
+    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+    gap:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    border-radius:14px;
+  }
+  .gal-track::-webkit-scrollbar{display:none}
+  .gal-slide{
+    flex:0 0 100%;scroll-snap-align:center;position:relative;
+    border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface);
+  }
+  .gal-media{position:relative;aspect-ratio:16/11;background:var(--surface-2)}
+  .gal-media img{width:100%;height:100%;object-fit:cover;display:block}
+  @media (max-width:620px){.gal-media{aspect-ratio:4/3}}
+  .gal-cap{
+    position:absolute;left:0;right:0;bottom:0;padding:44px 20px 18px;
+    background:linear-gradient(to top,rgba(11,13,18,.94) 12%,rgba(11,13,18,.55) 60%,transparent 100%);
+  }
+  .gal-step{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--peach);display:block;margin-bottom:6px;
+  }
+  .gal-cap h4{font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2vw,21px);margin-bottom:5px}
+  .gal-cap p{color:#C7CAD3;font-size:14.5px;max-width:56ch;line-height:1.5}
+  /* Auf schmalen Bildschirmen unter das Bild statt darüber — sonst verdeckt der Text das Foto */
+  @media (max-width:680px){
+    .gal-cap{
+      position:static;background:none;padding:var(--sp-2) var(--sp-2) var(--sp-3);
+    }
+    .gal-cap p{color:var(--muted)}
+    .gal-slide{background:var(--surface)}
+  }
+
+  .gal-bar{display:flex;align-items:center;gap:14px;margin-top:var(--sp-2);flex-wrap:wrap}
+  .gal-nav{display:flex;gap:8px}
+  .gal-btn{
+    width:44px;height:44px;border:1px solid var(--line);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--text);
+    transition:border-color .25s,background .25s,transform .25s var(--ease),opacity .25s;
+  }
+  .gal-btn:hover:not(:disabled){border-color:var(--glow-dim);background:var(--surface)}
+  .gal-btn:active:not(:disabled){transform:scale(.94)}
+  .gal-btn:disabled{opacity:.32;cursor:default}
+  .gal-btn svg{width:17px;height:17px}
+  .gal-dots{display:flex;gap:7px;margin-left:auto}
+  .gal-dot{
+    width:9px;height:9px;border-radius:50%;background:var(--line);padding:0;
+    transition:background .3s,transform .3s var(--ease),width .3s var(--ease);
+  }
+  .gal-dot[aria-current="true"]{background:var(--glow);width:26px;border-radius:100px}
+  .gal-dot-hit{
+    width:26px;height:26px;display:flex;align-items:center;justify-content:center;padding:0;
+  }
+  .gal-count{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--muted);
+  }
+
+  /* Kompakte Variante: Galerie direkt in einer Referenzkarte */
+  .gal-card{position:relative}
+  .gal-card .gal-track{gap:0;border-radius:0}
+  .gal-card .gal-slide{border:none;border-radius:0;background:transparent}
+  .gal-card .gal-media{aspect-ratio:4/3;background:var(--surface-2)}
+  .gal-card .gal-media img{width:100%;height:100%;object-fit:cover}
+  .gal-card .from-top img{object-position:center top}
+  .gal-card .gal-btn{
+    position:absolute;top:50%;margin-top:-22px;z-index:3;
+    width:44px;height:44px;border-color:transparent;
+    background:rgba(15,18,24,.62);backdrop-filter:blur(6px);
+    opacity:0;transition:opacity .3s,background .25s,transform .25s var(--ease);
+  }
+  .gal-card:hover .gal-btn,.gal-card:focus-within .gal-btn{opacity:1}
+  .gal-card .gal-btn:hover:not(:disabled){background:rgba(15,18,24,.85);border-color:var(--glow-dim)}
+  .gal-card .gal-btn:disabled{opacity:0 !important}
+  .gal-card .gal-prev{left:10px}
+  .gal-card .gal-next{right:10px}
+  /* Auf Touch-Geräten gibt es kein Hover — dort dauerhaft zeigen */
+  @media (hover:none){
+    .gal-card .gal-btn{opacity:1}
+    .gal-card .gal-btn:disabled{opacity:.25 !important}
+  }
+  .gal-card .gal-dots{
+    position:absolute;left:0;right:0;bottom:10px;z-index:3;
+    margin:0;justify-content:center;pointer-events:none;
+  }
+  .gal-card .gal-dot-hit{pointer-events:auto}
+  .gal-card .gal-dot{background:rgba(242,241,234,.42);box-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .gal-card .gal-dot[aria-current="true"]{background:var(--glow)}
+  /* Beschriftung je Bild — nötig bei Vorher/Nachher, sonst rät der Betrachter */
+  .gal-card .gal-slide-label{
+    position:absolute;top:10px;left:10px;z-index:3;
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--text);
+    background:rgba(15,18,24,.72);backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:100px;padding:5px 11px;pointer-events:none;
+  }
+  .gal-card .gal-slide-label.ist-vorher{color:#9AA0AC}
+  .gal-card .gal-slide-label.ist-nachher{color:var(--peach);border-color:#5E4A2A}
+  .gal-card .gal-tag{
+    position:absolute;top:10px;right:10px;z-index:3;
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+    color:var(--text);background:rgba(15,18,24,.66);backdrop-filter:blur(6px);
+    border-radius:100px;padding:5px 10px;pointer-events:none;
+  }
+
+  /* ---------- LEUCHTREKLAME ---------- */
+  .neon-stage{
+    display:grid;grid-template-columns:1fr minmax(260px,340px);
+    gap:clamp(20px,3.4vw,44px);align-items:center;
+  }
+  @media (max-width:900px){.neon-stage{grid-template-columns:1fr}}
+  .neon-frame{
+    position:relative;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);background:#0E1016;aspect-ratio:3/2;
+  }
+  @media (max-width:620px){.neon-frame{aspect-ratio:4/3}}
+  .neon-frame img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center 46%;
+  }
+  .neon-frame .neon-on{opacity:0;transition:opacity 1.1s var(--ease-out)}
+  .neon-frame.on .neon-on{opacity:1}
+  /* Lichtschein, der mit angeht */
+  .neon-frame::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 62% 40% at 50% 40%,rgba(255,64,58,.30),transparent 70%);
+    opacity:0;transition:opacity 1.1s var(--ease-out);mix-blend-mode:screen;
+  }
+  .neon-frame.on::after{opacity:1}
+  .neon-frame .stamp{
+    position:absolute;left:14px;top:14px;z-index:2;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--text);
+    background:rgba(20,23,31,.72);backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:100px;padding:7px 13px;
+    transition:color .5s,border-color .5s;
+  }
+  .neon-frame.on .stamp{color:#FF6B63;border-color:#5E2A2A}
+  .neon-txt h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:12px}
+  .neon-txt p{color:var(--muted);font-size:16px;margin-bottom:var(--sp-2)}
+  .neon-specs{list-style:none;margin:var(--sp-2) 0 var(--sp-3)}
+  .neon-specs li{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:9px 0;border-top:1px solid var(--line);font-size:15px;color:var(--muted);
+  }
+  .neon-specs li:first-child{border-top:none}
+  .neon-specs svg{width:15px;height:15px;color:var(--glow);flex-shrink:0;margin-top:4px}
+
+  /* ---------- REFERENZEN ---------- */
+  .ref-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+  .ref{
+    position:relative;border-radius:14px;overflow:hidden;background:var(--surface);
+    border:1px solid var(--line);
+    transition:border-color .4s var(--ease),transform .4s var(--ease);
+  }
+  .ref:hover{border-color:var(--glow-dim);transform:translateY(-4px)}
+  .ref-media{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--surface-2)}
+  .ref-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+  /* Hohe Motive (Pylon, Fassade) von oben ausrichten, sonst wird die Spitze gekappt */
+  .ref-media.from-top img{object-position:center top}
+  .ref:hover .ref-media img{transform:scale(1.05)}
+  .ref-body{padding:var(--sp-3)}
+  .ref-body h3{font-size:21px;margin-bottom:6px}
+  .ref-meta{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--peach);margin-bottom:12px;
+  }
+  .ref-body p{color:var(--muted);font-size:15px}
+  .ref-scope{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .ref-scope span{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+    padding:5px 11px;border:1px solid var(--line);border-radius:100px;color:var(--muted);
+  }
+  .ref-a{grid-column:span 7} .ref-b{grid-column:span 5}
+  .ref-c{grid-column:span 5} .ref-d{grid-column:span 7}
+  .ref-third{grid-column:span 4} .ref-half{grid-column:span 6}
+  .ref-wide{grid-column:span 12}
+  .ref-wide .ref-media{aspect-ratio:21/9}
+  @media (max-width:980px){
+    .ref-third{grid-column:span 6}
+  }
+  @media (max-width:880px){
+    .ref-a,.ref-b,.ref-c,.ref-d,.ref-third,.ref-half{grid-column:span 12}
+    .ref-wide .ref-media{aspect-ratio:16/10}
+  }
+
+  /* ---------- LEISTUNGEN ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+  .svc{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:var(--sp-3);position:relative;overflow:hidden;display:block;
+    transition:border-color .35s,transform .35s var(--ease),background .35s;
+  }
+  .svc::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:var(--brand-gradient);transform:scaleX(0);transform-origin:left;
+    transition:transform .5s var(--ease-out);
+  }
+  .svc:hover{border-color:var(--glow-dim);transform:translateY(-4px);background:var(--surface-2)}
+  .svc:hover::before{transform:scaleX(1)}
+  .svc-ico{
+    width:42px;height:42px;border:1px solid var(--line);border-radius:9px;
+    display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-2);
+    color:var(--glow);transition:border-color .35s,color .35s,transform .45s var(--ease);
+  }
+  .svc:hover .svc-ico{border-color:var(--glow-dim);color:var(--peach);transform:translateY(-2px) rotate(-4deg)}
+  .svc-ico svg{width:20px;height:20px}
+  .svc h3{font-size:18px;margin-bottom:7px}
+  .svc p{color:var(--muted);font-size:14.5px;line-height:1.55}
+  .svc-more{
+    display:inline-flex;align-items:center;gap:7px;margin-top:14px;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--glow);
+  }
+  .svc-more svg{width:13px;height:13px;transition:transform .35s var(--ease)}
+  .svc:hover .svc-more svg{transform:translateX(4px)}
+
+  /* ---------- PROZESS ---------- */
+  .steps{position:relative;display:grid;gap:var(--sp-4);margin-top:var(--sp-4)}
+  .steps::before{content:'';position:absolute;left:19px;top:8px;bottom:8px;width:1px;background:var(--line)}
+  .steps .fill{
+    position:absolute;left:19px;top:8px;width:1px;background:var(--brand-gradient);
+    height:0;transition:height 1.6s var(--ease-out);
+  }
+  .steps.in .fill{height:calc(100% - 16px)}
+  .step{display:grid;grid-template-columns:40px 1fr;gap:var(--sp-3);align-items:start;position:relative}
+  .step-dot{
+    width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);
+    transition:border-color .5s,color .5s,background .5s;transition-delay:var(--d,0ms);
+    position:relative;z-index:1;
+  }
+  .steps.in .step-dot{border-color:var(--glow);color:var(--glow);background:var(--surface)}
+  .step h3{font-size:19px;margin-bottom:5px}
+  .step p{color:var(--muted);font-size:15px}
+  .step-time{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--peach);margin-top:7px;display:block;
+  }
+
+  /* ---------- ZEITPLANER ---------- */
+  .planner-box{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:clamp(20px,3.4vw,36px);
+  }
+  .planner-controls{display:grid;grid-template-columns:minmax(200px,260px) 1fr;gap:var(--sp-3);align-items:end}
+  @media (max-width:720px){.planner-controls{grid-template-columns:1fr}}
+  .fld{display:block}
+  .fld-label{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:block;
+  }
+  input[type=date]{
+    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:6px;
+    color:var(--text);padding:13px 14px;font:inherit;font-size:16px;min-height:48px;
+    transition:border-color .25s;
+  }
+  input[type=date]:hover{border-color:var(--glow-dim)}
+  .seg{display:flex;flex-wrap:wrap;gap:8px}
+  .seg button{
+    border:1px solid var(--line);border-radius:100px;padding:11px 18px;
+    font-size:14px;color:var(--muted);min-height:44px;
+    transition:border-color .25s,color .25s,background .25s,transform .25s var(--ease);
+  }
+  .seg button:hover{border-color:var(--glow-dim);color:var(--text)}
+  .seg button.active{background:var(--glow-dim);border-color:var(--glow);color:var(--text)}
+  .seg button:active{transform:scale(.97)}
+  .verdict{
+    margin-top:var(--sp-3);padding:var(--sp-3);border-radius:10px;
+    border:1px solid var(--line);background:var(--bg);
+    display:flex;gap:14px;align-items:flex-start;
+  }
+  .verdict:empty{display:none}
+  .verdict .vico{width:22px;height:22px;flex-shrink:0;margin-top:2px}
+  .verdict.ok{border-color:#2E6B4F;background:rgba(46,107,79,.12)}
+  .verdict.tight{border-color:#7A6224;background:rgba(122,98,36,.12)}
+  .verdict.late{border-color:var(--glow-dim);background:rgba(232,98,143,.1)}
+  .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:18px;margin-bottom:5px}
+  .verdict p{color:var(--muted);font-size:15px}
+  .plan-steps{list-style:none;margin-top:var(--sp-3);display:grid;gap:0}
+  .plan-steps li{
+    display:grid;grid-template-columns:112px 1fr;gap:var(--sp-2);
+    padding:13px 0;border-top:1px solid var(--line);font-size:15px;align-items:baseline;
+  }
+  .plan-steps li:first-child{border-top:none}
+  .plan-steps .dt{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--peach);letter-spacing:.04em}
+  .plan-steps .lb{color:var(--muted)}
+  .plan-steps .lb b{color:var(--text);font-weight:500}
+  @media (max-width:560px){.plan-steps li{grid-template-columns:1fr;gap:3px}}
+  .planner-hint{color:var(--muted);font-size:14px;margin-top:var(--sp-3)}
+
+  /* Abschluss des Zeitplaners — hier war bisher eine Sackgasse */
+  .planner-cta{
+    margin-top:var(--sp-3);padding-top:var(--sp-3);border-top:1px solid var(--line);
+  }
+  .planner-cta[hidden]{display:none}
+  .planner-cta-text{color:var(--text);font-size:15.5px;margin-bottom:var(--sp-2);max-width:60ch}
+  .planner-cta-text b{color:var(--peach);font-weight:600}
+  .planner-cta-row{display:flex;flex-wrap:wrap;gap:10px}
+  .btn-wa{background:#25D366;color:#0B2E18}
+  .btn-wa:hover{background:#3ae07a;transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,.3)}
+  .btn-wa svg{width:19px;height:19px}
+
+  /* Schwebender WhatsApp-Knopf — erscheint erst nach dem Hero */
+  .wa-float{
+    position:fixed;right:clamp(14px,3vw,26px);bottom:clamp(14px,3vw,26px);z-index:70;
+    width:56px;height:56px;border-radius:50%;
+    background:#25D366;color:#0B2E18;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 28px rgba(0,0,0,.42);
+    opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);
+    transition:opacity .35s var(--ease-out),transform .35s var(--ease-out),visibility .35s;
+  }
+  .wa-float.show{opacity:1;visibility:visible;transform:none}
+  .wa-float:hover{background:#3ae07a;transform:scale(1.06)}
+  .wa-float svg{width:29px;height:29px}
+  @media print{.wa-float{display:none}}
+
+  /* ---------- INHABER ---------- */
+  .owner{display:grid;grid-template-columns:minmax(280px,42%) 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+  @media (max-width:860px){.owner{grid-template-columns:1fr}}
+  .owner-media{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/4;background:var(--surface)}
+  .owner-media img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .owner-media::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,transparent 45%,rgba(20,23,31,.7) 100%);
+  }
+  .owner-badge{
+    position:absolute;left:16px;bottom:16px;z-index:1;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--text);
+    background:rgba(20,23,31,.7);backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:100px;padding:8px 14px;
+  }
+  .owner-txt h2{font-size:clamp(28px,4vw,46px);margin:var(--sp-2) 0 var(--sp-3)}
+  .owner-txt p{color:var(--muted);font-size:clamp(16px,1.7vw,18.5px);margin-bottom:var(--sp-2);max-width:56ch}
+  .owner-txt p strong{color:var(--text);font-weight:600}
+  .owner-sign{
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;
+    margin-top:var(--sp-3);display:flex;align-items:center;gap:12px;
+  }
+  .owner-sign .bolt{width:15px;color:var(--glow)}
+  .owner-contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--sp-3)}
+
+  /* ---------- EINBLICKE (Videos) ---------- */
+  .clips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,18px)}
+  @media (max-width:1100px){.clips{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (max-width:860px){
+    /* Auf dem Handy als wischbare Reihe statt drei winzige Spalten */
+    .clips{
+      display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+      gap:14px;scrollbar-width:none;
+      margin:0 calc(-1 * clamp(20px,5vw,40px));
+      padding:0 clamp(20px,5vw,40px);
+    }
+    .clips::-webkit-scrollbar{display:none}
+    .clip{flex:0 0 min(74vw,320px);scroll-snap-align:center}
+  }
+  .clip{display:flex;flex-direction:column;gap:12px}
+  .clip-frame{
+    position:relative;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);background:#0E1016;aspect-ratio:9/16;
+    transition:border-color .35s var(--ease),transform .35s var(--ease);
+  }
+  .clip:hover .clip-frame{border-color:var(--glow-dim);transform:translateY(-3px)}
+  .clip-frame video{width:100%;height:100%;object-fit:cover;display:block;background:#0E1016}
+  .clip-play{
+    position:absolute;inset:0;z-index:2;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,rgba(15,18,24,.15),rgba(15,18,24,.55));
+    transition:opacity .3s,background .3s;
+  }
+  .clip-frame.playing .clip-play{opacity:0;pointer-events:none}
+  .clip-play span{
+    width:62px;height:62px;border-radius:50%;
+    background:rgba(232,98,143,.92);color:#22101A;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 34px rgba(232,98,143,.42);
+    transition:transform .3s var(--ease),background .3s;
+  }
+  .clip-play:hover span{transform:scale(1.08);background:var(--glow)}
+  .clip-play svg{width:22px;height:22px;margin-left:3px}
+  .clip-dauer{
+    position:absolute;right:10px;bottom:10px;z-index:3;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+    color:var(--text);background:rgba(15,18,24,.7);backdrop-filter:blur(6px);
+    border-radius:100px;padding:4px 10px;
+  }
+  .clip-frame.playing .clip-dauer{opacity:0}
+  .clip figcaption b{
+    display:block;font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--text);
+  }
+  .clip figcaption span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
+  .clips-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:var(--sp-4)}
+  .clips-hint{color:var(--muted);font-size:13.5px}
+
+  /* ---------- KONTAKT ---------- */
+  .cta-band{text-align:center}
+  .cta-band h2{font-size:clamp(30px,5vw,58px);margin-bottom:var(--sp-2)}
+  .cta-band > .wrap > .rev > p{color:var(--muted);font-size:clamp(16px,1.8vw,19px);max-width:54ch;margin:0 auto var(--sp-4)}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .cta-note{color:var(--muted);font-size:14px;margin-top:14px}
+  /* Kompakte Anfrage-Zeile am Ende einer Sektion */
+  .sec-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin-top:var(--sp-5);text-align:center}
+  .sec-cta .sec-cta-q{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(17px,2vw,20px)}
+  .gal-step a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  .gal-step a:hover{color:var(--text)}
+  .contact-card{
+    margin:var(--sp-6) auto 0;max-width:620px;text-align:left;
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);
+  }
+  .contact-strip-bar{display:flex;background:var(--brand-gradient)}
+  .icon-cell{flex:1;display:flex;align-items:center;justify-content:center;padding:13px 0}
+  .contact-details{padding:var(--sp-2) var(--sp-3) var(--sp-3)}
+  .contact-details .row{
+    display:grid;grid-template-columns:96px 1fr;gap:var(--sp-2);
+    padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;align-items:baseline;
+  }
+  .contact-details .row:last-child{border-bottom:none}
+  .contact-details .label{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .contact-details a:hover{color:var(--glow)}
+  @media (max-width:520px){.contact-details .row{grid-template-columns:1fr;gap:3px}}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:var(--sp-5) 0 var(--sp-4);font-size:14.5px;color:var(--muted)}
+  .foot-row{display:flex;flex-wrap:wrap;gap:var(--sp-4);justify-content:space-between;align-items:flex-start}
+  .foot-mark{width:150px;color:var(--text);margin-bottom:14px}
+  .foot-claim{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--peach);margin-top:8px;
+  }
+  .foot-nav{display:flex;flex-direction:column;gap:9px}
+  .foot-nav a:hover{color:var(--text)}
+  .foot-bottom{
+    margin-top:var(--sp-4);padding-top:var(--sp-3);border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:var(--sp-2);justify-content:space-between;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;
+  }
+
+  /* ---------- REDUCED MOTION ---------- */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{
+      animation-duration:.001ms !important;animation-delay:0ms !important;
+      transition-duration:.001ms !important;transition-delay:0ms !important;
+    }
+    html.rv .rev,html.rv .fly,html.rv .rise{opacity:1;transform:none}
+    h1.hero-h1 .ln{overflow:visible}
+    h1.hero-h1 .ln > span{transform:none}
+    .steps .fill{height:calc(100% - 16px)}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Ländle Blitz Marketing",
+  "description": "Full-Service-Werbeagentur mit eigener Produktion. Komplettpakete für Neueröffnungen: Logo, Printmedien, Arbeitsbekleidung, Werbeartikel, Beschilderung und Fahrzeugbeschriftung.",
+  "url": "https://www.lm-agentur.at/",
+  "telephone": "+436643724808",
+  "email": "info@lm-agentur.at",
+  "foundingDate": "2018",
+  "founder": { "@type": "Person", "name": "Sait Simsek" },
+  "address": { "@type": "PostalAddress", "streetAddress": "Tannenfeldstrasse 3", "postalCode": "6812", "addressLocality": "Meiningen", "addressRegion": "Vorarlberg", "addressCountry": "AT" },
+  "areaServed": "Vorarlberg",
+  "sameAs": ["https://www.instagram.com/laendleblitzmarketing/"],
+  "image": "https://www.lm-agentur.at/assets/bilder/og-image.jpg"
+}
+</script>
+</head>
+<body>
+
+<!-- Blitz-Intro: liegt ÜBER der fertigen Seite, blockiert nichts -->
+<div class="bolt-intro" id="boltIntro" aria-hidden="true">
+  <div class="bi-veil"></div>
+  <div class="bi-flash"></div>
+  <div class="bi-claim">Wer nicht wirbt, stirbt!</div>
+  <svg class="bi-bolt" viewBox="99.45 71.64 16.05 26.59" fill="currentColor" fill-rule="evenodd"><g> <polygon points="100.45 87.38 102.92 85.72 106.36 79.96 109.25 72.64 100.45 87.38"/> <path d="M100.45,87.38l6.1-.91-2.9,10.76,10.85-16.08-7.32,1.09,2.07-9.61-8.8,14.74Z"/> <polygon points="111.82 82.84 114.5 81.15 103.65 97.23 106.87 90.18 111.82 82.84"/> <polygon points="107.17 82.25 105.54 83.78 111.82 82.84 114.5 81.15 107.17 82.25"/> <polygon points="109.25 72.64 106.36 79.96 105.54 83.78 107.17 82.25 109.25 72.64"/> <polygon points="106.55 86.47 108.29 84.92 102.92 85.72 100.45 87.38 106.55 86.47"/> <polygon points="103.65 97.23 106.87 90.18 108.29 84.92 106.55 86.47 103.65 97.23"/> <g> <polygon points="108.02 85.16 102.54 85.98 106.81 78.82 105.79 83.54 112.24 82.58 106.37 91.28 108.02 85.16"/> </g> <polygon points="108.29 84.92 102.92 85.72 106.36 79.96 105.54 83.78 111.82 82.84 106.87 90.18 108.29 84.92"/> <polygon points="108.67 84.58 103.47 85.36 105.72 81.58 105.18 84.12 111.23 83.21 107.59 88.61 108.67 84.58"/> <polygon points="108.02 85.16 106.55 86.47 100.45 87.38 108.02 85.16"/> <polygon points="109.25 72.64 105.79 83.54 107.17 82.25 109.25 72.64"/> <polygon points="112.24 82.58 103.65 97.23 106.37 91.28 112.24 82.58"/> <polygon points="109.25 72.64 102.54 85.98 106.81 78.82 109.25 72.64"/> </g></svg>
+</div>
+
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <pattern id="triHero" width="26" height="23" patternUnits="userSpaceOnUse">
+      <path d="M13 0 L26 23 L0 23 Z" fill="none" stroke="#E8628F" stroke-width="1"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand" aria-label="Ländle Blitz Marketing — Startseite">
+        <span class="mark" id="brandMark"></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#komplettpaket">Komplettpaket</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#leuchtreklame">Leuchtreklame</a>
+        <a href="#zeitplan">Zeitplaner</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#inhaber">Über uns</a>
+        <a href="#einblicke">Einblicke</a>
+        <a href="#kontakt" class="nav-kontakt">Angebot anfragen</a>
+      </div>
+      <a href="#kontakt" class="nav-cta">Angebot anfragen</a>
+      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid"></div>
+    <div class="glowfield"></div>
+    <svg class="tri" viewBox="0 0 200 200"><rect width="200" height="200" fill="url(#triHero)"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="hero-eyebrow">Wer nicht wirbt, stirbt.</span>
+      <button type="button" class="sign-toggle" id="signToggle" aria-pressed="true">
+        <span class="switch" aria-hidden="true"></span>
+        <span id="toggleLabel">Schild ausschalten</span>
+      </button>
+    </div>
+    <h1 class="hero-h1">
+      <span class="ln"><span>Sie eröffnen.</span></span>
+      <span class="ln"><span>Wir machen Sie</span></span>
+      <span class="ln"><span class="sichtbar">sichtbar.</span></span>
+    </h1>
+    <p class="hero-sub">
+      Logo, Printmedien, Arbeitsbekleidung, Werbeartikel, Beschilderung und Fahrzeugbeschriftung —
+      <strong>alles aus einer Hand</strong>, damit am Eröffnungstag nichts fehlt.
+    </p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn btn-primary">
+        Komplettpaket anfragen
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#zeitplan" class="btn btn-ghost">Reicht meine Zeit noch?</a>
+    </div>
+    <ul class="hero-proof">
+      <li>
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/><path d="M4 21V10l5 3V10l5 3V7l6 4v10"/><path d="M7 21v-3.5"/><path d="M12 21v-3.5"/><path d="M17 21v-3.5"/>
+          </svg>
+        </span>
+        <div><b>Eigene Produktion</b><span>Workwear, Werbeartikel, Folierung</span></div>
+      </li>
+      <li>
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17h18"/><path d="M5 17a7 7 0 0114 0"/><path d="M12 3v3"/><path d="M9.2 6.4l1.1 2.6"/><path d="M14.8 6.4l-1.1 2.6"/><path d="M4 21h16"/>
+          </svg>
+        </span>
+        <div><b>Montage vor Ort</b><span>Sait steht selbst auf dem Gerüst</span></div>
+      </li>
+      <li>
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 20h20"/><path d="M2 20l6.5-11 4 6 2.5-4L22 20"/><path d="M8.5 9l2 3.4"/>
+          </svg>
+        </span>
+        <div><b>Seit 2018</b><span>Zuhause in Vorarlberg</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ KOMPLETTPAKET ============ -->
+<section id="komplettpaket">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Komplettpaket für Neueröffnungen</span>
+      <h2>Ein Auftrag statt sechs Firmen.</h2>
+      <p>
+        Sie sperren in ein paar Wochen auf und brauchen alles gleichzeitig. Wir übernehmen das komplette
+        Erscheinungsbild — von der ersten Skizze bis zur Montage am Gebäude.
+      </p>
+    </div>
+
+    <!-- Beweis: eine Handschrift über alle Medien -->
+    <div class="proof-head rev">
+      <span class="tag">Ein Beispiel</span>
+      <h3>Ein Logo. Überall dieselbe Handschrift.</h3>
+      <p>Hausmeisterdienste Silvio — vom ersten Entwurf bis zum folierten Fahrzeug. Die gezeichnete Landschaft aus dem Logo läuft auf der Visitenkarte weiter und endet als Kontur auf dem Bus.</p>
+    </div>
+
+    <div class="gal rev" id="galSilvio" data-auto="5600">
+      <div class="gal-track" tabindex="0" role="group" aria-label="Projektstrecke Hausmeisterdienste Silvio">
+        <figure class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/silvio-1-logo.webp"
+                 srcset="assets/bilder/silvio-1-logo-720.webp 720w, assets/bilder/silvio-1-logo.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 1100px"
+                 width="1320" height="1454" loading="lazy" decoding="async"
+                 alt="Logo Hausmeisterdienste Silvio aus Feldkirch auf einem Blatt Papier, umgeben von grünen Blättern">
+          </div>
+          <figcaption class="gal-cap">
+            <span class="gal-step">Schritt 1 · <a href="lm-agentur-grafik-logodesign.html">Logodesign</a></span>
+            <h4>Die Wortmarke entsteht</h4>
+            <p>Serifenschrift mit verschnörkeltem S, das O wird zum Beet mit Rechen und Pflanze — ein Bild, das man auch aus zehn Metern noch erkennt.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/silvio-2-visitenkarten.webp"
+                 srcset="assets/bilder/silvio-2-visitenkarten-720.webp 720w, assets/bilder/silvio-2-visitenkarten.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 1100px"
+                 width="1320" height="1554" loading="lazy" decoding="async"
+                 alt="Visitenkarten von Hausmeisterdienste Silvio, Vorder- und Rückseite mit Logo und gezeichneter Landschaft">
+          </div>
+          <figcaption class="gal-cap">
+            <span class="gal-step">Schritt 2 · <a href="lm-agentur-printmedien.html">Printmedien</a></span>
+            <h4>Dieselbe Sprache auf Papier</h4>
+            <p>Vorderseite mit Kontaktdaten, Rückseite mit der gezeichneten Wiesenlandschaft — dasselbe Motiv, das später am Fahrzeug wieder auftaucht.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/silvio-3-fahrzeug.webp"
+                 srcset="assets/bilder/silvio-3-fahrzeug-720.webp 720w, assets/bilder/silvio-3-fahrzeug.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 1100px"
+                 width="1320" height="1311" loading="lazy" decoding="async"
+                 alt="Weißer Transporter mit KFZ-Folierung für Hausmeisterdienste Silvio aus Feldkirch: Logo und gezeichnete Landschaft entlang der Seite">
+          </div>
+          <figcaption class="gal-cap">
+            <span class="gal-step">Schritt 3 · <a href="lm-agentur-kfz-folierung.html">KFZ-Folierung</a></span>
+            <h4>Und dann fährt es durchs Ländle</h4>
+            <p>Logo auf der Schiebetür, Kontaktdaten am Heck, die Landschaft als durchgehendes Band über die ganze Fahrzeugseite.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="gal-bar">
+        <div class="gal-nav">
+          <button type="button" class="gal-btn" data-dir="-1" aria-label="Vorheriges Bild">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button type="button" class="gal-btn" data-dir="1" aria-label="Nächstes Bild">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <span class="gal-count"><span data-cur>1</span> / <span data-total>3</span></span>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+    </div>
+
+    <div class="bento">
+      <div class="cell cell-feature fly from-l" style="--rs:2%;--re:66%">
+        <div>
+          <span class="num">Produktionszeit</span>
+          <div class="big">5 Wochen</div>
+        </div>
+        <div>
+          <p>Die reine Produktion. Dazu Gestaltung, Aufmaß und Montage — insgesamt rund 9 Wochen vom Erstgespräch bis zur Eröffnung. Was das für Ihren Termin heißt, rechnet der <a href="#zeitplan">Zeitplaner</a> aus.</p>
+          <div class="pkg-list">
+            <span class="pill">Logo</span><span class="pill">Printmedien</span><span class="pill">Workwear</span>
+            <span class="pill">Werbeartikel</span><span class="pill">Beschilderung</span><span class="pill">Folierung</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cell cell-lg fly from-r" style="--rs:8%;--re:74%">
+        <span class="num">01</span>
+        <h3>Alles greift ineinander</h3>
+        <p>Ein Logo, das auf dem Leuchtschild genauso funktioniert wie auf der Arbeitsjacke und dem Firmenbus. Kein Nachjustieren zwischen Lieferanten.</p>
+      </div>
+
+      <div class="cell cell-sm fly from-l" style="--rs:2%;--re:64%;--d:0ms">
+        <span class="num">02</span>
+        <h3>Eigene Produktion</h3>
+        <p>Workwear, Werbeartikel und Folierung entstehen im Haus in Meiningen.</p>
+      </div>
+
+      <div class="cell cell-sm fly from-l" style="--rs:9%;--re:72%;--d:90ms">
+        <span class="num">03</span>
+        <h3>Ein Ansprechpartner</h3>
+        <p>Sie rufen eine Nummer an — nicht sechs. Auch bei der Montage.</p>
+      </div>
+
+      <div class="cell cell-lg fly from-r" style="--rs:5%;--re:70%;--d:150ms">
+        <span class="num">04</span>
+        <h3>Termintreue statt Terminversprechen</h3>
+        <p>Wir planen rückwärts vom Eröffnungstag. Was zuerst fertig sein muss, wird zuerst produziert — und wenn es eng wird, sagen wir das vorher, nicht hinterher.</p>
+      </div>
+
+      <div class="cell cell-full fly from-r" style="--rs:4%;--re:68%">
+        <span class="num">05</span>
+        <h3>Beschilderung über europäische Partner</h3>
+        <p>Leuchtschilder und Pylone fertigen wir mit erprobten Produktionspartnern in Europa — Aufmaß, Freigabe und Montage bleiben bei uns.</p>
+      </div>
+    </div>
+
+    <div class="sec-cta rev">
+      <span class="sec-cta-q">Sie eröffnen bald?</span>
+      <a href="https://wa.me/436643724808?text=Hallo!%20Ich%20er%C3%B6ffne%20bald%20und%20interessiere%20mich%20f%C3%BCr%20das%20Komplettpaket."
+         rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+        Per WhatsApp anfragen
+      </a>
+      <a href="tel:+436643724808" class="btn btn-ghost">Anrufen</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ REFERENZEN ============ -->
+<section id="referenzen">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Referenzen</span>
+      <h2>Werbetechnik aus Vorarlberg: gebaut, montiert, steht.</h2>
+      <p>Werbetechnik-Projekte aus Vorarlberg und Umgebung — fotografiert nach der Montage, nicht im Rendering.</p>
+    </div>
+
+    <div class="ref-grid">
+      <article class="ref ref-a rev">
+        <div class="gal gal-card" data-auto="3800">
+          <div class="gal-track" tabindex="0" role="group" aria-label="AY Restaurant, drei Bilder: vorher, nachher und bei Nacht">
+            <div class="gal-slide">
+              <div class="gal-media from-top">
+                <img src="assets/bilder/ay-vorher.webp"
+                     srcset="assets/bilder/ay-vorher-720.webp 720w, assets/bilder/ay-vorher.webp 1280w"
+                     sizes="(max-width:880px) 100vw, 58vw"
+                     width="1280" height="1124" loading="lazy" decoding="async"
+                     alt="Alter schwarz-goldener Vordachschriftzug des AY Restaurant bei Schneefall">
+                <span class="gal-slide-label ist-vorher">Vorher</span>
+              </div>
+            </div>
+            <div class="gal-slide">
+              <div class="gal-media from-top">
+                <img src="assets/bilder/ay-nachher.webp"
+                     srcset="assets/bilder/ay-nachher-720.webp 720w, assets/bilder/ay-nachher.webp 1280w"
+                     sizes="(max-width:880px) 100vw, 58vw"
+                     width="1280" height="1707" loading="lazy" decoding="async"
+                     alt="Neuer dunkelgrüner Auftritt des AY Restaurant mit 3D-Lotusblüte und Schriftzug Indian Cuisine">
+                <span class="gal-slide-label ist-nachher">Nachher</span>
+              </div>
+            </div>
+            <div class="gal-slide">
+              <div class="gal-media">
+                <img src="assets/bilder/ay-beleuchtet.webp"
+                     srcset="assets/bilder/ay-beleuchtet-720.webp 720w, assets/bilder/ay-beleuchtet.webp 1280w"
+                     sizes="(max-width:880px) 100vw, 58vw"
+                     width="1280" height="938" loading="lazy" decoding="async"
+                     alt="Dieselben Schilder des AY Restaurant bei Nacht beleuchtet: Vordachschild, Ausleger Indian Cuisine und der Eingangsbereich">
+                <span class="gal-slide-label ist-nachher">Bei Nacht</span>
+              </div>
+            </div>
+          </div>
+          <span class="gal-tag">1 / 3</span>
+          <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+          <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+        </div>
+        <div class="ref-body">
+          <div class="ref-meta">Gastronomie · Kompletter Neuauftritt</div>
+          <h3>AY Restaurant</h3>
+          <p>Aus dem alten schwarz-goldenen Vordach wurde ein ruhiger, dunkelgrüner Auftritt mit plastischer Lotusblüte — dazu ein senkrechter Ausleger, der die Straße entlang gelesen wird. Abends leuchtet beides.</p>
+          <div class="ref-scope"><span>Vordachschild</span><span>3D-Logo</span><span>Ausleger</span><span>Beleuchtung</span></div>
+        </div>
+      </article>
+
+    <article class="ref ref-b rev">
+      <div class="gal gal-card" data-auto="3600">
+        <div class="gal-track" tabindex="0" role="group" aria-label="CT Automotive, 3 Bilder">
+          <div class="gal-slide">
+            <div class="gal-media from-top">
+              <img src="assets/bilder/ct-automotive-pylon-2.webp"
+                   srcset="assets/bilder/ct-automotive-pylon-2-720.webp 720w, assets/bilder/ct-automotive-pylon-2.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1259" loading="lazy" decoding="async"
+                   alt="Beleuchteter Werbepylon von CT Automotive mit grüner Lichtkante an einer Straße in Bludenz">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media from-top">
+              <img src="assets/bilder/ct-automotive-pylon-1.webp"
+                   srcset="assets/bilder/ct-automotive-pylon-1-720.webp 720w, assets/bilder/ct-automotive-pylon-1.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1263" loading="lazy" decoding="async"
+                   alt="Werbepylon von CT Automotive in Bludenz bei Tageslicht, aus anderer Perspektive vor Bergkulisse">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/ct-automotive-fassade.webp"
+                   srcset="assets/bilder/ct-automotive-fassade-720.webp 720w, assets/bilder/ct-automotive-fassade.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1256" loading="lazy" decoding="async"
+                   alt="Fassadenbeschriftung mit 3D-Einzelbuchstaben AUTOMOTIVE am Vordach des Autohauses">
+            </div>
+          </div>
+        </div>
+        <span class="gal-tag">1 / 3</span>
+        <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Bludenz · Autohaus</div>
+        <h3>CT Automotive</h3>
+        <p>Freistehender Pylon mit beleuchteter Lichtkante, dazu plastische Einzelbuchstaben am Vordach — beides in derselben Formensprache, damit es als ein Auftritt gelesen wird.</p>
+        <div class="ref-scope"><span>Werbepylon</span><span>3D-Buchstaben</span><span>Beleuchtung</span><span>Montage</span></div>
+      </div>
+    </article>
+
+    <article class="ref ref-c rev" style="--d:110ms">
+      <div class="gal gal-card" data-auto="3600">
+        <div class="gal-track" tabindex="0" role="group" aria-label="Biedenkapp, 4 Bilder">
+          <div class="gal-slide">
+            <div class="gal-media from-top">
+              <img src="assets/bilder/biedenkapp-fassade-1.webp"
+                   srcset="assets/bilder/biedenkapp-fassade-1-720.webp 720w, assets/bilder/biedenkapp-fassade-1.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1464" loading="lazy" decoding="async"
+                   alt="Große Hallenfassade mit 3D-Logo und Schriftzug Biedenkapp vor bewaldetem Berghang">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media from-top">
+              <img src="assets/bilder/biedenkapp-fassade-2.webp"
+                   srcset="assets/bilder/biedenkapp-fassade-2-720.webp 720w, assets/bilder/biedenkapp-fassade-2.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1393" loading="lazy" decoding="async"
+                   alt="Seitliche Ansicht der Hallenfassade mit dem 3D-Schriftzug Biedenkapp">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/biedenkapp-3d-buchstaben.webp"
+                   srcset="assets/bilder/biedenkapp-3d-buchstaben-720.webp 720w, assets/bilder/biedenkapp-3d-buchstaben.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1443" loading="lazy" decoding="async"
+                   alt="Schwarze 3D-Buchstaben des Biedenkapp-Schriftzugs auf heller Innenwand im Empfang">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/biedenkapp-glasdekor.webp"
+                   srcset="assets/bilder/biedenkapp-glasdekor-720.webp 720w, assets/bilder/biedenkapp-glasdekor.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1318" loading="lazy" decoding="async"
+                   alt="Glastrennwand im Büro mit Streifen-Sichtschutzfolie und Logo auf der Tür">
+            </div>
+          </div>
+        </div>
+        <span class="gal-tag">1 / 4</span>
+        <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Vorarlberg · Bauunternehmen</div>
+        <h3>Biedenkapp</h3>
+        <p>Großflächiges 3D-Signet auf der Hallenfassade, aufgesetzte Buchstaben im Empfang und Glasdekor im Büro — außen wie innen dieselbe Handschrift.</p>
+        <div class="ref-scope"><span>3D-Schild</span><span>Großformat</span><span>Innenbeschilderung</span><span>Glasdekor</span></div>
+      </div>
+    </article>
+
+    <article class="ref ref-d rev">
+      <div class="gal gal-card" data-auto="3600">
+        <div class="gal-track" tabindex="0" role="group" aria-label="SARK Grill, 2 Bilder">
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/sark-fassade.webp"
+                   srcset="assets/bilder/sark-fassade-720.webp 720w, assets/bilder/sark-fassade.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1707" loading="lazy" decoding="async"
+                   alt="Orangefarbenes Fassadenschild von SARK Grill Food Drink mit weißen 3D-Buchstaben vor blauem Himmel">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/sark-3d-buchstaben.webp"
+                   srcset="assets/bilder/sark-3d-buchstaben-720.webp 720w, assets/bilder/sark-3d-buchstaben.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1707" loading="lazy" decoding="async"
+                   alt="Nahaufnahme der weißen 3D-Buchstaben since 1976 auf orangefarbenem Untergrund">
+            </div>
+          </div>
+        </div>
+        <span class="gal-tag">1 / 2</span>
+        <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Gastronomie · Fassade</div>
+        <h3>SARK Grill</h3>
+        <p>Durchgehendes Fassadenband in Signalorange mit weißen 3D-Buchstaben — auf Distanz lesbar, auch quer über den Parkplatz.</p>
+        <div class="ref-scope"><span>Fassadenband</span><span>3D-Buchstaben</span><span>Aufsteller</span></div>
+      </div>
+    </article>
+
+    <article class="ref ref-a rev" style="--d:110ms">
+      <div class="gal gal-card" data-auto="3600">
+        <div class="gal-track" tabindex="0" role="group" aria-label="Konak Fleischwelt, 2 Bilder">
+          <div class="gal-slide">
+            <div class="gal-media from-top">
+              <img src="assets/bilder/konak-fassade.webp"
+                   srcset="assets/bilder/konak-fassade-720.webp 720w, assets/bilder/konak-fassade.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1523" loading="lazy" decoding="async"
+                   alt="Rote Fassade der Konak Fleischwelt mit weißen 3D-Buchstaben über der Schaufensterfront">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/konak-montage.webp"
+                   srcset="assets/bilder/konak-montage-720.webp 720w, assets/bilder/konak-montage.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1408" loading="lazy" decoding="async"
+                   alt="Großes bedrucktes Werbeschild der Konak Fleischwelt mit Fleischmotiven, daneben eine Leiter während der Montage">
+            </div>
+          </div>
+        </div>
+        <span class="gal-tag">1 / 2</span>
+        <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Metzgerei · Fassade</div>
+        <h3>Konak Fleischwelt</h3>
+        <p>Weiße Einzelbuchstaben auf rotem Grund mit Strahlern, darunter ein Großformatdruck mit Produktmotiven — aufgenommen am Montagetag.</p>
+        <div class="ref-scope"><span>3D-Buchstaben</span><span>Großformatdruck</span><span>Beleuchtung</span><span>Montage</span></div>
+      </div>
+    </article>
+
+    <article class="ref ref-b rev">
+      <div class="gal gal-card" data-auto="3600">
+        <div class="gal-track" tabindex="0" role="group" aria-label="Glühwürmchen, 2 Bilder">
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/gluehwuermchen-2.webp"
+                   srcset="assets/bilder/gluehwuermchen-2-720.webp 720w, assets/bilder/gluehwuermchen-2.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1150" loading="lazy" decoding="async"
+                   alt="Schaufenster von Glühwürmchen Babymode mit foliertem Glühwürmchen-Motiv, Wiesenband und Schriftzug">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/gluehwuermchen-1.webp"
+                   srcset="assets/bilder/gluehwuermchen-1-720.webp 720w, assets/bilder/gluehwuermchen-1.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1173" loading="lazy" decoding="async"
+                   alt="Eingangsbereich von Glühwürmchen mit beschrifteter Glastür und Willkommensgruß">
+            </div>
+          </div>
+        </div>
+        <span class="gal-tag">1 / 2</span>
+        <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Babymode · Schaufenster</div>
+        <h3>Glühwürmchen</h3>
+        <p>Illustriertes Maskottchen, Wiesenband als Sichtschutz in Augenhöhe und der Schriftzug im Oberlicht — der Auftritt läuft bis auf die Eingangstür weiter.</p>
+        <div class="ref-scope"><span>Illustration</span><span>Fensterfolierung</span><span>Türbeschriftung</span></div>
+      </div>
+    </article>
+
+    <article class="ref ref-third rev" style="--d:110ms">
+      <div class="ref-media from-top">
+        <img src="assets/bilder/portas-wohlfink.webp"
+             srcset="assets/bilder/portas-wohlfink-720.webp 720w, assets/bilder/portas-wohlfink.webp 1280w"
+             sizes="(max-width:880px) 100vw, 50vw"
+             width="1280" height="1071" loading="lazy" decoding="async"
+             alt="Dachschriftzug Portas über dem Fassadenband Tischlerei Wohlfink, daneben ein Monteur auf einer Hebebühne">
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Tischlerei · Fassade &amp; Dach</div>
+        <h3>Tischlerei Wohlfink</h3>
+        <p>Zwei Ebenen: Partnermarke auf dem Dach, eigener Name im Fassadenband — aufgenommen während der Montage von der Hebebühne aus.</p>
+        <div class="ref-scope"><span>Dachschrift</span><span>Fassadenband</span><span>Montage</span></div>
+      </div>
+    </article>
+
+    <article class="ref ref-third rev">
+      <div class="ref-media from-top">
+        <img src="assets/bilder/profigroup-leuchtbuchstaben.webp"
+             srcset="assets/bilder/profigroup-leuchtbuchstaben-720.webp 720w, assets/bilder/profigroup-leuchtbuchstaben.webp 1280w"
+             sizes="(max-width:880px) 100vw, 50vw"
+             width="1280" height="1122" loading="lazy" decoding="async"
+             alt="Beleuchtete 3D-Buchstaben des Schriftzugs Profi Group mit Dachsignet an einer Fassade in der Dämmerung">
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Leuchtbuchstaben</div>
+        <h3>Profi Group</h3>
+        <p>Hinterleuchtete Einzelbuchstaben samt Dachsignet — bei Dämmerung liest man den Namen quer über den Vorplatz.</p>
+        <div class="ref-scope"><span>3D-Buchstaben</span><span>LED</span><span>Fassade</span></div>
+      </div>
+    </article>
+
+    <article class="ref ref-third rev" style="--d:110ms">
+      <div class="ref-media from-top">
+        <img src="assets/bilder/farbenkobold.webp"
+             srcset="assets/bilder/farbenkobold-720.webp 720w, assets/bilder/farbenkobold.webp 1280w"
+             sizes="(max-width:880px) 100vw, 50vw"
+             width="1280" height="1226" loading="lazy" decoding="async"
+             alt="Beleuchteter Schriftzug Farben Kobold mit rotem Kobold-Maskottchen auf dem Dachrand einer Halle">
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Leuchtbuchstaben</div>
+        <h3>Farben Kobold</h3>
+        <p>Zweifarbiger Schriftzug mit dem Kobold als Blickfang, dazu die Länderfahnen — auf dem Dachrand montiert.</p>
+        <div class="ref-scope"><span>3D-Buchstaben</span><span>Maskottchen</span><span>Höhenmontage</span></div>
+      </div>
+    </article>
+    </div>
+
+    <!-- Basecamp als eigene Strecke -->
+    <div class="proof-head rev">
+      <span class="tag">Projektstrecke</span>
+      <h3>Basecamp Snackbar, Warth</h3>
+      <p>Vom Schaufenster bis zur Theke: eine Bildwelt, die drinnen und draußen dieselbe Sprache spricht.</p>
+    </div>
+
+    <div class="gal rev" id="galBasecamp" data-auto="5600">
+      <div class="gal-track" tabindex="0" role="group" aria-label="Projektstrecke Basecamp Snackbar">
+        <figure class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/basecamp-schaufenster-burger.webp"
+                 srcset="assets/bilder/basecamp-schaufenster-burger-720.webp 720w, assets/bilder/basecamp-schaufenster-burger.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 1100px"
+                 width="1306" height="1165" loading="lazy" decoding="async"
+                 alt="Schaufensterfolierung der Basecamp Snackbar in Warth mit Burger-Motiv und Bergsilhouette im Schnee">
+          </div>
+          <figcaption class="gal-cap">
+            <span class="gal-step">Schaufenster · Burger</span>
+            <h4>Blickfang aus der Distanz</h4>
+            <p>Freigestelltes Produktmotiv auf der Bergsilhouette — auch bei Schneetreiben noch lesbar.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/basecamp-fenster-pasta.webp"
+                 srcset="assets/bilder/basecamp-fenster-pasta-720.webp 720w, assets/bilder/basecamp-fenster-pasta.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 1100px"
+                 width="1320" height="1209" loading="lazy" decoding="async"
+                 alt="Weitere Schaufensterfront mit Pasta- und Falafel-Motiven und gezeichneter Bergkontur">
+          </div>
+          <figcaption class="gal-cap">
+            <span class="gal-step">Schaufenster · Front</span>
+            <h4>Die Bergkontur als Klammer</h4>
+            <p>Eine durchgehende Linie über alle Scheiben verbindet die einzelnen Motive zu einem Auftritt.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/basecamp-schaufenster-pizza.webp"
+                 srcset="assets/bilder/basecamp-schaufenster-pizza-720.webp 720w, assets/bilder/basecamp-schaufenster-pizza.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 1100px"
+                 width="1291" height="1107" loading="lazy" decoding="async"
+                 alt="Schaufenster mit Pizza-Motiv und Schriftzug Basecamp Snackbar Imbiss">
+          </div>
+          <figcaption class="gal-cap">
+            <span class="gal-step">Schaufenster · Wortmarke</span>
+            <h4>Name im Oberlicht</h4>
+            <p>Der Schriftzug sitzt über Augenhöhe — sichtbar, ohne den Blick in den Gastraum zu verstellen.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/basecamp-innen.webp"
+                 srcset="assets/bilder/basecamp-innen-720.webp 720w, assets/bilder/basecamp-innen.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 1100px"
+                 width="1320" height="1179" loading="lazy" decoding="async"
+                 alt="Innenraum der Basecamp Snackbar mit folierter Theke, Zutatenmotiv und beleuchteter Menütafel">
+          </div>
+          <figcaption class="gal-cap">
+            <span class="gal-step">Innen · Theke &amp; Menütafel</span>
+            <h4>Drinnen geht es weiter</h4>
+            <p>Thekenfolierung mit Zutatenmotiv und die durchlaufende Menütafel über der Küche — gedruckt, montiert, fertig zur Eröffnung.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="gal-bar">
+        <div class="gal-nav">
+          <button type="button" class="gal-btn" data-dir="-1" aria-label="Vorheriges Bild">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button type="button" class="gal-btn" data-dir="1" aria-label="Nächstes Bild">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <span class="gal-count"><span data-cur>1</span> / <span data-total>4</span></span>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+    </div>
+
+    <div class="sec-cta rev">
+      <span class="sec-cta-q">So etwas für Ihren Betrieb?</span>
+      <a href="https://wa.me/436643724808?text=Hallo!%20Ich%20habe%20Ihre%20Referenzen%20gesehen.%20Es%20geht%20um%3A%20"
+         rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+        Per WhatsApp anfragen
+      </a>
+      <a href="#zeitplan" class="btn btn-ghost">Zum Zeitplaner</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEUCHTREKLAME ============ -->
+<section id="leuchtreklame">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Leuchtreklame</span>
+      <h2>Leuchtreklame: der Moment, in dem es angeht.</h2>
+      <p>Neon-Optik in moderner LED-Technik — die Röhren sind neu am Markt: gleiche Wirkung wie klassisches Neon, aber bruchsicher, sparsam und wartungsarm.</p>
+    </div>
+
+    <div class="neon-stage rev">
+      <div class="neon-frame" id="neonFrame">
+        <img class="neon-off" src="assets/bilder/bellanapoli-neon-aus.webp"
+             srcset="assets/bilder/bellanapoli-neon-aus-720.webp 800w, assets/bilder/bellanapoli-neon-aus.webp 1600w"
+             sizes="(max-width:900px) 100vw, 62vw"
+             width="1600" height="1050" loading="lazy" decoding="async"
+             alt="Schriftzug Bella Napoli aus roten LED-Neonröhren auf einer Fliesenwand in Dornbirn, ausgeschaltet bei Tageslicht">
+        <img class="neon-on" src="assets/bilder/bellanapoli-neon-an.webp"
+             srcset="assets/bilder/bellanapoli-neon-an-720.webp 800w, assets/bilder/bellanapoli-neon-an.webp 1600w"
+             sizes="(max-width:900px) 100vw, 62vw"
+             width="1600" height="1034" loading="lazy" decoding="async"
+             alt="Derselbe Schriftzug Bella Napoli in Dornbirn eingeschaltet, rot leuchtend auf der dunklen Fliesenwand">
+        <span class="stamp" id="neonStamp">Aus</span>
+      </div>
+
+      <div class="neon-txt">
+        <h3>Bella Napoli</h3>
+        <p>Handgeformter Schriftzug in LED-Neon über der Theke. Dasselbe Schild, einmal aus und einmal an — legen Sie den Schalter um.</p>
+        <ul class="neon-specs">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg><span>Bis zu 80 % weniger Strom als Glasneon</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Bruchsicher — kein Glas, kein Gas</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Innen wie außen einsetzbar</span></li>
+        </ul>
+        <button type="button" class="sign-toggle" id="neonToggle" aria-pressed="false">
+          <span class="switch" aria-hidden="true"></span>
+          <span id="neonLabel">Schild einschalten</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROZESS ============ -->
+<section id="prozess">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Ablauf</span>
+      <h2>Wie es läuft.</h2>
+      <p>Fünf Schritte vom ersten Telefonat bis zum montierten Schild.</p>
+    </div>
+
+    <div class="steps" id="steps">
+      <span class="fill" aria-hidden="true"></span>
+      <div class="step">
+        <div class="step-dot">01</div>
+        <div><h3>Erstgespräch</h3><p>Wir schauen uns an, was Sie vorhaben, was das Gebäude hergibt und wann Sie aufsperren.</p><span class="step-time">ca. 1 Woche</span></div>
+      </div>
+      <div class="step">
+        <div class="step-dot" style="--d:120ms">02</div>
+        <div><h3>Gestaltung</h3><p>Logo und Erscheinungsbild entstehen. Sie sehen echte Entwürfe, keine Stockvorlagen.</p><span class="step-time">ca. 2 Wochen</span></div>
+      </div>
+      <div class="step">
+        <div class="step-dot" style="--d:240ms">03</div>
+        <div><h3>Aufmaß &amp; Freigabe</h3><p>Wir messen vor Ort, klären Genehmigungen und Sie geben die Produktionsdaten frei.</p><span class="step-time">ca. 1 Woche</span></div>
+      </div>
+      <div class="step">
+        <div class="step-dot" style="--d:360ms">04</div>
+        <div><h3>Produktion</h3><p>Workwear, Werbeartikel und Folierung im Haus, Beschilderung über unsere Produktionspartner.</p><span class="step-time">3–5 Wochen</span></div>
+      </div>
+      <div class="step">
+        <div class="step-dot" style="--d:480ms">05</div>
+        <div><h3>Montage</h3><p>Sait kommt selbst — Schild hängt, Bus ist foliert, Team ist eingekleidet.</p><span class="step-time">ca. 1 Woche</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZEITPLANER ============ -->
+<section id="zeitplan">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Zeitplaner</span>
+      <h2>Wann müssen Sie starten?</h2>
+      <p>Tragen Sie Ihren Eröffnungstermin ein — wir rechnen zurück, wann welcher Schritt beginnen muss.</p>
+    </div>
+
+    <div class="planner-box rev">
+      <div class="planner-controls">
+        <label class="fld">
+          <span class="fld-label">Eröffnungstermin</span>
+          <input type="date" id="openDate">
+        </label>
+        <div class="fld">
+          <span class="fld-label">Ihr Vorhaben</span>
+          <div class="seg" id="prodSeg" role="group" aria-label="Art des Vorhabens">
+            <button type="button" data-mode="schild" class="active" aria-pressed="true">Leuchtschild</button>
+            <button type="button" data-mode="pylon" aria-pressed="false">Werbepylon</button>
+            <button type="button" data-mode="paket" aria-pressed="false">Komplettpaket</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="verdict" id="verdict" aria-live="polite"></div>
+      <ol class="plan-steps" id="planSteps"></ol>
+
+      <!-- Abschluss: nimmt Termin und Vorhaben gleich mit -->
+      <div class="planner-cta" id="plannerCta" hidden>
+        <p class="planner-cta-text" id="plannerCtaText"></p>
+        <div class="planner-cta-row">
+          <a class="btn btn-wa" id="ctaWhatsapp" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+            <span id="ctaWaLabel">Per WhatsApp anfragen</span>
+          </a>
+          <a href="tel:+436643724808" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
+            Anrufen
+          </a>
+          <a href="#" class="btn btn-ghost" id="ctaMail">E-Mail</a>
+        </div>
+        <p class="planner-hint">Termin und Vorhaben stehen schon in der Nachricht — Sie können alles vor dem Senden ändern. Zurück kommt eine ehrliche Einschätzung, was bis zu Ihrem Termin machbar ist. Ihre Nachricht landet direkt bei Sait Simsek.</p>
+      </div>
+    </div>
+
+    <p class="planner-hint">Richtwerte aus laufenden Projekten — den genauen Plan stimmen wir im Erstgespräch auf Ihr Vorhaben ab. Dort bekommen Sie auch einen ehrlichen Kosten-Richtwert, unverbindlich.</p>
+  </div>
+</section>
+
+<!-- ============ LEISTUNGEN ============ -->
+<section id="leistungen">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Full-Service</span>
+      <h2>Was wir machen.</h2>
+      <p>Einzeln buchbar — im Komplettpaket greifen die Teile ineinander.</p>
+    </div>
+
+    <div class="svc-grid">
+      <a class="svc rise" href="lm-agentur-grafik-logodesign.html">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h3>Grafik &amp; Logodesign</h3>
+        <p>Wortmarke, Signet und Farbwelt — so gebaut, dass sie auf Schild, Jacke und Bus gleich gut funktionieren.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-printmedien.html" style="--d:70ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v13H4z"/><path d="M4 9h16"/><path d="M8 17v3h8v-3"/></svg></div>
+        <h3>Printmedien</h3>
+        <p>Visitenkarten, Flyer, Speisekarten, Banner — im Haus gedruckt, in einem Rutsch abgestimmt.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-arbeitsbekleidung.html" style="--d:140ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l3 2 3-2 5 3-2 4-2-1v10H8V9L6 10 4 6z"/></svg></div>
+        <h3>Arbeitsbekleidung</h3>
+        <p>Bestickt oder bedruckt, aus eigener Produktion. Nachbestellen geht auch in zwei Jahren noch.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-werbeartikel.html">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8H4v12h16z"/><path d="M2 8h20v4H2z"/><path d="M12 8v12"/><path d="M12 8S9.5 3 7.5 3 5 6 7 7.5 12 8 12 8z"/><path d="M12 8s2.5-5 4.5-5S19 6 17 7.5 12 8 12 8z"/></svg></div>
+        <h3>Werbeartikel</h3>
+        <p>Vom Kugelschreiber bis zur Kaffeetasse — bedruckt mit dem Logo, das wir selbst gebaut haben.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-kfz-folierung.html" style="--d:70ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-6h14l2 6v5h-3M6 18H3v-5"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/><path d="M9.5 18h5"/></svg></div>
+        <h3>KFZ-Folierung</h3>
+        <p>Vom dezenten Schriftzug bis zur Vollfolierung. Jeder Firmenwagen wird zur fahrenden Werbefläche.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-webdesign.html" style="--d:140ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 9h20"/><circle cx="5" cy="6.5" r=".6" fill="currentColor"/><circle cx="7.4" cy="6.5" r=".6" fill="currentColor"/><path d="M9 22h6"/><path d="M12 18v4"/></svg></div>
+        <h3>Webdesign</h3>
+        <p>Eine Seite, die zum Schild an der Fassade passt — und auf dem Handy genauso funktioniert.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INHABER ============ -->
+<section id="inhaber">
+  <div class="wrap">
+    <div class="owner">
+      <div class="owner-media rev">
+        <img src="assets/bilder/sait-portrait.webp"
+             srcset="assets/bilder/sait-portrait-720.webp 720w, assets/bilder/sait-portrait.webp 1280w"
+             sizes="(max-width:860px) 100vw, 42vw"
+             width="1264" height="1937" loading="lazy" decoding="async"
+             alt="Sait Simsek auf einem Baugerüst über dem Werbebanner von Ländle Blitz Marketing">
+        <span class="owner-badge">Meiningen · Montage</span>
+      </div>
+      <div class="owner-txt rev" style="--d:120ms">
+        <span class="tag">Der Inhaber</span>
+        <h2>Sie bekommen mich. Nicht ein Callcenter.</h2>
+        <p>
+          Ich bin <strong>Sait Simsek</strong> und führe Ländle Blitz Marketing seit 2018. Ich zeichne das Logo,
+          ich stehe bei der Produktion daneben — und wenn das Schild montiert wird, stehe ich auf dem Gerüst.
+        </p>
+        <p>
+          Bei einer Neueröffnung zählt, dass jemand den Überblick behält und erreichbar ist, wenn drei Tage
+          vor der Eröffnung noch etwas dazwischenkommt. Genau dafür bin ich da.
+        </p>
+        <p>
+          Unsere Werkstatt steht in Meiningen bei Feldkirch. Montiert wird in ganz Vorarlberg —
+          unter anderem in Feldkirch, Dornbirn, Bludenz, Frastanz und Warth.
+        </p>
+        <div class="owner-sign">
+          <svg class="bolt" viewBox="99.45 71.64 16.05 26.59" aria-hidden="true"><use href="#lbm-bolt"/></svg>
+          Sait Simsek · Inhaber
+        </div>
+        <div class="owner-contact">
+          <a href="tel:+436643724808" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
+            +43 664 372 48 08
+          </a>
+          <a href="https://wa.me/436643724808?text=Hallo%20Sait%2C%20ich%20h%C3%A4tte%20gerne%20eine%20erste%20Einsch%C3%A4tzung%20f%C3%BCr%20mein%20Vorhaben."
+             rel="noopener" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+            WhatsApp an Sait
+          </a>
+          <a href="mailto:info@lm-agentur.at" class="btn btn-ghost">E-Mail schreiben</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EINBLICKE ============ -->
+<section id="einblicke">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Einblicke</span>
+      <h2>Kein Stockfoto-Team.</h2>
+      <p>Acht kurze Filme von echten Aufträgen — vom Kranaufbau bis zur Fensterfolierung.</p>
+    </div>
+
+    <div class="clips">
+      <figure class="clip rev">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/hanako-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Projektfilm Hanako: Fensterfolierung mit Bambusmotiv, Wandgrafik und Schriftzug im Lokal">
+            <source src="assets/videos/hanako.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:22</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: Hanako">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>Hanako</b><span>Fensterfolierung, Wandgrafik, Schriftzug</span></figcaption>
+      </figure>
+
+      <figure class="clip rev" style="--d:80ms">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/ct-pylon-montage-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Projektfilm: Werbepylon von CT Automotive wird mit einem Kran aufgestellt">
+            <source src="assets/videos/ct-pylon-montage.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:16</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: CT Automotive · Pylon">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>CT Automotive · Pylon</b><span>Mit dem Kran gesetzt</span></figcaption>
+      </figure>
+
+      <figure class="clip rev" style="--d:160ms">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/bellanapoli-montage-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Projektfilm: Montage des Neon-Schriftzugs Bella Napoli in Dornbirn">
+            <source src="assets/videos/bellanapoli-montage.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:13</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: Bella Napoli, Dornbirn">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>Bella Napoli, Dornbirn</b><span>Montage des Neonschilds</span></figcaption>
+      </figure>
+
+      <figure class="clip rev" style="--d:240ms">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/sait-baustelle-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Projektfilm Can'ss in Feldkirch: beleuchtetes Fassadenschild, Neon-Wandbild und Türgrafiken">
+            <source src="assets/videos/sait-baustelle.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:35</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: Can'ss, Feldkirch">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>Can'ss, Feldkirch</b><span>Leuchtschild, Neon-Wandbild, Türgrafiken</span></figcaption>
+      </figure>
+
+      <figure class="clip rev">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/ct-buchstaben-montage-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Projektfilm: 3D-Einzelbuchstaben werden am Vordach von CT Automotive montiert">
+            <source src="assets/videos/ct-buchstaben-montage.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:12</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: CT Automotive · Fassade">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>CT Automotive · Fassade</b><span>3D-Buchstaben am Vordach</span></figcaption>
+      </figure>
+
+      <figure class="clip rev" style="--d:80ms">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/profigroup-messestand-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Projektfilm: Aufbau des Messestands der Profi Group mit bedruckten Wänden und Theken">
+            <source src="assets/videos/profigroup-messestand.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:08</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: Profi Group · Messestand">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>Profi Group · Messestand</b><span>Aufbau in der Messehalle</span></figcaption>
+      </figure>
+
+      <figure class="clip rev" style="--d:160ms">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/sait-stadion-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Projektfilm Stadion: Sponsorentafeln werden beschriftet und montiert">
+            <source src="assets/videos/sait-stadion.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:32</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: Werbebanden im Stadion">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>Werbebanden im Stadion</b><span>Sponsorentafeln beschriftet und montiert</span></figcaption>
+      </figure>
+
+      <figure class="clip rev" style="--d:240ms">
+        <div class="clip-frame">
+          <video preload="none" playsinline
+                 poster="assets/videos/sait-buero-poster.webp"
+                 width="720" height="1280"
+                 aria-label="Einblick in die eigene Produktion: Schneidplotter, Transferpresse und 3D-Buchstaben">
+            <source src="assets/videos/sait-buero.mp4" type="video/mp4">
+            Ihr Browser kann dieses Video nicht abspielen.
+          </video>
+          <span class="clip-dauer">0:50</span>
+          <button type="button" class="clip-play" aria-label="Video abspielen: Bei uns im Haus">
+            <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><b>Bei uns im Haus</b><span>Plotter, Transferpresse, 3D-Buchstaben</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="clips-foot rev">
+      <a href="https://www.instagram.com/laendleblitzmarketing/" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Mehr auf Instagram
+      </a>
+      <span class="clips-hint">@laendleblitzmarketing</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="cta-band" id="kontakt">
+  <div class="wrap">
+    <div class="rev">
+      <h2>Bereit, sichtbar zu werden?</h2>
+      <p>Sagen Sie uns Ihren Eröffnungstermin — wir sagen Ihnen, was bis dahin machbar ist und was es ungefähr kostet.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/436643724808?text=Hallo!%20Ich%20plane%20eine%20Er%C3%B6ffnung%20und%20h%C3%A4tte%20gerne%20ein%20Angebot."
+           rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+          Per WhatsApp anfragen
+        </a>
+        <a href="tel:+436643724808" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
+          Anrufen
+        </a>
+        <a href="mailto:info@lm-agentur.at" class="btn btn-ghost">E-Mail</a>
+      </div>
+      <p class="cta-note">Keiner dran? Dann steht Sait gerade auf einem Gerüst — schreiben Sie WhatsApp, er meldet sich.</p>
+    </div>
+
+    <div class="contact-card rev" style="--d:120ms">
+      <div class="contact-strip-bar" aria-hidden="true">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.4 7-13a7 7 0 10-14 0c0 5.6 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="#1A0E12"><path d="M4 3l16 7-6.5 2.3L11 19z"/></svg></div>
+      </div>
+      <div class="contact-details">
+        <div class="row"><span class="label">Adresse</span><span>Tannenfeldstrasse 3, 6812 Meiningen</span></div>
+        <div class="row"><span class="label">Telefon</span><a href="tel:+436643724808">+43 664 372 48 08</a></div>
+        <div class="row"><span class="label">E-Mail</span><a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a></div>
+        <div class="row"><span class="label">Instagram</span><a href="https://www.instagram.com/laendleblitzmarketing/" rel="noopener">@laendleblitzmarketing</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<a class="wa-float" id="waFloat" rel="noopener" aria-label="Per WhatsApp anfragen"
+   href="https://wa.me/436643724808?text=Hallo!%20Ich%20h%C3%A4tte%20gerne%20eine%20erste%20Einsch%C3%A4tzung.%20Es%20geht%20um%3A%20">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+</a>
+
+<script>
+/* Schwebender WhatsApp-Knopf: erst zeigen, wenn der Hero durch ist */
+(function(){
+  var el = document.getElementById('waFloat');
+  var hero = document.getElementById('hero');
+  if (!el || !hero) return;
+  function pruefen(){
+    el.classList.toggle('show', hero.getBoundingClientRect().bottom < 80);
+  }
+  window.addEventListener('scroll', pruefen, { passive:true });
+  window.addEventListener('resize', pruefen, { passive:true });
+  pruefen();
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div>
+        <svg class="foot-mark" viewBox="0 0 324.66 97.23" role="img" aria-label="Ländle Blitz Marketing"><use href="#lbm-logo"/></svg>
+        <div>Full-Service-Werbeagentur &amp; Werbetechnik · Vorarlberg · seit 2018</div>
+        <div class="foot-claim">Wer nicht wirbt, stirbt.</div>
+      </div>
+      <div class="foot-nav">
+        <a href="#komplettpaket">Komplettpaket</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#zeitplan">Zeitplaner</a>
+        <a href="#leistungen">Leistungen</a>
+      </div>
+      <div class="foot-nav">
+        <a href="lm-agentur-grafik-logodesign.html">Grafik &amp; Logodesign</a>
+        <a href="lm-agentur-printmedien.html">Printmedien</a>
+        <a href="lm-agentur-arbeitsbekleidung.html">Arbeitsbekleidung</a>
+        <a href="lm-agentur-werbeartikel.html">Werbeartikel</a>
+        <a href="lm-agentur-kfz-folierung.html">KFZ-Folierung</a>
+        <a href="lm-agentur-webdesign.html">Webdesign</a>
+      </div>
+      <div class="foot-nav">
+        <a href="tel:+436643724808">+43 664 372 48 08</a>
+        <a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a>
+        <a href="https://www.instagram.com/laendleblitzmarketing/" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Tannenfeldstrasse 3 · 6812 Meiningen · Österreich</span>
+      <span>Entwurf — fiktiver Relaunch, nicht live</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= SCRIPTS ================= -->
+<script>
+/* Blitz-Intro — schlägt ein, blitzt auf, schrumpft ins Header-Logo.
+   Grundsatz: Die Seite ist darunter fertig. Geht hier irgendetwas schief,
+   wird das Overlay entfernt und der Nutzer merkt nichts. */
+(function(){
+  var de = document.documentElement;
+  /* Intro übersprungen (Wiederbesuch, reduzierte Bewegung): Markup aufräumen */
+  if (!de.classList.contains('bolt-on')) {
+    var dead = document.getElementById('boltIntro');
+    if (dead && dead.parentNode) dead.parentNode.removeChild(dead);
+    return;
+  }
+
+  var wrap  = document.getElementById('boltIntro');
+  var bolt  = wrap && wrap.querySelector('.bi-bolt');
+  var flash = wrap && wrap.querySelector('.bi-flash');
+  var claim = wrap && wrap.querySelector('.bi-claim');
+  if (!wrap || !bolt || !flash || !claim) { finish(); return; }
+
+  var done = false;
+  function finish(){
+    if (done) return;
+    done = true;
+    de.classList.remove('bolt-on');
+    de.classList.add('bolt-done');
+    if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
+    window.removeEventListener('keydown', skip);
+    window.removeEventListener('pointerdown', skip);
+  }
+  function skip(){ finish(); }
+
+  /* Reißleine: egal was passiert, nach 4,5 s ist das Overlay weg */
+  var bail = setTimeout(finish, 4500);
+  window.addEventListener('keydown', skip);
+  window.addEventListener('pointerdown', skip);
+
+  function run(){
+    if (done) return;
+    if (!bolt.animate) { finish(); return; }   /* sehr alte Browser */
+
+    /* 1 — Einschlag: von oben herein, beschleunigend wie echter Blitz */
+    var strike = bolt.animate([
+      { transform:'translate(-50%,-50%) translateY(-72vh) scaleY(1.5)', opacity:0 },
+      { transform:'translate(-50%,-50%) translateY(-30vh) scaleY(1.35)', opacity:1, offset:.45 },
+      { transform:'translate(-50%,-50%) translateY(0) scaleY(1)', opacity:1 }
+    ], { duration:210, easing:'cubic-bezier(.7,0,.9,.4)', fill:'forwards' });
+
+    strike.onfinish = function(){
+      if (done) return;
+
+      /* 2 — Aufblitzen plus kurzes Zittern */
+      flash.animate([
+        { opacity:0 }, { opacity:1, offset:.12 }, { opacity:.5, offset:.4 }, { opacity:0 }
+      ], { duration:520, easing:'cubic-bezier(.2,0,.4,1)' });
+
+      wrap.animate([
+        { transform:'translate(0,0)' }, { transform:'translate(-4px,3px)', offset:.15 },
+        { transform:'translate(5px,-2px)', offset:.3 }, { transform:'translate(-2px,1px)', offset:.5 },
+        { transform:'translate(0,0)' }
+      ], { duration:260, easing:'ease-out' });
+
+      /* 3 — Claim flackert an wie eine Leuchtröhre und bleibt stehen */
+      claim.animate([
+        { opacity:0 }, { opacity:1, offset:.08 }, { opacity:.15, offset:.16 },
+        { opacity:1, offset:.26 }, { opacity:.4, offset:.32 }, { opacity:1, offset:.42 },
+        { opacity:1 }
+      ], { duration:900, delay:120, easing:'steps(1,end)', fill:'forwards' });
+
+      /* 4 — Claim wieder weg, dann kommt die Seite aus dem Dunkel hervor */
+      setTimeout(function(){
+        if (done) return;
+        claim.animate([{opacity:1},{opacity:0}],
+          { duration:420, easing:'cubic-bezier(.4,0,.2,1)', fill:'forwards' });
+      }, 1500);
+
+      setTimeout(function(){ if (!done) wrap.classList.add('reveal'); }, 1720);
+
+      /* 5 — Blitz wandert ins Header-Logo und verglüht dort */
+      setTimeout(function(){
+        if (done) return;
+        var target = document.getElementById('brandMark');
+        var br = bolt.getBoundingClientRect();
+        var dx = 0, dy = 0, scale = .18;
+        if (target) {
+          var tr = target.getBoundingClientRect();
+          if (tr.width) {
+            dx = (tr.left + tr.width * 0.42) - (br.left + br.width / 2);
+            dy = (tr.top  + tr.height * 0.62) - (br.top  + br.height / 2);
+            scale = Math.max(.12, (tr.height * 0.7) / br.height);
+          }
+        }
+        var fly = bolt.animate([
+          { transform:'translate(-50%,-50%) translate(0,0) scale(1)', opacity:1 },
+          { transform:'translate(-50%,-50%) translate('+dx+'px,'+dy+'px) scale('+scale+')', opacity:0 }
+        ], { duration:620, easing:'cubic-bezier(.16,1,.3,1)', fill:'forwards' });
+
+        fly.onfinish = function(){ clearTimeout(bail); finish(); };
+      }, 1820);
+    };
+  }
+
+  /* Erst starten, wenn ein Bild gemalt wurde — sonst ruckelt der Einschlag */
+  requestAnimationFrame(function(){ requestAnimationFrame(run); });
+})();
+</script>
+
+<script>
+/* Logo-Sprite nachladen, Header-Marke setzen */
+(function(){
+  var mark = document.getElementById('brandMark');
+  fetch('assets/sprite.html')
+    .then(function(r){ if(!r.ok) throw new Error('sprite'); return r.text(); })
+    .then(function(html){
+      var d = document.createElement('div');
+      d.innerHTML = html;
+      var svg = d.querySelector('svg');
+      if (svg) document.body.insertBefore(svg, document.body.firstChild);
+      if (mark) mark.innerHTML = '<svg viewBox="0 0 324.66 97.23" role="img" aria-label="Ländle Blitz Marketing"><use href="#lbm-logo"/></svg>';
+    })
+    .catch(function(){
+      if (mark) {
+        mark.textContent = 'LÄNDLE BLITZ MARKETING';
+        mark.style.cssText = 'font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;width:auto';
+      }
+    });
+})();
+</script>
+
+<script>
+/* Reveal: IntersectionObserver + Scroll-Auffangnetz + Timeout-Sicherung */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = Array.prototype.slice.call(document.querySelectorAll('.rev, .fly, .rise, .steps'));
+  function show(el){ el.classList.add('in'); }
+
+  if (reduce) { items.forEach(show); return; }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  function sweep(){
+    var vh = window.innerHeight;
+    items.forEach(function(el){
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) show(el);
+    });
+  }
+  window.addEventListener('scroll', sweep, { passive:true });
+  window.addEventListener('resize', sweep, { passive:true });
+  sweep();
+
+  setTimeout(function(){ items.forEach(show); }, 6000);
+})();
+</script>
+
+<script>
+/* Hero: Schild geht an — automatisch beim Laden, danach per Schalter steuerbar */
+(function(){
+  var hero   = document.getElementById('hero');
+  var toggle = document.getElementById('signToggle');
+  var label  = document.getElementById('toggleLabel');
+  if (!hero) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setState(on){
+    hero.classList.toggle('lit', on);
+    if (toggle) {
+      toggle.classList.toggle('on', on);
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    if (label) label.textContent = on ? 'Schild ausschalten' : 'Schild einschalten';
+  }
+
+  if (reduce) {
+    hero.classList.add('intro','intro-done');
+    setState(true);
+  } else {
+    requestAnimationFrame(function(){
+      setTimeout(function(){ hero.classList.add('intro'); setState(true); }, 120);
+      setTimeout(function(){ hero.classList.add('intro-done'); }, 1500);
+    });
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var on = !hero.classList.contains('lit');
+      /* Beim erneuten Einschalten soll das Flackern wieder laufen */
+      if (on) {
+        var sign = hero.querySelector('.sichtbar');
+        if (sign) { sign.style.animation = 'none'; void sign.offsetWidth; sign.style.animation = ''; }
+      }
+      setState(on);
+    });
+  }
+})();
+</script>
+
+<script>
+/* Header: Sticky-Zustand + Mobilmenü */
+(function(){
+  var header = document.getElementById('siteHeader');
+  var burger = document.getElementById('burger');
+  var links  = document.getElementById('navLinks');
+  if (!header) return;
+
+  function onScroll(){ header.classList.toggle('stuck', window.scrollY > 12); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  if (burger && links) {
+    burger.addEventListener('click', function(){
+      var open = header.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    links.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        header.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+})();
+</script>
+
+<script>
+/* Slider — gilt für alle .gal auf der Seite.
+   Galerien mit data-auto blättern von selbst weiter, solange sie im Bild sind,
+   damit der Besucher alle Fotos sieht ohne klicken zu müssen. Sobald er selbst
+   bedient, hört das auf und er behält die Kontrolle. */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  Array.prototype.forEach.call(document.querySelectorAll('.gal'), function(gal){
+    var track  = gal.querySelector('.gal-track');
+    var slides = Array.prototype.slice.call(gal.querySelectorAll('.gal-slide'));
+    var dotBox = gal.querySelector('.gal-dots');
+    var curEl  = gal.querySelector('[data-cur]');
+    var totEl  = gal.querySelector('[data-total]');
+    var tagEl  = gal.querySelector('.gal-tag');
+    var btns   = Array.prototype.slice.call(gal.querySelectorAll('.gal-btn'));
+    if (!track || slides.length < 2) return;
+
+    var index = 0;
+    if (totEl) totEl.textContent = slides.length;
+
+    /* Punkte erzeugen */
+    var dots = slides.map(function(_, i){
+      var hit = document.createElement('button');
+      hit.type = 'button';
+      hit.className = 'gal-dot-hit';
+      hit.setAttribute('aria-label', 'Bild ' + (i+1) + ' von ' + slides.length);
+      var dot = document.createElement('span');
+      dot.className = 'gal-dot';
+      hit.appendChild(dot);
+      hit.addEventListener('click', function(){ uebernehmen(); go(i); });
+      if (dotBox) dotBox.appendChild(hit);
+      return dot;
+    });
+
+    function go(i){
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: slides[index].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      sync();
+    }
+
+    function sync(){
+      dots.forEach(function(d, i){ d.setAttribute('aria-current', i === index ? 'true' : 'false'); });
+      if (curEl) curEl.textContent = index + 1;
+      if (tagEl) tagEl.textContent = (index + 1) + ' / ' + slides.length;
+      btns.forEach(function(b){
+        var dir = parseInt(b.dataset.dir, 10);
+        b.disabled = (dir < 0 && index === 0) || (dir > 0 && index === slides.length - 1);
+      });
+    }
+
+    /* --- Automatischer Bildwechsel --- */
+    var autoMs   = parseInt(gal.getAttribute('data-auto'), 10) || 0;
+    var timer    = null;
+    var aufgeben = false;   /* Nutzer hat selbst bedient → nie wieder automatisch */
+
+    function pause(){ if (timer) { clearInterval(timer); timer = null; } }
+    function start(){
+      if (!autoMs || aufgeben || timer || reduce) return;
+      timer = setInterval(function(){
+        go(index + 1 >= slides.length ? 0 : index + 1);
+      }, autoMs);
+    }
+    function uebernehmen(){ aufgeben = true; pause(); }
+
+    if (autoMs && !reduce) {
+      gal.addEventListener('pointerdown', uebernehmen);
+      gal.addEventListener('keydown', uebernehmen);
+      gal.addEventListener('mouseenter', pause);
+      gal.addEventListener('mouseleave', start);
+
+      if ('IntersectionObserver' in window) {
+        var vio = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ e.isIntersecting ? start() : pause(); });
+        }, { threshold: 0.4 });
+        vio.observe(gal);
+      } else {
+        start();
+      }
+    }
+
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        uebernehmen();
+        go(index + parseInt(b.dataset.dir, 10));
+      });
+    });
+
+    /* Wischen und natives Scrollen zurückmelden */
+    var t;
+    track.addEventListener('scroll', function(){
+      clearTimeout(t);
+      t = setTimeout(function(){
+        var mid = track.scrollLeft + track.clientWidth / 2;
+        var best = 0, bestDist = Infinity;
+        slides.forEach(function(s, i){
+          var c = s.offsetLeft - track.offsetLeft + s.offsetWidth / 2;
+          var d = Math.abs(c - mid);
+          if (d < bestDist) { bestDist = d; best = i; }
+        });
+        if (best !== index) { index = best; sync(); }
+      }, 90);
+    }, { passive:true });
+
+    /* Tastatur */
+    track.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); go(index - 1); }
+    });
+
+    sync();
+  });
+})();
+</script>
+
+<script>
+/* Leuchtreklame: geht beim Hereinscrollen von selbst an, danach per Schalter steuerbar */
+(function(){
+  var frame  = document.getElementById('neonFrame');
+  var toggle = document.getElementById('neonToggle');
+  var label  = document.getElementById('neonLabel');
+  var stamp  = document.getElementById('neonStamp');
+  if (!frame || !toggle) return;
+
+  var touched = false;   /* sobald der Nutzer selbst schaltet, kein Auto-Einschalten mehr */
+
+  function setState(on){
+    frame.classList.toggle('on', on);
+    toggle.classList.toggle('on', on);
+    toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if (label) label.textContent = on ? 'Schild ausschalten' : 'Schild einschalten';
+    if (stamp) stamp.textContent = on ? 'An' : 'Aus';
+  }
+
+  toggle.addEventListener('click', function(){
+    touched = true;
+    setState(!frame.classList.contains('on'));
+  });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { setState(true); return; }
+
+  function autoOn(){
+    if (touched || frame.classList.contains('on')) return;
+    setState(true);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { setTimeout(autoOn, 500); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.35 });
+    io.observe(frame);
+  }
+
+  /* Auffangnetz, falls der Observer nicht greift */
+  function sweep(){
+    if (touched || frame.classList.contains('on')) return;
+    var r = frame.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.75 && r.bottom > 0) setTimeout(autoOn, 500);
+  }
+  window.addEventListener('scroll', sweep, { passive:true });
+  sweep();
+})();
+</script>
+
+<script>
+/* Einblicke-Videos — nichts wird vorgeladen, erst ein Klick holt die Datei.
+   Es läuft immer nur ein Clip; startet ein zweiter, pausiert der erste. */
+(function(){
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.clip-frame'));
+  if (!frames.length) return;
+
+  var alle = frames.map(function(f){ return f.querySelector('video'); });
+
+  frames.forEach(function(frame){
+    var video = frame.querySelector('video');
+    var knopf = frame.querySelector('.clip-play');
+    if (!video || !knopf) return;
+
+    knopf.addEventListener('click', function(){
+      alle.forEach(function(v){
+        if (v !== video && !v.paused) { v.pause(); }
+      });
+      video.controls = true;
+      frame.classList.add('playing');
+      var p = video.play();
+      if (p && p.catch) {
+        p.catch(function(){
+          /* Abspielen abgelehnt: Overlay zurückholen, damit der Knopf nicht verschwindet */
+          frame.classList.remove('playing');
+          video.controls = false;
+        });
+      }
+    });
+
+    /* Ist der Clip zu Ende, wieder das Standbild mit Abspielknopf zeigen */
+    video.addEventListener('ended', function(){
+      frame.classList.remove('playing');
+      video.controls = false;
+      video.currentTime = 0;
+      video.load();
+    });
+
+    /* Läuft ein Video aus dem Bild, anhalten — spart Daten und Akku */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (!e.isIntersecting && !video.paused) video.pause();
+        });
+      }, { threshold: 0.25 }).observe(frame);
+    }
+  });
+})();
+</script>
+
+<script>
+/* Eröffnungs-Zeitplaner */
+(function(){
+  var MODES = {
+    schild: { label:'Leuchtschild',  prod:3, total:7 },
+    pylon:  { label:'Werbepylon',    prod:5, total:9 },
+    paket:  { label:'Komplettpaket', prod:5, total:9 }
+  };
+
+  var dateEl  = document.getElementById('openDate');
+  var segEl   = document.getElementById('prodSeg');
+  var verdEl  = document.getElementById('verdict');
+  var stepsEl = document.getElementById('planSteps');
+  if (!dateEl || !segEl || !verdEl || !stepsEl) return;
+
+  var ctaEl     = document.getElementById('plannerCta');
+  var ctaTextEl = document.getElementById('plannerCtaText');
+  var waEl      = document.getElementById('ctaWhatsapp');
+  var waLabelEl = document.getElementById('ctaWaLabel');
+  var mailEl    = document.getElementById('ctaMail');
+
+  var mode = 'schild';
+  var fmt = new Intl.DateTimeFormat('de-AT', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+  function addWeeks(d, w){ var x = new Date(d.getTime()); x.setDate(x.getDate() + w*7); return x; }
+  function startOfDay(d){ var x = new Date(d.getTime()); x.setHours(0,0,0,0); return x; }
+  function isoDay(d){
+    return d.getFullYear() + '-' +
+           String(d.getMonth()+1).padStart(2,'0') + '-' +
+           String(d.getDate()).padStart(2,'0');
+  }
+
+  var today = startOfDay(new Date());
+  dateEl.value = isoDay(addWeeks(today, 12));
+  dateEl.min   = isoDay(today);
+
+  var ICONS = {
+    ok:   '<svg class="vico" viewBox="0 0 24 24" fill="none" stroke="#5BBF8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>',
+    tight:'<svg class="vico" viewBox="0 0 24 24" fill="none" stroke="#E0B44A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.2"/><circle cx="12" cy="16.4" r=".9" fill="#E0B44A" stroke="none"/></svg>',
+    late: '<svg class="vico" viewBox="0 0 24 24" fill="none" stroke="#E8628F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l9.2 16H2.8z"/><path d="M12 10v4"/><circle cx="12" cy="16.8" r=".9" fill="#E8628F" stroke="none"/></svg>'
+  };
+
+  function render(){
+    var cfg = MODES[mode];
+    if (!dateEl.value) {
+      verdEl.className='verdict'; verdEl.innerHTML=''; stepsEl.innerHTML='';
+      if (ctaEl) ctaEl.hidden = true;
+      return;
+    }
+
+    var open = startOfDay(new Date(dateEl.value + 'T00:00:00'));
+    var now  = startOfDay(new Date());
+    var weeksLeft = (open - now) / (1000*60*60*24*7);
+
+    var plan = [
+      { w: cfg.total,     t:'Erstgespräch',       d:'Vorhaben, Gebäude und Termin klären' },
+      { w: cfg.total - 1, t:'Gestaltung startet', d:'Logo und Erscheinungsbild entstehen' },
+      { w: cfg.total - 3, t:'Aufmaß & Freigabe',  d:'Maße vor Ort, Genehmigungen, Produktionsdaten' },
+      { w: cfg.total - 4, t:'Produktion',         d: cfg.label + ' geht in Fertigung (ca. ' + cfg.prod + ' Wochen)' },
+      { w: 1,             t:'Montage',            d:'Aufbau vor Ort' },
+      { w: 0,             t:'Eröffnung',          d:'Alles steht' }
+    ];
+
+    stepsEl.innerHTML = plan.map(function(s){
+      var when = addWeeks(open, -s.w);
+      return '<li><span class="dt">' + fmt.format(when) + '</span>' +
+             '<span class="lb"><b>' + s.t + '</b> — ' + s.d + '</span></li>';
+    }).join('');
+
+    var kind, title, text;
+    if (weeksLeft >= cfg.total + 2) {
+      kind = 'ok';
+      title = 'Sie sind gut dran.';
+      text = 'Für ein ' + cfg.label.toLowerCase() + ' brauchen wir rund ' + cfg.total +
+             ' Wochen. Sie haben ' + Math.floor(weeksLeft) +
+             ' Wochen Zeit — genug Luft für saubere Gestaltung und Abstimmung.';
+    } else if (weeksLeft >= cfg.total) {
+      kind = 'tight';
+      title = 'Passt — ohne Puffer.';
+      text = 'Mit ' + Math.floor(weeksLeft) + ' Wochen liegen Sie knapp über den nötigen ' + cfg.total +
+             ' Wochen. Machbar, wenn Freigaben zügig kommen. Melden Sie sich möglichst diese Woche.';
+    } else {
+      kind = 'late';
+      var missing = Math.max(1, Math.ceil(cfg.total - weeksLeft));
+      title = 'Es wird knapp — ' + missing + ' Woche' + (missing === 1 ? '' : 'n') + ' fehlen.';
+      text = 'Wir ziehen dann vor, was sofort wirkt: Logo, Printmedien und Arbeitsbekleidung zuerst. ' +
+             'Beschilderung und Folierung kommen direkt danach — Sie eröffnen sichtbar, der Rest folgt zeitnah.';
+    }
+
+    verdEl.className = 'verdict ' + kind;
+    verdEl.innerHTML = ICONS[kind] + '<div><h3>' + title + '</h3><p>' + text + '</p></div>';
+
+    /* Abschluss: Termin und Vorhaben in die Anfrage übernehmen,
+       damit Sait beim ersten Kontakt schon weiß, worum es geht. */
+    if (ctaEl) {
+      var datum = fmt.format(open);
+      var startBis = fmt.format(addWeeks(open, -cfg.total));
+
+      var satz;
+      if (kind === 'late') {
+        satz = 'Damit zur Eröffnung am <b>' + datum + '</b> das Wichtigste steht, sollten wir <b>diese Woche</b> sprechen.';
+      } else if (kind === 'tight') {
+        satz = 'Für den <b>' + datum + '</b> geht sich das aus — wenn wir bis <b>' + startBis + '</b> starten.';
+      } else {
+        satz = 'Sie haben Luft für den <b>' + datum + '</b> — je früher wir starten, desto ruhiger laufen Gestaltung und Abstimmung.';
+      }
+      ctaTextEl.innerHTML = satz;
+
+      var nachricht;
+      if (kind === 'late') {
+        nachricht = 'Hallo! Ich eröffne am ' + datum + ' — laut Ihrem Zeitplaner wird das knapp. ' +
+                    'Es geht um: ' + cfg.label + '. Was ist bis dahin machbar? Können wir telefonieren?';
+      } else {
+        nachricht = 'Hallo! Ich eröffne am ' + datum + ' und interessiere mich für: ' + cfg.label + '. ' +
+                    'Laut Ihrem Zeitplaner brauche ich rund ' + cfg.total + ' Wochen Vorlauf. ' +
+                    'Können wir dazu telefonieren?';
+      }
+
+      waEl.href = 'https://wa.me/436643724808?text=' + encodeURIComponent(nachricht);
+      waLabelEl.textContent = kind === 'late' ? 'Jetzt per WhatsApp melden' : 'Per WhatsApp anfragen';
+
+      mailEl.href = 'mailto:info@lm-agentur.at' +
+        '?subject=' + encodeURIComponent('Anfrage ' + cfg.label + ' — Eröffnung ' + datum) +
+        '&body='   + encodeURIComponent(nachricht);
+
+      ctaEl.hidden = false;
+    }
+  }
+
+  dateEl.addEventListener('change', render);
+  dateEl.addEventListener('input', render);
+
+  segEl.addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-mode]');
+    if (!btn) return;
+    mode = btn.dataset.mode;
+    Array.prototype.forEach.call(segEl.querySelectorAll('button'), function(b){
+      var on = (b === btn);
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
