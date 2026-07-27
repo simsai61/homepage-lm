@@ -394,10 +394,19 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
 
 ### Vor dem Livegang zwingend
 
-1. **Freigabe zur Namensnennung** von allen 15+ genannten Kunden
-2. **Google Fonts selbst hosten** (Datenschutz Österreich)
+1. **Freigabe zur Namensnennung** von allen 15+ genannten Kunden — **weiterhin offen**, obwohl die
+   Seite am 27.07. auf GitHub öffentlich gestellt und für Hostinger-Deploy vorbereitet wurde
+2. ~~Google Fonts selbst hosten~~ **Erledigt 27.07.**: 16 woff2-Dateien unter `assets/fonts/`,
+   @font-face inline in jeder Seite, null externe Anfragen
 3. **Widerspruch Zeitplaner ↔ Bedarfsanalyse klären** (21 Tage vs. 7 Wochen — siehe oben)
-4. Impressum und Datenschutzerklärung
+4. ~~Impressum und Datenschutzerklärung~~ **Angelegt 27.07.** (`impressum.html`, `datenschutz.html`) —
+   ABER: enthalten markierte Platzhalter (Rechtsform, UID, GISA, WKO-Fachgruppe, Hoster), die Sait
+   vor dem echten Livegang ausfüllen muss. Fußzeile aller Seiten verlinkt beide; der
+   „Entwurf"-Hinweis wurde dafür entfernt.
+   **Go-live-Struktur seit 27.07.**: `index.html` = echte Startseite (Kopie von
+   lm-agentur-relaunch.html, canonical auf /), die alte Entwurfsübersicht ist ersetzt.
+   Repo: https://github.com/simsai61/homepage-lm (öffentlich), Deploy via Hostinger geplant —
+   Domain noch unbestätigt (Canonicals zeigen auf www.lm-agentur.at).
 6. **Canonical-/OG-URLs finalisieren** — stehen seit 27.07. als Platzhalter
    (`https://www.lm-agentur.at/<dateiname>`) auf allen 7 Seiten; beim Go-live auf die
    endgültigen Pfade umstellen
