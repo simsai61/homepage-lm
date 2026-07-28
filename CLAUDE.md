@@ -157,6 +157,29 @@ Originale liegen unter `fotos/` und `videos/`. Aufbereitung mit `ffmpeg` + `cweb
 Das Logo wird über `<use href="#lbm-logo">` eingebunden und erbt die Farbe via `currentColor`
 (Fallback auf Schrifttext, falls das Sprite nicht lädt).
 
+### Showreel (`showreel/`, 28.07.2026)
+Ein Film aus den acht Projektfilmen, gebaut mit **Remotion** (React → Video). Eigenes
+npm-Projekt neben der Website, berührt die HTML-Dateien nicht. 1080×1920 hochkant,
+30 fps, 41 Sekunden: Blitz-Auftakt → acht Ausschnitte à 4,3 s mit Bauchbinde →
+Abbinder mit Logo und Kontakt. Farben, Schriften, Reihenfolge und Bildunterschriften
+sind wortgleich mit der Startseite.
+
+- `showreel/src/showreel/clips.ts` — die acht Filme mit Anfangsbild und Text
+- `showreel/public/videos` und `public/fonts` sind **Symlinks** nach `assets/`,
+  das Material liegt also nur einmal im Projekt
+- `npm run dev` = Editor mit Vorschau, `npm run render` = Datei nach `out/`
+- Details, Fallstricke und Lizenzfrage: `showreel/README.md`
+
+**Zwei Dinge, die im Material stecken** und beim Setzen der Ausschnitte umgangen
+werden müssen: Die meisten Clips **enden mit einer weißen Abbinder-Karte mit Logo**
+(Hanako ab ca. 20 s, Can'ss ab 33 s, Stadion ab 28 s), und mehrere **beginnen mit
+einer Ansprache in die Kamera**, teils mit eingebrannten Textzeilen oder sichtbarer
+Kamera-Bedienoberfläche (CT Fassade, Sekunde 3–5). Zum Aussuchen gibt es die
+Komposition `Kontaktbogen` (ein Standbild je Sekunde).
+
+**Ton ist stumm.** Baustellengeräusche, teils fremde Musik. Musik gehört beim
+Hochladen in Instagram darübergelegt — dort ist sie lizenziert.
+
 ---
 
 ## 4. Technische Konventionen und Stolperfallen
@@ -393,8 +416,9 @@ Basis: 4-dimensionales Audit (Reihenfolge/CRO, SEO-Inhalt, SEO-Technik, CTA/Vert
 ### Als Nächstes geplant
 1. **Die vier Leistungs-Unterseiten auf das neue Design umstellen** — sie nutzen noch den alten
    CSS-Nachbau des Logos und passen optisch nicht zur Startseite. Höchste Priorität.
-2. **Videos einbinden** — liegen fertig unter `assets/videos/`, sind aber noch nirgends verwendet.
-   Gedacht für die Inhaber-Sektion oder einen Social-Bereich.
+2. **Showreel verwenden** — liegt fertig unter `showreel/`, gerendert nach
+   `showreel/out/showreel.mp4`. Naheliegend: als Reel auf Instagram und im
+   Abschnitt „Einblicke" der Startseite über die Clip-Reihe gesetzt.
 3. **Instagram sehr präsent einbauen.** Ein Live-Feed wurde vorerst zurückgestellt, ist aber gewünscht.
 4. Restliche Unterseiten: Webdesign, Printmedien.
 
