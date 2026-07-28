@@ -158,7 +158,7 @@ Das Logo wird über `<use href="#lbm-logo">` eingebunden und erbt die Farbe via 
 (Fallback auf Schrifttext, falls das Sprite nicht lädt).
 
 ### Instagram-Anzeige (`showreel/`, Komposition `Ad`, 28.07.2026)
-15 Sekunden hochkant, gedacht als Reels-Anzeige mit angehängtem Lead-Formular.
+24 Sekunden hochkant, gedacht als Reels-Anzeige mit angehängtem Lead-Formular.
 **Kein gekürztes Showreel** — anders gebaut, weil die Aufgabe eine andere ist:
 kein Vorspann (Bild eins ist die Aussage), jede Aussage steht als Schrift im Bild
 (Anzeigen laufen ohne Ton), Schrift im **oberen** Drittel statt unten, weil dort
@@ -166,8 +166,17 @@ der Knopf zum Formular und der Beitragstext liegen, harte Schnitte ohne Blenden.
 
 In jeder Szene steht, was der Kunde davon hat, nicht was die Agentur kann:
 „Eröffnung in 6 Wochen?" → „In 6 Wochen steht alles." → „Einer kümmert sich.
-Nicht fünf Firmen." → „Alles im gleichen Look." → „Pünktlich zur Eröffnung." →
-Endkarte „Reicht Ihre Zeit noch?" mit Pfeil auf den Knopf.
+Nicht fünf Firmen." → „Alles im gleichen Look." → Endkarte „Reicht Ihre Zeit
+noch?" mit Pfeil auf den Knopf.
+
+**Tempo (28.07., nach Rückmeldung von Sait):** Die erste Fassung lief mit 2,2 s
+je Szene — die Bilder wechselten, bevor der Text gelesen war. Jetzt 4,3 s je
+Szene und 6,5 s für die Endkarte, dafür eine Szene weniger (sonst 26 Sekunden).
+Aus demselben Grund ist der Hook ein **Foto** statt eines Filmausschnitts: Im
+Kranmaterial hält keine Stelle länger als eine halbe Sekunde still, dazwischen
+liegt immer eine Schwenkunschärfe. **Wer `SZENE_DAUER` ändert, muss danach
+`node scripts/musik-ad.mjs` laufen lassen** — sonst fallen die Schläge neben
+die Schnitte.
 
 **Die zwei tragenden Bilder** (28.07., von Sait vorgeschlagen): Szene 2 ist ein
 echtes **Vorher/Nachher des AY Restaurants** (`ay-vorher.webp` → `ay-nachher.webp`,

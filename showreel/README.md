@@ -5,7 +5,7 @@ Zwei Filme aus demselben Material und demselben Corporate Design:
 | Komposition | Länge | Zweck |
 |---|---|---|
 | **Showreel** | 41 s | Vorstellung der Arbeit — Instagram, Website |
-| **Ad** | 15 s | Anzeige mit Formular, sammelt Anfragen |
+| **Ad** | 24 s | Anzeige mit Formular, sammelt Anfragen |
 
 ```bash
 npm run render       # Showreel -> out/showreel.mp4
@@ -134,7 +134,7 @@ Für kleinere Dateien `--crf=23` mitgeben (Standard ist feiner und größer).
 
 # Anzeige (`Ad`)
 
-15 Sekunden, hochkant, gedacht als Reels-Anzeige mit angehängtem
+24 Sekunden, hochkant, gedacht als Reels-Anzeige mit angehängtem
 Lead-Formular. Sie ist **kein kurzes Showreel** — sie ist anders gebaut, weil
 sie eine andere Aufgabe hat.
 
@@ -142,12 +142,31 @@ sie eine andere Aufgabe hat.
 
 | | Länge | Bild | Aussage | Nutzen für den Kunden |
 |---|---|---|---|---|
-| 1 | 2,2 s | Pylon hängt am Kran | „Eröffnung in **6 Wochen**?" | spricht seinen Termin an |
-| 2 | 2,2 s | AY Restaurant **vorher → nachher** | „**In 6 Wochen** steht alles." | er sieht das Ergebnis |
-| 3 | 2,2 s | Sait auf dem Gerüst | „**Einer** kümmert sich. Nicht fünf Firmen." | er weiß, wer kommt |
-| 4 | 2,2 s | Neon im Lokal | „Alles im **gleichen Look**." | ein Auftritt statt Flickwerk |
-| 5 | 2,2 s | Neon-Schriftzug leuchtet | „Pünktlich zur **Eröffnung**." | der Termin hält |
-| Ende | 4,3 s | Endkarte | „Reicht Ihre Zeit noch?" + Aufruf zum Formular | |
+| 1 | 4,3 s | Pylon CT Automotive (Foto) | „Eröffnung in **6 Wochen**?" | spricht seinen Termin an |
+| 2 | 4,3 s | AY Restaurant **vorher → nachher** | „**In 6 Wochen** steht alles." | er sieht das Ergebnis |
+| 3 | 4,3 s | Sait auf dem Gerüst | „**Einer** kümmert sich. Nicht fünf Firmen." | er weiß, wer kommt |
+| 4 | 4,3 s | Neon im Lokal | „Alles im **gleichen Look**." | ein Auftritt statt Flickwerk |
+| Ende | 6,5 s | Endkarte | „Reicht Ihre Zeit noch?" + Aufruf zum Formular | |
+
+## Tempo
+
+Die erste Fassung lief mit 2,2 Sekunden je Szene und war **zu schnell**: Die
+Bilder wechselten, bevor der Text gelesen war. Jetzt steht jede Aussage
+4,3 Sekunden, die Endkarte 6,5. Faustregel: Eine Zeile braucht etwa eine
+halbe Sekunde je Wort, dazu eine Sekunde Vorlauf zum Erfassen — und das gilt
+**ab dem Moment, in dem die Schrift fertig eingeblendet ist**, nicht ab
+Szenenbeginn.
+
+Dafür ist eine Szene weggefallen. Fünf Aussagen mal 4,3 Sekunden wären
+26 Sekunden geworden; „pünktlich zur Eröffnung" sagte ohnehin fast dasselbe
+wie „in 6 Wochen steht alles" und steht jetzt in der Unterzeile der letzten
+Szene.
+
+Wer am Tempo dreht, ändert `SZENE_DAUER` und `ENDKARTE_DAUER` in
+`adSzenen.ts` — und **muss danach `node scripts/musik-ad.mjs` laufen lassen**.
+Die Tonspur ist auf die Schnitte gerastert; ohne Neuberechnung fallen die
+Schläge daneben. Brauchbare Längen sind Vielfache von 4 Schlägen
+(65 Bilder), sonst geht die Rasterung nicht auf.
 
 In jeder Szene steht, was der Kunde davon hat — nicht, was die Agentur kann.
 Die erste Fassung rechnete ihm nur seine Vorlaufzeiten vor und ließ offen,
@@ -169,13 +188,21 @@ Arbeitsbekleidung, Werbeartikel und Folierung entstehen im Haus, gegründet
 ## Die zwei tragenden Bilder
 
 **Vorher/Nachher (AY Restaurant).** Der einzige Beweis in der Anzeige, den
-niemand behaupten muss — man sieht ihn. Umgeschaltet wird nach 0,9 Sekunden,
+niemand behaupten muss — man sieht ihn. Umgeschaltet wird nach 1,8 Sekunden,
 hart und mit demselben Aufblitzen wie an den Schnitten; eine weiche Blende
 würde den Vergleich verwischen. Das Vorher-Foto ist querformatig, im
 Hochkant-Ausschnitt ist deshalb nur gut die Hälfte der Breite zu sehen
 (`vorherPosition` schiebt den Ausschnitt nach links, damit der Schriftzug des
 alten Vordachs im Bild bleibt). Wer bessere Vorher-Fotos nachliefert, tauscht
 nur die Dateinamen in `adSzenen.ts`.
+
+**Der Hook ist ein Foto, kein Filmausschnitt.** Aus dem Kranmaterial ließ sich
+kein ruhiges Bild schneiden: Die längste stillstehende Stelle dauert eine halbe
+Sekunde, dazwischen liegt jedes Mal eine Schwenkunschärfe. Über vier Sekunden
+wäre das unruhig geworden, gerade dort, wo der Text zum ersten Mal gelesen
+wird. Das Foto desselben Pylons steht dagegen so lange wie nötig. Wer den Kran
+zurückhaben will: `medium` auf `video` mit `ct-pylon-montage.mp4` und
+`startFrom: 306` — dann aber die Szene kürzen.
 
 **Sait auf dem Gerüst.** Zu „Sie bekommen den Chef" gehört ein Mensch ins Bild,
 sonst ist es eine Behauptung. Das Foto liefert beides auf einmal: die Person

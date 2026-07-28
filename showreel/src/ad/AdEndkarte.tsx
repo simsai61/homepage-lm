@@ -47,11 +47,11 @@ export const AdEndkarte: React.FC = () => {
           lineHeight: 1.06,
           letterSpacing: "-0.015em",
           color: COLORS.text,
-          opacity: interpolate(frame, [0, 8], [0, 1], {
+          opacity: interpolate(frame, [0, 12], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
-          translate: interpolate(frame, [0, 14], ["0px 26px", "0px 0px"], {
+          translate: interpolate(frame, [0, 20], ["0px 26px", "0px 0px"], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
             easing: Easing.bezier(0.16, 1, 0.3, 1),
@@ -74,7 +74,7 @@ export const AdEndkarte: React.FC = () => {
           fontSize: 40,
           lineHeight: 1.34,
           color: COLORS.text,
-          opacity: interpolate(frame, [10, 22], [0, 0.88], {
+          opacity: interpolate(frame, [14, 28], [0, 0.88], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
@@ -92,7 +92,7 @@ export const AdEndkarte: React.FC = () => {
           fontSize: 30,
           letterSpacing: "0.16em",
           color: COLORS.glow,
-          opacity: interpolate(frame, [20, 32], [0, 1], {
+          opacity: interpolate(frame, [30, 44], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
@@ -105,7 +105,7 @@ export const AdEndkarte: React.FC = () => {
         name="Logo"
         style={{
           marginTop: 60,
-          opacity: interpolate(frame, [28, 42], [0, 1], {
+          opacity: interpolate(frame, [46, 60], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
@@ -124,12 +124,12 @@ export const AdEndkarte: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           gap: 14,
-          opacity: interpolate(frame, [40, 54], [0, 1], {
+          opacity: interpolate(frame, [62, 78], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
           // Ruhiges Auf und Ab, damit der Blick dem Pfeil folgt
-          translate: `0px ${(Math.sin((frame - 40) / 7) * 9).toFixed(2)}px`,
+          translate: `0px ${(Math.sin((frame - 62) / 8) * 9).toFixed(2)}px`,
         }}
       >
         <div

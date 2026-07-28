@@ -1,10 +1,10 @@
 /**
- * Die fünf Szenen der Instagram-Anzeige.
+ * Die vier Szenen der Instagram-Anzeige.
  *
  * Aufbau der Argumentation — bewusst in dieser Reihenfolge:
  *   1. Hook: der Termin, unter dem der Zuschauer selbst steht
  *   2. der Beweis: dasselbe Lokal vorher und nachher
- *   3./4./5. was er davon hat — einer statt fünf, ein Auftritt, pünktlich
+ *   3./4. was er davon hat — einer statt fünf Firmen, ein Auftritt
  *   danach die Endkarte mit dem Aufruf zum Formular
  *
  * Die erste Fassung erklärte dem Zuschauer nur sein Problem (Vorlaufzeiten,
@@ -55,16 +55,24 @@ export type AdSzene = {
   readonly groesse?: number;
 };
 
-export const SZENE_DAUER = 65; // 2,17 s — vier Schläge der Tonspur
-export const ENDKARTE_DAUER = 130; // 4,33 s
+// Tempo: Die erste Fassung lief mit 2,17 s je Szene. Zu schnell — die Bilder
+// wechselten, bevor der Text gelesen war. Jetzt acht Schläge (4,33 s) je Szene
+// und zwölf für die Endkarte. Dafür ist eine Szene weggefallen, sonst wäre die
+// Anzeige auf 26 Sekunden gewachsen: „pünktlich zur Eröffnung" steckt jetzt in
+// der Unterzeile der letzten Szene.
+export const SZENE_DAUER = 130; // 4,33 s — acht Schläge der Tonspur
+export const ENDKARTE_DAUER = 195; // 6,5 s — Zeit zum Lesen vor dem Formular
 
 export const AD_SZENEN: readonly AdSzene[] = [
   {
     id: "hook",
     medium: {
-      art: "video",
-      file: "ct-pylon-montage.mp4",
-      startFrom: 306, // Pylon haengt scharf am Kran — staerkstes Bild zuerst
+      art: "bild",
+      // Aus dem Kranmaterial laesst sich kein ruhiges Bild schneiden: die
+      // laengste stillstehende Stelle dauert eine halbe Sekunde, dazwischen
+      // liegt jedes Mal eine Schwenkunschaerfe. Das Foto desselben Pylons
+      // steht dagegen so lange, wie der Text zum Lesen braucht.
+      datei: "ct-automotive-pylon-1.webp",
     },
     zeilen: ["ERÖFFNUNG IN", "*6 WOCHEN*?"],
   },
@@ -80,7 +88,7 @@ export const AD_SZENEN: readonly AdSzene[] = [
       // (Die zweite Zahl bleibt wirkungslos — bei diesem Seitenverhaeltnis
       // beschneidet "cover" nur waagrecht.)
       vorherPosition: "30% 50%",
-      wechselBei: 28,
+      wechselBei: 55, // 1,8 s vorher, 2,5 s nachher
     },
     zeilen: ["*IN 6 WOCHEN*", "STEHT ALLES."],
     unterzeile: "AY Restaurant · neues Vordach, neue Leuchtschrift",
@@ -103,16 +111,6 @@ export const AD_SZENEN: readonly AdSzene[] = [
       startFrom: 444, // Neon-Schriftzug im Lokal, angezuendet
     },
     zeilen: ["ALLES IM", "*GLEICHEN LOOK*."],
-    unterzeile: "Vom Logo bis zur Fahrzeugbeschriftung",
-  },
-  {
-    id: "puenktlich",
-    medium: {
-      art: "video",
-      file: "bellanapoli-montage.mp4",
-      startFrom: 255, // der Schriftzug leuchtet
-    },
-    zeilen: ["PÜNKTLICH ZUR", "*ERÖFFNUNG*."],
-    unterzeile: "Montage macht der Chef selbst · seit 2018",
+    unterzeile: "Vom Logo bis zum Firmenauto · pünktlich zur Eröffnung",
   },
 ];

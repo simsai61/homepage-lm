@@ -50,11 +50,11 @@ export const AdSzene: React.FC<{ readonly szene: Szene }> = ({ szene }) => {
         <Interactive.Div
           name="Aussage"
           style={{
-            opacity: interpolate(frame, [0, 8], [0, 1], {
+            opacity: interpolate(frame, [0, 12], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
-            translate: interpolate(frame, [0, 12], ["0px 30px", "0px 0px"], {
+            translate: interpolate(frame, [0, 20], ["0px 30px", "0px 0px"], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
               easing: Easing.bezier(0.16, 1, 0.3, 1),
@@ -67,7 +67,7 @@ export const AdSzene: React.FC<{ readonly szene: Szene }> = ({ szene }) => {
               borderRadius: 3,
               marginBottom: 26,
               backgroundImage: BRAND_GRADIENT,
-              width: interpolate(frame, [2, 16], [0, 120], {
+              width: interpolate(frame, [4, 26], [0, 120], {
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp",
                 easing: Easing.bezier(0.16, 1, 0.3, 1),
@@ -85,7 +85,7 @@ export const AdSzene: React.FC<{ readonly szene: Szene }> = ({ szene }) => {
                 fontWeight: 500,
                 fontSize: 34,
                 color: COLORS.text,
-                opacity: interpolate(frame, [8, 18], [0, 0.8], {
+                opacity: interpolate(frame, [16, 30], [0, 0.8], {
                   extrapolateLeft: "clamp",
                   extrapolateRight: "clamp",
                 }),
