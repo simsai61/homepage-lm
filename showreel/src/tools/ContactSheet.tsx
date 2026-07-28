@@ -14,9 +14,18 @@ import { COLORS, MONO } from "../showreel/theme";
 export type ContactSheetProps = {
   readonly file: string;
   readonly seconds: number;
+  /** Erstes Standbild in Sekunden (Standard 0) */
+  readonly ab?: number;
+  /** Abstand zwischen den Standbildern in Sekunden (Standard 1) */
+  readonly schritt?: number;
 };
 
-export const ContactSheet: React.FC<ContactSheetProps> = ({ file, seconds }) => {
+export const ContactSheet: React.FC<ContactSheetProps> = ({
+  file,
+  seconds,
+  ab = 0,
+  schritt = 1,
+}) => {
   return (
     <AbsoluteFill
       style={{
@@ -30,7 +39,7 @@ export const ContactSheet: React.FC<ContactSheetProps> = ({ file, seconds }) => 
         <div key={i} style={{ width: 200, height: 380, position: "relative" }}>
           <Video
             src={staticFile(`videos/${file}`)}
-            trimBefore={i * 30}
+            trimBefore={Math.round((ab + i * schritt) * 30)}
             muted
             objectFit="cover"
             style={{ width: 200, height: 356 }}
@@ -43,7 +52,7 @@ export const ContactSheet: React.FC<ContactSheetProps> = ({ file, seconds }) => 
               textAlign: "center",
             }}
           >
-            {i} s
+            {(ab + i * schritt).toFixed(2)} s
           </div>
         </div>
       ))}

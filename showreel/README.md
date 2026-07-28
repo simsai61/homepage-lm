@@ -1,4 +1,20 @@
-# Showreel — Ländle Blitz Marketing
+# Filme — Ländle Blitz Marketing
+
+Zwei Filme aus demselben Material und demselben Corporate Design:
+
+| Komposition | Länge | Zweck |
+|---|---|---|
+| **Showreel** | 41 s | Vorstellung der Arbeit — Instagram, Website |
+| **Ad** | 15 s | Anzeige mit Formular, sammelt Anfragen |
+
+```bash
+npm run render       # Showreel -> out/showreel.mp4
+npm run render:ad    # Anzeige  -> out/ad-instagram.mp4
+```
+
+---
+
+# Showreel
 
 Ein Film aus den acht Projektfilmen, die auf der Startseite unter „Einblicke"
 liegen. Gebaut mit [Remotion](https://www.remotion.dev): Der Film ist Code,
@@ -113,6 +129,98 @@ npx remotion render Showreel out/showreel.mp4 --browser-executable=<pfad>
 ```
 
 Für kleinere Dateien `--crf=23` mitgeben (Standard ist feiner und größer).
+
+---
+
+# Anzeige (`Ad`)
+
+15 Sekunden, hochkant, gedacht als Reels-Anzeige mit angehängtem
+Lead-Formular. Sie ist **kein kurzes Showreel** — sie ist anders gebaut, weil
+sie eine andere Aufgabe hat.
+
+## Aufbau
+
+| | Länge | Bild | Aussage |
+|---|---|---|---|
+| 1 | 2,2 s | Pylon hängt am Kran | „Eröffnung in **6 Wochen**?" |
+| 2 | 2,2 s | Neon-Schriftzug leuchtet | „Ihr Leuchtschild braucht **3 davon**." |
+| 3 | 2,2 s | Foliertes Schaufenster | „Dazu Gestaltung, Aufmaß, Montage." |
+| 4 | 2,2 s | Neon im Lokal | „Macht **7 bis 9 Wochen** Vorlauf." |
+| 5 | 2,2 s | Eigene Produktion | „**Alles aus einer Hand.**" |
+| Ende | 4,3 s | Endkarte | „Reicht Ihre Zeit noch?" + Aufruf zum Formular |
+
+Die Argumentation ist eine Rechnung, die der Zuschauer selbst noch nicht
+gemacht hat, und sie endet genau dort, wo der Knopf sitzt. **Alle Zahlen sind
+echt** und stammen aus den Vorlaufzeiten in `CLAUDE.md` — Leuchtschild
+3 Wochen Produktion / 7 gesamt, Pylon und Komplettpaket 5 / 9. Sie stimmen mit
+dem Zeitplaner auf der Website überein. Wer sie hier ändert, muss sie dort
+mitändern, sonst sagt die Anzeige etwas anderes als die Website.
+
+## Warum sie so aussieht, wie sie aussieht
+
+- **Kein Vorspann.** Bild eins ist bereits die Aussage. Der Blitz-Auftakt des
+  Showreels würde die ersten zweieinhalb Sekunden kosten — genau die, in denen
+  entschieden wird, ob weitergewischt wird.
+- **Jede Aussage steht als Schrift im Bild.** Anzeigen laufen überwiegend
+  ohne Ton. Die Anzeige muss stumm vollständig funktionieren; die Musik ist
+  Zugabe.
+- **Schrift im oberen Drittel**, nicht unten wie beim Showreel. Unten liegen
+  der Knopf zum Formular, Name und Beitragstext. Alles unterhalb von etwa
+  1480 px wird verdeckt oder zieht den Blick vom Knopf weg.
+- **Harte Schnitte, keine Blenden.** Blenden kosten Zeit.
+- **Der Pfeil am Schluss** zeigt auf den Knopf, den Instagram unter der
+  Anzeige einblendet.
+
+## Text ändern
+
+Alles steht in `src/ad/adSzenen.ts` — eine Zeile je Szene. Was zwischen
+`*Sternchen*` steht, wird im Markenton hervorgehoben:
+
+```ts
+zeilen: ["MACHT *7 BIS 9*", "*WOCHEN* VORLAUF."],
+```
+
+Der Zeilenumbruch wird von Hand gesetzt, nicht automatisch: Bei 74 px passen
+rund 18 Großbuchstaben in eine Zeile. Wer längere Zeilen schreibt, muss die
+Schriftgröße in `AdSzene.tsx` mitziehen.
+
+## Was noch dazugehört (nicht im Video)
+
+Die Anzeige ist nur die Hälfte. Vorschlag für den Rest, zum Übernehmen und
+Anpassen:
+
+**Primärtext**
+
+> Sie sperren in ein paar Wochen auf — und das Schild ist noch nicht bestellt.
+> Ein Leuchtschild braucht 3 Wochen Produktion, ein Werbepylon 5. Dazu
+> Gestaltung, Aufmaß und Montage: macht 7 bis 9 Wochen Vorlauf.
+>
+> Sagen Sie uns Ihren Eröffnungstermin. Wir sagen Ihnen, was sich noch ausgeht
+> — und womit wir anfangen, wenn es knapp wird.
+>
+> Logo, Schilder, Fahrzeugbeschriftung, Arbeitskleidung: alles aus einem Haus
+> in Meiningen.
+
+**Überschrift:** Reicht Ihre Zeit bis zur Eröffnung?
+**Knopf:** Angebot einholen
+
+**Formular — kurz halten, jede Frage kostet Abschlüsse:**
+
+1. Name, Telefonnummer (füllt Instagram selbst aus)
+2. **Wann eröffnen Sie?** (Datum) — die eine Frage, die zählt: Sie sehen
+   sofort, ob es dringend ist
+3. Was brauchen Sie? (Mehrfachauswahl: Komplettpaket · Beschilderung ·
+   Fahrzeugbeschriftung · Arbeitskleidung und Werbeartikel · Logo und Print)
+4. Ort
+
+Mehr nicht. Alles Weitere klärt das Telefonat.
+
+**Zum Nachrechnen für die Anzeigenschaltung:** Die Zielgruppe sind Leute, die
+in Vorarlberg gerade ein Lokal oder Geschäft aufmachen — ein sehr kleiner
+Kreis. Ein enger Umkreis um Meiningen und Feldkirch trifft besser als eine
+breite Streuung.
+
+---
 
 ## Lizenz
 

@@ -157,6 +157,23 @@ Originale liegen unter `fotos/` und `videos/`. Aufbereitung mit `ffmpeg` + `cweb
 Das Logo wird über `<use href="#lbm-logo">` eingebunden und erbt die Farbe via `currentColor`
 (Fallback auf Schrifttext, falls das Sprite nicht lädt).
 
+### Instagram-Anzeige (`showreel/`, Komposition `Ad`, 28.07.2026)
+15 Sekunden hochkant, gedacht als Reels-Anzeige mit angehängtem Lead-Formular.
+**Kein gekürztes Showreel** — anders gebaut, weil die Aufgabe eine andere ist:
+kein Vorspann (Bild eins ist die Aussage), jede Aussage steht als Schrift im Bild
+(Anzeigen laufen ohne Ton), Schrift im **oberen** Drittel statt unten, weil dort
+der Knopf zum Formular und der Beitragstext liegen, harte Schnitte ohne Blenden.
+
+Die Argumentation ist eine Rechnung, die der Zuschauer noch nicht gemacht hat:
+„Eröffnung in 6 Wochen?" → „Ihr Leuchtschild braucht 3 davon." → „Dazu Gestaltung,
+Aufmaß, Montage." → „Macht 7 bis 9 Wochen Vorlauf." → „Alles aus einer Hand." →
+Endkarte „Reicht Ihre Zeit noch?" mit Pfeil auf den Knopf.
+
+**Alle Zahlen sind die echten Vorlaufzeiten** und stimmen mit dem Zeitplaner der
+Website überein. Wer sie an einer Stelle ändert, muss die andere mitziehen.
+Texte stehen in `src/ad/adSzenen.ts`, Vorschlag für Primärtext, Überschrift und
+Formularfragen im `showreel/README.md`.
+
 ### Showreel (`showreel/`, 28.07.2026)
 Ein Film aus den acht Projektfilmen, gebaut mit **Remotion** (React → Video). Eigenes
 npm-Projekt neben der Website, berührt die HTML-Dateien nicht. 1080×1920 hochkant,

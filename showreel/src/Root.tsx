@@ -1,5 +1,6 @@
 import "./index.css";
 import { Composition } from "remotion";
+import { Ad, AD_DAUER } from "./ad/Ad";
 import { Showreel, SHOWREEL_DURATION } from "./showreel/Showreel";
 import { ContactSheet } from "./tools/ContactSheet";
 
@@ -11,6 +12,16 @@ export const RemotionRoot: React.FC = () => {
         id="Showreel"
         component={Showreel}
         durationInFrames={SHOWREEL_DURATION}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* Anzeige für Instagram, verlinkt mit einem Formular zur Anfrage */}
+      <Composition
+        id="Ad"
+        component={Ad}
+        durationInFrames={AD_DAUER}
         fps={30}
         width={1080}
         height={1920}
