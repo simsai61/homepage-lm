@@ -140,21 +140,31 @@ sie eine andere Aufgabe hat.
 
 ## Aufbau
 
-| | Länge | Bild | Aussage |
-|---|---|---|---|
-| 1 | 2,2 s | Pylon hängt am Kran | „Eröffnung in **6 Wochen**?" |
-| 2 | 2,2 s | Neon-Schriftzug leuchtet | „Ihr Leuchtschild braucht **3 davon**." |
-| 3 | 2,2 s | Foliertes Schaufenster | „Dazu Gestaltung, Aufmaß, Montage." |
-| 4 | 2,2 s | Neon im Lokal | „Macht **7 bis 9 Wochen** Vorlauf." |
-| 5 | 2,2 s | Eigene Produktion | „**Alles aus einer Hand.**" |
-| Ende | 4,3 s | Endkarte | „Reicht Ihre Zeit noch?" + Aufruf zum Formular |
+| | Länge | Bild | Aussage | Nutzen für den Kunden |
+|---|---|---|---|---|
+| 1 | 2,2 s | Pylon hängt am Kran | „Eröffnung in **6 Wochen**?" | spricht seinen Termin an |
+| 2 | 2,2 s | Foliertes Schaufenster | „**In 6 Wochen** steht alles." | er wird rechtzeitig fertig |
+| 3 | 2,2 s | Sait mit fertigem Shirt | „**Einer** kümmert sich. Nicht fünf Firmen." | er muss nichts koordinieren |
+| 4 | 2,2 s | Neon im Lokal | „Alles im **gleichen Look**." | ein Auftritt statt Flickwerk |
+| 5 | 2,2 s | Neon-Schriftzug leuchtet | „Pünktlich zur **Eröffnung**." | der Termin hält |
+| Ende | 4,3 s | Endkarte | „Reicht Ihre Zeit noch?" + Aufruf zum Formular | |
 
-Die Argumentation ist eine Rechnung, die der Zuschauer selbst noch nicht
-gemacht hat, und sie endet genau dort, wo der Knopf sitzt. **Alle Zahlen sind
-echt** und stammen aus den Vorlaufzeiten in `CLAUDE.md` — Leuchtschild
-3 Wochen Produktion / 7 gesamt, Pylon und Komplettpaket 5 / 9. Sie stimmen mit
-dem Zeitplaner auf der Website überein. Wer sie hier ändert, muss sie dort
-mitändern, sonst sagt die Anzeige etwas anderes als die Website.
+In jeder Szene steht, was der Kunde davon hat — nicht, was die Agentur kann.
+Die erste Fassung rechnete ihm nur seine Vorlaufzeiten vor und ließ offen,
+warum er ausgerechnet hier kaufen soll.
+
+> **Achtung, Zahl mit Folgen:** Die Anzeige nennt **6 Wochen gesamt**. Der
+> Zeitplaner auf der Website rechnet mit **7 Wochen** (Leuchtschild) und
+> **9 Wochen** (Pylon, Komplettpaket) — die Produktion allein dauert 3 bzw.
+> 5 Wochen, dazu kommen Gestaltung, Freigabe und Montage. Dieselben Leute
+> sehen beide Zahlen: Wer über die Anzeige kommt und danach den Zeitplaner
+> benutzt, bekommt eine andere Auskunft. Entweder wird der Zeitplaner
+> nachgezogen oder die Anzeige. Beides nebeneinander stehen zu lassen kostet
+> Vertrauen an genau der Stelle, an der es zählt.
+
+Alles Übrige in der Anzeige ist belegt: Montage macht Sait selbst,
+Arbeitsbekleidung, Werbeartikel und Folierung entstehen im Haus, gegründet
+2018.
 
 ## Warum sie so aussieht, wie sie aussieht
 
@@ -191,15 +201,16 @@ Anpassen:
 
 **Primärtext**
 
-> Sie sperren in ein paar Wochen auf — und das Schild ist noch nicht bestellt.
-> Ein Leuchtschild braucht 3 Wochen Produktion, ein Werbepylon 5. Dazu
-> Gestaltung, Aufmaß und Montage: macht 7 bis 9 Wochen Vorlauf.
+> Sie sperren in sechs Wochen auf. Bis dahin steht alles: Logo, Schilder,
+> Fahrzeugbeschriftung, Arbeitskleidung.
 >
-> Sagen Sie uns Ihren Eröffnungstermin. Wir sagen Ihnen, was sich noch ausgeht
-> — und womit wir anfangen, wenn es knapp wird.
+> Sie rufen nicht bei fünf Firmen an und rechnen keine Angebote gegeneinander.
+> Sie bekommen den Chef, kein Callcenter — und alles im selben Look, vom Logo
+> bis zum Firmenauto. Die Montage macht Sait selbst.
 >
-> Logo, Schilder, Fahrzeugbeschriftung, Arbeitskleidung: alles aus einem Haus
-> in Meiningen.
+> Sagen Sie uns Ihren Eröffnungstermin. Wir sagen Ihnen, was bis dahin steht.
+>
+> Ländle Blitz Marketing, Meiningen. Seit 2018 in Vorarlberg.
 
 **Überschrift:** Reicht Ihre Zeit bis zur Eröffnung?
 **Knopf:** Angebot einholen

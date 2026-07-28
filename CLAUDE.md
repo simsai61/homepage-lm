@@ -164,15 +164,23 @@ kein Vorspann (Bild eins ist die Aussage), jede Aussage steht als Schrift im Bil
 (Anzeigen laufen ohne Ton), Schrift im **oberen** Drittel statt unten, weil dort
 der Knopf zum Formular und der Beitragstext liegen, harte Schnitte ohne Blenden.
 
-Die Argumentation ist eine Rechnung, die der Zuschauer noch nicht gemacht hat:
-„Eröffnung in 6 Wochen?" → „Ihr Leuchtschild braucht 3 davon." → „Dazu Gestaltung,
-Aufmaß, Montage." → „Macht 7 bis 9 Wochen Vorlauf." → „Alles aus einer Hand." →
+In jeder Szene steht, was der Kunde davon hat, nicht was die Agentur kann:
+„Eröffnung in 6 Wochen?" → „In 6 Wochen steht alles." → „Einer kümmert sich.
+Nicht fünf Firmen." → „Alles im gleichen Look." → „Pünktlich zur Eröffnung." →
 Endkarte „Reicht Ihre Zeit noch?" mit Pfeil auf den Knopf.
 
-**Alle Zahlen sind die echten Vorlaufzeiten** und stimmen mit dem Zeitplaner der
-Website überein. Wer sie an einer Stelle ändert, muss die andere mitziehen.
-Texte stehen in `src/ad/adSzenen.ts`, Vorschlag für Primärtext, Überschrift und
-Formularfragen im `showreel/README.md`.
+**Offener Widerspruch (28.07.2026, von Sait so gewünscht):** Die Anzeige nennt
+**6 Wochen gesamt**, der Zeitplaner der Website rechnet **7** (Leuchtschild) und
+**9** (Pylon, Komplettpaket) — Produktion allein 3 bzw. 5 Wochen plus Gestaltung,
+Freigabe, Montage. Dieselben Leute sehen beide Zahlen. Entweder wird der
+Zeitplaner nachgezogen oder die Anzeige; nebeneinander stehen lassen kostet
+Vertrauen genau dort, wo es zählt. Genau diese Art Widerspruch wurde am 27.07.
+schon einmal beseitigt (Bento-Kachel „5 Wochen inkl. Montage").
+
+Alles Übrige in der Anzeige ist belegt: Montage macht Sait selbst, Arbeitsbekleidung,
+Werbeartikel und Folierung im Haus, gegründet 2018. Texte stehen in
+`src/ad/adSzenen.ts`, Vorschlag für Primärtext, Überschrift und Formularfragen
+im `showreel/README.md`.
 
 ### Showreel (`showreel/`, 28.07.2026)
 Ein Film aus den acht Projektfilmen, gebaut mit **Remotion** (React → Video). Eigenes

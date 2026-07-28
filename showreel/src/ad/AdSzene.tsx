@@ -91,7 +91,7 @@ export const AdSzene: React.FC<{ readonly szene: Szene }> = ({ szene }) => {
             }}
           />
           {szene.zeilen.map((zeile) => (
-            <AdZeile key={zeile} text={zeile} groesse={74} />
+            <AdZeile key={zeile} text={zeile} groesse={szene.groesse ?? 74} />
           ))}
           {szene.unterzeile ? (
             <div

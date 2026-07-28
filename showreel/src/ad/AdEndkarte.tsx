@@ -80,7 +80,7 @@ export const AdEndkarte: React.FC = () => {
           }),
         }}
       >
-        Eröffnungstermin eintragen — wir sagen Ihnen, was sich noch ausgeht.
+        Eröffnungstermin eintragen — wir sagen Ihnen, was bis dahin steht.
       </Interactive.Div>
 
       <Interactive.Div

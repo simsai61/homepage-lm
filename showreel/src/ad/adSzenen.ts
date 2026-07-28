@@ -3,18 +3,26 @@
  *
  * Aufbau der Argumentation — bewusst in dieser Reihenfolge:
  *   1. Hook: der Termin, unter dem der Zuschauer selbst steht
- *   2./3./4. die Rechnung, die er noch nicht gemacht hat (echte Vorlaufzeiten)
- *   5. die Antwort darauf: alles aus einer Hand
+ *   2. das Versprechen: in sechs Wochen steht alles
+ *   3./4./5. was er davon hat — einer statt fünf, ein Auftritt, pünktlich
  *   danach die Endkarte mit dem Aufruf zum Formular
  *
- * Alle Zahlen stammen aus den tatsächlichen Vorlaufzeiten (siehe CLAUDE.md):
- * Leuchtschild 3 Wochen Produktion / 7 Wochen gesamt, Pylon und Komplettpaket
- * 5 / 9. Nichts davon ist aufgerundet oder erfunden — die Anzeige verspricht
- * genau das, was der Zeitplaner auf der Website auch rechnet.
+ * Die erste Fassung erklärte dem Zuschauer nur sein Problem (Vorlaufzeiten,
+ * die er nicht mehr schafft) und ließ offen, warum er ausgerechnet hier
+ * kaufen soll. Jetzt steht in jeder Szene ein Nutzen.
+ *
+ * ACHTUNG, ZAHL MIT FOLGEN: Die Anzeige nennt **6 Wochen gesamt**. Der
+ * Zeitplaner auf der Website rechnet mit 7 Wochen (Leuchtschild) und
+ * 9 Wochen (Pylon, Komplettpaket). Beide Zahlen sehen dieselben Leute.
+ * Wer hier etwas ändert, muss den Zeitplaner mitziehen — oder umgekehrt.
+ *
+ * Alles Übrige ist belegt: Montage macht Sait selbst, Arbeitsbekleidung,
+ * Werbeartikel und Folierung entstehen im Haus, gegründet 2018.
  *
  * `*Sternchen*` heben ein Wort im Markenton hervor.
  * `startFrom` ist das Startbild in der Quelldatei (30 Bilder je Sekunde),
  * ausgesucht wie beim Showreel über die Komposition "Kontaktbogen".
+ * `groesse` nur setzen, wenn eine Zeile sonst zu breit wird (Standard 74).
  */
 export type AdSzene = {
   readonly id: string;
@@ -22,6 +30,7 @@ export type AdSzene = {
   readonly startFrom: number;
   readonly zeilen: readonly string[];
   readonly unterzeile?: string;
+  readonly groesse?: number;
 };
 
 export const SZENE_DAUER = 65; // 2,17 s — vier Schläge der Tonspur
@@ -35,30 +44,32 @@ export const AD_SZENEN: readonly AdSzene[] = [
     zeilen: ["ERÖFFNUNG IN", "*6 WOCHEN*?"],
   },
   {
-    id: "produktion",
-    file: "bellanapoli-montage.mp4",
-    startFrom: 255, // der Schriftzug leuchtet
-    zeilen: ["IHR LEUCHTSCHILD", "BRAUCHT *3 DAVON*."],
-    unterzeile: "reine Produktionszeit",
-  },
-  {
-    id: "dazu",
+    id: "versprechen",
     file: "hanako.mp4",
-    startFrom: 435, // fertig foliertes Schaufenster
-    zeilen: ["DAZU GESTALTUNG,", "AUFMASS, MONTAGE."],
+    startFrom: 435, // fertig foliertes Schaufenster — das Ergebnis
+    zeilen: ["*IN 6 WOCHEN*", "STEHT ALLES."],
+    unterzeile: "Logo · Schilder · Fahrzeug · Arbeitskleidung",
   },
   {
-    id: "vorlauf",
+    id: "ansprechpartner",
+    file: "sait-buero.mp4",
+    startFrom: 648, // Sait an der Presse, am Ende haelt er das fertige Shirt
+    zeilen: ["*EINER* KÜMMERT SICH.", "NICHT FÜNF FIRMEN."],
+    unterzeile: "Sie bekommen den Chef, kein Callcenter.",
+    groesse: 62,
+  },
+  {
+    id: "auftritt",
     file: "sait-baustelle.mp4",
     startFrom: 444, // Neon-Schriftzug im Lokal, angezuendet
-    zeilen: ["MACHT *7 BIS 9*", "*WOCHEN* VORLAUF."],
-    unterzeile: "Leuchtschild 7 · Pylon 9 · Komplettpaket 9",
+    zeilen: ["ALLES IM", "*GLEICHEN LOOK*."],
+    unterzeile: "Vom Logo bis zur Fahrzeugbeschriftung",
   },
   {
-    id: "handwerk",
-    file: "sait-buero.mp4",
-    startFrom: 780, // eigene Produktion, Plotter
-    zeilen: ["*ALLES AUS*", "*EINER HAND.*"],
-    unterzeile: "Logo · Schilder · Fahrzeug · Kleidung",
+    id: "puenktlich",
+    file: "bellanapoli-montage.mp4",
+    startFrom: 255, // der Schriftzug leuchtet
+    zeilen: ["PÜNKTLICH ZUR", "*ERÖFFNUNG*."],
+    unterzeile: "Montage macht der Chef selbst · seit 2018",
   },
 ];
