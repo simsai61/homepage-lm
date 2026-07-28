@@ -1,4 +1,3 @@
-import { Video } from "@remotion/media";
 import React from "react";
 import {
   AbsoluteFill,
@@ -10,9 +9,9 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { BODY, BRAND_GRADIENT, COLORS } from "../showreel/theme";
+import { AdMedium } from "./AdMedium";
 import type { AdSzene as Szene } from "./adSzenen";
 import { AdZeile } from "./AdText";
-import { SZENE_DAUER } from "./adSzenen";
 
 const SAFE_X = 80;
 
@@ -33,22 +32,7 @@ export const AdSzene: React.FC<{ readonly szene: Szene }> = ({ szene }) => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.bg, overflow: "hidden" }}>
-      <Video
-        name={szene.id}
-        src={staticFile(`videos/${szene.file}`)}
-        trimBefore={szene.startFrom}
-        muted
-        objectFit="cover"
-        style={{
-          width: "100%",
-          height: "100%",
-          scale: interpolate(frame, [0, SZENE_DAUER], [1.03, 1.09], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-            output: "perceptual-scale",
-          }),
-        }}
-      />
+      <AdMedium medium={szene.medium} />
 
       {/* Abdunklung oben, damit die Aussage auf jedem Motiv lesbar bleibt */}
       <AbsoluteFill

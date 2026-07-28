@@ -3,7 +3,7 @@
  *
  * Aufbau der Argumentation — bewusst in dieser Reihenfolge:
  *   1. Hook: der Termin, unter dem der Zuschauer selbst steht
- *   2. das Versprechen: in sechs Wochen steht alles
+ *   2. der Beweis: dasselbe Lokal vorher und nachher
  *   3./4./5. was er davon hat — einer statt fünf, ein Auftritt, pünktlich
  *   danach die Endkarte mit dem Aufruf zum Formular
  *
@@ -20,14 +20,36 @@
  * Werbeartikel und Folierung entstehen im Haus, gegründet 2018.
  *
  * `*Sternchen*` heben ein Wort im Markenton hervor.
- * `startFrom` ist das Startbild in der Quelldatei (30 Bilder je Sekunde),
- * ausgesucht wie beim Showreel über die Komposition "Kontaktbogen".
  * `groesse` nur setzen, wenn eine Zeile sonst zu breit wird (Standard 74).
  */
+
+/** Was in der Szene zu sehen ist */
+export type AdMedium =
+  | {
+      readonly art: "video";
+      readonly file: string;
+      /** Startbild in der Quelldatei (30 Bilder je Sekunde), von Hand gewählt */
+      readonly startFrom: number;
+    }
+  | {
+      readonly art: "bild";
+      readonly datei: string;
+      /** Bildausschnitt, falls die Mitte nicht das Wichtigste zeigt */
+      readonly position?: string;
+    }
+  | {
+      readonly art: "vorher-nachher";
+      readonly vorher: string;
+      readonly nachher: string;
+      readonly vorherPosition?: string;
+      readonly nachherPosition?: string;
+      /** Bild, auf dem umgeschaltet wird (innerhalb der Szene) */
+      readonly wechselBei: number;
+    };
+
 export type AdSzene = {
   readonly id: string;
-  readonly file: string;
-  readonly startFrom: number;
+  readonly medium: AdMedium;
   readonly zeilen: readonly string[];
   readonly unterzeile?: string;
   readonly groesse?: number;
@@ -39,36 +61,57 @@ export const ENDKARTE_DAUER = 130; // 4,33 s
 export const AD_SZENEN: readonly AdSzene[] = [
   {
     id: "hook",
-    file: "ct-pylon-montage.mp4",
-    startFrom: 306, // Pylon haengt scharf am Kran — staerkstes Bild zuerst
+    medium: {
+      art: "video",
+      file: "ct-pylon-montage.mp4",
+      startFrom: 306, // Pylon haengt scharf am Kran — staerkstes Bild zuerst
+    },
     zeilen: ["ERÖFFNUNG IN", "*6 WOCHEN*?"],
   },
   {
-    id: "versprechen",
-    file: "hanako.mp4",
-    startFrom: 435, // fertig foliertes Schaufenster — das Ergebnis
+    id: "beweis",
+    medium: {
+      art: "vorher-nachher",
+      vorher: "ay-vorher.webp",
+      nachher: "ay-nachher.webp",
+      // Das Vorher-Foto ist querformatig: der Hochkant-Ausschnitt zeigt nur
+      // knapp die Haelfte der Breite. Ohne die Verschiebung nach links faellt
+      // der Schriftzug des alten Vordachs ganz aus dem Bild.
+      // (Die zweite Zahl bleibt wirkungslos — bei diesem Seitenverhaeltnis
+      // beschneidet "cover" nur waagrecht.)
+      vorherPosition: "30% 50%",
+      wechselBei: 28,
+    },
     zeilen: ["*IN 6 WOCHEN*", "STEHT ALLES."],
-    unterzeile: "Logo · Schilder · Fahrzeug · Arbeitskleidung",
+    unterzeile: "AY Restaurant · neues Vordach, neue Leuchtschrift",
   },
   {
     id: "ansprechpartner",
-    file: "sait-buero.mp4",
-    startFrom: 648, // Sait an der Presse, am Ende haelt er das fertige Shirt
+    medium: {
+      art: "bild",
+      datei: "sait-portrait.webp", // Sait auf dem Geruest, hinter seinem Banner
+    },
     zeilen: ["*EINER* KÜMMERT SICH.", "NICHT FÜNF FIRMEN."],
     unterzeile: "Sie bekommen den Chef, kein Callcenter.",
     groesse: 62,
   },
   {
     id: "auftritt",
-    file: "sait-baustelle.mp4",
-    startFrom: 444, // Neon-Schriftzug im Lokal, angezuendet
+    medium: {
+      art: "video",
+      file: "sait-baustelle.mp4",
+      startFrom: 444, // Neon-Schriftzug im Lokal, angezuendet
+    },
     zeilen: ["ALLES IM", "*GLEICHEN LOOK*."],
     unterzeile: "Vom Logo bis zur Fahrzeugbeschriftung",
   },
   {
     id: "puenktlich",
-    file: "bellanapoli-montage.mp4",
-    startFrom: 255, // der Schriftzug leuchtet
+    medium: {
+      art: "video",
+      file: "bellanapoli-montage.mp4",
+      startFrom: 255, // der Schriftzug leuchtet
+    },
     zeilen: ["PÜNKTLICH ZUR", "*ERÖFFNUNG*."],
     unterzeile: "Montage macht der Chef selbst · seit 2018",
   },

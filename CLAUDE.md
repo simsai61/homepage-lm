@@ -169,6 +169,15 @@ In jeder Szene steht, was der Kunde davon hat, nicht was die Agentur kann:
 Nicht fünf Firmen." → „Alles im gleichen Look." → „Pünktlich zur Eröffnung." →
 Endkarte „Reicht Ihre Zeit noch?" mit Pfeil auf den Knopf.
 
+**Die zwei tragenden Bilder** (28.07., von Sait vorgeschlagen): Szene 2 ist ein
+echtes **Vorher/Nachher des AY Restaurants** (`ay-vorher.webp` → `ay-nachher.webp`,
+harter Wechsel nach 0,9 s mit Aufblitzen) — der einzige Beweis, den niemand
+behaupten muss. Szene 3 ist das **Foto von Sait auf dem Gerüst**
+(`sait-portrait.webp`): zu „Sie bekommen den Chef" gehört ein Mensch ins Bild.
+Damit gibt es drei Medienarten in `src/ad/AdMedium.tsx`: `video`, `bild`,
+`vorher-nachher`. Standbilder bekommen eine langsame Fahrt, damit sie zwischen
+den Filmausschnitten nicht stehen. `public/bilder` ist ein Symlink nach `assets/bilder`.
+
 **Offener Widerspruch (28.07.2026, von Sait so gewünscht):** Die Anzeige nennt
 **6 Wochen gesamt**, der Zeitplaner der Website rechnet **7** (Leuchtschild) und
 **9** (Pylon, Komplettpaket) — Produktion allein 3 bzw. 5 Wochen plus Gestaltung,

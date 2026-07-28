@@ -143,8 +143,8 @@ sie eine andere Aufgabe hat.
 | | Länge | Bild | Aussage | Nutzen für den Kunden |
 |---|---|---|---|---|
 | 1 | 2,2 s | Pylon hängt am Kran | „Eröffnung in **6 Wochen**?" | spricht seinen Termin an |
-| 2 | 2,2 s | Foliertes Schaufenster | „**In 6 Wochen** steht alles." | er wird rechtzeitig fertig |
-| 3 | 2,2 s | Sait mit fertigem Shirt | „**Einer** kümmert sich. Nicht fünf Firmen." | er muss nichts koordinieren |
+| 2 | 2,2 s | AY Restaurant **vorher → nachher** | „**In 6 Wochen** steht alles." | er sieht das Ergebnis |
+| 3 | 2,2 s | Sait auf dem Gerüst | „**Einer** kümmert sich. Nicht fünf Firmen." | er weiß, wer kommt |
 | 4 | 2,2 s | Neon im Lokal | „Alles im **gleichen Look**." | ein Auftritt statt Flickwerk |
 | 5 | 2,2 s | Neon-Schriftzug leuchtet | „Pünktlich zur **Eröffnung**." | der Termin hält |
 | Ende | 4,3 s | Endkarte | „Reicht Ihre Zeit noch?" + Aufruf zum Formular | |
@@ -165,6 +165,26 @@ warum er ausgerechnet hier kaufen soll.
 Alles Übrige in der Anzeige ist belegt: Montage macht Sait selbst,
 Arbeitsbekleidung, Werbeartikel und Folierung entstehen im Haus, gegründet
 2018.
+
+## Die zwei tragenden Bilder
+
+**Vorher/Nachher (AY Restaurant).** Der einzige Beweis in der Anzeige, den
+niemand behaupten muss — man sieht ihn. Umgeschaltet wird nach 0,9 Sekunden,
+hart und mit demselben Aufblitzen wie an den Schnitten; eine weiche Blende
+würde den Vergleich verwischen. Das Vorher-Foto ist querformatig, im
+Hochkant-Ausschnitt ist deshalb nur gut die Hälfte der Breite zu sehen
+(`vorherPosition` schiebt den Ausschnitt nach links, damit der Schriftzug des
+alten Vordachs im Bild bleibt). Wer bessere Vorher-Fotos nachliefert, tauscht
+nur die Dateinamen in `adSzenen.ts`.
+
+**Sait auf dem Gerüst.** Zu „Sie bekommen den Chef" gehört ein Mensch ins Bild,
+sonst ist es eine Behauptung. Das Foto liefert beides auf einmal: die Person
+und, auf dem Banner darunter, die eigene Leistungsliste mit Adresse und
+Telefonnummer. Standbilder bekommen eine langsame Fahrt ins Bild, damit sie
+zwischen den Filmausschnitten nicht stehen.
+
+Beide Medienarten stecken in `src/ad/AdMedium.tsx`; eine Szene ist entweder
+`video`, `bild` oder `vorher-nachher`.
 
 ## Warum sie so aussieht, wie sie aussieht
 
