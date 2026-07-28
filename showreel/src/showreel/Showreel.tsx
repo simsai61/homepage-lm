@@ -1,7 +1,8 @@
+import { Audio } from "@remotion/media";
 import { linearTiming, TransitionSeries } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, staticFile } from "remotion";
 import { ClipScene } from "./ClipScene";
 import { CLIP_DURATION, CLIPS } from "./clips";
 import { FLASH_DURATION, FlashCut } from "./FlashCut";
@@ -25,6 +26,15 @@ export const SHOWREEL_DURATION =
 export const Showreel: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.bg }}>
+      {/*
+        Eigene Tonspur, erzeugt von scripts/musik.mjs — rein rechnerisch aus
+        Sinus- und Rauschgeneratoren, daran hat niemand Rechte. Das Tempo ist
+        so gewaehlt, dass acht Schlaege genau einen Projektfilm ergeben: jeder
+        Schnitt faellt auf eine Eins, jeder Film hat seinen eigenen Akkord.
+        Ausblenden am Schluss steckt bereits in der Datei.
+      */}
+      <Audio name="Musik" src={staticFile("audio/showreel-musik.wav")} />
+
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={INTRO_DURATION}>
           <Intro />

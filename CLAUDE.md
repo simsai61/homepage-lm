@@ -177,8 +177,13 @@ einer Ansprache in die Kamera**, teils mit eingebrannten Textzeilen oder sichtba
 Kamera-Bedienoberfläche (CT Fassade, Sekunde 3–5). Zum Aussuchen gibt es die
 Komposition `Kontaktbogen` (ein Standbild je Sekunde).
 
-**Ton ist stumm.** Baustellengeräusche, teils fremde Musik. Musik gehört beim
-Hochladen in Instagram darübergelegt — dort ist sie lizenziert.
+**Ton:** Der Originalton der Clips ist stumm (Baustellengeräusche, teils fremde Musik).
+Darunter liegt eine **selbst erzeugte Musikspur** — `showreel/scripts/musik.mjs` rechnet
+sie aus Sinus- und Rauschgeneratoren aus, daran hat niemand Rechte. Gekaufte
+Bibliotheksmusik bräuchte eine Lizenz, Instagram-Musik darf nicht in eine gerenderte
+Datei. Das Tempo hängt am Schnitt: 110,77 bpm, acht Schläge = ein Projektfilm, jeder
+Schnitt fällt auf eine Eins, jeder Film hat seinen eigenen Akkord. **Ändert sich
+`CLIP_DURATION`, muss die Musik neu erzeugt werden** (`node scripts/musik.mjs`).
 
 ---
 

@@ -70,12 +70,38 @@ liegen, wie sie liegen:
 
 ## Ton
 
-Der Originalton ist **stumm geschaltet** (`muted` in `ClipScene.tsx`). Es sind
-Handyaufnahmen von der Baustelle — Wind, Maschinen, Gespräche — und teilweise
-liegt fremde Musik darunter. Musik gehört beim Hochladen in Instagram oder
-TikTok darübergelegt: dort ist sie lizenziert, in einer selbst gerenderten
-Datei wäre sie es nicht. Soll doch der Originalton laufen, reicht es,
-`muted` zu entfernen.
+**Der Originalton der Clips ist stumm geschaltet** (`muted` in `ClipScene.tsx`).
+Es sind Handyaufnahmen von der Baustelle — Wind, Maschinen, Gespräche — und
+teilweise liegt fremde Musik darunter, die in einer eigenen Datei nicht
+lizenziert wäre. Soll er doch laufen, reicht es, `muted` zu entfernen.
+
+**Darunter liegt eine eigene Musikspur**, erzeugt von `scripts/musik.mjs`:
+
+```bash
+node scripts/musik.mjs   # schreibt public/audio/showreel-musik.wav
+```
+
+Das Skript rechnet die Spur aus Sinus- und Rauschgeneratoren aus — Kick, Bass,
+Fläche, Hi-Hat, Klatschen, eine Achtelfigur und ein Hall. Nichts davon ist
+eingekauft oder gesampelt, an dem Ergebnis hat **niemand Rechte**. Das ist der
+ganze Grund für den Aufwand: gekaufte Bibliotheksmusik braucht eine Lizenz,
+Instagram-Musik darf nicht in eine gerenderte Datei.
+
+Das Tempo ist an den Schnitt gebunden: **110,77 bpm**, damit acht Schläge genau
+einen Projektfilm ergeben (130 Bilder). Die erste Eins liegt auf dem ersten
+Schnitt bei Sekunde 2,1, jeder weitere Schnitt fällt auf eine Eins, und jeder
+Film bekommt seinen eigenen Akkord (c-Moll: Cm – A♭ – E♭ – B♭, zweimal
+durch). Der Aufbau geht mit: die ersten beiden Filme laufen ohne Schlagwerk,
+ab dem dritten kommt es dazu, ab dem fünften alles. Ausgeblendet wird in den
+letzten 2,2 Sekunden.
+
+Wer am Tempo, an der Tonart oder am Aufbau dreht, ändert das Skript und lässt
+es neu laufen. **Ändert sich die Länge der Filme (`CLIP_DURATION`), muss die
+Musik neu erzeugt werden** — die Konstanten oben im Skript müssen mit
+`src/showreel/clips.ts` übereinstimmen.
+
+Wenn stattdessen eine lizenzierte Spur vorliegt: Datei nach `public/audio/`
+legen und den Dateinamen in `src/showreel/Showreel.tsx` austauschen.
 
 ## Rendern auf einem Rechner ohne eigenes Chrome
 
