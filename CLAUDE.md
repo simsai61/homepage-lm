@@ -84,7 +84,7 @@ Alle Seiten sind **eigenständige HTML-Dateien ohne Build-Schritt**. Kein Framew
 **Grundidee:** Jede Leistung bekommt einen Moment, der *zeigt* statt behauptet, was gemacht wird. Beim Ausbau weiterer Unterseiten dieses Prinzip fortführen.
 
 ### Aufbau der Startseite (Stand: 27.07.2026, CRO/SEO-Umbau)
-1. Hero — Claim, Headline, **Schild-Schalter**; Ghost-Button führt jetzt zum Zeitplaner („Reicht meine Zeit noch?"), Primärbutton „Komplettpaket anfragen" seit 29.07. zum Anfrage-Funnel `kontakt.html` (vorher `#kontakt`)
+1. Hero — Claim, Headline, **Schild-Schalter**; Ghost-Button führt jetzt zum Zeitplaner („Reicht meine Zeit noch?"), Primärbutton „Angebot anfragen" (bis 29.07. „Komplettpaket anfragen") führt zum Anfrage-Funnel `kontakt.html` (vorher `#kontakt`)
 2. **Komplettpaket für Neueröffnungen** — **Silvio-Slider (Beweis) zuerst**, dann Bento-Raster, dann WhatsApp-CTA-Zeile
 3. **Referenzen** — Projektkarten (AY zuerst) + Basecamp-Slider, danach CTA-Zeile (WhatsApp + Zeitplaner-Link)
 4. **Leuchtreklame** — Bella Napoli, Überblendung unbeleuchtet → beleuchtet.

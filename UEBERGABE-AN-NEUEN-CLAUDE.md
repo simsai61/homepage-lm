@@ -429,7 +429,8 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
   (ein erklärender Abschnitt steht trotzdem in der Datenschutzerklärung).
   Wochenangaben gibt es nur beim Komplettpaket (9 Wochen), weil nur diese Zahl belegt ist.
   Verlinkt über den Kopf-CTA „Angebot anfragen" (alle Seiten), die Fußzeile und seit 29.07.
-  auch den Hero-Primärbutton „Komplettpaket anfragen" der Startseite (vorher `#kontakt`).
+  auch den Hero-Primärbutton der Startseite (vorher `#kontakt`; am 29.07. zudem von
+  „Komplettpaket anfragen" auf „Angebot anfragen" umbenannt — gleicher Wortlaut wie der Kopf-CTA).
   **Fallstrick, teuer gelernt (29.07.):** Am Datumsfeld hing anfangs ein Auto-Sprung auf
   `change` — auf dem iPhone feuert `change` aber schon beim Drehen des Datumsrads, der Funnel
   sprang zur Betriebs-Frage, bevor der Termin fertig eingestellt war. Deshalb: **nie Auto-Advance
