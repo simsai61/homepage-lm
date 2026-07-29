@@ -380,6 +380,40 @@ Vor-Ort-Termin, aber zu lang und zu fachlich für eine öffentliche Erstanfrage)
 (Leuchtschild 21 Tage), der Zeitplaner auf der Website mit Gesamtvorlauf (7 Wochen).
 Beide würden demselben Kunden Unterschiedliches sagen — vor einer Zusammenführung klären.
 
+### Erledigt (29.07.2026) — Titel, Weiterleitungen
+**Seitentitel (die „blauen Zeilen" in Google) tragen jetzt Suchbegriff + Ort.**
+Vorher hieß es auf den Unterseiten nur „Webdesign — Ländle Blitz Marketing" — ohne Ort,
+ohne Suchbegriff. Der Wettbewerb in Vorarlberg macht es umgekehrt („Lichtwerbung – Mader
+Werbetechnik Lauterach", „Werbetechnik von Xigital in Dornbirn").
+
+| Seite | Titel |
+|---|---|
+| Startseite | Leuchtreklame & Werbetechnik Vorarlberg \| Ländle Blitz Marketing |
+| Funnel | Angebot für Werbetechnik anfragen \| Ländle Blitz Marketing |
+| Logodesign | Logodesign & Grafik Vorarlberg \| Ländle Blitz Marketing |
+| Printmedien | Printmedien & Druck Vorarlberg \| Ländle Blitz Marketing |
+| Arbeitsbekleidung | Arbeitsbekleidung besticken Vorarlberg \| Ländle Blitz Marketing |
+| Werbeartikel | Werbeartikel bedrucken Vorarlberg \| Ländle Blitz Marketing |
+| KFZ | KFZ-Folierung & Beschriftung Vorarlberg \| Ländle Blitz Marketing |
+| Webdesign | Webdesign Vorarlberg \| Ländle Blitz Marketing |
+
+**Titel nach Pixelbreite prüfen, nicht nach Zeichenzahl** — Google kappt bei ca. 600px
+(20px Arial). Alle acht liegen zwischen 411 und 588px, werden also vollständig gezeigt.
+Messen: `canvas.getContext('2d')`, `font='20px arial'`, `measureText(titel).width`.
+Nach Zeichen gerechnet hätten zwei Titel als „zu lang" gegolten, obwohl sie passen.
+
+`og:title` wird gleich mitgezogen (WhatsApp-Vorschau) — beide Werte gleich halten.
+`index.html` und `lm-agentur-relaunch.html` sind Kopien: **wer eine ändert, muss die
+andere mitziehen** — beim Titel-Umbau zunächst vergessen, danach wieder abgeglichen.
+
+**`.htaccess` angelegt** — https+www erzwungen (passend zu den canonical-Tags),
+`/index.html` → `/`, Entwurfskopie `lm-agentur-relaunch.html` → `/`. Die Sperre-Fassung
+bleibt absichtlich erreichbar (nur `noindex`). Fallen im Kommentar der Datei erklärt:
+`THE_REQUEST` statt `REQUEST_URI` prüfen (sonst Endlosschleife über den DirectoryIndex),
+und `X-Forwarded-Proto` mitprüfen (sonst Schleife hinter dem Hostinger-Proxy).
+**Der Block mit den alten Adressen ist noch leer** — dazu braucht es die Liste aus der
+Search Console. Kein Sammel-Redirect auf die Startseite (Google wertet das als Soft-404).
+
 ### Erledigt (29.07.2026) — Indexierung: sitemap.xml, robots.txt, noindex
 - **`sitemap.xml`** — 10 Seiten (Startseite, Funnel, 6 Leistungen, Impressum, Datenschutz).
   Die Adressen müssen **genau** der www-/https-Variante der `canonical`-Tags entsprechen;
