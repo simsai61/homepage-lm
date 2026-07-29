@@ -711,6 +711,10 @@
   .ref-a{grid-column:span 7} .ref-b{grid-column:span 5}
   .ref-c{grid-column:span 5} .ref-d{grid-column:span 7}
   .ref-third{grid-column:span 4} .ref-half{grid-column:span 6}
+  /* Hohe Motive wie der Pylon: quadratisches Fenster statt 4:3, sonst wird die Spitze gekappt.
+     Gilt für beide Bauformen — Einzelbild (.ref-media) und Karten-Galerie (.gal-card). */
+  .ref-tall .ref-media,
+  .ref-tall .gal-card .gal-media{aspect-ratio:1/1}
   .ref-wide{grid-column:span 12}
   .ref-wide .ref-media{aspect-ratio:21/9}
   @media (max-width:980px){
@@ -1263,7 +1267,51 @@
     </div>
 
     <div class="ref-grid">
-      <article class="ref ref-a rev">
+      <article class="ref ref-a ref-tall rev">
+      <div class="gal gal-card" data-auto="3600">
+        <div class="gal-track" tabindex="0" role="group" aria-label="CT Automotive, 3 Bilder">
+          <div class="gal-slide">
+            <div class="gal-media from-top">
+              <img src="assets/bilder/ct-automotive-pylon-2.webp"
+                   srcset="assets/bilder/ct-automotive-pylon-2-720.webp 720w, assets/bilder/ct-automotive-pylon-2.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1259" loading="lazy" decoding="async"
+                   alt="Beleuchteter Werbepylon von CT Automotive mit grüner Lichtkante an einer Straße in Bludenz">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media from-top">
+              <img src="assets/bilder/ct-automotive-pylon-1.webp"
+                   srcset="assets/bilder/ct-automotive-pylon-1-720.webp 720w, assets/bilder/ct-automotive-pylon-1.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1263" loading="lazy" decoding="async"
+                   alt="Werbepylon von CT Automotive in Bludenz bei Tageslicht, aus anderer Perspektive vor Bergkulisse">
+            </div>
+          </div>
+          <div class="gal-slide">
+            <div class="gal-media">
+              <img src="assets/bilder/ct-automotive-fassade.webp"
+                   srcset="assets/bilder/ct-automotive-fassade-720.webp 720w, assets/bilder/ct-automotive-fassade.webp 1280w"
+                   sizes="(max-width:880px) 100vw, 50vw"
+                   width="1280" height="1256" loading="lazy" decoding="async"
+                   alt="Fassadenbeschriftung mit 3D-Einzelbuchstaben AUTOMOTIVE am Vordach des Autohauses">
+            </div>
+          </div>
+        </div>
+        <span class="gal-tag">1 / 3</span>
+        <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+      </div>
+      <div class="ref-body">
+        <div class="ref-meta">Bludenz · Autohaus</div>
+        <h3>CT Automotive</h3>
+        <p>Freistehender Pylon mit beleuchteter Lichtkante, dazu plastische Einzelbuchstaben am Vordach — beides in derselben Formensprache, damit es als ein Auftritt gelesen wird.</p>
+        <div class="ref-scope"><span>Werbepylon</span><span>3D-Buchstaben</span><span>Beleuchtung</span><span>Montage</span></div>
+      </div>
+      </article>
+
+    <article class="ref ref-b rev">
         <div class="gal gal-card" data-auto="3800">
           <div class="gal-track" tabindex="0" role="group" aria-label="AY Restaurant, drei Bilder: vorher, nachher und bei Nacht">
             <div class="gal-slide">
@@ -1308,50 +1356,6 @@
           <p>Aus dem alten schwarz-goldenen Vordach wurde ein ruhiger, dunkelgrüner Auftritt mit plastischer Lotusblüte — dazu ein senkrechter Ausleger, der die Straße entlang gelesen wird. Abends leuchtet beides.</p>
           <div class="ref-scope"><span>Vordachschild</span><span>3D-Logo</span><span>Ausleger</span><span>Beleuchtung</span></div>
         </div>
-      </article>
-
-    <article class="ref ref-b rev">
-      <div class="gal gal-card" data-auto="3600">
-        <div class="gal-track" tabindex="0" role="group" aria-label="CT Automotive, 3 Bilder">
-          <div class="gal-slide">
-            <div class="gal-media from-top">
-              <img src="assets/bilder/ct-automotive-pylon-2.webp"
-                   srcset="assets/bilder/ct-automotive-pylon-2-720.webp 720w, assets/bilder/ct-automotive-pylon-2.webp 1280w"
-                   sizes="(max-width:880px) 100vw, 50vw"
-                   width="1280" height="1259" loading="lazy" decoding="async"
-                   alt="Beleuchteter Werbepylon von CT Automotive mit grüner Lichtkante an einer Straße in Bludenz">
-            </div>
-          </div>
-          <div class="gal-slide">
-            <div class="gal-media from-top">
-              <img src="assets/bilder/ct-automotive-pylon-1.webp"
-                   srcset="assets/bilder/ct-automotive-pylon-1-720.webp 720w, assets/bilder/ct-automotive-pylon-1.webp 1280w"
-                   sizes="(max-width:880px) 100vw, 50vw"
-                   width="1280" height="1263" loading="lazy" decoding="async"
-                   alt="Werbepylon von CT Automotive in Bludenz bei Tageslicht, aus anderer Perspektive vor Bergkulisse">
-            </div>
-          </div>
-          <div class="gal-slide">
-            <div class="gal-media">
-              <img src="assets/bilder/ct-automotive-fassade.webp"
-                   srcset="assets/bilder/ct-automotive-fassade-720.webp 720w, assets/bilder/ct-automotive-fassade.webp 1280w"
-                   sizes="(max-width:880px) 100vw, 50vw"
-                   width="1280" height="1256" loading="lazy" decoding="async"
-                   alt="Fassadenbeschriftung mit 3D-Einzelbuchstaben AUTOMOTIVE am Vordach des Autohauses">
-            </div>
-          </div>
-        </div>
-        <span class="gal-tag">1 / 3</span>
-        <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
-        <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-        <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
-      </div>
-      <div class="ref-body">
-        <div class="ref-meta">Bludenz · Autohaus</div>
-        <h3>CT Automotive</h3>
-        <p>Freistehender Pylon mit beleuchteter Lichtkante, dazu plastische Einzelbuchstaben am Vordach — beides in derselben Formensprache, damit es als ein Auftritt gelesen wird.</p>
-        <div class="ref-scope"><span>Werbepylon</span><span>3D-Buchstaben</span><span>Beleuchtung</span><span>Montage</span></div>
-      </div>
     </article>
 
     <article class="ref ref-c rev" style="--d:110ms">
