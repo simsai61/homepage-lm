@@ -1,0 +1,47 @@
+import React from "react";
+
+/**
+ * Das Signet aus assets/logo-signet.svg — der Blitz, der im Logo das Z ersetzt.
+ * Farbe entweder einfarbig (color) oder als Markenverlauf (gradientId setzen).
+ * Die ID muss je Einsatzort eindeutig sein, sonst kollidieren die Verlaeufe.
+ */
+export const Bolt: React.FC<{
+  readonly color?: string;
+  readonly gradientId?: string;
+  readonly style?: React.CSSProperties;
+}> = ({ color = "currentColor", gradientId, style }) => {
+  return (
+    <svg
+      viewBox="99.45 71.64 16.05 26.59"
+      fill={gradientId ? `url(#${gradientId})` : color}
+      fillRule="evenodd"
+      style={style}
+    >
+      {gradientId ? (
+        <defs>
+          <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#F2A65A" />
+            <stop offset="55%" stopColor="#E8628F" />
+            <stop offset="100%" stopColor="#C93C77" />
+          </linearGradient>
+        </defs>
+      ) : null}
+      <g>
+        <polygon points="100.45 87.38 102.92 85.72 106.36 79.96 109.25 72.64 100.45 87.38" />
+        <path d="M100.45,87.38l6.1-.91-2.9,10.76,10.85-16.08-7.32,1.09,2.07-9.61-8.8,14.74Z" />
+        <polygon points="111.82 82.84 114.5 81.15 103.65 97.23 106.87 90.18 111.82 82.84" />
+        <polygon points="107.17 82.25 105.54 83.78 111.82 82.84 114.5 81.15 107.17 82.25" />
+        <polygon points="109.25 72.64 106.36 79.96 105.54 83.78 107.17 82.25 109.25 72.64" />
+        <polygon points="106.55 86.47 108.29 84.92 102.92 85.72 100.45 87.38 106.55 86.47" />
+        <polygon points="103.65 97.23 106.87 90.18 108.29 84.92 106.55 86.47 103.65 97.23" />
+        <polygon points="108.02 85.16 102.54 85.98 106.81 78.82 105.79 83.54 112.24 82.58 106.37 91.28 108.02 85.16" />
+        <polygon points="108.29 84.92 102.92 85.72 106.36 79.96 105.54 83.78 111.82 82.84 106.87 90.18 108.29 84.92" />
+        <polygon points="108.67 84.58 103.47 85.36 105.72 81.58 105.18 84.12 111.23 83.21 107.59 88.61 108.67 84.58" />
+        <polygon points="108.02 85.16 106.55 86.47 100.45 87.38 108.02 85.16" />
+        <polygon points="109.25 72.64 105.79 83.54 107.17 82.25 109.25 72.64" />
+        <polygon points="112.24 82.58 103.65 97.23 106.37 91.28 112.24 82.58" />
+        <polygon points="109.25 72.64 102.54 85.98 106.81 78.82 109.25 72.64" />
+      </g>
+    </svg>
+  );
+};

@@ -157,6 +157,77 @@ Originale liegen unter `fotos/` und `videos/`. Aufbereitung mit `ffmpeg` + `cweb
 Das Logo wird über `<use href="#lbm-logo">` eingebunden und erbt die Farbe via `currentColor`
 (Fallback auf Schrifttext, falls das Sprite nicht lädt).
 
+### Instagram-Anzeige (`showreel/`, Komposition `Ad`, 28.07.2026)
+24 Sekunden hochkant, gedacht als Reels-Anzeige mit angehängtem Lead-Formular.
+**Kein gekürztes Showreel** — anders gebaut, weil die Aufgabe eine andere ist:
+kein Vorspann (Bild eins ist die Aussage), jede Aussage steht als Schrift im Bild
+(Anzeigen laufen ohne Ton), Schrift im **oberen** Drittel statt unten, weil dort
+der Knopf zum Formular und der Beitragstext liegen, harte Schnitte ohne Blenden.
+
+In jeder Szene steht, was der Kunde davon hat, nicht was die Agentur kann:
+„Eröffnung in 6 Wochen?" → „In 6 Wochen steht alles." → „Einer kümmert sich.
+Nicht fünf Firmen." → „Alles im gleichen Look." → Endkarte „Reicht Ihre Zeit
+noch?" mit Pfeil auf den Knopf.
+
+**Tempo (28.07., nach Rückmeldung von Sait):** Die erste Fassung lief mit 2,2 s
+je Szene — die Bilder wechselten, bevor der Text gelesen war. Jetzt 4,3 s je
+Szene und 6,5 s für die Endkarte, dafür eine Szene weniger (sonst 26 Sekunden).
+Aus demselben Grund ist der Hook ein **Foto** statt eines Filmausschnitts: Im
+Kranmaterial hält keine Stelle länger als eine halbe Sekunde still, dazwischen
+liegt immer eine Schwenkunschärfe. **Wer `SZENE_DAUER` ändert, muss danach
+`node scripts/musik-ad.mjs` laufen lassen** — sonst fallen die Schläge neben
+die Schnitte.
+
+**Die zwei tragenden Bilder** (28.07., von Sait vorgeschlagen): Szene 2 ist ein
+echtes **Vorher/Nachher des AY Restaurants** (`ay-vorher.webp` → `ay-nachher.webp`,
+harter Wechsel nach 0,9 s mit Aufblitzen) — der einzige Beweis, den niemand
+behaupten muss. Szene 3 ist das **Foto von Sait auf dem Gerüst**
+(`sait-portrait.webp`): zu „Sie bekommen den Chef" gehört ein Mensch ins Bild.
+Damit gibt es drei Medienarten in `src/ad/AdMedium.tsx`: `video`, `bild`,
+`vorher-nachher`. Standbilder bekommen eine langsame Fahrt, damit sie zwischen
+den Filmausschnitten nicht stehen. `public/bilder` ist ein Symlink nach `assets/bilder`.
+
+**Offener Widerspruch (28.07.2026, von Sait so gewünscht):** Die Anzeige nennt
+**6 Wochen gesamt**, der Zeitplaner der Website rechnet **7** (Leuchtschild) und
+**9** (Pylon, Komplettpaket) — Produktion allein 3 bzw. 5 Wochen plus Gestaltung,
+Freigabe, Montage. Dieselben Leute sehen beide Zahlen. Entweder wird der
+Zeitplaner nachgezogen oder die Anzeige; nebeneinander stehen lassen kostet
+Vertrauen genau dort, wo es zählt. Genau diese Art Widerspruch wurde am 27.07.
+schon einmal beseitigt (Bento-Kachel „5 Wochen inkl. Montage").
+
+Alles Übrige in der Anzeige ist belegt: Montage macht Sait selbst, Arbeitsbekleidung,
+Werbeartikel und Folierung im Haus, gegründet 2018. Texte stehen in
+`src/ad/adSzenen.ts`, Vorschlag für Primärtext, Überschrift und Formularfragen
+im `showreel/README.md`.
+
+### Showreel (`showreel/`, 28.07.2026)
+Ein Film aus den acht Projektfilmen, gebaut mit **Remotion** (React → Video). Eigenes
+npm-Projekt neben der Website, berührt die HTML-Dateien nicht. 1080×1920 hochkant,
+30 fps, 41 Sekunden: Blitz-Auftakt → acht Ausschnitte à 4,3 s mit Bauchbinde →
+Abbinder mit Logo und Kontakt. Farben, Schriften, Reihenfolge und Bildunterschriften
+sind wortgleich mit der Startseite.
+
+- `showreel/src/showreel/clips.ts` — die acht Filme mit Anfangsbild und Text
+- `showreel/public/videos` und `public/fonts` sind **Symlinks** nach `assets/`,
+  das Material liegt also nur einmal im Projekt
+- `npm run dev` = Editor mit Vorschau, `npm run render` = Datei nach `out/`
+- Details, Fallstricke und Lizenzfrage: `showreel/README.md`
+
+**Zwei Dinge, die im Material stecken** und beim Setzen der Ausschnitte umgangen
+werden müssen: Die meisten Clips **enden mit einer weißen Abbinder-Karte mit Logo**
+(Hanako ab ca. 20 s, Can'ss ab 33 s, Stadion ab 28 s), und mehrere **beginnen mit
+einer Ansprache in die Kamera**, teils mit eingebrannten Textzeilen oder sichtbarer
+Kamera-Bedienoberfläche (CT Fassade, Sekunde 3–5). Zum Aussuchen gibt es die
+Komposition `Kontaktbogen` (ein Standbild je Sekunde).
+
+**Ton:** Der Originalton der Clips ist stumm (Baustellengeräusche, teils fremde Musik).
+Darunter liegt eine **selbst erzeugte Musikspur** — `showreel/scripts/musik.mjs` rechnet
+sie aus Sinus- und Rauschgeneratoren aus, daran hat niemand Rechte. Gekaufte
+Bibliotheksmusik bräuchte eine Lizenz, Instagram-Musik darf nicht in eine gerenderte
+Datei. Das Tempo hängt am Schnitt: 110,77 bpm, acht Schläge = ein Projektfilm, jeder
+Schnitt fällt auf eine Eins, jeder Film hat seinen eigenen Akkord. **Ändert sich
+`CLIP_DURATION`, muss die Musik neu erzeugt werden** (`node scripts/musik.mjs`).
+
 ---
 
 ## 4. Technische Konventionen und Stolperfallen
@@ -393,8 +464,9 @@ Basis: 4-dimensionales Audit (Reihenfolge/CRO, SEO-Inhalt, SEO-Technik, CTA/Vert
 ### Als Nächstes geplant
 1. **Die vier Leistungs-Unterseiten auf das neue Design umstellen** — sie nutzen noch den alten
    CSS-Nachbau des Logos und passen optisch nicht zur Startseite. Höchste Priorität.
-2. **Videos einbinden** — liegen fertig unter `assets/videos/`, sind aber noch nirgends verwendet.
-   Gedacht für die Inhaber-Sektion oder einen Social-Bereich.
+2. **Showreel verwenden** — liegt fertig unter `showreel/`, gerendert nach
+   `showreel/out/showreel.mp4`. Naheliegend: als Reel auf Instagram und im
+   Abschnitt „Einblicke" der Startseite über die Clip-Reihe gesetzt.
 3. **Instagram sehr präsent einbauen.** Ein Live-Feed wurde vorerst zurückgestellt, ist aber gewünscht.
 4. Restliche Unterseiten: Webdesign, Printmedien.
 
