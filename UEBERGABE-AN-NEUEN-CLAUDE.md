@@ -421,7 +421,15 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
 
 ### Geplant
 
-- **Kontaktformular** — bewusst zurückgestellt. World4You kann PHP, also ohne Fremddienst
+- ~~Kontaktformular~~ **Am 29.07.2026 als Funnel gelöst: `kontakt.html`.** Bewusst KEIN
+  serverseitiges Formular — drei Fragen (Vorhaben → Termin bzw. Leistung → Betriebstyp),
+  danach Einschätzung + fertig vorbereitete WhatsApp-Nachricht, dazu Telefon und
+  vorausgefüllte E-Mail. Zwei freiwillige Felder (Name, Firma) werden nur im Browser in die
+  Nachricht eingesetzt, nichts geht an einen Server — deshalb kein DSGVO-Nachtrag nötig
+  (ein erklärender Abschnitt steht trotzdem in der Datenschutzerklärung).
+  Wochenangaben gibt es nur beim Komplettpaket (9 Wochen), weil nur diese Zahl belegt ist.
+  Verlinkt über den Kopf-CTA „Angebot anfragen" (alle Seiten) und die Fußzeile.
+- **Altes Kontaktformular-Thema (überholt)** — bewusst zurückgestellt. World4You kann PHP, also ohne Fremddienst
   machbar. Vorlage: Saits internes Aufmaß-Werkzeug `/Users/lm/Downloads/Bedarfsanalyse.html`
   (sehr gut für den Vor-Ort-Termin, aber zu lang und zu fachlich für eine Erstanfrage).
   Empfehlung: Kurzform mit Betriebstyp-Logik — 3 Eingaben, ein Ergebnis, ein Knopf.

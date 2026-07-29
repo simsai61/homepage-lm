@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Printmedien &amp; Druck — Ländle Blitz Marketing</title>
-<meta name="description" content="Visitenkarten, Flyer, Speisekarten, Banner und Aufkleber drucken lassen — eigene Produktion in Meiningen, Vorarlberg. Mit Papierberatung und Druckfreigabe.">
-<link rel="canonical" href="https://www.lm-agentur.at/lm-agentur-printmedien.html">
+<title>Angebot anfragen — in drei Fragen | Ländle Blitz Marketing</title>
+<meta name="description" content="Sagen Sie uns in drei Schritten, was Sie vorhaben — Sie bekommen sofort eine ehrliche Einschätzung und eine fertig vorbereitete Anfrage per WhatsApp.">
+<link rel="canonical" href="https://www.lm-agentur.at/kontakt.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#14171F">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ländle Blitz Marketing">
-<meta property="og:title" content="Printmedien &amp; Druck — Ländle Blitz Marketing">
-<meta property="og:description" content="Visitenkarten, Flyer, Speisekarten, Banner und Aufkleber drucken lassen — eigene Produktion in Meiningen, Vorarlberg. Mit Papierberatung und Druckfreigabe.">
-<meta property="og:url" content="https://www.lm-agentur.at/lm-agentur-printmedien.html">
+<meta property="og:title" content="Angebot anfragen — in drei Fragen | Ländle Blitz Marketing">
+<meta property="og:description" content="Sagen Sie uns in drei Schritten, was Sie vorhaben — Sie bekommen sofort eine ehrliche Einschätzung und eine fertig vorbereitete Anfrage per WhatsApp.">
+<meta property="og:url" content="https://www.lm-agentur.at/kontakt.html">
 <meta property="og:image" content="https://www.lm-agentur.at/assets/bilder/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -980,19 +980,50 @@
   .sub-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
   @media (max-width:900px){.sub-hero{grid-template-columns:1fr}}
 
-  /* ---------- DRUCKPASSER ---------- */
-  .press-studio{
+  /* ---------- GERÄTE-BÜHNE ---------- */
+  .device-studio{
     background:var(--surface);border:1px solid var(--line);border-radius:16px;
     padding:clamp(16px,2.6vw,28px);display:flex;flex-direction:column;gap:var(--sp-2);
   }
-  .sheet{
+  .device-bay{
     width:100%;aspect-ratio:4/3;position:relative;border-radius:10px;overflow:hidden;
     background:linear-gradient(180deg,#232838,#14171F);
-    border:1px solid #333A4A;display:flex;align-items:center;justify-content:center;
-    box-shadow:inset 0 0 46px rgba(0,0,0,.45);
+    border:1px solid #333A4A;box-shadow:inset 0 0 46px rgba(0,0,0,.45);
+    display:flex;align-items:center;justify-content:center;padding:18px;
   }
-  .sheet svg{width:100%;height:100%;display:block}
-  .press-cap{
+  /* Der Gerätrahmen ändert seine Größe — das Layout darin ordnet sich neu */
+  .device{
+    position:relative;background:#0E1016;border:2px solid #464F63;border-radius:10px;
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:width .7s var(--ease-out),height .7s var(--ease-out),border-radius .5s ease;
+    width:100%;height:100%;
+  }
+  .device[data-geraet="tablet"]{width:62%;height:96%;border-radius:12px}
+  .device[data-geraet="handy"]{width:30%;height:96%;border-radius:16px}
+  .dev-bar{
+    height:16px;flex:0 0 auto;background:#1B1F2A;border-bottom:1px solid #2C3140;
+    display:flex;align-items:center;gap:4px;padding:0 6px;
+  }
+  .dev-bar i{width:5px;height:5px;border-radius:50%;background:#3D4557;display:block}
+  .dev-screen{flex:1 1 auto;padding:7px;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+  .blk{background:#242A38;border-radius:3px;flex:0 0 auto;opacity:0;transform:translateY(8px)}
+  .device.gebaut .blk{opacity:1;transform:none;transition:opacity .45s ease,transform .45s var(--ease-out)}
+  .device.gebaut .blk:nth-child(1){transition-delay:.05s}
+  .device.gebaut .blk:nth-child(2){transition-delay:.14s}
+  .device.gebaut .blk:nth-child(3){transition-delay:.23s}
+  .device.gebaut .blk:nth-child(4){transition-delay:.32s}
+  .blk-hero{height:26%;background:linear-gradient(135deg,#F2A65A,#E8628F,#C93C77);opacity:.9}
+  .device.gebaut .blk-hero{opacity:1}
+  .blk-text{height:7px}
+  .blk-text.kurz{width:52%}
+  /* Kachelreihe: nebeneinander am Rechner, gestapelt am Handy */
+  .blk-row{display:flex;gap:5px;flex:1 1 auto;min-height:0}
+  .blk-row > span{flex:1;background:#242A38;border-radius:3px}
+  .device[data-geraet="handy"] .blk-row{flex-direction:column}
+  .blk-cta{height:11px;width:44%;background:#E8628F;border-radius:3px}
+  .device[data-geraet="handy"] .blk-cta{width:100%;height:13px}
+
+  .dev-cap{
     font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
     color:var(--muted);text-align:center;min-height:1.4em;
   }
@@ -1006,28 +1037,7 @@
   .seg button.active{background:var(--glow-dim);border-color:var(--glow);color:var(--text)}
   .seg button:active{transform:scale(.97)}
 
-  .vgl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  @media (max-width:760px){.vgl{grid-template-columns:1fr}}
-  .vgl-card{
-    background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--sp-3);
-    transition:border-color .35s,transform .35s var(--ease),background .35s;
-  }
-  .vgl-card:hover{border-color:var(--glow-dim);transform:translateY(-3px);background:var(--surface-2)}
-  .vgl-card h3{font-size:21px;margin-bottom:6px}
-  .vgl-tag{
-    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--peach);display:block;margin-bottom:12px;
-  }
-  .vgl-card > p{color:var(--muted);font-size:15px;margin-bottom:var(--sp-2)}
-  .vgl-list{list-style:none}
-  .vgl-list li{
-    display:flex;gap:10px;align-items:flex-start;padding:10px 0;
-    border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);
-  }
-  .vgl-list li:first-child{border-top:none}
-  .vgl-list svg{width:15px;height:15px;color:var(--glow);flex-shrink:0;margin-top:3px}
-
-  .typen{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+  .typen{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
   .typ{
     background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--sp-3);
     transition:border-color .35s,transform .35s var(--ease),background .35s;
@@ -1040,13 +1050,93 @@
   .typ-ico svg{width:21px;height:21px}
   .typ h3{font-size:17px;margin-bottom:6px}
   .typ p{color:var(--muted);font-size:14.5px;line-height:1.55}
+
+  /* Klartext-Liste */
+  .klartext{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .kt{
+    border:1px solid var(--line);border-radius:12px;padding:var(--sp-3);background:var(--surface);
+  }
+  .kt h3{font-size:17px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  .kt h3 svg{width:19px;height:19px;flex-shrink:0}
+  .kt.ja h3 svg{color:#5BBF8A}
+  .kt.nein h3 svg{color:var(--glow)}
+  .kt p{color:var(--muted);font-size:14.5px;line-height:1.55}
+</style>
+<style>
+  /* ---------- FUNNEL ---------- */
+  .fn{padding:calc(var(--sp-6) + 40px) 0 var(--sp-6)}
+  .fn .wrap{max-width:840px}
+  .fn-head{text-align:center;margin-bottom:var(--sp-5)}
+  .fn-head h1{font-size:clamp(30px,4.6vw,50px);margin:var(--sp-2) 0 var(--sp-2)}
+  .fn-head p{color:var(--muted);font-size:clamp(16px,1.8vw,18.5px);max-width:52ch;margin:0 auto}
+
+  .fn-bar{display:flex;gap:8px;justify-content:center;margin-bottom:var(--sp-4)}
+  .fn-bar i{width:38px;height:3px;border-radius:2px;background:var(--line);transition:background .35s}
+  .fn-bar i.on{background:var(--glow)}
+
+  .fn-step{display:none}
+  .fn-step.live{display:block}
+  .fn-q{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.6vw,27px);
+    text-align:center;margin-bottom:var(--sp-4)}
+
+  .fn-opts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .fn-opt{
+    display:flex;flex-direction:column;gap:5px;text-align:left;
+    padding:20px 22px;min-height:76px;justify-content:center;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;color:var(--text);
+    font-size:16.5px;font-weight:600;cursor:pointer;
+    transition:border-color .3s,background .3s,transform .3s var(--ease);
+  }
+  .fn-opt small{font-weight:400;font-size:14px;color:var(--muted);line-height:1.4}
+  .fn-opt:hover{border-color:var(--glow-dim);background:var(--surface-2);transform:translateY(-2px)}
+  .fn-opt[aria-pressed="true"]{border-color:var(--glow);background:rgba(232,98,143,.08)}
+
+  .fn-date{max-width:340px;margin:0 auto}
+  .fn-date input{
+    width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    color:var(--text);font-family:inherit;font-size:17px;padding:16px 18px;min-height:56px;
+  }
+  .fn-date input:focus{outline:2px solid var(--glow-dim);outline-offset:2px}
+
+  .fn-nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:var(--sp-4)}
+  .fn-back{color:var(--muted);font-size:14.5px;background:none;border:none;cursor:pointer;padding:10px 2px}
+  .fn-back:hover{color:var(--text)}
+  .fn-skip{color:var(--muted);font-size:14.5px;background:none;border:none;cursor:pointer;padding:10px 2px}
+  .fn-skip:hover{color:var(--text)}
+
+  .fn-sum{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:var(--sp-4);margin-bottom:var(--sp-3);
+  }
+  .fn-sum dl{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;margin:0}
+  .fn-sum dt{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .fn-sum dd{margin:0;font-size:16px;font-weight:600}
+  .fn-fields{margin-top:var(--sp-3);padding-top:var(--sp-3);border-top:1px solid var(--line)}
+  .fn-fields-lead{color:var(--muted);font-size:14px;margin-bottom:12px}
+  .fn-fields-row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+  .fn-fields input{
+    width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;
+    color:var(--text);font-family:inherit;font-size:16px;padding:13px 15px;min-height:50px;
+  }
+  .fn-fields input::placeholder{color:#5C6273}
+  .fn-fields input:focus{outline:2px solid var(--glow-dim);outline-offset:2px}
+  @media (max-width:620px){.fn-fields-row{grid-template-columns:1fr}}
+  .fn-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--sp-3)}
+  .fn-note{color:var(--muted);font-size:14px;margin-top:var(--sp-3);line-height:1.55}
+  .fn-alt{text-align:center;margin-top:var(--sp-5);color:var(--muted);font-size:14.5px}
+  .fn-alt a{color:var(--glow)}
+  @media (max-width:620px){
+    .fn-opts{grid-template-columns:1fr}
+    .fn-cta .btn{width:100%;justify-content:center}
+  }
 </style>
 </head>
 <body>
 
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
   <defs>
-    <pattern id="triPrint" width="26" height="23" patternUnits="userSpaceOnUse">
+    <pattern id="triWeb" width="26" height="23" patternUnits="userSpaceOnUse">
       <path d="M13 0 L26 23 L0 23 Z" fill="none" stroke="#E8628F" stroke-width="1"/>
     </pattern>
   </defs>
@@ -1077,207 +1167,113 @@
 </header>
 
 <main id="top">
-
-<section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="grid"></div><div class="glowfield"></div>
-    <svg class="tri" viewBox="0 0 200 200"><rect width="200" height="200" fill="url(#triPrint)"/></svg>
-  </div>
+<section class="fn">
   <div class="wrap">
-    <div class="sub-hero">
-      <div>
-        <span class="hero-eyebrow">Printmedien</span>
-        <h1 class="hero-h1">
-          <span class="ln"><span>Was man in</span></span>
-          <span class="ln"><span>der Hand hält,</span></span>
-          <span class="ln"><span class="sichtbar">bleibt.</span></span>
-        </h1>
-        <p class="hero-sub">
-          Visitenkarten, Flyer, Speisekarten, Banner — <strong>im Haus gedruckt</strong>.
-          Eine Visitenkarte kostet Cent und liegt trotzdem monatelang in einer Brieftasche.
-        </p>
-        <div class="hero-actions">
-          <a href="#kontakt" class="btn btn-primary">
-            Druck anfragen
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+
+    <div class="fn-head">
+      <span class="tag">Anfrage</span>
+      <h1>Ihr Vorhaben in drei Fragen.</h1>
+      <p>Danach wissen Sie, ob sich Ihr Termin ausgeht — und Ihre Anfrage ist fertig vorbereitet. Kein Formular, keine Anmeldung.</p>
+    </div>
+
+    <div class="fn-bar" id="fnBar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+
+    <!-- 1 — Vorhaben -->
+    <div class="fn-step live" id="s1">
+      <p class="fn-q">Was haben Sie vor?</p>
+      <div class="fn-opts">
+        <button type="button" class="fn-opt" data-vorhaben="paket">Ich eröffne neu<small>Komplettpaket: Logo, Print, Bekleidung, Beschilderung, Fahrzeug</small></button>
+        <button type="button" class="fn-opt" data-vorhaben="einzel">Eine einzelne Leistung<small>Zum Beispiel nur ein Schild oder eine Fahrzeugbeschriftung</small></button>
+        <button type="button" class="fn-opt" data-vorhaben="unklar">Ich weiß es noch nicht<small>Wir schauen es uns gemeinsam an</small></button>
+      </div>
+    </div>
+
+    <!-- 2a — Termin -->
+    <div class="fn-step" id="s2a">
+      <p class="fn-q">Wann sperren Sie auf?</p>
+      <div class="fn-date">
+        <label class="fld">
+          <span class="fld-label">Eröffnungstermin</span>
+          <input type="date" id="fnDate">
+        </label>
+      </div>
+      <div class="fn-nav">
+        <button type="button" class="fn-back" data-back>← Zurück</button>
+        <button type="button" class="fn-skip" data-skip>Termin steht noch nicht fest →</button>
+      </div>
+    </div>
+
+    <!-- 2b — Leistung -->
+    <div class="fn-step" id="s2b">
+      <p class="fn-q">Um welche Leistung geht es?</p>
+      <div class="fn-opts">
+        <button type="button" class="fn-opt" data-leistung="Beschilderung oder Leuchtreklame">Beschilderung / Leuchtreklame</button>
+        <button type="button" class="fn-opt" data-leistung="Fahrzeugbeschriftung">Fahrzeugbeschriftung</button>
+        <button type="button" class="fn-opt" data-leistung="Grafik und Logodesign">Grafik &amp; Logodesign</button>
+        <button type="button" class="fn-opt" data-leistung="Printmedien">Printmedien</button>
+        <button type="button" class="fn-opt" data-leistung="Arbeitsbekleidung">Arbeitsbekleidung</button>
+        <button type="button" class="fn-opt" data-leistung="Werbeartikel">Werbeartikel</button>
+      </div>
+      <div class="fn-nav"><button type="button" class="fn-back" data-back>← Zurück</button><span></span></div>
+    </div>
+
+    <!-- 3 — Betrieb -->
+    <div class="fn-step" id="s3">
+      <p class="fn-q">Um welchen Betrieb geht es?</p>
+      <div class="fn-opts">
+        <button type="button" class="fn-opt" data-betrieb="Gastronomie">Gastronomie</button>
+        <button type="button" class="fn-opt" data-betrieb="Handwerk">Handwerk</button>
+        <button type="button" class="fn-opt" data-betrieb="Handel">Handel</button>
+        <button type="button" class="fn-opt" data-betrieb="Anderes">Etwas anderes</button>
+      </div>
+      <div class="fn-nav"><button type="button" class="fn-back" data-back>← Zurück</button><span></span></div>
+    </div>
+
+    <!-- 4 — Ergebnis -->
+    <div class="fn-step" id="s4">
+      <div class="verdict" id="fnVerdict" aria-live="polite"></div>
+
+      <div class="fn-sum">
+        <dl id="fnSum"></dl>
+
+        <div class="fn-fields">
+          <p class="fn-fields-lead">Damit Sait weiß, wen er zurückruft — freiwillig:</p>
+          <div class="fn-fields-row">
+            <label class="fld">
+              <span class="fld-label">Ihr Name</span>
+              <input type="text" id="fnName" autocomplete="name" placeholder="z. B. Max Müller">
+            </label>
+            <label class="fld">
+              <span class="fld-label">Firma oder Betrieb</span>
+              <input type="text" id="fnFirma" autocomplete="organization" placeholder="z. B. Pizzeria Sonnblick">
+            </label>
+          </div>
+        </div>
+
+        <div class="fn-cta">
+          <a class="btn btn-wa" id="fnWa" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+            Per WhatsApp anfragen
           </a>
-          <a href="#produkte" class="btn btn-ghost">Was wir drucken</a>
+          <a href="tel:+436643724808" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
+            Anrufen
+          </a>
+          <a href="#" class="btn btn-ghost" id="fnMail">E-Mail</a>
         </div>
+        <p class="fn-note">Ihre Angaben stehen schon in der Nachricht — Sie können vor dem Senden alles ändern. Zurück kommt eine ehrliche Einschätzung, was bis zu Ihrem Termin machbar ist, und ein Kosten-Richtwert. Unverbindlich. Ihre Nachricht landet direkt bei Sait Simsek.</p>
       </div>
 
-      <div class="rev">
-        <div class="press-studio">
-          <div class="sheet">
-            <svg viewBox="0 0 260 260" role="img" aria-label="Vier Druckplatten rücken in den Passer">
-  <!-- Papierbogen -->
-  <rect x="24" y="20" width="212" height="220" rx="3" fill="#F4F3EE"/>
-  <rect x="24" y="20" width="212" height="220" rx="3" fill="none" stroke="#D8D5CB"/>
-
-  <!-- Passerkreuze -->
-  <g stroke="#B9B5A8" stroke-width="1" opacity=".9">
-    <g transform="translate(38,34)"><line x1="-7" y1="0" x2="7" y2="0"/><line x1="0" y1="-7" x2="0" y2="7"/><circle cx="0" cy="0" r="4.5" fill="none"/></g>
-    <g transform="translate(222,34)"><line x1="-7" y1="0" x2="7" y2="0"/><line x1="0" y1="-7" x2="0" y2="7"/><circle cx="0" cy="0" r="4.5" fill="none"/></g>
-    <g transform="translate(38,226)"><line x1="-7" y1="0" x2="7" y2="0"/><line x1="0" y1="-7" x2="0" y2="7"/><circle cx="0" cy="0" r="4.5" fill="none"/></g>
-    <g transform="translate(222,226)"><line x1="-7" y1="0" x2="7" y2="0"/><line x1="0" y1="-7" x2="0" y2="7"/><circle cx="0" cy="0" r="4.5" fill="none"/></g>
-  </g>
-
-  <!-- Die vier Auszüge, übereinander im Multiplikationsmodus -->
-  <g transform="translate(0,6)">
-    <g class="platte" id="platteC" style="mix-blend-mode:multiply"><path d="M118 44 L62 152 L100 152 L84 226 L146 122 L106 122 Z" fill="#00AEEF"/></g>
-    <g class="platte" id="platteM" style="mix-blend-mode:multiply"><path d="M118 44 L62 152 L100 152 L84 226 L146 122 L106 122 Z" fill="#EC008C"/></g>
-    <g class="platte" id="platteY" style="mix-blend-mode:multiply"><path d="M118 44 L62 152 L100 152 L84 226 L146 122 L106 122 Z" fill="#FFF200"/></g>
-    <g class="platte" id="platteK" style="mix-blend-mode:multiply"><path d="M118 44 L62 152 L100 152 L84 226 L146 122 L106 122 Z" fill="#1A1A1A"/></g>
-  </g>
-
-  <!-- Farbstreifen am Bogenrand -->
-  <g transform="translate(96,244)">
-    <rect x="0"  y="0" width="16" height="8" fill="#00AEEF"/>
-    <rect x="18" y="0" width="16" height="8" fill="#EC008C"/>
-    <rect x="36" y="0" width="16" height="8" fill="#FFF200"/>
-    <rect x="54" y="0" width="16" height="8" fill="#1A1A1A"/>
-  </g>
-</svg>
-          </div>
-          <div class="seg" role="group" aria-label="Passer steuern">
-            <button type="button" id="btnPasser" class="active">Passer stimmt</button>
-            <button type="button" id="btnVersatz">Versatz zeigen</button>
-          </div>
-          <div class="press-cap" id="pressCap">Vier Platten, ein Bild …</div>
-        </div>
+      <div class="fn-nav">
+        <button type="button" class="fn-back" data-back>← Angaben ändern</button>
+        <span></span>
       </div>
     </div>
+
+    <p class="fn-alt">Lieber direkt? <a href="tel:+436643724808">+43 664 372 48 08</a> · <a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a></p>
+
   </div>
 </section>
-
-<!-- ============ WARUM ============ -->
-<section id="warum">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="tag">Worauf es ankommt</span>
-      <h2>Warum Druck etwas anderes ist als ein Bildschirm.</h2>
-      <p>Am Monitor leuchten Farben, auf Papier werden sie aufgetragen. Wer das nicht berücksichtigt, wundert sich später über das Ergebnis.</p>
-    </div>
-    <div class="vgl">
-      <div class="vgl-card rev">
-        <span class="vgl-tag">Der häufigste Fehler</span>
-        <h3>Farben aus dem Web</h3>
-        <p>Ein Logo, das nur als Bildschirmdatei existiert, lässt sich nicht sauber drucken. Leuchtende Bildschirmfarben gibt es auf Papier schlicht nicht.</p>
-        <ul class="vgl-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Wir legen Druckfarben von Anfang an mit fest</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Bei Hausfarben auf Wunsch als Sonderfarbe gedruckt</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Proof vor der Auflage, wenn die Farbe kritisch ist</span></li>
-        </ul>
-      </div>
-      <div class="vgl-card rev" style="--d:110ms">
-        <span class="vgl-tag">Was den Unterschied macht</span>
-        <h3>Papier und Veredelung</h3>
-        <p>Dieselbe Visitenkarte wirkt auf 300 Gramm Naturpapier völlig anders als auf glänzendem Standardkarton. Man merkt es, bevor man sie liest.</p>
-        <ul class="vgl-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Muster zum Anfassen, bevor Sie sich entscheiden</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Matt, glänzend, Soft-Touch oder Prägung</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Auch kleine Auflagen — 100 Karten sind kein Problem</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PRODUKTE ============ -->
-<section id="produkte">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="tag">Was wir drucken</span>
-      <h2>Von der Visitenkarte bis zum Bauzaunbanner.</h2>
-    </div>
-    <div class="typen">
-      <div class="typ rev">
-        <div class="typ-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 11h5"/><path d="M6 14h8"/></svg></div>
-        <h3>Visitenkarten</h3>
-        <p>Das Stück, das übrig bleibt, wenn das Gespräch vorbei ist. Hier lohnt sich gutes Papier.</p>
-      </div>
-      <div class="typ rev" style="--d:80ms">
-        <div class="typ-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v18H5z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></div>
-        <h3>Flyer &amp; Folder</h3>
-        <p>Für Eröffnungen und Aktionen. Gefalzt oder flach, in jeder gängigen Größe.</p>
-      </div>
-      <div class="typ rev" style="--d:160ms">
-        <div class="typ-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8"/><path d="M8 13h8"/><path d="M8 17h4"/><path d="M12 4v16"/></svg></div>
-        <h3>Speisekarten</h3>
-        <p>Abwaschbar laminiert oder auf Naturpapier zum Nachdrucken. Beides hat seine Berechtigung.</p>
-      </div>
-      <div class="typ rev" style="--d:240ms">
-        <div class="typ-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v11H3z"/><path d="M6 16v3"/><path d="M18 16v3"/><path d="M7 9h10"/></svg></div>
-        <h3>Banner &amp; Planen</h3>
-        <p>Wetterfest, geöst, für Bauzaun und Fassade. Auch als Hinweis auf die kommende Eröffnung.</p>
-      </div>
-      <div class="typ rev">
-        <div class="typ-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v18H5z"/><path d="M9 3v6l3-2 3 2V3"/></svg></div>
-        <h3>Briefpapier &amp; Blocks</h3>
-        <p>Angebote und Rechnungen auf eigenem Briefpapier wirken anders als auf weißem Kopierpapier.</p>
-      </div>
-      <div class="typ rev" style="--d:80ms">
-        <div class="typ-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Aufkleber &amp; Etiketten</h3>
-        <p>Rund, eckig, aus Folie oder Papier — für Produkte, Verpackungen und Fahrzeuge.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROZESS ============ -->
-<section id="prozess">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="tag">Ablauf</span>
-      <h2>Von der Datei zum fertigen Stapel.</h2>
-    </div>
-    <div class="steps" id="steps">
-      <span class="fill" aria-hidden="true"></span>
-      <div class="step"><div class="step-dot">01</div><div><h3>Gestaltung</h3><p>Wir setzen das Stück auf — oder prüfen Ihre Datei auf Anschnitt, Auflösung und Farben.</p><span class="step-time">2–5 Tage</span></div></div>
-      <div class="step"><div class="step-dot" style="--d:120ms">02</div><div><h3>Papierwahl</h3><p>Muster zum Anfassen. Grammatur und Oberfläche entscheiden über die Wirkung.</p><span class="step-time">1 Termin</span></div></div>
-      <div class="step"><div class="step-dot" style="--d:240ms">03</div><div><h3>Freigabe</h3><p>Sie geben schriftlich frei. Was freigegeben ist, geht so in den Druck.</p><span class="step-time">1 Tag</span></div></div>
-      <div class="step"><div class="step-dot" style="--d:360ms">04</div><div><h3>Druck &amp; Weiterverarbeitung</h3><p>Gedruckt, geschnitten, gefalzt, laminiert — und geliefert.</p><span class="step-time">3–8 Tage</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ KONTAKT ============ -->
-<section class="cta-band" id="kontakt">
-  <div class="wrap">
-    <div class="rev">
-      <h2>Etwas zu drucken?</h2>
-      <p>Sagen Sie uns, was Sie brauchen und wie viele — wir melden uns mit Papiervorschlag und Preis.</p>
-      <div class="cta-actions">
-        <a href="https://wa.me/436643724808?text=Hallo!%20Ich%20br%C3%A4uchte%20etwas%20gedruckt."
-           rel="noopener" class="btn btn-wa">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
-          WhatsApp
-        </a>
-        <a href="tel:+436643724808" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
-          Jetzt anrufen
-        </a>
-        <a href="mailto:info@lm-agentur.at" class="btn btn-ghost">E-Mail</a>
-      </div>
-    </div>
-
-    <div class="contact-card rev" style="--d:120ms">
-      <div class="contact-strip-bar" aria-hidden="true">
-        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.4 7-13a7 7 0 10-14 0c0 5.6 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg></div>
-        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></div>
-        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg></div>
-        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="#1A0E12"><path d="M4 3l16 7-6.5 2.3L11 19z"/></svg></div>
-      </div>
-      <div class="contact-details">
-        <div class="row"><span class="label">Adresse</span><span>Tannenfeldstrasse 3, 6812 Meiningen</span></div>
-        <div class="row"><span class="label">Telefon</span><a href="tel:+436643724808">+43 664 372 48 08</a></div>
-        <div class="row"><span class="label">E-Mail</span><a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a></div>
-        <div class="row"><span class="label">Instagram</span><a href="https://www.instagram.com/laendleblitzmarketing/" rel="noopener">@laendleblitzmarketing</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <a class="wa-float" id="waFloat" rel="noopener" aria-label="Per WhatsApp anfragen"
@@ -1544,86 +1540,189 @@
 })();
 </script>
 
+
+
 <script>
-/* Druckpasser — vier Auszüge rücken nacheinander an ihren Platz.
-   Bewusst über das SVG-transform-ATTRIBUT animiert: CSS-transform mit px-Werten
-   wird auf SVG-Gruppen verworfen (Chrome rechnet es zur Einheitsmatrix).
-   Statt eines geteilten raf-Handles läuft jede Animation mit eigener Kennung —
-   eine neue Kennung macht die vorige wirkungslos. */
+/* Anfrage-Funnel — drei Fragen, dann eine fertig vorbereitete Nachricht.
+   Grundsatz: Es wird nichts gerechnet, was nicht belegt ist. Wochenangaben
+   gibt es nur fürs Komplettpaket (9 Wochen Gesamtvorlauf, siehe Zeitplaner). */
 (function(){
-  var platten=[
-    {el:document.getElementById('platteC'), dx:-13, dy:-8, name:'Cyan'},
-    {el:document.getElementById('platteM'), dx: 11, dy:-5, name:'Magenta'},
-    {el:document.getElementById('platteY'), dx: -7, dy:10, name:'Gelb'},
-    {el:document.getElementById('platteK'), dx:  9, dy: 8, name:'Schwarz'}
-  ];
-  var cap=document.getElementById('pressCap');
-  var btnPasser=document.getElementById('btnPasser');
-  var btnVersatz=document.getElementById('btnVersatz');
-  if(!platten[0].el||!btnPasser) return;
+  var GESAMT_PAKET = 9;   /* Wochen: 5 Produktion + Gestaltung, Aufmaß, Montage */
 
-  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var lauf=0, gestartet=false;
-  var DAUER=560, VERSATZ=340;
+  var stepEls = {
+    s1:  document.getElementById('s1'),
+    s2a: document.getElementById('s2a'),
+    s2b: document.getElementById('s2b'),
+    s3:  document.getElementById('s3'),
+    s4:  document.getElementById('s4')
+  };
+  var bar     = document.getElementById('fnBar');
+  var dateEl  = document.getElementById('fnDate');
+  var verdEl  = document.getElementById('fnVerdict');
+  var sumEl   = document.getElementById('fnSum');
+  var waEl    = document.getElementById('fnWa');
+  var mailEl  = document.getElementById('fnMail');
+  var nameEl  = document.getElementById('fnName');
+  var firmaEl = document.getElementById('fnFirma');
+  if (!stepEls.s1 || !bar) return;
 
-  function setze(p,x,y){
-    p.el.setAttribute('transform','translate('+x.toFixed(2)+','+y.toFixed(2)+')');
+  var stand = { vorhaben:null, leistung:null, termin:null, betrieb:null };
+  var verlauf = ['s1'];
+  var fmt = new Intl.DateTimeFormat('de-AT', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+  var ICONS = {
+    ok:   '<svg class="vico" viewBox="0 0 24 24" fill="none" stroke="#5BBF8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>',
+    tight:'<svg class="vico" viewBox="0 0 24 24" fill="none" stroke="#E0B44A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.2"/><circle cx="12" cy="16.4" r=".9" fill="#E0B44A" stroke="none"/></svg>',
+    late: '<svg class="vico" viewBox="0 0 24 24" fill="none" stroke="#E8628F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l9.2 16H2.8z"/><path d="M12 10v4"/><circle cx="12" cy="16.8" r=".9" fill="#E8628F" stroke="none"/></svg>'
+  };
+
+  function startOfDay(d){ var x=new Date(d.getTime()); x.setHours(0,0,0,0); return x; }
+  function isoDay(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   }
-  function alleAuf(f){ platten.forEach(function(p){ setze(p,p.dx*f,p.dy*f); }); }
+  if (dateEl) dateEl.min = isoDay(startOfDay(new Date()));
 
-  function auseinander(){
-    lauf++;                       /* laufende Animation verwerfen */
-    alleAuf(1);
-    btnVersatz.classList.add('active'); btnPasser.classList.remove('active');
-    cap.textContent='Versatz — so sieht ein schlechter Passer aus';
+  function zeige(id){
+    Object.keys(stepEls).forEach(function(k){ stepEls[k].classList.toggle('live', k === id); });
+    var stufe = { s1:1, s2a:2, s2b:2, s3:3, s4:4 }[id] || 1;
+    Array.prototype.forEach.call(bar.children, function(el, i){ el.classList.toggle('on', i < stufe); });
+    var kopf = document.querySelector('.fn-head');
+    if (kopf && window.scrollY > kopf.offsetTop) kopf.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
-  function zusammen(sofort){
-    lauf++;
-    var meine=lauf;
-    btnPasser.classList.add('active'); btnVersatz.classList.remove('active');
-    if(sofort){
-      alleAuf(0);
-      cap.textContent='Passer stimmt — vier Platten, ein sauberes Bild';
+  function weiter(id){ verlauf.push(id); zeige(id); if (id === 's4') ergebnis(); }
+
+  function zurueck(){
+    if (verlauf.length < 2) return;
+    verlauf.pop();
+    zeige(verlauf[verlauf.length - 1]);
+  }
+
+  /* Auswahl-Knöpfe */
+  document.addEventListener('click', function(e){
+    var opt = e.target.closest('.fn-opt');
+    if (opt) {
+      if (opt.dataset.vorhaben) {
+        stand.vorhaben = opt.dataset.vorhaben;
+        stand.leistung = null; stand.termin = null;
+        weiter(stand.vorhaben === 'paket' ? 's2a' : (stand.vorhaben === 'einzel' ? 's2b' : 's3'));
+      } else if (opt.dataset.leistung) {
+        stand.leistung = opt.dataset.leistung;
+        weiter('s3');
+      } else if (opt.dataset.betrieb) {
+        stand.betrieb = opt.dataset.betrieb;
+        weiter('s4');
+      }
       return;
     }
-    alleAuf(1);
-    var t0=performance.now();
-    function frame(now){
-      if(meine!==lauf) return;    /* jemand hat inzwischen umgeschaltet */
-      var t=now-t0, fertig=true;
-      platten.forEach(function(p,i){
-        var lokal=t-i*VERSATZ;
-        if(lokal<=0){ fertig=false; return; }
-        var q=Math.min(lokal/DAUER,1);
-        var e=1-Math.pow(1-q,3);
-        setze(p, p.dx*(1-e), p.dy*(1-e));
-        if(q<1) fertig=false;
-      });
-      var idx=Math.min(platten.length-1, Math.floor(t/VERSATZ));
-      cap.textContent = fertig ? 'Passer stimmt — vier Platten, ein sauberes Bild'
-                               : platten[idx].name+' im Passer …';
-      if(!fertig) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
+    if (e.target.closest('[data-back]')) { zurueck(); return; }
+    if (e.target.closest('[data-skip]')) { stand.termin = null; weiter('s3'); return; }
+  });
+
+  if (dateEl) {
+    dateEl.addEventListener('change', function(){
+      if (!dateEl.value) return;
+      stand.termin = dateEl.value;
+      weiter('s3');
+    });
   }
 
-  btnPasser.addEventListener('click', function(){ zusammen(false); });
-  btnVersatz.addEventListener('click', auseinander);
+  [nameEl, firmaEl].forEach(function(el){
+    if (el) el.addEventListener('input', linkeSetzen);
+  });
 
-  alleAuf(1);
-  if(reduced){ zusammen(true); return; }
+  function ergebnis(){
+    var zeilen = [];
+    var datumTxt = null, wochenFrei = null;
 
-  function starte(){ if(gestartet) return; gestartet=true; zusammen(false); }
-  var sheet=document.querySelector('.sheet');
-  if('IntersectionObserver' in window && sheet){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(x){ if(x.isIntersecting){ starte(); io.unobserve(x.target);} });
-    },{threshold:.35});
-    io.observe(sheet);
-  } else starte();
+    if (stand.termin) {
+      var auf = startOfDay(new Date(stand.termin + 'T00:00:00'));
+      datumTxt = fmt.format(auf);
+      wochenFrei = Math.floor((auf - startOfDay(new Date())) / (1000*60*60*24*7));
+    }
+
+    zeilen.push(['Vorhaben', stand.vorhaben === 'paket' ? 'Komplettpaket zur Eröffnung'
+                            : stand.vorhaben === 'einzel' ? (stand.leistung || 'Einzelne Leistung')
+                            : 'Noch offen — Beratung gewünscht']);
+    if (datumTxt) zeilen.push(['Eröffnung', datumTxt]);
+    if (stand.betrieb) zeilen.push(['Betrieb', stand.betrieb]);
+
+    sumEl.innerHTML = zeilen.map(function(z){
+      return '<dt>' + z[0] + '</dt><dd>' + z[1] + '</dd>';
+    }).join('');
+
+    /* Einschätzung nur, wo eine belegte Zahl dahintersteht */
+    var art = 'ok', titel, text;
+    if (stand.vorhaben === 'paket' && wochenFrei !== null) {
+      if (wochenFrei >= GESAMT_PAKET + 2) {
+        art = 'ok'; titel = 'Das geht sich gut aus.';
+        text = 'Für ein Komplettpaket brauchen wir rund ' + GESAMT_PAKET + ' Wochen. Sie haben ' + wochenFrei +
+               ' Wochen — genug Luft für saubere Gestaltung und Abstimmung.';
+      } else if (wochenFrei >= GESAMT_PAKET) {
+        art = 'tight'; titel = 'Passt — ohne Puffer.';
+        text = 'Mit ' + wochenFrei + ' Wochen liegen Sie knapp über den nötigen ' + GESAMT_PAKET +
+               ' Wochen. Machbar, wenn Freigaben zügig kommen — melden Sie sich möglichst diese Woche.';
+      } else {
+        art = 'late';
+        var fehlt = Math.max(1, GESAMT_PAKET - wochenFrei);
+        titel = 'Es wird knapp — ' + fehlt + ' Woche' + (fehlt === 1 ? '' : 'n') + ' fehlen.';
+        text = 'Wir ziehen dann vor, was sofort wirkt: Logo, Printmedien und Arbeitsbekleidung zuerst. ' +
+               'Beschilderung und Folierung kommen direkt danach — Sie eröffnen sichtbar, der Rest folgt zeitnah.';
+      }
+    } else if (stand.vorhaben === 'paket') {
+      titel = 'Gut, dass Sie früh dran sind.';
+      text = 'Für ein Komplettpaket rechnen wir mit rund ' + GESAMT_PAKET + ' Wochen vom Erstgespräch bis zur Eröffnung. ' +
+             'Sobald Ihr Termin steht, planen wir rückwärts.';
+    } else if (stand.vorhaben === 'einzel') {
+      titel = 'Schauen wir uns das an.';
+      text = 'Wie lange ' + (stand.leistung || 'das') + ' dauert, hängt vom Umfang ab — das sagen wir Ihnen im Erstgespräch verbindlich, samt Kosten-Richtwert.';
+    } else {
+      titel = 'Kein Problem — dafür sind wir da.';
+      text = 'Sagen Sie uns kurz, was Sie vorhaben. Wir schauen uns Gebäude und Termin an und sagen Ihnen ehrlich, was sinnvoll ist.';
+    }
+
+    verdEl.className = 'verdict ' + art;
+    verdEl.innerHTML = ICONS[art] + '<div><h3>' + titel + '</h3><p>' + text + '</p></div>';
+
+    stand.art = art; stand.datumTxt = datumTxt;
+    linkeSetzen();
+  }
+
+  /* Nachricht zusammenbauen — Vorhaben, Termin, Betrieb und die freiwilligen Angaben.
+     Wird bei jeder Eingabe neu erzeugt, damit die Knöpfe immer aktuell sind. */
+  function nachricht(){
+    var name  = (nameEl  && nameEl.value  || '').trim();
+    var firma = (firmaEl && firmaEl.value || '').trim();
+
+    var n = 'Hallo! ';
+    if (name && firma)      n += 'Hier ist ' + name + ' von ' + firma + '. ';
+    else if (name)          n += 'Hier ist ' + name + '. ';
+    else if (firma)         n += 'Ich melde mich für ' + firma + '. ';
+
+    if (stand.vorhaben === 'paket') {
+      n += stand.datumTxt ? 'Ich eröffne am ' + stand.datumTxt + ' und interessiere mich für das Komplettpaket.'
+                          : 'Ich plane eine Eröffnung und interessiere mich für das Komplettpaket.';
+      if (stand.art === 'late') n += ' Laut Ihrem Rechner wird das knapp — was ist bis dahin machbar?';
+    } else if (stand.vorhaben === 'einzel') {
+      n += 'Ich interessiere mich für: ' + stand.leistung + '.';
+    } else {
+      n += 'Ich hätte gerne eine erste Einschätzung.';
+    }
+    if (stand.betrieb && stand.betrieb !== 'Anderes') n += ' Es geht um einen Betrieb aus dem Bereich ' + stand.betrieb + '.';
+    n += ' Können wir dazu telefonieren?';
+    return n;
+  }
+
+  function linkeSetzen(){
+    var n = nachricht();
+    var firma = (firmaEl && firmaEl.value || '').trim();
+    var was = stand.vorhaben === 'paket' ? 'Komplettpaket' : (stand.leistung || 'Beratung');
+    waEl.href = 'https://wa.me/436643724808?text=' + encodeURIComponent(n);
+    mailEl.href = 'mailto:info@lm-agentur.at?subject=' +
+      encodeURIComponent('Anfrage — ' + was + (firma ? ' — ' + firma : '')) +
+      '&body=' + encodeURIComponent(n);
+  }
 })();
 </script>
-
 </body>
 </html>
