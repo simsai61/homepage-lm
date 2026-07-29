@@ -412,7 +412,17 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
    Domain noch unbestätigt (Canonicals zeigen auf www.lm-agentur.at).
 6. **Canonical-/OG-URLs finalisieren** — stehen seit 27.07. als Platzhalter
    (`https://www.lm-agentur.at/<dateiname>`) auf allen 7 Seiten; beim Go-live auf die
-   endgültigen Pfade umstellen
+   endgültigen Pfade umstellen. **Seit 29.07. gehört `sitemap.xml` mit dazu** — die
+   Adressen dort müssen exakt zu den Canonicals passen, sonst ignoriert Google die Sitemap.
+8. **301-Weiterleitungen der alten URLs** — die bestehende Seite ist seit Jahren im
+   Google-Index. Fallen ihre Adressen beim Relaunch auf 404, ist die aufgebaute Historie
+   weg — genau der Vorteil, den eine alte Domain sonst bringt. Dafür braucht es eine Liste
+   der alten Adressen (Search Console → Seiten, oder `site:lm-agentur.at`) und eine
+   `.htaccess` bei Hostinger. **Der teuerste Fehler beim Relaunch, noch offen.**
+9. **Google Business Profil pflegen** — für „Werbetechnik Vorarlberg", „Leuchtreklame
+   Feldkirch" usw. entscheidet der Kartenausschnitt (Local Pack) über die meisten Anfragen.
+   Der kommt aus dem Business-Profil, nicht aus der Website, und wirkt in Tagen statt Monaten.
+   Kurzfristig der größte Hebel — größer als jede Änderung am Code.
 7. **Wortlaut mit Sait bestätigen**: (a) Kosten-Hinweise („…und was es ungefähr kostet" im
    Kontaktband, „ehrlicher Kosten-Richtwert im Erstgespräch" im Zeitplaner-Hint),
    (b) Erreichbarkeits-Zeile im Kontaktband („Keiner dran? Dann steht Sait gerade auf einem Gerüst…")

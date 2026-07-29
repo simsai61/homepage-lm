@@ -1,0 +1,18 @@
+# robots.txt — www.lm-agentur.at
+# Ländle Blitz Marketing, Meiningen (Vorarlberg)
+
+User-agent: *
+Allow: /
+
+# Wichtig: Hier stehen absichtlich KEINE Disallow-Zeilen.
+#
+# Die beiden Entwurfsdateien werden anders aus dem Index gehalten:
+#   lm-agentur-relaunch.html        canonical auf /  (Kopie der Startseite)
+#   lm-agentur-relaunch-sperre.html <meta name="robots" content="noindex, nofollow">
+#
+# Würde man sie hier per Disallow sperren, könnte Google das noindex bzw. das
+# canonical nicht mehr lesen — die Adressen könnten dann trotzdem im Index
+# landen, nur ohne Beschreibung. Crawlen erlauben ist hier der sichere Weg.
+# Also bitte kein Disallow für diese Dateien ergänzen.
+
+Sitemap: https://www.lm-agentur.at/sitemap.xml

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap für www.lm-agentur.at
+
+  Enthält nur Seiten, die auch in Google stehen sollen. Bewusst NICHT gelistet:
+  · lm-agentur-relaunch.html        — 1:1-Kopie der Startseite, canonical zeigt auf /
+  · lm-agentur-relaunch-sperre.html — verworfene Vergleichsfassung, trägt noindex
+
+  Die Adressen müssen genau der www-/https-Variante der canonical-Tags in den
+  Seiten entsprechen. Wird beim Go-live die Domain oder die Struktur geändert,
+  müssen Canonicals, OG-URLs und diese Datei gemeinsam angepasst werden.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Startseite -->
+  <url>
+    <loc>https://www.lm-agentur.at/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Anfrage-Funnel — wichtigstes Conversion-Ziel -->
+  <url>
+    <loc>https://www.lm-agentur.at/kontakt.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Leistungen -->
+  <url>
+    <loc>https://www.lm-agentur.at/lm-agentur-grafik-logodesign.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lm-agentur.at/lm-agentur-printmedien.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lm-agentur.at/lm-agentur-arbeitsbekleidung.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lm-agentur.at/lm-agentur-werbeartikel.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lm-agentur.at/lm-agentur-kfz-folierung.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.lm-agentur.at/lm-agentur-webdesign.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Rechtliches -->
+  <url>
+    <loc>https://www.lm-agentur.at/impressum.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.lm-agentur.at/datenschutz.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>

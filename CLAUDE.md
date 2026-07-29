@@ -380,6 +380,23 @@ Vor-Ort-Termin, aber zu lang und zu fachlich für eine öffentliche Erstanfrage)
 (Leuchtschild 21 Tage), der Zeitplaner auf der Website mit Gesamtvorlauf (7 Wochen).
 Beide würden demselben Kunden Unterschiedliches sagen — vor einer Zusammenführung klären.
 
+### Erledigt (29.07.2026) — Indexierung: sitemap.xml, robots.txt, noindex
+- **`sitemap.xml`** — 10 Seiten (Startseite, Funnel, 6 Leistungen, Impressum, Datenschutz).
+  Die Adressen müssen **genau** der www-/https-Variante der `canonical`-Tags entsprechen;
+  bei einer Domain-Änderung Canonicals, OG-URLs und Sitemap **gemeinsam** anpassen.
+- **`robots.txt`** — erlaubt alles, nennt die Sitemap. **Absichtlich ohne `Disallow`:**
+  ein Disallow auf die Entwurfsdateien würde Google daran hindern, deren `noindex` bzw.
+  `canonical` überhaupt zu lesen — die Adressen könnten dann trotzdem im Index landen,
+  nur ohne Beschreibung. Kein Disallow ergänzen.
+- **Die zwei Entwurfsdateien werden unterschiedlich behandelt:**
+  `lm-agentur-relaunch.html` (1:1-Kopie der Startseite) hat `canonical` auf `/` → Google
+  konsolidiert. `lm-agentur-relaunch-sperre.html` (verworfen) hat **kein** canonical und
+  bekam deshalb `<meta name="robots" content="noindex, nofollow">`. Beide stehen nicht in
+  der Sitemap. **noindex und canonical nie an derselben Datei mischen.**
+- Noch offen und wichtiger als alles davon: **301-Weiterleitungen der alten URLs**
+  (`.htaccess` bei Hostinger) und das **Google Business Profil** — im lokalen Umfeld
+  entscheidet der Kartenausschnitt über die meisten Anfragen, nicht die Seite.
+
 ### Erledigt (27.07.2026) — CRO/SEO-Durchgang über alle 7 Seiten
 Basis: 4-dimensionales Audit (Reihenfolge/CRO, SEO-Inhalt, SEO-Technik, CTA/Vertrauen), jeder Befund adversarial verifiziert.
 - **Reihenfolge**: Silvio-Beweis an den Sektionsanfang, Leuchtreklame hinter die Referenzen, Prozess+Zeitplaner vor die Leistungen (Begründungen oben)
