@@ -338,6 +338,22 @@ Gesamter Vorlauf = Produktionsdauer + 4 Wochen (Erstgespräch 1 + Gestaltung 2 +
 
 Drei Einschätzungen: "gut dran" / "passt, ohne Puffer" / "es wird knapp — X Wochen fehlen". Beim Knapp-Fall wird konkret genannt, was vorgezogen wird (Logo, Printmedien, Arbeitsbekleidung zuerst; Beschilderung und Folierung danach).
 
+### Knopf-Regel (seit 29.07.2026) — bei neuen Seiten einhalten
+Damit gleich aussehende Knöpfe nicht Unterschiedliches tun:
+
+- **Steht „anfragen" (oder eine Handlungsaufforderung wie „Team einkleiden") auf dem Knopf**
+  → Ziel ist `kontakt.html`, der Anfrage-Funnel. Gilt für den Hero-CTA jeder Seite,
+  den Kopf-CTA „Angebot anfragen" und den Fußzeilen-Punkt „Anfrage".
+- **Nennt der Knopf einen Kanal** (WhatsApp, Anrufen, E-Mail) → führt direkt dorthin.
+  Grün mit WhatsApp-Logo heißt immer: öffnet WhatsApp.
+
+Bewusst NICHT umgehängt, weil der Funnel dort ein Rückschritt wäre:
+- **Zeitplaner-Abschluss** — Termin und Vorhaben sind dort schon beantwortet, der Funnel
+  würde dieselben Fragen ein zweites Mal stellen.
+- **Schwebender WhatsApp-Knopf** — das ist der Sofort-Ausgang für Entschlossene.
+- **Inhaber-Abschnitt** — „Sie bekommen mich. Nicht ein Callcenter." verträgt kein Frageformular.
+- **Impuls-WhatsApp-Knöpfe** in den Zwischen-Zeilen nach Komplettpaket und Referenzen.
+
 ### Entfernt
 Die Zahlenleiste mit "500+ zufriedene Kunden" wurde gestrichen — geschätzte Rundzahlen wirken schwächer als ein konkreter Satz. An ihrer Stelle steht jetzt der Zeitplaner. Das Gründungsjahr 2018 ist in die Fußzeile gewandert.
 
