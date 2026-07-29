@@ -84,7 +84,7 @@ Alle Seiten sind **eigenständige HTML-Dateien ohne Build-Schritt**. Kein Framew
 **Grundidee:** Jede Leistung bekommt einen Moment, der *zeigt* statt behauptet, was gemacht wird. Beim Ausbau weiterer Unterseiten dieses Prinzip fortführen.
 
 ### Aufbau der Startseite (Stand: 27.07.2026, CRO/SEO-Umbau)
-1. Hero — Claim, Headline, **Schild-Schalter**; Ghost-Button führt jetzt zum Zeitplaner („Reicht meine Zeit noch?")
+1. Hero — Claim, Headline, **Schild-Schalter**; Ghost-Button führt jetzt zum Zeitplaner („Reicht meine Zeit noch?"), Primärbutton „Komplettpaket anfragen" seit 29.07. zum Anfrage-Funnel `kontakt.html` (vorher `#kontakt`)
 2. **Komplettpaket für Neueröffnungen** — **Silvio-Slider (Beweis) zuerst**, dann Bento-Raster, dann WhatsApp-CTA-Zeile
 3. **Referenzen** — Projektkarten (AY zuerst) + Basecamp-Slider, danach CTA-Zeile (WhatsApp + Zeitplaner-Link)
 4. **Leuchtreklame** — Bella Napoli, Überblendung unbeleuchtet → beleuchtet.
@@ -298,6 +298,14 @@ Wo der Browser das nicht kann, greift der bestehende IntersectionObserver-Weg (`
 am Weiterscrollen zu hindern, wurde verworfen. Zielgruppe sind Unternehmer unter Zeitdruck;
 außerdem würden die Ankerlinks der Navigation (`#komplettpaket`, `#leistungen`) genau dort
 in die Sperre laufen. Scrollgesteuert wirkt hochwertiger und hält niemanden fest.
+
+### Kein Auto-Sprung an Datumsfeldern
+Im Anfrage-Funnel (`kontakt.html`) hing anfangs ein automatisches Weiterschalten am
+`change`-Event des Eröffnungstermin-Felds. Auf dem iPhone feuert `change` bei
+`input type="date"` aber schon **beim Drehen des Datumsrads** — der Funnel sprang zur
+nächsten Frage, bevor der Termin fertig eingestellt war. Deshalb: Datumseingabe nur
+Wert merken und Weiter-Knopf freischalten, weitergeschaltet wird ausschließlich per
+Knopf (oder Enter am Rechner).
 
 ### Barrierefreiheit
 Jede Animation prüft `prefers-reduced-motion` und springt dann direkt in den Endzustand.

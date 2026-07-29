@@ -1097,6 +1097,8 @@
     color:var(--text);font-family:inherit;font-size:17px;padding:16px 18px;min-height:56px;
   }
   .fn-date input:focus{outline:2px solid var(--glow-dim);outline-offset:2px}
+  .fn-date .btn{width:100%;justify-content:center;margin-top:14px;border:0;cursor:pointer;font-family:inherit}
+  .fn-date .btn[disabled]{opacity:.4;cursor:default;pointer-events:none}
 
   .fn-nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:var(--sp-4)}
   .fn-back{color:var(--muted);font-size:14.5px;background:none;border:none;cursor:pointer;padding:10px 2px}
@@ -1196,6 +1198,10 @@
           <span class="fld-label">Eröffnungstermin</span>
           <input type="date" id="fnDate">
         </label>
+        <button type="button" class="btn btn-primary" id="fnDateNext" disabled>
+          Weiter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
       <div class="fn-nav">
         <button type="button" class="fn-back" data-back>← Zurück</button>
@@ -1619,13 +1625,26 @@
     if (e.target.closest('[data-skip]')) { stand.termin = null; weiter('s3'); return; }
   });
 
-  if (dateEl) {
-    dateEl.addEventListener('change', function(){
-      if (!dateEl.value) return;
-      stand.termin = dateEl.value;
-      weiter('s3');
-    });
+  /* Datum: nie automatisch weiterspringen. Auf dem iPhone feuert `change` schon
+     beim Drehen des Datumsrads — der Besucher wäre auf der nächsten Frage, bevor
+     sein Termin fertig eingestellt ist. Weiter geht es nur über den Knopf. */
+  var dateNext = document.getElementById('fnDateNext');
+  function terminWeiter(){
+    if (!dateEl || !dateEl.value) return;
+    stand.termin = dateEl.value;
+    weiter('s3');
   }
+  if (dateEl) {
+    var terminMerken = function(){
+      stand.termin = dateEl.value || null;
+      if (dateNext) dateNext.disabled = !dateEl.value;
+    };
+    dateEl.addEventListener('input',  terminMerken);
+    dateEl.addEventListener('change', terminMerken);
+    dateEl.addEventListener('keydown', function(e){ if (e.key === 'Enter') terminWeiter(); });
+    terminMerken();
+  }
+  if (dateNext) dateNext.addEventListener('click', terminWeiter);
 
   [nameEl, firmaEl].forEach(function(el){
     if (el) el.addEventListener('input', linkeSetzen);

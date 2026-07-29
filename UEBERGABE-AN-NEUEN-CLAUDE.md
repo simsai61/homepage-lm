@@ -428,7 +428,13 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
   Nachricht eingesetzt, nichts geht an einen Server — deshalb kein DSGVO-Nachtrag nötig
   (ein erklärender Abschnitt steht trotzdem in der Datenschutzerklärung).
   Wochenangaben gibt es nur beim Komplettpaket (9 Wochen), weil nur diese Zahl belegt ist.
-  Verlinkt über den Kopf-CTA „Angebot anfragen" (alle Seiten) und die Fußzeile.
+  Verlinkt über den Kopf-CTA „Angebot anfragen" (alle Seiten), die Fußzeile und seit 29.07.
+  auch den Hero-Primärbutton „Komplettpaket anfragen" der Startseite (vorher `#kontakt`).
+  **Fallstrick, teuer gelernt (29.07.):** Am Datumsfeld hing anfangs ein Auto-Sprung auf
+  `change` — auf dem iPhone feuert `change` aber schon beim Drehen des Datumsrads, der Funnel
+  sprang zur Betriebs-Frage, bevor der Termin fertig eingestellt war. Deshalb: **nie Auto-Advance
+  an `input type="date"` hängen.** Weiter geht es nur über den expliziten Weiter-Knopf
+  (`#fnDateNext`, freigeschaltet sobald ein Datum gewählt ist) oder Enter.
 - **Altes Kontaktformular-Thema (überholt)** — bewusst zurückgestellt. World4You kann PHP, also ohne Fremddienst
   machbar. Vorlage: Saits internes Aufmaß-Werkzeug `/Users/lm/Downloads/Bedarfsanalyse.html`
   (sehr gut für den Vor-Ort-Termin, aber zu lang und zu fachlich für eine Erstanfrage).
