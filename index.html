@@ -525,6 +525,10 @@
     transition:border-color .3s,color .3s;
   }
   .cell:hover .pill{border-color:var(--glow-dim);color:var(--text)}
+  /* Die sechs Schlagworte führen zur jeweiligen Leistung — beantwortet "welche sechs Firmen?"
+     genau dort, wo die Frage entsteht, ohne die Leistungs-Kacheln vorzuziehen. */
+  a.pill{text-decoration:none}
+  a.pill:hover,a.pill:focus-visible{border-color:var(--glow);color:var(--text);background:rgba(232,98,143,.07)}
   @media (max-width:900px){
     .cell-lg,.cell-feature{grid-column:span 12}
     .cell-md,.cell-sm{grid-column:span 6}
@@ -1207,8 +1211,8 @@
         <div>
           <p>Die reine Produktion. Dazu Gestaltung, Aufmaß und Montage — insgesamt rund 9 Wochen vom Erstgespräch bis zur Eröffnung. Was das für Ihren Termin heißt, rechnet der <a href="#zeitplan">Zeitplaner</a> aus.</p>
           <div class="pkg-list">
-            <span class="pill">Logo</span><span class="pill">Printmedien</span><span class="pill">Workwear</span>
-            <span class="pill">Werbeartikel</span><span class="pill">Beschilderung</span><span class="pill">Folierung</span>
+            <a class="pill" href="lm-agentur-grafik-logodesign.html">Logo</a><a class="pill" href="lm-agentur-printmedien.html">Printmedien</a><a class="pill" href="lm-agentur-arbeitsbekleidung.html">Workwear</a>
+            <a class="pill" href="lm-agentur-werbeartikel.html">Werbeartikel</a><a class="pill" href="#leuchtreklame">Beschilderung</a><a class="pill" href="lm-agentur-kfz-folierung.html">Folierung</a>
           </div>
         </div>
       </div>
