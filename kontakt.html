@@ -1097,6 +1097,8 @@
     color:var(--text);font-family:inherit;font-size:17px;padding:16px 18px;min-height:56px;
   }
   .fn-date input:focus{outline:2px solid var(--glow-dim);outline-offset:2px}
+  .fn-weiter{width:100%;justify-content:center;margin-top:14px}
+  .fn-weiter:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none}
 
   .fn-nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:var(--sp-4)}
   .fn-back{color:var(--muted);font-size:14.5px;background:none;border:none;cursor:pointer;padding:10px 2px}
@@ -1196,6 +1198,10 @@
           <span class="fld-label">Eröffnungstermin</span>
           <input type="date" id="fnDate">
         </label>
+        <button type="button" class="btn btn-primary fn-weiter" id="fnWeiter" disabled>
+          Weiter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
       <div class="fn-nav">
         <button type="button" class="fn-back" data-back>← Zurück</button>
@@ -1619,9 +1625,25 @@
     if (e.target.closest('[data-skip]')) { stand.termin = null; weiter('s3'); return; }
   });
 
+  /* Auf dem iPhone ist die Datumsauswahl ein Walzenrad: iOS meldet schon beim ersten
+     Drehen einen gültigen Wert. Früher wurde deshalb mitten in der Eingabe weitergesprungen.
+     Jetzt entscheidet der Weiter-Knopf, wann es weitergeht. */
+  var weiterEl = document.getElementById('fnWeiter');
+
+  function terminGeprueft(){
+    if (!dateEl) return;
+    stand.termin = dateEl.value || null;
+    if (weiterEl) weiterEl.disabled = !dateEl.value;
+  }
+
   if (dateEl) {
-    dateEl.addEventListener('change', function(){
-      if (!dateEl.value) return;
+    dateEl.addEventListener('input', terminGeprueft);
+    dateEl.addEventListener('change', terminGeprueft);
+  }
+
+  if (weiterEl) {
+    weiterEl.addEventListener('click', function(){
+      if (!dateEl || !dateEl.value) return;
       stand.termin = dateEl.value;
       weiter('s3');
     });
