@@ -1741,6 +1741,19 @@
 
     stand.art = art; stand.datumTxt = datumTxt;
     linkeSetzen();
+
+    /* Anfrage begonnen: der Besucher hat alle Fragen beantwortet und sieht das Ergebnis.
+       Wer hier landet, aber keinen Kontakt-Knopf drückt, ist ein Abbrecher — genau die
+       Gruppe, die sich in Meta am besten erneut ansprechen lässt. */
+    if (window.fbq && !stand.gemeldet) {
+      stand.gemeldet = true;
+      fbq('track', 'InitiateCheckout', {
+        content_name: stand.vorhaben === 'paket' ? 'Komplettpaket'
+                    : stand.vorhaben === 'einzel' ? (stand.leistung || 'Einzelleistung')
+                    : 'Beratung',
+        content_category: stand.betrieb || 'unbekannt'
+      });
+    }
   }
 
   /* Nachricht zusammenbauen — Vorhaben, Termin, Betrieb und die freiwilligen Angaben.
@@ -1811,6 +1824,25 @@
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', PIXEL_ID);
     fbq('track', 'PageView');
+
+    /* Feineres Signal: welche Leistung hat den Besucher interessiert?
+       Daraus lassen sich in Meta passgenaue Zielgruppen bilden. */
+    var LEISTUNG = {
+      'lm-agentur-leuchtreklame.html':    'Leuchtreklame',
+      'lm-agentur-kfz-folierung.html':    'KFZ-Folierung',
+      'lm-agentur-grafik-logodesign.html':'Grafik & Logodesign',
+      'lm-agentur-printmedien.html':      'Printmedien',
+      'lm-agentur-arbeitsbekleidung.html':'Arbeitsbekleidung',
+      'lm-agentur-werbeartikel.html':     'Werbeartikel',
+      'lm-agentur-webdesign.html':        'Webdesign'
+    };
+    var datei = location.pathname.split('/').pop() || 'index.html';
+    if (LEISTUNG[datei]) {
+      fbq('track', 'ViewContent', {
+        content_name: LEISTUNG[datei],
+        content_category: 'Leistung'
+      });
+    }
   }
 
   function lese(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }

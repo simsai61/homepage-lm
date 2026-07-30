@@ -1162,7 +1162,12 @@
     <p>Bei Zustimmung verarbeitet Meta Informationen über Ihren Besuch (aufgerufene Seiten, Geräte- und
     Browserdaten, IP-Adresse, Cookie-Kennungen) und kann diese mit Ihrem Meta-Konto verknüpfen, um uns
     anonymisierte Auswertungen über die Wirkung unserer Anzeigen bereitzustellen und Ihnen passendere
-    Werbung anzuzeigen. Dabei kann es zu einer Übermittlung in die USA kommen (Meta Platforms, Inc.);
+    Werbung anzuzeigen. Übermittelt wird auch, welche Leistungsseite Sie angesehen haben und ob Sie eine
+    Anfrage begonnen oder abgeschickt haben. Auf dieser Grundlage bilden wir bei Meta
+    <strong>Zielgruppen für Werbung</strong> (Remarketing) — etwa um Besuchern, die eine Anfrage
+    begonnen aber nicht abgeschlossen haben, erneut eine Anzeige zu zeigen — sowie „ähnliche
+    Zielgruppen" zur Gewinnung neuer Interessenten. Eine Einzelperson können wir dabei nicht
+    identifizieren; wir sehen nur Gruppengrößen und Auswertungen. Dabei kann es zu einer Übermittlung in die USA kommen (Meta Platforms, Inc.);
     Meta ist unter dem EU-US Data Privacy Framework zertifiziert. Details in der
     <a href="https://www.facebook.com/privacy/policy" rel="noopener">Datenrichtlinie von Meta</a>.</p>
     <p><strong>Widerruf:</strong> Ihre Entscheidung speichern wir lokal in Ihrem Browser
@@ -1553,6 +1558,25 @@
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', PIXEL_ID);
     fbq('track', 'PageView');
+
+    /* Feineres Signal: welche Leistung hat den Besucher interessiert?
+       Daraus lassen sich in Meta passgenaue Zielgruppen bilden. */
+    var LEISTUNG = {
+      'lm-agentur-leuchtreklame.html':    'Leuchtreklame',
+      'lm-agentur-kfz-folierung.html':    'KFZ-Folierung',
+      'lm-agentur-grafik-logodesign.html':'Grafik & Logodesign',
+      'lm-agentur-printmedien.html':      'Printmedien',
+      'lm-agentur-arbeitsbekleidung.html':'Arbeitsbekleidung',
+      'lm-agentur-werbeartikel.html':     'Werbeartikel',
+      'lm-agentur-webdesign.html':        'Webdesign'
+    };
+    var datei = location.pathname.split('/').pop() || 'index.html';
+    if (LEISTUNG[datei]) {
+      fbq('track', 'ViewContent', {
+        content_name: LEISTUNG[datei],
+        content_category: 'Leistung'
+      });
+    }
   }
 
   function lese(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
