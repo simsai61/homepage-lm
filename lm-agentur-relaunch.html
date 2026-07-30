@@ -316,6 +316,36 @@
   .rise{transition:opacity .6s var(--ease-out),transform .8s var(--ease-out);transition-delay:var(--d,0ms)}
   html.rv .rise.in{opacity:1;transform:none}
 
+  /* ---------- URLAUBSBAND ----------
+     Liegt über dem Kopf und scrollt mit weg: Wer die Seite öffnet, sieht es
+     als Erstes, wer weiterliest, wird nicht dauerhaft eingeengt. Voller
+     Markenverlauf mit dunkler Schrift — dieselbe Kombination wie der
+     Kopf-Knopf, damit es auffällt, ohne fremd zu wirken. */
+  .urlaub{
+    background:linear-gradient(135deg,#F2A65A 0%,#E8628F 55%,#C93C77 100%);
+    color:#22101A;position:relative;z-index:81;
+  }
+  .urlaub .wrap{text-align:center;padding-top:11px;padding-bottom:11px}
+  /* Das Kennwort läuft im Textfluss mit, statt als eigener Flex-Block: sonst
+     steht es auf breiten Schirmen allein in einer Zeile über dem Satz. */
+  .urlaub-tag{
+    display:inline-block;margin-right:12px;vertical-align:1px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+    border:1px solid rgba(34,16,26,.4);border-radius:2px;padding:4px 9px;white-space:nowrap;
+  }
+  .urlaub p{margin:0;font-size:15px;line-height:1.45;font-weight:500}
+  .urlaub b{font-weight:700}
+  .urlaub a{
+    color:inherit;font-weight:600;white-space:nowrap;
+    text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;
+  }
+  .urlaub a:hover{opacity:.7}
+  @media (max-width:680px){
+    .urlaub .wrap{gap:8px;padding-top:12px;padding-bottom:12px}
+    .urlaub p{font-size:14px}
+  }
+
   /* ---------- HEADER ---------- */
   header{
     position:sticky;top:0;z-index:80;
@@ -1065,6 +1095,30 @@
     </pattern>
   </defs>
 </svg>
+
+<!-- Betriebsurlaub 31.07.–14.08.2026.
+     Das Band verschwindet am 17.08. von selbst (Skript direkt darunter). Ohne
+     JavaScript bleibt es stehen — nach dem Urlaub also bitte trotzdem löschen. -->
+<div class="urlaub" id="urlaubBand" data-bis="2026-08-17">
+  <div class="wrap">
+    <p>
+      <span class="urlaub-tag">Betriebsurlaub</span>
+      Von <b>31.07.</b> bis <b>14.08.2026</b> geschlossen — ab <b>Montag, 17.08.</b>
+      sind wir wieder für Sie da. Erreichbar per E-Mail:
+      <a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a>
+    </p>
+  </div>
+</div>
+<script>
+(function(){
+  /* Ab dem Rückkehrtag räumt sich das Band selbst weg. Bewusst nur Entfernen,
+     nie Einblenden: läuft kein JavaScript, steht der Hinweis trotzdem da. */
+  var band = document.getElementById('urlaubBand');
+  if(!band) return;
+  var ende = new Date(band.getAttribute('data-bis') + 'T00:00:00');
+  if(!isNaN(ende) && new Date() >= ende) band.remove();
+})();
+</script>
 
 <header id="siteHeader">
   <div class="wrap">
