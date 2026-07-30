@@ -509,7 +509,14 @@ Regelverstoßes gesperrt. Bewusst nicht angefochten — es gibt funktionierende 
    Nur für die Unternehmensverifizierung nötig. **Nicht raten:** Der „eingetragene Name" muss
    dem Gewerbeschein entsprechen — bei einem Einzelunternehmen womöglich „Sait Simsek".
 4. **Werbekonto umbenennen** + Rechnungsdaten auf Ländle Blitz Marketing, UID ATU73761226.
-5. **Pixel-Entscheidung offen.** Ein Meta-Pixel setzt Cookies → Cookie-Banner mit echter
+5. ~~Pixel-Entscheidung offen~~ **Am 30.07. entschieden und umgesetzt:** Meta-Pixel
+   ID `1377359577678525` (Datensatz „Ländle Blitz Marketing Website", mit beiden Werbekonten
+   verbunden). **Consent-first:** Pixel lädt nur nach Zustimmung im eigenen Cookie-Banner
+   (kein Fremddienst, localStorage `lbm-consent`), Widerruf über Fußzeilen-Link
+   „Cookie-Einstellungen" auf allen Seiten. Funnel meldet CTA-Klicks als „Lead"-Event
+   (nur bei Zustimmung). Datenschutzerklärung entsprechend umgeschrieben — die frühere
+   Aussage „keine Cookies, kein Tracking" gilt so nicht mehr.
+   Alte Notiz: Ein Meta-Pixel setzt Cookies → Cookie-Banner mit echter
    Wahlmöglichkeit und Umschreiben der Datenschutzerklärung zwingend (dort steht heute
    „keine Cookies, kein Tracking, keine Meta-Skripte"). Angebotene Alternative ohne Tracking:
    Herkunftsparameter (`kontakt.html?q=meta-oktober`), den der Funnel in die WhatsApp-Nachricht

@@ -1063,6 +1063,24 @@
   .typ h3{font-size:17px;margin-bottom:6px}
   .typ p{color:var(--muted);font-size:14.5px;line-height:1.55}
 </style>
+<style id="lbmConsentCss">
+  /* Zustimmungs-Banner für das Meta-Pixel — eigene Lösung, kein Fremddienst */
+  .consent{position:fixed;left:0;right:0;bottom:0;z-index:140;background:var(--surface);
+    border-top:1px solid var(--line);box-shadow:0 -12px 40px rgba(0,0,0,.45);
+    padding:18px clamp(16px,4vw,40px);display:none}
+  .consent.offen{display:block}
+  .consent-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
+  .consent-txt{flex:1 1 380px;font-size:14.5px;line-height:1.55;color:var(--text)}
+  .consent-txt a{color:var(--glow);text-decoration:underline;text-underline-offset:3px}
+  .consent-knoepfe{display:flex;gap:10px;flex-wrap:wrap}
+  .consent-knoepfe button{min-height:46px;padding:12px 22px;border-radius:3px;font-weight:600;
+    font-size:15px;font-family:inherit;cursor:pointer;border:1px solid var(--line)}
+  .consent-nein{background:var(--surface-2);color:var(--text)}
+  .consent-nein:hover{border-color:var(--muted)}
+  .consent-ja{background:var(--glow);color:#22101A;border-color:var(--glow)}
+  .consent-ja:hover{background:#f07ba2}
+  @media (max-width:620px){.consent-knoepfe{width:100%}.consent-knoepfe button{flex:1}}
+</style>
 </head>
 <body>
 
@@ -1381,7 +1399,7 @@
     </div>
     <div class="foot-bottom">
       <span>Tannenfeldstrasse 3 · 6812 Meiningen · Österreich</span>
-      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#" data-cookie-einstellungen>Cookie-Einstellungen</a></span>
     </div>
   </div>
 </footer>
@@ -1708,5 +1726,68 @@
 })();
 </script>
 
+
+<script>
+/* Meta-Pixel — lädt AUSSCHLIESSLICH nach Zustimmung (DSGVO/TKG).
+   Entscheidung liegt in localStorage['lbm-consent']: 'ja' | 'nein'.
+   Widerruf über den Fußzeilen-Link „Cookie-Einstellungen" (data-cookie-einstellungen). */
+(function(){
+  var KEY = 'lbm-consent';
+  var PIXEL_ID = '1377359577678525';
+  var geladen = false;
+
+  function ladePixel(){
+    if (geladen) return;
+    geladen = true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  function lese(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function schreibe(w){ try { localStorage.setItem(KEY, w); } catch(e){} }
+
+  var banner = null;
+  function zeigeBanner(){
+    if (banner) { banner.classList.add('offen'); return; }
+    banner = document.createElement('div');
+    banner.className = 'consent offen';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Cookie-Einstellungen');
+    banner.innerHTML =
+      '<div class="consent-inner">' +
+        '<p class="consent-txt">Damit wir sehen, welche Werbung Kunden bringt, w\u00fcrden wir gern das ' +
+        'Meta-Pixel nutzen. Es setzt Cookies von Meta (Facebook/Instagram) \u2014 nur mit Ihrer Zustimmung. ' +
+        'Sie k\u00f6nnen sie jederzeit \u00fcber \u201eCookie-Einstellungen\u201c im Fu\u00dfbereich \u00e4ndern. ' +
+        '<a href="datenschutz.html">Datenschutzerkl\u00e4rung</a></p>' +
+        '<div class="consent-knoepfe">' +
+          '<button type="button" class="consent-nein">Ablehnen</button>' +
+          '<button type="button" class="consent-ja">Zustimmen</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(banner);
+    banner.querySelector('.consent-nein').addEventListener('click', function(){
+      schreibe('nein'); banner.classList.remove('offen');
+    });
+    banner.querySelector('.consent-ja').addEventListener('click', function(){
+      schreibe('ja'); banner.classList.remove('offen'); ladePixel();
+    });
+  }
+
+  var wahl = lese();
+  if (wahl === 'ja') ladePixel();
+  else if (wahl !== 'nein') zeigeBanner();
+
+  /* Fußzeilen-Link: Entscheidung jederzeit ändern */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('[data-cookie-einstellungen]');
+    if (a) { e.preventDefault(); zeigeBanner(); }
+  });
+})();
+</script>
 </body>
 </html>
