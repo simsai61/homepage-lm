@@ -468,6 +468,55 @@ Ein **graphify-Wissensgraph** über den Projektordner wurde gestartet und lief t
 
 ---
 
+## 9b. Meta / Werbekonto (Stand 29.07.2026)
+
+**Business-Portfolio für die Agentur:** „Ländle Blitz Marketing", ID `4137284599829203`.
+War vorher „I.B.S. Baustoffhandel GmbH & CO KG" — dieselbe Firma gehört Sait, wurde am
+29.07. umbenannt. Enthält 2 Werbekonten, beide **aktiv und bei 0,00 €**.
+
+**Domain `lm-agentur.at` ist dort verifiziert** (Domain-ID 1081243167685808). Der Nachweis
+läuft über `<meta name="facebook-domain-verification" content="aeyis6j9a8gyjd5uk57l8wdkfenh43">`
+im `<head>` aller 12 Seiten — **nicht entfernen**, sonst verfällt die Verifizierung.
+
+**Hostinger: automatische Bereitstellung ist aktiv.** Was nach `simsai61/homepage-lm` gepusht
+wird, ist wenige Minuten später live. Kein manuelles „Bereitstellen" nötig.
+
+### Offene Beträge (Stand 29.07.2026) — NICHT von der Agentur zahlen
+| Konto | Offen | Zuordnung |
+|---|---|---|
+| 664163200681757 | € 388,95 | Saits persönliches Werbekonto, Zahlung über PayPal fehlgeschlagen |
+| 542174049563038 | € 272,35 | Portfolio „Limitierte T-Shirts" |
+| teespring | € 397,27 | dito |
+| Teezily | € 514,38 | dito |
+
+⚠️ **„Limitierte T-Shirts" ist in Konkurs.** Diese Schulden gehören nicht zur Agentur.
+Nichts aus diesem Portfolio in „Ländle Blitz Marketing" überführen, keine Assets herausziehen,
+nicht mit der Agentur verknüpfen — sonst entsteht genau die Haftungsfrage, die Sait vermeiden will.
+Bei allem, was dieses Portfolio betrifft: erst Masseverwalter/Anwalt fragen.
+Alle vier Zahlungen scheiterten über **dieselbe PayPal-Adresse** — die Ursache ist die
+Zahlungsquelle, nicht vier einzelne Probleme.
+
+Das Werbekonto **BRR** (Portfolio „Sait Simsek Premium Reklamci") ist von Meta wegen eines
+Regelverstoßes gesperrt. Bewusst nicht angefochten — es gibt funktionierende Konten.
+
+### Noch offen
+1. **Instagram `@laendleblitzmarketing` verknüpfen** — braucht Saits Instagram-Login,
+   kann Claude nicht übernehmen. ⚠️ Vorher wissen: Ein daran hängendes Werbekonto wandert
+   mit ins Portfolio und **lässt sich danach nicht mehr entfernen** (Metas eigener Hinweis).
+2. **`@limitiertetshirts_` aus dem Portfolio entfernen** — Versuch am 29.07. gescheitert,
+   das Profil steht auf „Anmeldung erforderlich". Braucht ebenfalls einen Instagram-Login.
+3. **Unternehmensdetails** im Portfolio (eingetragener Name, Adresse, Steuernummer) sind leer.
+   Nur für die Unternehmensverifizierung nötig. **Nicht raten:** Der „eingetragene Name" muss
+   dem Gewerbeschein entsprechen — bei einem Einzelunternehmen womöglich „Sait Simsek".
+4. **Werbekonto umbenennen** + Rechnungsdaten auf Ländle Blitz Marketing, UID ATU73761226.
+5. **Pixel-Entscheidung offen.** Ein Meta-Pixel setzt Cookies → Cookie-Banner mit echter
+   Wahlmöglichkeit und Umschreiben der Datenschutzerklärung zwingend (dort steht heute
+   „keine Cookies, kein Tracking, keine Meta-Skripte"). Angebotene Alternative ohne Tracking:
+   Herkunftsparameter (`kontakt.html?q=meta-oktober`), den der Funnel in die WhatsApp-Nachricht
+   schreibt — Zuordnung ohne Banner, aber ohne Gebotsoptimierung.
+
+---
+
 ## 10. Arbeitsweise für den neuen Claude
 
 - **Deutsch (Österreich), knapp antworten.**
