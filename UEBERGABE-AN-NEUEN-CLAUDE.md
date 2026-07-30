@@ -89,8 +89,8 @@ teils überlappend).
 Suchmaschinenoptimierung, Online-Shops und Social Media Marketing wurden aus der Seite entfernt.
 **Nicht wieder aufnehmen.**
 
-Aktuell gelistet: Grafik & Logodesign · Printmedien · Arbeitsbekleidung · Werbeartikel ·
-KFZ-Folierung · Webdesign
+Aktuell gelistet: Leuchtreklame · Grafik & Logodesign · Printmedien · Arbeitsbekleidung ·
+Werbeartikel · KFZ-Folierung · Webdesign
 
 ---
 
@@ -124,7 +124,7 @@ die **Freigabe zur Namensnennung** — das ist noch offen.
 
 **Status:** Fiktiver Gestaltungsentwurf, nicht live. Projektordner: `/Users/lm/Downloads/projekt/`
 
-### Die sieben Seiten
+### Die acht Seiten
 
 | Datei | Signature-Moment | Interaktion |
 |---|---|---|
@@ -135,6 +135,7 @@ die **Freigabe zur Namensnennung** — das ist noch offen.
 | `lm-agentur-werbeartikel.html` | Presse stempelt den Blitz auf | 5 Artikel zur Auswahl |
 | `lm-agentur-printmedien.html` | Vier Druckplatten rücken in den Passer | Passer / Versatz |
 | `lm-agentur-webdesign.html` | Gerät wechselt Größe, Layout ordnet sich neu | Rechner / Tablet / Handy |
+| `lm-agentur-leuchtreklame.html` | Tag/Nacht: vorher → montiert → bei Nacht | fünf Bauarten mit echten Fotos |
 
 Dazu: `lm-agentur-relaunch-sperre.html` = **verworfene Vergleichsfassung** (siehe Entscheidungen).
 
@@ -146,7 +147,7 @@ Dazu: `lm-agentur-relaunch-sperre.html` = **verworfene Vergleichsfassung** (sieh
 4. Leuchtreklame — Bella Napoli, Überblendung aus → an (hinter die Referenzen gezogen)
 5. Prozess — Zeitleiste
 6. **Eröffnungs-Zeitplaner** — interaktiv, mit Abschluss-CTA (vor die Leistungen gezogen)
-7. Leistungen — 6 Kacheln, alle verlinkt
+7. Leistungen — 7 Kacheln, alle verlinkt (Leuchtreklame zuerst)
 8. Inhaber — Portraitfoto Sait, jetzt mit WhatsApp-Button und Einzugsgebiets-Absatz
 9. Einblicke — 8 Projektfilme hochkant + Instagram
 10. Kontakt + Kontaktkarte (WhatsApp zuerst)

@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Datenschutzerklärung — Ländle Blitz Marketing</title>
-<meta name="description" content="Datenschutzerklärung von Ländle Blitz Marketing: keine Cookies, kein Tracking, Schriften lokal gehostet.">
-<link rel="canonical" href="https://www.lm-agentur.at/datenschutz.html">
+<title>Leuchtreklame &amp; Leuchtschilder Vorarlberg | Ländle Blitz Marketing</title>
+<meta name="description" content="Leuchtreklame aus Vorarlberg: Leuchtkästen, 3D-Buchstaben, LED-Neon und Werbepylone. Geplant, produziert und vor Ort montiert — vom Aufmaß bis zum Einschalten.">
+<link rel="canonical" href="https://www.lm-agentur.at/lm-agentur-leuchtreklame.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#14171F">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ländle Blitz Marketing">
-<meta property="og:title" content="Datenschutzerklärung — Ländle Blitz Marketing">
-<meta property="og:description" content="Datenschutzerklärung von Ländle Blitz Marketing: keine Cookies, kein Tracking, Schriften lokal gehostet.">
-<meta property="og:url" content="https://www.lm-agentur.at/datenschutz.html">
+<meta property="og:title" content="Leuchtreklame &amp; Leuchtschilder Vorarlberg | Ländle Blitz Marketing">
+<meta property="og:description" content="Leuchtreklame aus Vorarlberg: Leuchtkästen, 3D-Buchstaben, LED-Neon und Werbepylone. Geplant, produziert und vor Ort montiert — vom Aufmaß bis zum Einschalten.">
+<meta property="og:url" content="https://www.lm-agentur.at/lm-agentur-leuchtreklame.html">
 <meta property="og:image" content="https://www.lm-agentur.at/assets/bilder/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -609,16 +609,6 @@
   .gal-card .gal-dot-hit{pointer-events:auto}
   .gal-card .gal-dot{background:rgba(242,241,234,.42);box-shadow:0 1px 3px rgba(0,0,0,.5)}
   .gal-card .gal-dot[aria-current="true"]{background:var(--glow)}
-  /* Beschriftung je Bild — nötig bei Vorher/Nachher, sonst rät der Betrachter */
-  .gal-card .gal-slide-label{
-    position:absolute;top:10px;left:10px;z-index:3;
-    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--text);
-    background:rgba(15,18,24,.72);backdrop-filter:blur(6px);
-    border:1px solid var(--line);border-radius:100px;padding:5px 11px;pointer-events:none;
-  }
-  .gal-card .gal-slide-label.ist-vorher{color:#9AA0AC}
-  .gal-card .gal-slide-label.ist-nachher{color:var(--peach);border-color:#5E4A2A}
   .gal-card .gal-tag{
     position:absolute;top:10px;right:10px;z-index:3;
     font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
@@ -977,109 +967,175 @@
     .steps .fill{height:calc(100% - 16px)}
   }
 
-  .sub-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
-  @media (max-width:900px){.sub-hero{grid-template-columns:1fr}}
-
-  /* ---------- GERÄTE-BÜHNE ---------- */
-  .device-studio{
-    background:var(--surface);border:1px solid var(--line);border-radius:16px;
-    padding:clamp(16px,2.6vw,28px);display:flex;flex-direction:column;gap:var(--sp-2);
+  /* ---------- KFZ: Folier-Bühne ---------- */
+  .bay{
+    position:relative;border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);background:linear-gradient(160deg,#1B1F2A,#141821);
+    padding:clamp(14px,2.4vw,26px);
   }
-  .device-bay{
-    width:100%;aspect-ratio:4/3;position:relative;border-radius:10px;overflow:hidden;
-    background:linear-gradient(180deg,#232838,#14171F);
-    border:1px solid #333A4A;box-shadow:inset 0 0 46px rgba(0,0,0,.45);
-    display:flex;align-items:center;justify-content:center;padding:18px;
-  }
-  /* Der Gerätrahmen ändert seine Größe — das Layout darin ordnet sich neu */
-  .device{
-    position:relative;background:#0E1016;border:2px solid #464F63;border-radius:10px;
-    overflow:hidden;display:flex;flex-direction:column;
-    transition:width .7s var(--ease-out),height .7s var(--ease-out),border-radius .5s ease;
-    width:100%;height:100%;
-  }
-  .device[data-geraet="tablet"]{width:62%;height:96%;border-radius:12px}
-  .device[data-geraet="handy"]{width:30%;height:96%;border-radius:16px}
-  .dev-bar{
-    height:16px;flex:0 0 auto;background:#1B1F2A;border-bottom:1px solid #2C3140;
-    display:flex;align-items:center;gap:4px;padding:0 6px;
-  }
-  .dev-bar i{width:5px;height:5px;border-radius:50%;background:#3D4557;display:block}
-  .dev-screen{flex:1 1 auto;padding:7px;display:flex;flex-direction:column;gap:5px;overflow:hidden}
-  .blk{background:#242A38;border-radius:3px;flex:0 0 auto;opacity:0;transform:translateY(8px)}
-  .device.gebaut .blk{opacity:1;transform:none;transition:opacity .45s ease,transform .45s var(--ease-out)}
-  .device.gebaut .blk:nth-child(1){transition-delay:.05s}
-  .device.gebaut .blk:nth-child(2){transition-delay:.14s}
-  .device.gebaut .blk:nth-child(3){transition-delay:.23s}
-  .device.gebaut .blk:nth-child(4){transition-delay:.32s}
-  .blk-hero{height:26%;background:linear-gradient(135deg,#F2A65A,#E8628F,#C93C77);opacity:.9}
-  .device.gebaut .blk-hero{opacity:1}
-  .blk-text{height:7px}
-  .blk-text.kurz{width:52%}
-  /* Kachelreihe: nebeneinander am Rechner, gestapelt am Handy */
-  .blk-row{display:flex;gap:5px;flex:1 1 auto;min-height:0}
-  .blk-row > span{flex:1;background:#242A38;border-radius:3px}
-  .device[data-geraet="handy"] .blk-row{flex-direction:column}
-  .blk-cta{height:11px;width:44%;background:#E8628F;border-radius:3px}
-  .device[data-geraet="handy"] .blk-cta{width:100%;height:13px}
-
-  .dev-cap{
+  .bay svg{width:100%;height:auto;display:block}
+  .bay-cap{
     font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
-    color:var(--muted);text-align:center;min-height:1.4em;
+    color:var(--muted);margin-top:var(--sp-2);min-height:1.4em;
   }
-  .seg{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-  .seg button{
-    border:1px solid var(--line);border-radius:100px;padding:10px 16px;font-size:14px;
-    color:var(--muted);min-height:44px;
+  .mode-seg{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--sp-2)}
+  .mode-seg button{
+    border:1px solid var(--line);border-radius:100px;padding:11px 18px;
+    font-size:14px;color:var(--muted);min-height:44px;
     transition:border-color .25s,color .25s,background .25s,transform .25s var(--ease);
   }
-  .seg button:hover{border-color:var(--glow-dim);color:var(--text)}
-  .seg button.active{background:var(--glow-dim);border-color:var(--glow);color:var(--text)}
-  .seg button:active{transform:scale(.97)}
+  .mode-seg button:hover{border-color:var(--glow-dim);color:var(--text)}
+  .mode-seg button.active{background:var(--glow-dim);border-color:var(--glow);color:var(--text)}
+  .mode-seg button:active{transform:scale(.97)}
 
-  .typen{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-  .typ{
-    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--sp-3);
-    transition:border-color .35s,transform .35s var(--ease),background .35s;
-  }
-  .typ:hover{border-color:var(--glow-dim);transform:translateY(-3px);background:var(--surface-2)}
-  .typ-ico{
-    width:42px;height:42px;border:1px solid var(--line);border-radius:9px;
-    display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-2);color:var(--glow);
-  }
-  .typ-ico svg{width:21px;height:21px}
-  .typ h3{font-size:17px;margin-bottom:6px}
-  .typ p{color:var(--muted);font-size:14.5px;line-height:1.55}
+  /* Hero der Unterseite: Text links, echtes Foto rechts */
 
-  /* Klartext-Liste */
-  .klartext{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-  .kt{
-    border:1px solid var(--line);border-radius:12px;padding:var(--sp-3);background:var(--surface);
+  /* ═══════════════════════════════════════════════════════════════
+     LEUCHTREKLAME — seitenspezifisch
+     Leitfarbe: Peach als Lichtfarbe. Auf dieser Seite ist die Farbe
+     nicht Dekoration, sondern der Gegenstand: warmes Licht auf
+     dunkler Fassade. Deshalb arbeitet die Seite mit Leuchtschein
+     (radial-gradient, text-shadow) statt mit Flächen.
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* Unterseiten-Hero, zweispaltig — steht nicht im Startseiten-CSS */
+  .sub-hero{
+    display:grid;grid-template-columns:1.15fr .85fr;
+    gap:clamp(24px,4vw,56px);align-items:center;
   }
-  .kt h3{font-size:17px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-  .kt h3 svg{width:19px;height:19px;flex-shrink:0}
-  .kt.ja h3 svg{color:#5BBF8A}
-  .kt.nein h3 svg{color:var(--glow)}
-  .kt p{color:var(--muted);font-size:14.5px;line-height:1.55}
-</style>
-<style>
-  .legal{padding:calc(var(--sp-6) + 40px) 0 var(--sp-6)}
-  .legal .wrap{max-width:820px}
-  .legal h1{font-size:clamp(34px,5vw,54px);margin:var(--sp-2) 0 var(--sp-4)}
-  .legal h2{font-size:clamp(20px,2.6vw,26px);margin:var(--sp-5) 0 var(--sp-2)}
-  .legal p,.legal li,.legal address{color:#C7CAD3;font-size:15.5px;line-height:1.65;font-style:normal}
-  .legal p+p{margin-top:var(--sp-2)}
-  .legal ul{padding-left:1.2em;margin:var(--sp-2) 0}
-  .legal a{color:var(--glow);text-decoration:underline;text-underline-offset:3px}
-  .todo{display:inline-block;background:rgba(242,166,90,.14);color:var(--peach);border:1px dashed var(--peach);
-    border-radius:3px;padding:1px 7px;font-family:'IBM Plex Mono',monospace;font-size:.85em}
+  @media (max-width:900px){.sub-hero{grid-template-columns:1fr}}
+  .sub-hero-media{
+    position:relative;border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);background:#0E1016;aspect-ratio:4/3;
+  }
+  .sub-hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .sub-hero-media figcaption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:26px 18px 14px;font-size:13.5px;color:#D8D5CC;
+    background:linear-gradient(to top,rgba(10,12,17,.9),transparent);
+  }
+
+  /* ---------- Tag/Nacht-Überblender (Signature-Moment) ----------
+     Drei Zustände statt zwei: vorher, montiert, bei Nacht.
+     Dieselbe Technik wie die Neon-Sektion der Startseite
+     (gestapelte Bilder, Opacity), nur mit einer Stufe mehr. */
+  .dn{
+    display:grid;grid-template-columns:1fr minmax(260px,350px);
+    gap:clamp(20px,3.4vw,44px);align-items:center;
+  }
+  @media (max-width:980px){.dn{grid-template-columns:1fr}}
+  .dn-frame{
+    position:relative;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);background:#0E1016;aspect-ratio:3/2;
+  }
+  @media (max-width:620px){.dn-frame{aspect-ratio:4/3}}
+  .dn-frame img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center top;
+    opacity:0;transition:opacity 1s var(--ease-out);
+  }
+  .dn-frame img.on{opacity:1}
+  /* Lichtschein, nur in der Nachtstufe */
+  .dn-frame::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 66% 44% at 50% 42%,rgba(242,166,90,.26),transparent 72%);
+    opacity:0;transition:opacity 1s var(--ease-out);mix-blend-mode:screen;
+  }
+  .dn-frame.ist-nacht::after{opacity:1}
+  .dn-stamp{
+    position:absolute;left:14px;top:14px;z-index:2;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--text);
+    background:rgba(20,23,31,.72);backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:100px;padding:7px 13px;
+    transition:color .5s,border-color .5s;
+  }
+  .dn-frame.ist-nacht .dn-stamp{color:var(--peach);border-color:#5E4327}
+
+  /* Stufenschalter */
+  .dn-steps{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  .dn-step{
+    flex:1 1 0;min-width:96px;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;padding:12px 10px;min-height:46px;
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    color:var(--muted);cursor:pointer;transition:color .3s,border-color .3s,background .3s;
+  }
+  .dn-step:hover{color:var(--text);border-color:var(--glow-dim)}
+  .dn-step[aria-pressed="true"]{color:var(--peach);border-color:#5E4327;background:rgba(242,166,90,.07)}
+  .dn-txt h3{font-size:clamp(19px,2.2vw,23px);margin-bottom:12px}
+  .dn-txt p{color:var(--muted);font-size:16px;margin-bottom:var(--sp-2)}
+  .dn-note{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);margin-top:6px;
+  }
+
+  /* ---------- Bauarten ---------- */
+  /* Fünf Karten: bewusst 3 Spalten (3+2) statt auto-fit. Bei auto-fit ergaben
+     sich auf breiten Schirmen vier oben und eine allein darunter — mit drei
+     leeren Plätzen. So bleiben die Karten breit und der Umbruch ruhig. */
+  .bau-grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+  @media (max-width:980px){.bau-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:620px){.bau-grid{grid-template-columns:1fr}}
+  .bau{
+    display:flex;flex-direction:column;
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;transition:border-color .35s,transform .35s var(--ease);
+  }
+  .bau:hover{border-color:var(--glow-dim);transform:translateY(-3px)}
+  .bau-media{position:relative;aspect-ratio:4/3;background:#0E1016;overflow:hidden}
+  .bau-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .bau-media.from-top img{object-position:center top}
+  .bau-body{padding:20px 21px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .bau-body h3{font-size:19px}
+  .bau-body p{color:var(--muted);font-size:15px;line-height:1.55;flex:1}
+  .bau-zeit{
+    display:inline-flex;align-items:center;gap:8px;margin-top:4px;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--peach);
+  }
+  .bau-zeit svg{width:14px;height:14px;flex-shrink:0}
+
+  /* ---------- Vorlauf ---------- */
+  .vor-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-bottom:var(--sp-4)}
+  .vor{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 23px}
+  .vor-kopf{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:10px;
+  }
+  .vor-zahl{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(30px,4vw,42px);line-height:1;margin-bottom:6px;
+    color:var(--peach);text-shadow:0 0 26px rgba(242,166,90,.4);
+  }
+  .vor-zahl small{font-size:.42em;font-weight:600;color:var(--text);letter-spacing:.02em;margin-left:7px}
+  .vor p{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:8px}
+  .vor-hint{
+    display:flex;gap:11px;align-items:flex-start;
+    background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--peach);
+    border-radius:12px;padding:17px 19px;color:var(--muted);font-size:15px;line-height:1.6;
+  }
+  .vor-hint svg{width:17px;height:17px;color:var(--peach);flex-shrink:0;margin-top:3px}
+  .vor-hint a{color:var(--glow);border-bottom:1px solid var(--glow-dim)}
+
+  /* ---------- Montage ---------- */
+  .mo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.4vw,44px);align-items:center}
+  @media (max-width:900px){.mo{grid-template-columns:1fr}}
+  .mo-media{
+    position:relative;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);background:#0E1016;aspect-ratio:4/3;
+  }
+  .mo-media img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+  .mo-txt h2{margin-bottom:14px}
+  .mo-txt p{color:var(--muted);font-size:16px;margin-bottom:var(--sp-2)}
+
 </style>
 </head>
 <body>
 
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
   <defs>
-    <pattern id="triWeb" width="26" height="23" patternUnits="userSpaceOnUse">
+    <pattern id="triNeon" width="26" height="23" patternUnits="userSpaceOnUse">
       <path d="M13 0 L26 23 L0 23 Z" fill="none" stroke="#E8628F" stroke-width="1"/>
     </pattern>
   </defs>
@@ -1110,59 +1166,400 @@
 </header>
 
 <main id="top">
-<section class="legal">
+
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid"></div>
+    <div class="glowfield"></div>
+    <svg class="tri" viewBox="0 0 200 200"><rect width="200" height="200" fill="url(#triNeon)"/></svg>
+  </div>
   <div class="wrap">
-    <span class="tag">Rechtliches</span>
-    <h1>Datenschutzerklärung</h1>
+    <div class="sub-hero">
+      <div>
+        <span class="hero-eyebrow">Leuchtreklame &amp; Beschilderung</span>
+        <h1 class="hero-h1">
+          <span class="ln"><span>Wenn es dunkel</span></span>
+          <span class="ln"><span>wird, gehört die</span></span>
+          <span class="ln"><span class="sichtbar">Straße Ihnen.</span></span>
+        </h1>
+        <p class="hero-sub">
+          Leuchtkästen, 3D-Buchstaben, LED-Neon und Werbepylone — geplant, über europäische
+          Produktionspartner gefertigt und <strong>vor Ort selbst montiert</strong>.
+          Ein Schild arbeitet weiter, wenn Sie längst zugemacht haben.
+        </p>
+        <div class="hero-actions">
+          <a href="kontakt.html" class="btn btn-primary">
+            Leuchtschild anfragen
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#bauarten" class="btn btn-ghost">Bauarten vergleichen</a>
+        </div>
+      </div>
 
-    <p>Der Schutz Ihrer Daten ist uns wichtig — und diese Website ist bewusst sparsam gebaut:
-    <strong>keine Cookies, kein Tracking, keine Analyse-Tools, keine Werbenetzwerke, keine Kontaktformulare.</strong>
-    Schriften, Bilder und Videos liegen auf unserem eigenen Server; beim Aufruf der Seite wird keine Verbindung
-    zu Google, Meta oder anderen Drittanbietern aufgebaut.</p>
+      <figure class="sub-hero-media rev">
+        <img src="assets/bilder/ay-beleuchtet.webp"
+             srcset="assets/bilder/ay-beleuchtet-720.webp 760w, assets/bilder/ay-beleuchtet.webp 1280w"
+             sizes="(max-width:900px) 100vw, 42vw"
+             width="1280" height="938" loading="eager" decoding="async" fetchpriority="high"
+             alt="Dieselben Schilder des AY Restaurant bei Nacht beleuchtet: Vordachschild, Ausleger Indian Cuisine und der Eingangsbereich">
+        <figcaption>AY Restaurant · Vordachschild, Ausleger und Beleuchtung</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-    <h2>Verantwortlicher</h2>
-    <p>Ländle Blitz Marketing, Inhaber Sait Simsek<br>
-    Tannenfeldstrasse 3, 6812 Meiningen, Österreich<br>
-    Telefon: <a href="tel:+436643724808">+43 664 372 48 08</a> ·
-    E-Mail: <a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a></p>
+<!-- ============ SIGNATURE: TAG WIRD NACHT ============ -->
+<section id="tagnacht">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Der Unterschied</span>
+      <h2>Am Tag sieht man Ihr Schild. Nachts sieht man nur Ihr Schild.</h2>
+      <p>Dasselbe Lokal in drei Zuständen — vorher, nach der Montage und bei Nacht. Klicken Sie sich durch.</p>
+    </div>
 
-    <h2>Server-Logdateien</h2>
-    <p>Beim Aufruf der Website verarbeitet unser Hosting-Anbieter Hostinger
-    automatisch technische Zugriffsdaten (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp). Diese Daten sind für den
-    technischen Betrieb und die Sicherheit der Seite erforderlich (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO) und werden nicht mit
-    anderen Datenquellen zusammengeführt.</p>
+    <div class="dn rev">
+      <div>
+        <div class="dn-frame" id="dnFrame">
+          <img class="dn-bild" data-stufe="0"
+               src="assets/bilder/ay-vorher.webp"
+               srcset="assets/bilder/ay-vorher-720.webp 800w, assets/bilder/ay-vorher.webp 1280w"
+               sizes="(max-width:980px) 100vw, 58vw"
+               width="1280" height="1124" loading="lazy" decoding="async"
+               alt="Alter schwarz-goldener Vordachschriftzug des AY Restaurant bei Schneefall">
+          <img class="dn-bild" data-stufe="1"
+               src="assets/bilder/ay-nachher.webp"
+               srcset="assets/bilder/ay-nachher-720.webp 800w, assets/bilder/ay-nachher.webp 1280w"
+               sizes="(max-width:980px) 100vw, 58vw"
+               width="1280" height="1707" loading="lazy" decoding="async"
+               alt="Neuer dunkelgrüner Auftritt des AY Restaurant mit 3D-Lotusblüte und Schriftzug Indian Cuisine">
+          <img class="dn-bild" data-stufe="2"
+               src="assets/bilder/ay-beleuchtet.webp"
+               srcset="assets/bilder/ay-beleuchtet-720.webp 800w, assets/bilder/ay-beleuchtet.webp 1280w"
+               sizes="(max-width:980px) 100vw, 58vw"
+               width="1280" height="938" loading="lazy" decoding="async"
+               alt="Dieselben Schilder des AY Restaurant bei Nacht beleuchtet: Vordachschild, Ausleger Indian Cuisine und der Eingangsbereich">
+          <span class="dn-stamp" id="dnStamp">Vorher</span>
+        </div>
+        <div class="dn-steps" role="group" aria-label="Zustand wählen">
+          <button type="button" class="dn-step" data-stufe="0" aria-pressed="true">Vorher</button>
+          <button type="button" class="dn-step" data-stufe="1" aria-pressed="false">Nach der Montage</button>
+          <button type="button" class="dn-step" data-stufe="2" aria-pressed="false">Bei Nacht</button>
+        </div>
+      </div>
 
-    <h2>Anfrage-Seite</h2>
-    <p>Auf der Anfrage-Seite können Sie freiwillig Ihren Namen und Ihren Betrieb angeben. Diese Angaben
-    werden <strong>ausschließlich in Ihrem Browser</strong> zu einer Nachricht zusammengesetzt und nicht an
-    uns übertragen — erst wenn Sie den Knopf für WhatsApp, Telefon oder E-Mail betätigen und die Nachricht
-    selbst absenden, erreichen sie uns. Es findet keine Speicherung auf unserem Server statt.</p>
+      <div class="dn-txt">
+        <h3 id="dnTitel">Vorher: vorhanden, aber nicht zu sehen</h3>
+        <p id="dnText">Ein Schriftzug war da. Nur hat ihn abends niemand mehr gefunden — kein Kontrast, kein Licht, keine Fernwirkung.</p>
+        <p class="dn-note" id="dnMeta">AY Restaurant · Zustand 1 von 3</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <h2>Kontaktaufnahme</h2>
-    <p>Wenn Sie uns per Telefon, E-Mail oder WhatsApp kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten
-    (Name, Kontaktdaten, Inhalt der Anfrage) zur Bearbeitung Ihrer Anfrage und für Anschlussfragen
-    (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO). Die Daten werden gelöscht, sobald sie für die Bearbeitung nicht mehr
-    erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+<!-- ============ BAUARTEN ============ -->
+<section id="bauarten">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Bauarten</span>
+      <h2>Fünf Wege, ein Ziel: gesehen werden.</h2>
+      <p>Welche Bauart passt, hängt an Fassade, Entfernung und Budget — nicht am Geschmack. Wir sagen Ihnen im Erstgespräch, was an Ihrem Gebäude wirkt.</p>
+    </div>
 
-    <h2>WhatsApp</h2>
-    <p>Die WhatsApp-Knöpfe auf dieser Seite sind reine Links: Beim bloßen Betrachten der Website werden keine Daten an
-    WhatsApp übertragen. Erst wenn Sie einen solchen Link öffnen und uns über WhatsApp schreiben, verarbeitet
-    WhatsApp (Meta Platforms Ireland Ltd.) Ihre Daten nach eigenen Richtlinien; dabei kann es zu einer Übermittlung
-    in Drittländer (USA) kommen. Die Nutzung ist freiwillig — Sie erreichen uns genauso per Telefon oder E-Mail.</p>
+    <div class="bau-grid">
+      <article class="bau rev">
+        <div class="bau-media">
+          <img src="assets/bilder/schnitzelhaus-leuchtkasten.webp"
+               srcset="assets/bilder/schnitzelhaus-leuchtkasten-720.webp 720w, assets/bilder/schnitzelhaus-leuchtkasten.webp 1280w"
+               sizes="(max-width:700px) 100vw, 30vw"
+               width="1280" height="960" loading="lazy" decoding="async"
+               alt="Weißer Leuchtkasten über dem Eingang des Schnitzelhaus Tisis in Feldkirch mit Bett-Piktogramm, Logo und Teller-Symbol">
+        </div>
+        <div class="bau-body">
+          <h3>Leuchtkasten</h3>
+          <p>Schriftzug, Logo und Piktogramme in einem beleuchteten Korpus. Die günstigste Variante bei großer Fläche und die mit der stärksten Fernwirkung — auch für Vordächer und Dachränder.</p>
+          <span class="bau-zeit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg>
+            ca. 3 Wochen Produktion
+          </span>
+        </div>
+      </article>
 
-    <h2>Instagram</h2>
-    <p>Der Instagram-Verweis ist ein einfacher Link ohne eingebettete Inhalte. Es werden keine Daten an Meta übertragen,
-    solange Sie den Link nicht öffnen.</p>
+      <article class="bau rev" style="--d:110ms">
+        <div class="bau-media">
+          <img src="assets/bilder/profigroup-leuchtbuchstaben.webp"
+               srcset="assets/bilder/profigroup-leuchtbuchstaben-720.webp 720w, assets/bilder/profigroup-leuchtbuchstaben.webp 1280w"
+               sizes="(max-width:700px) 100vw, 30vw"
+               width="1280" height="1122" loading="lazy" decoding="async"
+               alt="Beleuchtete 3D-Buchstaben des Schriftzugs Profi Group mit Dachsignet an einer Fassade in der Dämmerung">
+        </div>
+        <div class="bau-body">
+          <h3>3D-Einzelbuchstaben</h3>
+          <p>Jeder Buchstabe ein eigener Körper, frontal oder hinterleuchtet. Die wertigste Lösung: wirkt am Tag durch Plastik und Schattenwurf, nachts durch das Licht.</p>
+          <span class="bau-zeit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg>
+            ca. 3 Wochen Produktion
+          </span>
+        </div>
+      </article>
 
-    <h2>Ihre Rechte</h2>
-    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
-    Datenübertragbarkeit und Widerspruch. Wenden Sie sich dazu formlos an
-    <a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a>.</p>
-    <p>Außerdem haben Sie das Recht auf Beschwerde bei der Aufsichtsbehörde:<br>
-    Österreichische Datenschutzbehörde, Barichgasse 40–42, 1030 Wien, <a href="https://www.dsb.gv.at" rel="noopener">dsb.gv.at</a></p>
+      <article class="bau rev" style="--d:220ms">
+        <div class="bau-media">
+          <img src="assets/bilder/bellanapoli-neon-an.webp"
+               srcset="assets/bilder/bellanapoli-neon-an-720.webp 720w, assets/bilder/bellanapoli-neon-an.webp 1600w"
+               sizes="(max-width:700px) 100vw, 30vw"
+               width="1600" height="1034" loading="lazy" decoding="async"
+               alt="Derselbe Schriftzug Bella Napoli in Dornbirn eingeschaltet, rot leuchtend auf der dunklen Fliesenwand">
+        </div>
+        <div class="bau-body">
+          <h3>LED-Neon</h3>
+          <p>Der Neon-Look ohne Gasröhre: biegsam, bruchsicher und deutlich sparsamer. Für Innenräume, Theken und Schaufenster — dort, wo der Schriftzug selbst Deko ist.</p>
+          <span class="bau-zeit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg>
+            bis zu 80 % weniger Strom als Glasneon
+          </span>
+        </div>
+      </article>
 
-    <p><em>Stand: Juli 2026. Diese Erklärung wurde nach bestem Wissen für den aktuellen Aufbau der Website erstellt
-    und ersetzt keine Rechtsberatung.</em></p>
+      <article class="bau rev" style="--d:330ms">
+        <div class="bau-media from-top">
+          <img src="assets/bilder/ct-automotive-pylon-2.webp"
+               srcset="assets/bilder/ct-automotive-pylon-2-720.webp 720w, assets/bilder/ct-automotive-pylon-2.webp 1280w"
+               sizes="(max-width:700px) 100vw, 30vw"
+               width="1280" height="1259" loading="lazy" decoding="async"
+               alt="Beleuchteter Werbepylon von CT Automotive mit grüner Lichtkante an einer Straße in Bludenz">
+        </div>
+        <div class="bau-body">
+          <h3>Werbepylon</h3>
+          <p>Der freistehende Turm an der Straße. Er wird gesehen, bevor man die Einfahrt erkennt — die richtige Wahl bei Betrieben, die von der Durchfahrt leben.</p>
+          <span class="bau-zeit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg>
+            ca. 5 Wochen Produktion
+          </span>
+        </div>
+      </article>
+      <article class="bau rev" style="--d:440ms">
+        <div class="bau-media">
+          <img src="assets/bilder/anatolia-sonderform.webp"
+               srcset="assets/bilder/anatolia-sonderform-720.webp 720w, assets/bilder/anatolia-sonderform.webp 990w"
+               sizes="(max-width:700px) 100vw, 30vw"
+               width="990" height="742" loading="lazy" decoding="async"
+               alt="Dreieckiges Leuchtschild über einer Eingangstür mit hinterleuchteter Blüte und dem Schriftzug ANATOLIA">
+        </div>
+        <div class="bau-body">
+          <h3>Sonderform</h3>
+          <p>Nicht jede Fassade will ein Rechteck. Form, Ausschnitte und Hinterleuchtung werden nach Maß gebaut — hier ein Dreiecksschild, das den Giebel über dem Eingang aufnimmt.</p>
+          <span class="bau-zeit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5l6 6M4 20l4.5-1 11-11-3.5-3.5-11 11z"/><path d="M4 20l1-4.5"/></svg>
+            Zeit nach Form — wir sagen es beim Aufmaß
+          </span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFERENZEN ============ -->
+<section id="projekte">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Ausgeführt</span>
+      <h2>Leuchtreklame und Beschilderung aus Vorarlberg.</h2>
+      <p>Fassaden, Vordächer, Hallen und Pylone — quer durch Gastronomie, Handel und Gewerbe.</p>
+    </div>
+
+    <div class="gal rev" data-auto="5600">
+      <div class="gal-track" tabindex="0" role="group" aria-label="Ausgeführte Projekte, sieben Bilder">
+        <div class="gal-slide">
+          <div class="gal-media from-top">
+            <img src="assets/bilder/ct-automotive-fassade.webp"
+                 srcset="assets/bilder/ct-automotive-fassade-720.webp 800w, assets/bilder/ct-automotive-fassade.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1256" loading="lazy" decoding="async"
+                 alt="Fassadenbeschriftung mit 3D-Einzelbuchstaben AUTOMOTIVE am Vordach des Autohauses">
+          </div>
+          <p class="gal-cap">CT Automotive, Bludenz · 3D-Buchstaben am Vordach</p>
+        </div>
+        <div class="gal-slide">
+          <div class="gal-media from-top">
+            <img src="assets/bilder/biedenkapp-fassade-1.webp"
+                 srcset="assets/bilder/biedenkapp-fassade-1-720.webp 800w, assets/bilder/biedenkapp-fassade-1.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1464" loading="lazy" decoding="async"
+                 alt="Große Hallenfassade mit 3D-Logo und Schriftzug Biedenkapp vor bewaldetem Berghang">
+          </div>
+          <p class="gal-cap">Biedenkapp · Hallenfassade mit 3D-Logo</p>
+        </div>
+        <div class="gal-slide">
+          <div class="gal-media from-top">
+            <img src="assets/bilder/sark-fassade.webp"
+                 srcset="assets/bilder/sark-fassade-720.webp 800w, assets/bilder/sark-fassade.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1707" loading="lazy" decoding="async"
+                 alt="Orangefarbenes Fassadenschild von SARK Grill Food Drink mit weißen 3D-Buchstaben vor blauem Himmel">
+          </div>
+          <p class="gal-cap">SARK Grill · Fassadenband mit 3D-Buchstaben</p>
+        </div>
+        <div class="gal-slide">
+          <div class="gal-media from-top">
+            <img src="assets/bilder/konak-fassade.webp"
+                 srcset="assets/bilder/konak-fassade-720.webp 800w, assets/bilder/konak-fassade.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1523" loading="lazy" decoding="async"
+                 alt="Rote Fassade der Konak Fleischwelt mit weißen 3D-Buchstaben über der Schaufensterfront">
+          </div>
+          <p class="gal-cap">Konak Fleischwelt · Fassade und 3D-Buchstaben</p>
+        </div>
+        <div class="gal-slide">
+          <div class="gal-media from-top">
+            <img src="assets/bilder/konak-montage.webp"
+                 srcset="assets/bilder/konak-montage-720.webp 800w, assets/bilder/konak-montage.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1408" loading="lazy" decoding="async"
+                 alt="Großes bedrucktes Werbeschild der Konak Fleischwelt mit Fleischmotiven, daneben eine Leiter während der Montage">
+          </div>
+          <p class="gal-cap">Konak Fleischwelt · Großformatdruck an der Fassade</p>
+        </div>
+        <div class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/biedenkapp-3d-buchstaben.webp"
+                 srcset="assets/bilder/biedenkapp-3d-buchstaben-720.webp 800w, assets/bilder/biedenkapp-3d-buchstaben.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1443" loading="lazy" decoding="async"
+                 alt="Schwarze 3D-Buchstaben des Biedenkapp-Schriftzugs auf heller Innenwand im Empfang">
+          </div>
+          <p class="gal-cap">Biedenkapp · Empfang, 3D-Buchstaben innen</p>
+        </div>
+        <div class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/sark-3d-buchstaben.webp"
+                 srcset="assets/bilder/sark-3d-buchstaben-720.webp 800w, assets/bilder/sark-3d-buchstaben.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1707" loading="lazy" decoding="async"
+                 alt="Nahaufnahme der weißen 3D-Buchstaben since 1976 auf orangefarbenem Untergrund">
+          </div>
+          <p class="gal-cap">SARK Grill · Detail „since 1976"</p>
+        </div>
+        <div class="gal-slide">
+          <div class="gal-media">
+            <img src="assets/bilder/farbenkobold.webp"
+                 srcset="assets/bilder/farbenkobold-720.webp 800w, assets/bilder/farbenkobold.webp 1280w"
+                 sizes="(max-width:900px) 100vw, 74vw"
+                 width="1280" height="1226" loading="lazy" decoding="async"
+                 alt="Beleuchteter Schriftzug Farben Kobold mit rotem Kobold-Maskottchen auf dem Dachrand einer Halle">
+          </div>
+          <p class="gal-cap">Farben Kobold · beleuchteter Dachschriftzug mit Maskottchen</p>
+        </div>
+      </div>
+      <span class="gal-tag">1 / 8</span>
+      <button type="button" class="gal-btn gal-prev" data-dir="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="gal-btn gal-next" data-dir="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="gal-dots" role="tablist" aria-label="Bild wählen"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VORLAUF ============ -->
+<section id="vorlauf">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Zeit</span>
+      <h2>Wie lange dauert ein Leuchtschild?</h2>
+      <p>Die Produktion ist nur ein Teil. Dazu kommen Erstgespräch, Gestaltung, Aufmaß, Freigabe und Montage — teils überlappend.</p>
+    </div>
+
+    <div class="vor-grid">
+      <div class="vor rev">
+        <div class="vor-kopf">Leuchtschild</div>
+        <div class="vor-zahl">3 <small>Wochen</small></div>
+        <div class="vor-kopf">Produktion</div>
+        <p>Gesamt ab Erstgespräch: rund <strong>7 Wochen</strong>.</p>
+      </div>
+      <div class="vor rev" style="--d:110ms">
+        <div class="vor-kopf">Werbepylon</div>
+        <div class="vor-zahl">5 <small>Wochen</small></div>
+        <div class="vor-kopf">Produktion</div>
+        <p>Gesamt ab Erstgespräch: rund <strong>9 Wochen</strong>.</p>
+      </div>
+      <div class="vor rev" style="--d:220ms">
+        <div class="vor-kopf">Montage</div>
+        <div class="vor-zahl">1 <small>Tag</small></div>
+        <div class="vor-kopf">In der Regel</div>
+        <p>Vor Ort, von Sait Simsek selbst — bei größeren Anlagen mit Kran oder Hebebühne.</p>
+      </div>
+    </div>
+
+    <div class="vor-hint rev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M11 12h1v4h1"/></svg>
+      <span>Sie haben schon einen Eröffnungstermin? Der
+        <a href="lm-agentur-relaunch.html#zeitplan">Eröffnungs-Zeitplaner</a>
+        rechnet Ihnen in zwei Klicks aus, ob sich das ausgeht — und was wir vorziehen, wenn es knapp wird.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MONTAGE ============ -->
+<section id="montage">
+  <div class="wrap">
+    <div class="mo rev">
+      <div class="mo-media">
+        <img src="assets/bilder/portas-wohlfink.webp"
+             srcset="assets/bilder/portas-wohlfink-720.webp 800w, assets/bilder/portas-wohlfink.webp 1280w"
+             sizes="(max-width:900px) 100vw, 46vw"
+             width="1280" height="1071" loading="lazy" decoding="async"
+             alt="Dachschriftzug Portas über dem Fassadenband Tischlerei Wohlfink, daneben ein Monteur auf einer Hebebühne">
+      </div>
+      <div class="mo-txt">
+        <h2>Auf dem Gerüst steht der Chef.</h2>
+        <p>
+          Beschilderung entsteht bei europäischen Produktionspartnern — die Halterung, das Aufmaß
+          und die Montage macht Sait Simsek selbst. Das ist kein Marketingsatz, sondern der Grund,
+          warum Termine halten: Wer montiert, hat vorher gemessen.
+        </p>
+        <p>
+          Elektrik, Befestigung und Fassadenaufbau werden beim Aufmaß geklärt, nicht am Montagetag.
+          Sie bekommen einen Ansprechpartner — von der ersten Skizze bis zum Einschalten.
+        </p>
+        <a href="lm-agentur-relaunch.html#inhaber" class="btn btn-ghost">Wer dahintersteht</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="cta-band" id="kontakt">
+  <div class="wrap">
+    <div class="rev">
+      <h2>Soll Ihre Fassade abends arbeiten?</h2>
+      <p>Schicken Sie uns ein Foto Ihrer Fassade — wir sagen Ihnen, welche Bauart passt, was sie kann und was sie ungefähr kostet.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/436643724808?text=Hallo!%20Ich%20interessiere%20mich%20f%C3%BCr%20ein%20Leuchtschild.%20Es%20geht%20um%3A%20"
+           rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:+436643724808" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
+          Jetzt anrufen
+        </a>
+        <a href="mailto:info@lm-agentur.at" class="btn btn-ghost">E-Mail</a>
+      </div>
+    </div>
+
+    <div class="contact-card rev" style="--d:120ms">
+      <div class="contact-strip-bar" aria-hidden="true">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.4 7-13a7 7 0 10-14 0c0 5.6 7 13 7 13z"/><circle cx="12" cy="9" r="2.4"/></svg></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#1A0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" width="17" height="17" fill="#1A0E12"><path d="M4 3l16 7-6.5 2.3L11 19z"/></svg></div>
+      </div>
+      <div class="contact-details">
+        <div class="row"><span class="label">Adresse</span><span>Tannenfeldstrasse 3, 6812 Meiningen</span></div>
+        <div class="row"><span class="label">Telefon</span><a href="tel:+436643724808">+43 664 372 48 08</a></div>
+        <div class="row"><span class="label">E-Mail</span><a href="mailto:info@lm-agentur.at">info@lm-agentur.at</a></div>
+        <div class="row"><span class="label">Instagram</span><a href="https://www.instagram.com/laendleblitzmarketing/" rel="noopener">@laendleblitzmarketing</a></div>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -1418,74 +1815,120 @@
   pruefen();
 })();
 </script>
+
 <script>
-/* Hero-Einblendung */
+/* Hero-Einblendung (ohne Schalter — den gibt es nur auf der Startseite) */
 (function(){
-  var hero=document.getElementById('hero'); if(!hero) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    hero.classList.add('intro','intro-done','lit'); return;
+  var hero = document.getElementById('hero');
+  if (!hero) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    hero.classList.add('intro','intro-done','lit');
+    return;
   }
   requestAnimationFrame(function(){
-    setTimeout(function(){ hero.classList.add('intro','lit'); },100);
-    setTimeout(function(){ hero.classList.add('intro-done'); },1500);
+    setTimeout(function(){ hero.classList.add('intro','lit'); }, 100);
+    setTimeout(function(){ hero.classList.add('intro-done'); }, 1500);
   });
 })();
 </script>
-
 <script>
-/* Gerätewechsel — der Rahmen ändert die Größe, das Layout ordnet sich neu.
-   Läuft nach dem Aufbau einmal von selbst durch, danach steuert der Nutzer. */
+/* Tag/Nacht-Überblender: drei Zustände desselben Lokals.
+   Läuft beim Hereinscrollen einmal von selbst durch (vorher → montiert → Nacht),
+   danach gehört die Steuerung dem Besucher. Gleiche Bauweise wie die
+   Neon-Sektion der Startseite, nur mit einer Stufe mehr — plus das
+   „aufgeben"-Flag der Galerien: sobald selbst geklickt wird, kein Auto mehr. */
 (function(){
-  var dev=document.getElementById('device');
-  var cap=document.getElementById('devCap');
-  var seg=document.querySelector('.seg');
-  if(!dev||!seg) return;
+  var frame = document.getElementById('dnFrame');
+  if (!frame) return;
 
-  var TEXTE={
-    desktop:'Am Rechner — drei Kacheln nebeneinander',
-    tablet:'Am Tablet — schmaler, gleiche Struktur',
-    handy:'Am Handy — gestapelt, Knopf über die volle Breite'
-  };
-  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var timer=[], selbstlauf=true, gestartet=false;
+  var bilder = Array.prototype.slice.call(frame.querySelectorAll('.dn-bild'));
+  var knoepfe = Array.prototype.slice.call(document.querySelectorAll('.dn-step'));
+  var stamp = document.getElementById('dnStamp');
+  var titel = document.getElementById('dnTitel');
+  var text  = document.getElementById('dnText');
+  var meta  = document.getElementById('dnMeta');
+  if (!bilder.length || !knoepfe.length) return;
 
-  function waehle(g){
-    dev.dataset.geraet=g;
-    cap.textContent=TEXTE[g]||'';
-    Array.prototype.forEach.call(seg.querySelectorAll('button'),function(b){
-      b.classList.toggle('active', b.dataset.geraet===g);
-    });
+  var TEXTE = [
+    { stamp:'Vorher',
+      titel:'Vorher: vorhanden, aber nicht zu sehen',
+      text:'Ein Schriftzug war da. Nur hat ihn abends niemand mehr gefunden — kein Kontrast, keine Beleuchtung, keine Fernwirkung.' },
+    { stamp:'Am Tag',
+      titel:'Nach der Montage: erkennbar, bevor man liest',
+      text:'Neuer Auftritt mit Vordachschild, 3D-Lotusblüte und Ausleger. Die Plastik der Buchstaben wirkt schon bei Tageslicht — über Schatten, nicht über Licht.' },
+    { stamp:'Bei Nacht',
+      titel:'Bei Nacht: die Fassade arbeitet allein',
+      text:'Jetzt zeigt sich, wofür die Beleuchtung da ist. Das Lokal ist auf hundert Meter zu sehen, auch wenn längst niemand mehr an der Tür steht.' }
+  ];
+
+  var aufgeben = false;   /* sobald der Besucher selbst wählt, läuft nichts mehr von allein */
+  var aktuell = -1;
+
+  function zeige(i){
+    if (i === aktuell) return;
+    aktuell = i;
+    bilder.forEach(function(b){ b.classList.toggle('on', +b.dataset.stufe === i); });
+    knoepfe.forEach(function(k){ k.setAttribute('aria-pressed', +k.dataset.stufe === i ? 'true' : 'false'); });
+    frame.classList.toggle('ist-nacht', i === 2);
+    var t = TEXTE[i];
+    if (stamp) stamp.textContent = t.stamp;
+    if (titel) titel.textContent = t.titel;
+    if (text)  text.textContent  = t.text;
+    if (meta)  meta.textContent  = 'AY Restaurant · Zustand ' + (i+1) + ' von ' + TEXTE.length;
   }
-  function stoppen(){ timer.forEach(clearTimeout); timer=[]; selbstlauf=false; }
 
-  seg.addEventListener('click',function(e){
-    var b=e.target.closest('button[data-geraet]');
-    if(!b) return;
-    stoppen();
-    waehle(b.dataset.geraet);
+  knoepfe.forEach(function(k){
+    k.addEventListener('click', function(){
+      aufgeben = true;
+      zeige(+k.dataset.stufe);
+    });
   });
 
-  waehle('desktop');
-  if(reduced){ dev.classList.add('gebaut'); return; }
+  zeige(0);
 
-  function starte(){
-    if(gestartet) return; gestartet=true;
-    /* Erst die Blöcke aufbauen … */
-    timer.push(setTimeout(function(){ dev.classList.add('gebaut'); }, 200));
-    /* … dann einmal durch die Geräte, damit man den Umbau sieht */
-    timer.push(setTimeout(function(){ if(selbstlauf) waehle('tablet'); }, 1900));
-    timer.push(setTimeout(function(){ if(selbstlauf) waehle('handy'); },  3300));
+  /* Ohne Bewegungswunsch direkt in den Endzustand: das Nachtbild ist die Aussage */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    zeige(2);
+    return;
   }
 
-  var bay=document.querySelector('.device-bay');
-  if('IntersectionObserver' in window && bay){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(x){ if(x.isIntersecting){ starte(); io.unobserve(x.target);} });
-    },{threshold:.35});
-    io.observe(bay);
-  } else starte();
+  /* Einmaliger Durchlauf, sobald der Rahmen im Bild ist */
+  function durchlauf(){
+    if (aufgeben) return;
+    var i = 1;
+    (function weiter(){
+      if (aufgeben || i > 2) return;
+      zeige(i);
+      i++;
+      setTimeout(weiter, 2200);
+    })();
+  }
+
+  var gestartet = false;
+  function starte(){
+    if (gestartet || aufgeben) return;
+    gestartet = true;
+    setTimeout(durchlauf, 900);
+  }
+
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(e){
+      e.forEach(function(x){
+        if (x.isIntersecting){ starte(); io.unobserve(x.target); }
+      });
+    }, { threshold: 0.28 });   /* niedrig halten: der Rahmen ist auf dem Handy hoch */
+    io.observe(frame);
+  } else {
+    starte();
+  }
+
+  /* Auffangnetz, falls der Observer nicht greift */
+  window.addEventListener('scroll', function(){
+    if (gestartet) return;
+    var r = frame.getBoundingClientRect();
+    if (r.top < window.innerHeight * .85 && r.bottom > 0) starte();
+  }, { passive:true });
 })();
 </script>
-
 </body>
 </html>

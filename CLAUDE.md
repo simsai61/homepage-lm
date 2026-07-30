@@ -80,6 +80,7 @@ Alle Seiten sind **eigenständige HTML-Dateien ohne Build-Schritt**. Kein Framew
 | `lm-agentur-arbeitsbekleidung.html` | Arbeitsbekleidung | Blitz wird Stich für Stich gestickt | Magenta |
 | `lm-agentur-kfz-folierung.html` | KFZ-Folierung | Rakel foliert einen Firmenbus | Voller Verlauf |
 | `lm-agentur-werbeartikel.html` | Werbeartikel | Presse stempelt den Blitz auf wechselnde Artikel | Peach/Pink |
+| `lm-agentur-leuchtreklame.html` | **Leuchtreklame** | Tag/Nacht-Überblender: dasselbe Lokal vorher → montiert → bei Nacht | Peach als Lichtfarbe |
 
 **Grundidee:** Jede Leistung bekommt einen Moment, der *zeigt* statt behauptet, was gemacht wird. Beim Ausbau weiterer Unterseiten dieses Prinzip fortführen.
 
@@ -96,11 +97,11 @@ Alle Seiten sind **eigenständige HTML-Dateien ohne Build-Schritt**. Kein Framew
 5. Prozess — Zeitleiste
 6. **Eröffnungs-Zeitplaner** — interaktiv. Am 27.07. gemeinsam mit Prozess **vor die Leistungen** gezogen:
    die sechs Unterseiten-Links der Leistungen wirkten als Ausstiegsrampe vor dem stärksten Verkaufsmoment.
-7. Leistungen — sechs Kacheln
+7. Leistungen — **sieben** Kacheln (Leuchtreklame seit 30.07. an erster Stelle)
 8. **Inhaber** — Portraitfoto Sait, Direktkontakt inkl. WhatsApp, Einzugsgebiets-Absatz (Feldkirch, Dornbirn, Bludenz, Frastanz, Warth)
 9. **Einblicke** — Projektfilme hochkant + Verweis auf Instagram
 10. Kontakt + Kontaktkarte (WhatsApp jetzt erster Button, Erreichbarkeits-Zeile darunter)
-11. Fußzeile (jetzt mit Leistungen-Spalte: 6 Unterseiten-Links, auf allen Seiten)
+11. Fußzeile (Leistungen-Spalte: 7 Unterseiten-Links, Leuchtreklame zuerst, auf allen Seiten)
 
 Nav- und Footer-Anker folgen dem Scrollweg: Komplettpaket → Referenzen → Leuchtreklame → Zeitplaner → Leistungen.
 Im Mobilmenü gibt es zusätzlich den Punkt „Angebot anfragen" (`.nav-kontakt`, desktop ausgeblendet).
@@ -333,7 +334,7 @@ SICHTBAR.                        ← leuchtet in Peach auf
 ### Leistungen — bewusst NICHT aufgeführt
 Suchmaschinenoptimierung, Online-Shops und Social Media Marketing wurden entfernt. Nicht wieder aufnehmen.
 
-Aktuell gelistet: Grafik & Logodesign · Printmedien · Arbeitsbekleidung · Werbeartikel · KFZ-Folierung · Webdesign
+Aktuell gelistet: Leuchtreklame · Grafik & Logodesign · Printmedien · Arbeitsbekleidung · Werbeartikel · KFZ-Folierung · Webdesign
 
 ### Eröffnungs-Zeitplaner — Rechenlogik
 Gesamter Vorlauf = Produktionsdauer + 4 Wochen (Erstgespräch 1 + Gestaltung 2 + Aufmaß/Freigabe 1 + Montage 1, teils überlappend).
@@ -379,6 +380,34 @@ Vor-Ort-Termin, aber zu lang und zu fachlich für eine öffentliche Erstanfrage)
 **Achtung bei der Übernahme:** Dieses Werkzeug rechnet nur mit der reinen Produktionszeit
 (Leuchtschild 21 Tage), der Zeitplaner auf der Website mit Gesamtvorlauf (7 Wochen).
 Beide würden demselben Kunden Unterschiedliches sagen — vor einer Zusammenführung klären.
+
+### Erledigt (30.07.2026) — Unterseite Leuchtreklame
+`lm-agentur-leuchtreklame.html` — die größte inhaltliche Lücke: „Leuchtreklame Vorarlberg"
+ist ein Hauptsuchbegriff und Kerngeschäft, hatte aber nur einen Abschnitt auf der Startseite.
+Der Wettbewerb rankt dafür mit eigenen Seiten (Mader, Visuform).
+
+- **Signature-Moment:** Tag/Nacht-Überblender mit den drei AY-Fotos (vorher → montiert →
+  bei Nacht). Läuft beim Hereinscrollen einmal von selbst durch, danach steuert der Besucher;
+  sobald er selbst klickt, hört die Automatik dauerhaft auf (`aufgeben`-Flag wie bei den Galerien).
+  Technisch dieselbe Bauweise wie die Neon-Sektion der Startseite, nur mit drei Stufen.
+- **Leitfarbe Peach als Lichtfarbe** — auf dieser Seite ist die Farbe nicht Dekoration,
+  sondern der Gegenstand. Deshalb Leuchtschein (`radial-gradient`, `text-shadow`) statt Flächen.
+- **Fünf Bauarten** mit je einem echten Foto: Leuchtkasten (Schnitzelhaus Tisis) ·
+  3D-Einzelbuchstaben (Profi Group) · LED-Neon (Bella Napoli) · Werbepylon (CT Automotive) ·
+  Sonderform (Anatolia, Dreiecksschild). **Erst falsch belegt:** als Leuchtkasten stand
+  zunächst Farben Kobold — das ist ein beleuchteter Schriftzug, kein Kasten. Vom Auftraggeber
+  korrigiert, Foto nachgeliefert. Bei Bauart-Beispielen aufs Foto schauen, nicht auf den Namen.
+- **Fünf Karten = 3 Spalten (3+2), nicht `auto-fit`.** Mit `auto-fit` standen auf breiten
+  Schirmen vier oben und eine allein darunter, mit drei leeren Plätzen.
+- Muster-ID `triNeon`. Vorlaufzeiten deckungsgleich mit dem Zeitplaner (Leuchtschild 3 Wochen
+  Produktion / 7 gesamt, Pylon 5 / 9). Für die Sonderform gibt es **keine belegte Zahl** —
+  dort steht „Zeit nach Form", nichts Erfundenes.
+- Verlinkt aus: Footer-Leistungsspalte (alle Seiten, an erster Stelle), Leistungs-Kachel der
+  Startseite, Verweis im Leuchtreklame-Abschnitt der Startseite, Sitemap.
+- **Neue Assets:** `schnitzelhaus-leuchtkasten.webp` (+720), `anatolia-sonderform.webp` (+720).
+  Aufbereitet mit Pillow: gezielter 4:3-Zuschnitt aufs Schild statt den Browser blind
+  beschneiden zu lassen; Anatolia mit Qualität 76 statt 82 — der Rauputz ist Rauschen und
+  hat bei 82 unnötige 31 KB gekostet.
 
 ### Erledigt (29.07.2026) — Titel, Weiterleitungen
 **Seitentitel (die „blauen Zeilen" in Google) tragen jetzt Suchbegriff + Ort.**
