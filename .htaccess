@@ -85,6 +85,19 @@ RewriteRule ^lm-agentur-relaunch\.html$ / [R=301,L]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 5 — Zeichensatz
+# 5 — Arbeitsdateien nicht ausliefern
+#
+# Die Bereitstellung kopiert den kompletten Repo-Inhalt ins Web-Verzeichnis —
+# also auch Dateien, die nur der Projektorganisation dienen. Markdown-Notizen
+# gehören nicht ins Web: sie wären sonst frei abrufbar, landen im Google-Index
+# und können interne Angaben enthalten.
+#
+# 404 statt 403: Ein 403 würde bestätigen, dass es die Datei gibt.
+# ─────────────────────────────────────────────────────────────────────────────
+RewriteRule \.(md|markdown)$ - [R=404,L]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6 — Zeichensatz
 # ─────────────────────────────────────────────────────────────────────────────
 AddDefaultCharset UTF-8
