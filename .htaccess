@@ -56,32 +56,54 @@ RewriteRule ^lm-agentur-relaunch\.html$ / [R=301,L]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 4 — Adressen der alten Seite  ►► HIER FEHLT NOCH DIE LISTE ◄◄
+# 4 — Adressen der alten Seite
 #
-# Die bisherige Seite steht seit Jahren im Google-Index. Fallen ihre Adressen
-# beim Umstellen auf 404, ist die aufgebaute Historie verloren — genau der
-# Vorteil, den eine bestehende Domain sonst mitbringt. Das ist der teuerste
-# Fehler bei einem Relaunch und lässt sich nur hier verhindern.
+# Quelle: Search Console → Leistung → Seiten (16 Monate, Stand 30.07.2026).
+# Die Klickzahlen stehen dabei — sie zeigen, welche Adressen wirklich zählen.
+# Ergänzt am 30.07.2026.
 #
-# So kommt man an die Liste der alten Adressen:
-#   a) Google Search Console → Indexierung → Seiten → Liste exportieren
-#      (zeigt genau die Adressen, die Google kennt — der beste Weg)
-#   b) bei Google „site:lm-agentur.at" suchen und die Treffer notieren
-#   c) im Hostinger-Dateimanager nachsehen, welche Dateien bisher liegen
-#
-# Dann pro alter Adresse eine Zeile nach diesem Muster ergänzen — die alte
-# Adresse links, die inhaltlich passende neue rechts:
-#
-#   RewriteRule ^leistungen/beschriftung\.html$  /lm-agentur-kfz-folierung.html  [R=301,L]
-#   RewriteRule ^ueber-uns/?$                    /#inhaber                       [R=301,L]
-#   RewriteRule ^kontakt/?$                      /kontakt.html                   [R=301,L]
-#
-# Zwei Regeln dazu:
-#   · Immer auf die thematisch passende Seite leiten, nicht pauschal auf die
-#     Startseite. Google bewertet massenhafte Weiterleitungen auf „/" wie einen
-#     404 („Soft 404") und der Besucher findet nicht, was er gesucht hat.
-#   · KEIN Sammel-Redirect für alles Unbekannte. Was es wirklich nicht mehr
-#     gibt, darf ehrlich 404 antworten.
+# Grundsatz: immer auf die thematisch passende Seite, nie pauschal auf „/".
+# Das NE-Flag ist bei Zielen mit „#" zwingend, sonst macht Apache daraus %23.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Impressum (29 Klicks)
+RewriteRule ^imprint/?$                      /impressum.html                     [R=301,L]
+
+# Über uns (22 Klicks) → Inhaber-Abschnitt der Startseite
+RewriteRule ^uber-uns/?$                     /#inhaber                           [R=301,NE,L]
+RewriteRule ^ueber-uns/?$                    /#inhaber                           [R=301,NE,L]
+
+# Kontakt (15 Klicks) → neuer Anfrage-Funnel
+RewriteRule ^kontakt/?$                      /kontakt.html                       [R=301,L]
+
+# Werbetechnik (14 Klicks) → Leuchtreklame & Beschilderung
+RewriteRule ^werbetechnik/?$                 /lm-agentur-leuchtreklame.html      [R=301,L]
+
+# Designservice (11 Klicks) → Grafik & Logodesign
+RewriteRule ^designservice/?$                /lm-agentur-grafik-logodesign.html  [R=301,L]
+
+# Arbeitsbekleidung + Werbeartikel (8 Klicks) — war eine Seite, ist jetzt zwei.
+# Ziel ist die zuerst genannte; von dort führen Fußzeile und Leistungen weiter.
+RewriteRule ^arbeitsbekleidung-werbeartikel/?$  /lm-agentur-arbeitsbekleidung.html [R=301,L]
+
+# Werbeartikel einzeln (stand als 404 in der Search Console)
+RewriteRule ^werbeartikel/?$                 /lm-agentur-werbeartikel.html       [R=301,L]
+
+# Online-Shops (5 Klicks) — die Leistung gibt es nicht mehr (bewusst gestrichen).
+# Nächstliegendes echtes Angebot ist Webdesign; wer einen Shop suchte, sucht eine Seite.
+RewriteRule ^online-shops/?$                 /lm-agentur-webdesign.html          [R=301,L]
+RewriteRule ^home/shop/?$                    /lm-agentur-webdesign.html          [R=301,L]
+
+# Online-Marketing (2 Klicks) — ersatzlos gestrichen, kein passendes Ziel.
+# Leistungsübersicht ist die ehrlichste Antwort.
+RewriteRule ^online-marketing-2/?$           /#leistungen                        [R=301,NE,L]
+
+# Alter WordPress-Feed
+RewriteRule ^feed/?$                         /                                   [R=301,L]
+
+# Hinweis: /wp-admin/… und /?et_core_page_resource=… (Divi-Reste) bekommen
+# BEWUSST keine Regel. Die dürfen 404 antworten — sie hatten nie Besucher,
+# und ein Redirect würde nur so tun, als gäbe es dort Inhalt.
 
 
 # ─────────────────────────────────────────────────────────────────────────────
