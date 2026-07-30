@@ -3003,13 +3003,14 @@
     if (herkunft) sessionStorage.setItem('lbm-herkunft', herkunft);
   } catch(e){}
 
-  var KEY = 'lbm-consent';
+  var KEY      = 'lbm-consent';
   var PIXEL_ID = '1377359577678525';
-  var geladen = false;
+  var GA_ID    = 'G-3PXCCTM8CC';
+  var geladen  = false;
 
-  function ladePixel(){
-    if (geladen) return;
-    geladen = true;
+  /* Meta-Pixel: misst die Wirkung von Werbung auf Facebook/Instagram
+     und bildet die Zielgruppen, die dort erneut angesprochen werden. */
+  function ladeMeta(){
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -3038,6 +3039,33 @@
     }
   }
 
+  /* Google Analytics 4: zeigt, was NACH dem Klick aus der Suche passiert —
+     welche Leistungsseiten gelesen werden und an welcher Stelle der Anfrage-
+     Funnel abbricht. Die Search Console endet beim Klick, hier beginnt die
+     Messung. GA4 kürzt IP-Adressen von sich aus; ein eigener Parameter dafür
+     entfällt. Das Skript wird erst hier nachgeladen — vor der Zustimmung
+     geht keine einzige Anfrage an Google. */
+  function ladeAnalytics(){
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+
+  /* Beide Dienste hängen an derselben Entscheidung: ein „Zustimmen" oder
+     ein „Ablehnen", kein Schieberegler-Dickicht. */
+  function ladeDienste(){
+    if (geladen) return;
+    geladen = true;
+    ladeMeta();
+    ladeAnalytics();
+  }
+
   function lese(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
   function schreibe(w){ try { localStorage.setItem(KEY, w); } catch(e){} }
 
@@ -3050,10 +3078,11 @@
     banner.setAttribute('aria-label', 'Cookie-Einstellungen');
     banner.innerHTML =
       '<div class="consent-inner">' +
-        '<p class="consent-txt">Damit wir sehen, welche Werbung Kunden bringt, w\u00fcrden wir gern das ' +
-        'Meta-Pixel nutzen. Es setzt Cookies von Meta (Facebook/Instagram) \u2014 nur mit Ihrer Zustimmung. ' +
-        'Sie k\u00f6nnen sie jederzeit \u00fcber \u201eCookie-Einstellungen\u201c im Fu\u00dfbereich \u00e4ndern. ' +
-        '<a href="datenschutz.html">Datenschutzerkl\u00e4rung</a></p>' +
+        '<p class="consent-txt">Damit wir sehen, welche Werbung Kunden bringt und welche Seiten ' +
+        'gelesen werden, würden wir gern das Meta-Pixel und Google Analytics nutzen. ' +
+        'Beide setzen Cookies (Meta bzw. Google) — nur mit Ihrer Zustimmung. ' +
+        'Sie können sie jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern. ' +
+        '<a href="datenschutz.html">Datenschutzerklärung</a></p>' +
         '<div class="consent-knoepfe">' +
           '<button type="button" class="consent-nein">Ablehnen</button>' +
           '<button type="button" class="consent-ja">Zustimmen</button>' +
@@ -3064,14 +3093,13 @@
       schreibe('nein'); banner.classList.remove('offen');
     });
     banner.querySelector('.consent-ja').addEventListener('click', function(){
-      schreibe('ja'); banner.classList.remove('offen'); ladePixel();
+      schreibe('ja'); banner.classList.remove('offen'); ladeDienste();
     });
   }
 
   var wahl = lese();
-  if (wahl === 'ja') ladePixel();
+  if (wahl === 'ja') ladeDienste();
   else if (wahl !== 'nein') zeigeBanner();
-
   /* Fußzeilen-Link: Entscheidung jederzeit ändern */
   document.addEventListener('click', function(e){
     var a = e.target.closest('[data-cookie-einstellungen]');

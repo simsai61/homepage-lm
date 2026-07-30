@@ -1149,8 +1149,9 @@
     <p>Der Schutz Ihrer Daten ist uns wichtig — und diese Website ist bewusst sparsam gebaut:
     <strong>ohne Ihre Zustimmung werden keine Cookies gesetzt und keine Verbindungen zu Drittanbietern aufgebaut.</strong>
     Schriften, Bilder und Videos liegen auf unserem eigenen Server. Einzig für die Messung unserer Werbung
-    setzen wir — <strong>nur wenn Sie im Banner zustimmen</strong> — das Meta-Pixel ein (Details unten).
-    Analyse-Tools, Werbenetzwerke oder Kontaktformulare gibt es darüber hinaus nicht.</p>
+    und die Reichweitenanalyse setzen wir — <strong>nur wenn Sie im Banner zustimmen</strong> — das
+    Meta-Pixel und Google Analytics ein (Details unten). Weitere Werbenetzwerke oder Kontaktformulare
+    gibt es darüber hinaus nicht.</p>
 
     <h2>Verantwortlicher</h2>
     <p>Ländle Blitz Marketing, Inhaber Sait Simsek<br>
@@ -1181,8 +1182,26 @@
     identifizieren; wir sehen nur Gruppengrößen und Auswertungen. Dabei kann es zu einer Übermittlung in die USA kommen (Meta Platforms, Inc.);
     Meta ist unter dem EU-US Data Privacy Framework zertifiziert. Details in der
     <a href="https://www.facebook.com/privacy/policy" rel="noopener">Datenrichtlinie von Meta</a>.</p>
-    <p><strong>Widerruf:</strong> Ihre Entscheidung speichern wir lokal in Ihrem Browser
-    (kein Cookie, keine Übertragung an uns). Über den Link <a href="#" data-cookie-einstellungen>„Cookie-Einstellungen"</a>
+    <h2>Google Analytics (nur mit Ihrer Zustimmung)</h2>
+    <p>Um zu verstehen, welche Inhalte unserer Seite gelesen werden, nutzen wir
+    <strong>Google Analytics 4</strong> von Google Ireland Ltd., Gordon House, Barrow Street,
+    Dublin 4, Irland. Auch dieses Werkzeug wird <strong>ausschließlich geladen, wenn Sie im
+    Cookie-Banner zustimmen</strong> (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO,
+    §&nbsp;165 Abs.&nbsp;3 TKG 2021). Ohne Zustimmung wird keine Verbindung zu Google aufgebaut
+    und kein Cookie gesetzt.</p>
+    <p>Bei Zustimmung verarbeitet Google Informationen über Ihren Besuch (aufgerufene Seiten,
+    Verweildauer, ungefährer Standort auf Ortsebene, Geräte- und Browserdaten, Herkunftsquelle,
+    Cookie-Kennungen). Zusätzlich melden wir, wenn jemand auf der Anfrage-Seite das Ergebnis
+    erreicht oder einen Kontakt-Knopf betätigt — daran erkennen wir, an welcher Stelle Anfragen
+    abbrechen. <strong>IP-Adressen werden von Google Analytics&nbsp;4 grundsätzlich gekürzt und
+    nicht gespeichert.</strong> Wir erhalten ausschließlich zusammengefasste Auswertungen und
+    können keine einzelne Person identifizieren. Dabei kann es zu einer Übermittlung in die USA
+    kommen (Google LLC); Google ist unter dem EU-US Data Privacy Framework zertifiziert. Details in der
+    <a href="https://policies.google.com/privacy" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+
+    <p><strong>Widerruf:</strong> Ihre Entscheidung gilt für beide Werkzeuge und wird lokal in Ihrem
+    Browser gespeichert (kein Cookie, keine Übertragung an uns). Über den Link
+    <a href="#" data-cookie-einstellungen>„Cookie-Einstellungen"</a>
     im Fußbereich jeder Seite können Sie Ihre Zustimmung jederzeit erteilen oder widerrufen —
     der Widerruf wirkt ab dem nächsten Seitenaufruf.</p>
 
@@ -1555,13 +1574,14 @@
     if (herkunft) sessionStorage.setItem('lbm-herkunft', herkunft);
   } catch(e){}
 
-  var KEY = 'lbm-consent';
+  var KEY      = 'lbm-consent';
   var PIXEL_ID = '1377359577678525';
-  var geladen = false;
+  var GA_ID    = 'G-3PXCCTM8CC';
+  var geladen  = false;
 
-  function ladePixel(){
-    if (geladen) return;
-    geladen = true;
+  /* Meta-Pixel: misst die Wirkung von Werbung auf Facebook/Instagram
+     und bildet die Zielgruppen, die dort erneut angesprochen werden. */
+  function ladeMeta(){
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -1590,6 +1610,33 @@
     }
   }
 
+  /* Google Analytics 4: zeigt, was NACH dem Klick aus der Suche passiert —
+     welche Leistungsseiten gelesen werden und an welcher Stelle der Anfrage-
+     Funnel abbricht. Die Search Console endet beim Klick, hier beginnt die
+     Messung. GA4 kürzt IP-Adressen von sich aus; ein eigener Parameter dafür
+     entfällt. Das Skript wird erst hier nachgeladen — vor der Zustimmung
+     geht keine einzige Anfrage an Google. */
+  function ladeAnalytics(){
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+
+  /* Beide Dienste hängen an derselben Entscheidung: ein „Zustimmen" oder
+     ein „Ablehnen", kein Schieberegler-Dickicht. */
+  function ladeDienste(){
+    if (geladen) return;
+    geladen = true;
+    ladeMeta();
+    ladeAnalytics();
+  }
+
   function lese(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
   function schreibe(w){ try { localStorage.setItem(KEY, w); } catch(e){} }
 
@@ -1602,10 +1649,11 @@
     banner.setAttribute('aria-label', 'Cookie-Einstellungen');
     banner.innerHTML =
       '<div class="consent-inner">' +
-        '<p class="consent-txt">Damit wir sehen, welche Werbung Kunden bringt, w\u00fcrden wir gern das ' +
-        'Meta-Pixel nutzen. Es setzt Cookies von Meta (Facebook/Instagram) \u2014 nur mit Ihrer Zustimmung. ' +
-        'Sie k\u00f6nnen sie jederzeit \u00fcber \u201eCookie-Einstellungen\u201c im Fu\u00dfbereich \u00e4ndern. ' +
-        '<a href="datenschutz.html">Datenschutzerkl\u00e4rung</a></p>' +
+        '<p class="consent-txt">Damit wir sehen, welche Werbung Kunden bringt und welche Seiten ' +
+        'gelesen werden, würden wir gern das Meta-Pixel und Google Analytics nutzen. ' +
+        'Beide setzen Cookies (Meta bzw. Google) — nur mit Ihrer Zustimmung. ' +
+        'Sie können sie jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern. ' +
+        '<a href="datenschutz.html">Datenschutzerklärung</a></p>' +
         '<div class="consent-knoepfe">' +
           '<button type="button" class="consent-nein">Ablehnen</button>' +
           '<button type="button" class="consent-ja">Zustimmen</button>' +
@@ -1616,14 +1664,13 @@
       schreibe('nein'); banner.classList.remove('offen');
     });
     banner.querySelector('.consent-ja').addEventListener('click', function(){
-      schreibe('ja'); banner.classList.remove('offen'); ladePixel();
+      schreibe('ja'); banner.classList.remove('offen'); ladeDienste();
     });
   }
 
   var wahl = lese();
-  if (wahl === 'ja') ladePixel();
+  if (wahl === 'ja') ladeDienste();
   else if (wahl !== 'nein') zeigeBanner();
-
   /* Fußzeilen-Link: Entscheidung jederzeit ändern */
   document.addEventListener('click', function(e){
     var a = e.target.closest('[data-cookie-einstellungen]');
