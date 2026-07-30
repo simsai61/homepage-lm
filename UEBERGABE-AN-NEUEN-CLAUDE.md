@@ -89,8 +89,8 @@ teils überlappend).
 Suchmaschinenoptimierung, Online-Shops und Social Media Marketing wurden aus der Seite entfernt.
 **Nicht wieder aufnehmen.**
 
-Aktuell gelistet: Grafik & Logodesign · Printmedien · Arbeitsbekleidung · Werbeartikel ·
-KFZ-Folierung · Webdesign
+Aktuell gelistet: Leuchtreklame · Grafik & Logodesign · Printmedien · Arbeitsbekleidung ·
+Werbeartikel · KFZ-Folierung · Webdesign
 
 ---
 
@@ -124,7 +124,7 @@ die **Freigabe zur Namensnennung** — das ist noch offen.
 
 **Status:** Fiktiver Gestaltungsentwurf, nicht live. Projektordner: `/Users/lm/Downloads/projekt/`
 
-### Die sieben Seiten
+### Die acht Seiten
 
 | Datei | Signature-Moment | Interaktion |
 |---|---|---|
@@ -135,6 +135,7 @@ die **Freigabe zur Namensnennung** — das ist noch offen.
 | `lm-agentur-werbeartikel.html` | Presse stempelt den Blitz auf | 5 Artikel zur Auswahl |
 | `lm-agentur-printmedien.html` | Vier Druckplatten rücken in den Passer | Passer / Versatz |
 | `lm-agentur-webdesign.html` | Gerät wechselt Größe, Layout ordnet sich neu | Rechner / Tablet / Handy |
+| `lm-agentur-leuchtreklame.html` | Tag/Nacht: vorher → montiert → bei Nacht | fünf Bauarten mit echten Fotos |
 
 Dazu: `lm-agentur-relaunch-sperre.html` = **verworfene Vergleichsfassung** (siehe Entscheidungen).
 
@@ -146,7 +147,7 @@ Dazu: `lm-agentur-relaunch-sperre.html` = **verworfene Vergleichsfassung** (sieh
 4. Leuchtreklame — Bella Napoli, Überblendung aus → an (hinter die Referenzen gezogen)
 5. Prozess — Zeitleiste
 6. **Eröffnungs-Zeitplaner** — interaktiv, mit Abschluss-CTA (vor die Leistungen gezogen)
-7. Leistungen — 6 Kacheln, alle verlinkt
+7. Leistungen — 7 Kacheln, alle verlinkt (Leuchtreklame zuerst)
 8. Inhaber — Portraitfoto Sait, jetzt mit WhatsApp-Button und Einzugsgebiets-Absatz
 9. Einblicke — 8 Projektfilme hochkant + Instagram
 10. Kontakt + Kontaktkarte (WhatsApp zuerst)
@@ -412,7 +413,17 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
    Domain noch unbestätigt (Canonicals zeigen auf www.lm-agentur.at).
 6. **Canonical-/OG-URLs finalisieren** — stehen seit 27.07. als Platzhalter
    (`https://www.lm-agentur.at/<dateiname>`) auf allen 7 Seiten; beim Go-live auf die
-   endgültigen Pfade umstellen
+   endgültigen Pfade umstellen. **Seit 29.07. gehört `sitemap.xml` mit dazu** — die
+   Adressen dort müssen exakt zu den Canonicals passen, sonst ignoriert Google die Sitemap.
+8. **301-Weiterleitungen der alten URLs** — die bestehende Seite ist seit Jahren im
+   Google-Index. Fallen ihre Adressen beim Relaunch auf 404, ist die aufgebaute Historie
+   weg — genau der Vorteil, den eine alte Domain sonst bringt. Dafür braucht es eine Liste
+   der alten Adressen (Search Console → Seiten, oder `site:lm-agentur.at`) und eine
+   `.htaccess` bei Hostinger. **Der teuerste Fehler beim Relaunch, noch offen.**
+9. **Google Business Profil pflegen** — für „Werbetechnik Vorarlberg", „Leuchtreklame
+   Feldkirch" usw. entscheidet der Kartenausschnitt (Local Pack) über die meisten Anfragen.
+   Der kommt aus dem Business-Profil, nicht aus der Website, und wirkt in Tagen statt Monaten.
+   Kurzfristig der größte Hebel — größer als jede Änderung am Code.
 7. **Wortlaut mit Sait bestätigen**: (a) Kosten-Hinweise („…und was es ungefähr kostet" im
    Kontaktband, „ehrlicher Kosten-Richtwert im Erstgespräch" im Zeitplaner-Hint),
    (b) Erreichbarkeits-Zeile im Kontaktband („Keiner dran? Dann steht Sait gerade auf einem Gerüst…")
@@ -428,7 +439,14 @@ Nach Änderung der Konfiguration den Server **neu starten**, sonst dient er das 
   Nachricht eingesetzt, nichts geht an einen Server — deshalb kein DSGVO-Nachtrag nötig
   (ein erklärender Abschnitt steht trotzdem in der Datenschutzerklärung).
   Wochenangaben gibt es nur beim Komplettpaket (9 Wochen), weil nur diese Zahl belegt ist.
-  Verlinkt über den Kopf-CTA „Angebot anfragen" (alle Seiten) und die Fußzeile.
+  Verlinkt über den Kopf-CTA „Angebot anfragen" (alle Seiten), die Fußzeile und seit 29.07.
+  auch den Hero-Primärbutton der Startseite (vorher `#kontakt`; am 29.07. zudem von
+  „Komplettpaket anfragen" auf „Angebot anfragen" umbenannt — gleicher Wortlaut wie der Kopf-CTA).
+  **Fallstrick, teuer gelernt (29.07.):** Am Datumsfeld hing anfangs ein Auto-Sprung auf
+  `change` — auf dem iPhone feuert `change` aber schon beim Drehen des Datumsrads, der Funnel
+  sprang zur Betriebs-Frage, bevor der Termin fertig eingestellt war. Deshalb: **nie Auto-Advance
+  an `input type="date"` hängen.** Weiter geht es nur über den expliziten Weiter-Knopf
+  (`#fnDateNext`, freigeschaltet sobald ein Datum gewählt ist) oder Enter.
 - **Altes Kontaktformular-Thema (überholt)** — bewusst zurückgestellt. World4You kann PHP, also ohne Fremddienst
   machbar. Vorlage: Saits internes Aufmaß-Werkzeug `/Users/lm/Downloads/Bedarfsanalyse.html`
   (sehr gut für den Vor-Ort-Termin, aber zu lang und zu fachlich für eine Erstanfrage).

@@ -1,0 +1,90 @@
+# .htaccess — www.lm-agentur.at (Hostinger, LiteSpeed/Apache)
+#
+# Zwei Aufgaben: eine einzige gültige Adressform erzwingen, und die Adressen der
+# alten Seite auf die neuen umlenken. Beides gehört zusammen — jede Seite, die
+# unter mehreren Adressen erreichbar ist, teilt ihre Bewertung auf.
+
+RewriteEngine On
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1 — Eine kanonische Adressform: https + www
+#
+# Ohne diese Regel ist dieselbe Seite unter vier Adressen erreichbar
+# (http/https × mit/ohne www). Die canonical-Tags aller Seiten zeigen auf
+# https://www.lm-agentur.at/ — die Weiterleitung muss dazu passen.
+#
+# %{HTTPS} allein reicht bei Hostinger nicht: liegt ein Proxy davor, kommt die
+# Anfrage intern als http an und die Regel würde endlos umleiten. Deshalb wird
+# zusätzlich X-Forwarded-Proto geprüft.
+# ─────────────────────────────────────────────────────────────────────────────
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://www.lm-agentur.at%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.lm-agentur.at%{REQUEST_URI} [R=301,L]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2 — Startseite nur unter „/" erreichbar
+#
+# /index.html und / liefern identischen Inhalt. Das canonical-Tag nennt „/",
+# also wird /index.html dorthin umgeleitet.
+#
+# Geprüft wird THE_REQUEST (die rohe Anfragezeile), nicht REQUEST_URI: der
+# Server löst „/" intern selbst zu index.html auf, und mit REQUEST_URI würde
+# sich diese Regel deshalb endlos selbst auslösen.
+# ─────────────────────────────────────────────────────────────────────────────
+RewriteCond %{THE_REQUEST} \s/+(?:[^\s?]*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3 — Entwurfskopie der Startseite
+#
+# lm-agentur-relaunch.html ist eine 1:1-Kopie von index.html (Arbeitsdatei aus
+# dem Relaunch). Sie trägt ein canonical auf „/", eine echte Weiterleitung ist
+# aber eindeutiger. Wer die Datei zum Vergleich noch aufrufen will, kommentiert
+# diese eine Zeile aus.
+#
+# lm-agentur-relaunch-sperre.html wird hier BEWUSST NICHT umgeleitet: die
+# verworfene Vergleichsfassung soll auf Wunsch des Auftraggebers weiter
+# aufrufbar bleiben. Aus der Suche hält sie ihr eigenes noindex-Tag heraus.
+# ─────────────────────────────────────────────────────────────────────────────
+RewriteRule ^lm-agentur-relaunch\.html$ / [R=301,L]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4 — Adressen der alten Seite  ►► HIER FEHLT NOCH DIE LISTE ◄◄
+#
+# Die bisherige Seite steht seit Jahren im Google-Index. Fallen ihre Adressen
+# beim Umstellen auf 404, ist die aufgebaute Historie verloren — genau der
+# Vorteil, den eine bestehende Domain sonst mitbringt. Das ist der teuerste
+# Fehler bei einem Relaunch und lässt sich nur hier verhindern.
+#
+# So kommt man an die Liste der alten Adressen:
+#   a) Google Search Console → Indexierung → Seiten → Liste exportieren
+#      (zeigt genau die Adressen, die Google kennt — der beste Weg)
+#   b) bei Google „site:lm-agentur.at" suchen und die Treffer notieren
+#   c) im Hostinger-Dateimanager nachsehen, welche Dateien bisher liegen
+#
+# Dann pro alter Adresse eine Zeile nach diesem Muster ergänzen — die alte
+# Adresse links, die inhaltlich passende neue rechts:
+#
+#   RewriteRule ^leistungen/beschriftung\.html$  /lm-agentur-kfz-folierung.html  [R=301,L]
+#   RewriteRule ^ueber-uns/?$                    /#inhaber                       [R=301,L]
+#   RewriteRule ^kontakt/?$                      /kontakt.html                   [R=301,L]
+#
+# Zwei Regeln dazu:
+#   · Immer auf die thematisch passende Seite leiten, nicht pauschal auf die
+#     Startseite. Google bewertet massenhafte Weiterleitungen auf „/" wie einen
+#     404 („Soft 404") und der Besucher findet nicht, was er gesucht hat.
+#   · KEIN Sammel-Redirect für alles Unbekannte. Was es wirklich nicht mehr
+#     gibt, darf ehrlich 404 antworten.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5 — Zeichensatz
+# ─────────────────────────────────────────────────────────────────────────────
+AddDefaultCharset UTF-8

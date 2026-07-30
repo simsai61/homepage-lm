@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Angebot anfragen — in drei Fragen | Ländle Blitz Marketing</title>
+<title>Angebot für Werbetechnik anfragen | Ländle Blitz Marketing</title>
 <meta name="description" content="Sagen Sie uns in drei Schritten, was Sie vorhaben — Sie bekommen sofort eine ehrliche Einschätzung und eine fertig vorbereitete Anfrage per WhatsApp.">
 <link rel="canonical" href="https://www.lm-agentur.at/kontakt.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -13,7 +13,7 @@
 <meta name="facebook-domain-verification" content="aeyis6j9a8gyjd5uk57l8wdkfenh43">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ländle Blitz Marketing">
-<meta property="og:title" content="Angebot anfragen — in drei Fragen | Ländle Blitz Marketing">
+<meta property="og:title" content="Angebot für Werbetechnik anfragen | Ländle Blitz Marketing">
 <meta property="og:description" content="Sagen Sie uns in drei Schritten, was Sie vorhaben — Sie bekommen sofort eine ehrliche Einschätzung und eine fertig vorbereitete Anfrage per WhatsApp.">
 <meta property="og:url" content="https://www.lm-agentur.at/kontakt.html">
 <meta property="og:image" content="https://www.lm-agentur.at/assets/bilder/og-image.jpg">
@@ -1098,8 +1098,8 @@
     color:var(--text);font-family:inherit;font-size:17px;padding:16px 18px;min-height:56px;
   }
   .fn-date input:focus{outline:2px solid var(--glow-dim);outline-offset:2px}
-  .fn-weiter{width:100%;justify-content:center;margin-top:14px}
-  .fn-weiter:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none}
+  .fn-weiter{width:100%;justify-content:center;margin-top:14px;border:0;cursor:pointer;font-family:inherit}
+  .fn-weiter:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none;pointer-events:none}
 
   .fn-nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:var(--sp-4)}
   .fn-back{color:var(--muted);font-size:14.5px;background:none;border:none;cursor:pointer;padding:10px 2px}
@@ -1220,6 +1220,7 @@
         <button type="button" class="fn-opt" data-leistung="Printmedien">Printmedien</button>
         <button type="button" class="fn-opt" data-leistung="Arbeitsbekleidung">Arbeitsbekleidung</button>
         <button type="button" class="fn-opt" data-leistung="Werbeartikel">Werbeartikel</button>
+        <button type="button" class="fn-opt" data-leistung="Webdesign">Webdesign</button>
       </div>
       <div class="fn-nav"><button type="button" class="fn-back" data-back>← Zurück</button><span></span></div>
     </div>
@@ -1304,6 +1305,7 @@
         <a href="lm-agentur-relaunch.html#leistungen">Leistungen</a>
       </div>
       <div class="foot-nav">
+        <a href="lm-agentur-leuchtreklame.html">Leuchtreklame</a>
         <a href="lm-agentur-grafik-logodesign.html">Grafik &amp; Logodesign</a>
         <a href="lm-agentur-printmedien.html">Printmedien</a>
         <a href="lm-agentur-arbeitsbekleidung.html">Arbeitsbekleidung</a>
@@ -1637,18 +1639,21 @@
     if (weiterEl) weiterEl.disabled = !dateEl.value;
   }
 
+  function terminWeiter(){
+    if (!dateEl || !dateEl.value) return;
+    stand.termin = dateEl.value;
+    weiter('s3');
+  }
+
   if (dateEl) {
     dateEl.addEventListener('input', terminGeprueft);
     dateEl.addEventListener('change', terminGeprueft);
+    /* Am Rechner ist Enter schneller als der Griff zur Maus. */
+    dateEl.addEventListener('keydown', function(e){ if (e.key === 'Enter') terminWeiter(); });
+    terminGeprueft();
   }
 
-  if (weiterEl) {
-    weiterEl.addEventListener('click', function(){
-      if (!dateEl || !dateEl.value) return;
-      stand.termin = dateEl.value;
-      weiter('s3');
-    });
-  }
+  if (weiterEl) weiterEl.addEventListener('click', terminWeiter);
 
   [nameEl, firmaEl].forEach(function(el){
     if (el) el.addEventListener('input', linkeSetzen);

@@ -80,11 +80,12 @@ Alle Seiten sind **eigenständige HTML-Dateien ohne Build-Schritt**. Kein Framew
 | `lm-agentur-arbeitsbekleidung.html` | Arbeitsbekleidung | Blitz wird Stich für Stich gestickt | Magenta |
 | `lm-agentur-kfz-folierung.html` | KFZ-Folierung | Rakel foliert einen Firmenbus | Voller Verlauf |
 | `lm-agentur-werbeartikel.html` | Werbeartikel | Presse stempelt den Blitz auf wechselnde Artikel | Peach/Pink |
+| `lm-agentur-leuchtreklame.html` | **Leuchtreklame** | Tag/Nacht-Überblender: dasselbe Lokal vorher → montiert → bei Nacht | Peach als Lichtfarbe |
 
 **Grundidee:** Jede Leistung bekommt einen Moment, der *zeigt* statt behauptet, was gemacht wird. Beim Ausbau weiterer Unterseiten dieses Prinzip fortführen.
 
 ### Aufbau der Startseite (Stand: 27.07.2026, CRO/SEO-Umbau)
-1. Hero — Claim, Headline, **Schild-Schalter**; Ghost-Button führt jetzt zum Zeitplaner („Reicht meine Zeit noch?")
+1. Hero — Claim, Headline, **Schild-Schalter**; Ghost-Button führt jetzt zum Zeitplaner („Reicht meine Zeit noch?"), Primärbutton „Angebot anfragen" (bis 29.07. „Komplettpaket anfragen") führt zum Anfrage-Funnel `kontakt.html` (vorher `#kontakt`)
 2. **Komplettpaket für Neueröffnungen** — **Silvio-Slider (Beweis) zuerst**, dann Bento-Raster, dann WhatsApp-CTA-Zeile
 3. **Referenzen** — Projektkarten (AY zuerst) + Basecamp-Slider, danach CTA-Zeile (WhatsApp + Zeitplaner-Link)
 4. **Leuchtreklame** — Bella Napoli, Überblendung unbeleuchtet → beleuchtet.
@@ -96,11 +97,11 @@ Alle Seiten sind **eigenständige HTML-Dateien ohne Build-Schritt**. Kein Framew
 5. Prozess — Zeitleiste
 6. **Eröffnungs-Zeitplaner** — interaktiv. Am 27.07. gemeinsam mit Prozess **vor die Leistungen** gezogen:
    die sechs Unterseiten-Links der Leistungen wirkten als Ausstiegsrampe vor dem stärksten Verkaufsmoment.
-7. Leistungen — sechs Kacheln
+7. Leistungen — **sieben** Kacheln (Leuchtreklame seit 30.07. an erster Stelle)
 8. **Inhaber** — Portraitfoto Sait, Direktkontakt inkl. WhatsApp, Einzugsgebiets-Absatz (Feldkirch, Dornbirn, Bludenz, Frastanz, Warth)
 9. **Einblicke** — Projektfilme hochkant + Verweis auf Instagram
 10. Kontakt + Kontaktkarte (WhatsApp jetzt erster Button, Erreichbarkeits-Zeile darunter)
-11. Fußzeile (jetzt mit Leistungen-Spalte: 6 Unterseiten-Links, auf allen Seiten)
+11. Fußzeile (Leistungen-Spalte: 7 Unterseiten-Links, Leuchtreklame zuerst, auf allen Seiten)
 
 Nav- und Footer-Anker folgen dem Scrollweg: Komplettpaket → Referenzen → Leuchtreklame → Zeitplaner → Leistungen.
 Im Mobilmenü gibt es zusätzlich den Punkt „Angebot anfragen" (`.nav-kontakt`, desktop ausgeblendet).
@@ -299,6 +300,14 @@ am Weiterscrollen zu hindern, wurde verworfen. Zielgruppe sind Unternehmer unter
 außerdem würden die Ankerlinks der Navigation (`#komplettpaket`, `#leistungen`) genau dort
 in die Sperre laufen. Scrollgesteuert wirkt hochwertiger und hält niemanden fest.
 
+### Kein Auto-Sprung an Datumsfeldern
+Im Anfrage-Funnel (`kontakt.html`) hing anfangs ein automatisches Weiterschalten am
+`change`-Event des Eröffnungstermin-Felds. Auf dem iPhone feuert `change` bei
+`input type="date"` aber schon **beim Drehen des Datumsrads** — der Funnel sprang zur
+nächsten Frage, bevor der Termin fertig eingestellt war. Deshalb: Datumseingabe nur
+Wert merken und Weiter-Knopf freischalten, weitergeschaltet wird ausschließlich per
+Knopf (oder Enter am Rechner).
+
 ### Barrierefreiheit
 Jede Animation prüft `prefers-reduced-motion` und springt dann direkt in den Endzustand.
 
@@ -325,7 +334,7 @@ SICHTBAR.                        ← leuchtet in Peach auf
 ### Leistungen — bewusst NICHT aufgeführt
 Suchmaschinenoptimierung, Online-Shops und Social Media Marketing wurden entfernt. Nicht wieder aufnehmen.
 
-Aktuell gelistet: Grafik & Logodesign · Printmedien · Arbeitsbekleidung · Werbeartikel · KFZ-Folierung · Webdesign
+Aktuell gelistet: Leuchtreklame · Grafik & Logodesign · Printmedien · Arbeitsbekleidung · Werbeartikel · KFZ-Folierung · Webdesign
 
 ### Eröffnungs-Zeitplaner — Rechenlogik
 Gesamter Vorlauf = Produktionsdauer + 4 Wochen (Erstgespräch 1 + Gestaltung 2 + Aufmaß/Freigabe 1 + Montage 1, teils überlappend).
@@ -387,6 +396,85 @@ Vor-Ort-Termin, aber zu lang und zu fachlich für eine öffentliche Erstanfrage)
 **Achtung bei der Übernahme:** Dieses Werkzeug rechnet nur mit der reinen Produktionszeit
 (Leuchtschild 21 Tage), der Zeitplaner auf der Website mit Gesamtvorlauf (7 Wochen).
 Beide würden demselben Kunden Unterschiedliches sagen — vor einer Zusammenführung klären.
+
+### Erledigt (30.07.2026) — Unterseite Leuchtreklame
+`lm-agentur-leuchtreklame.html` — die größte inhaltliche Lücke: „Leuchtreklame Vorarlberg"
+ist ein Hauptsuchbegriff und Kerngeschäft, hatte aber nur einen Abschnitt auf der Startseite.
+Der Wettbewerb rankt dafür mit eigenen Seiten (Mader, Visuform).
+
+- **Signature-Moment:** Tag/Nacht-Überblender mit den drei AY-Fotos (vorher → montiert →
+  bei Nacht). Läuft beim Hereinscrollen einmal von selbst durch, danach steuert der Besucher;
+  sobald er selbst klickt, hört die Automatik dauerhaft auf (`aufgeben`-Flag wie bei den Galerien).
+  Technisch dieselbe Bauweise wie die Neon-Sektion der Startseite, nur mit drei Stufen.
+- **Leitfarbe Peach als Lichtfarbe** — auf dieser Seite ist die Farbe nicht Dekoration,
+  sondern der Gegenstand. Deshalb Leuchtschein (`radial-gradient`, `text-shadow`) statt Flächen.
+- **Fünf Bauarten** mit je einem echten Foto: Leuchtkasten (Schnitzelhaus Tisis) ·
+  3D-Einzelbuchstaben (Profi Group) · LED-Neon (Bella Napoli) · Werbepylon (CT Automotive) ·
+  Sonderform (Anatolia, Dreiecksschild). **Erst falsch belegt:** als Leuchtkasten stand
+  zunächst Farben Kobold — das ist ein beleuchteter Schriftzug, kein Kasten. Vom Auftraggeber
+  korrigiert, Foto nachgeliefert. Bei Bauart-Beispielen aufs Foto schauen, nicht auf den Namen.
+- **Fünf Karten = 3 Spalten (3+2), nicht `auto-fit`.** Mit `auto-fit` standen auf breiten
+  Schirmen vier oben und eine allein darunter, mit drei leeren Plätzen.
+- Muster-ID `triNeon`. Vorlaufzeiten deckungsgleich mit dem Zeitplaner (Leuchtschild 3 Wochen
+  Produktion / 7 gesamt, Pylon 5 / 9). Für die Sonderform gibt es **keine belegte Zahl** —
+  dort steht „Zeit nach Form", nichts Erfundenes.
+- Verlinkt aus: Footer-Leistungsspalte (alle Seiten, an erster Stelle), Leistungs-Kachel der
+  Startseite, Verweis im Leuchtreklame-Abschnitt der Startseite, Sitemap.
+- **Neue Assets:** `schnitzelhaus-leuchtkasten.webp` (+720), `anatolia-sonderform.webp` (+720).
+  Aufbereitet mit Pillow: gezielter 4:3-Zuschnitt aufs Schild statt den Browser blind
+  beschneiden zu lassen; Anatolia mit Qualität 76 statt 82 — der Rauputz ist Rauschen und
+  hat bei 82 unnötige 31 KB gekostet.
+
+### Erledigt (29.07.2026) — Titel, Weiterleitungen
+**Seitentitel (die „blauen Zeilen" in Google) tragen jetzt Suchbegriff + Ort.**
+Vorher hieß es auf den Unterseiten nur „Webdesign — Ländle Blitz Marketing" — ohne Ort,
+ohne Suchbegriff. Der Wettbewerb in Vorarlberg macht es umgekehrt („Lichtwerbung – Mader
+Werbetechnik Lauterach", „Werbetechnik von Xigital in Dornbirn").
+
+| Seite | Titel |
+|---|---|
+| Startseite | Leuchtreklame & Werbetechnik Vorarlberg \| Ländle Blitz Marketing |
+| Funnel | Angebot für Werbetechnik anfragen \| Ländle Blitz Marketing |
+| Logodesign | Logodesign & Grafik Vorarlberg \| Ländle Blitz Marketing |
+| Printmedien | Printmedien & Druck Vorarlberg \| Ländle Blitz Marketing |
+| Arbeitsbekleidung | Arbeitsbekleidung besticken Vorarlberg \| Ländle Blitz Marketing |
+| Werbeartikel | Werbeartikel bedrucken Vorarlberg \| Ländle Blitz Marketing |
+| KFZ | KFZ-Folierung & Beschriftung Vorarlberg \| Ländle Blitz Marketing |
+| Webdesign | Webdesign Vorarlberg \| Ländle Blitz Marketing |
+
+**Titel nach Pixelbreite prüfen, nicht nach Zeichenzahl** — Google kappt bei ca. 600px
+(20px Arial). Alle acht liegen zwischen 411 und 588px, werden also vollständig gezeigt.
+Messen: `canvas.getContext('2d')`, `font='20px arial'`, `measureText(titel).width`.
+Nach Zeichen gerechnet hätten zwei Titel als „zu lang" gegolten, obwohl sie passen.
+
+`og:title` wird gleich mitgezogen (WhatsApp-Vorschau) — beide Werte gleich halten.
+`index.html` und `lm-agentur-relaunch.html` sind Kopien: **wer eine ändert, muss die
+andere mitziehen** — beim Titel-Umbau zunächst vergessen, danach wieder abgeglichen.
+
+**`.htaccess` angelegt** — https+www erzwungen (passend zu den canonical-Tags),
+`/index.html` → `/`, Entwurfskopie `lm-agentur-relaunch.html` → `/`. Die Sperre-Fassung
+bleibt absichtlich erreichbar (nur `noindex`). Fallen im Kommentar der Datei erklärt:
+`THE_REQUEST` statt `REQUEST_URI` prüfen (sonst Endlosschleife über den DirectoryIndex),
+und `X-Forwarded-Proto` mitprüfen (sonst Schleife hinter dem Hostinger-Proxy).
+**Der Block mit den alten Adressen ist noch leer** — dazu braucht es die Liste aus der
+Search Console. Kein Sammel-Redirect auf die Startseite (Google wertet das als Soft-404).
+
+### Erledigt (29.07.2026) — Indexierung: sitemap.xml, robots.txt, noindex
+- **`sitemap.xml`** — 10 Seiten (Startseite, Funnel, 6 Leistungen, Impressum, Datenschutz).
+  Die Adressen müssen **genau** der www-/https-Variante der `canonical`-Tags entsprechen;
+  bei einer Domain-Änderung Canonicals, OG-URLs und Sitemap **gemeinsam** anpassen.
+- **`robots.txt`** — erlaubt alles, nennt die Sitemap. **Absichtlich ohne `Disallow`:**
+  ein Disallow auf die Entwurfsdateien würde Google daran hindern, deren `noindex` bzw.
+  `canonical` überhaupt zu lesen — die Adressen könnten dann trotzdem im Index landen,
+  nur ohne Beschreibung. Kein Disallow ergänzen.
+- **Die zwei Entwurfsdateien werden unterschiedlich behandelt:**
+  `lm-agentur-relaunch.html` (1:1-Kopie der Startseite) hat `canonical` auf `/` → Google
+  konsolidiert. `lm-agentur-relaunch-sperre.html` (verworfen) hat **kein** canonical und
+  bekam deshalb `<meta name="robots" content="noindex, nofollow">`. Beide stehen nicht in
+  der Sitemap. **noindex und canonical nie an derselben Datei mischen.**
+- Noch offen und wichtiger als alles davon: **301-Weiterleitungen der alten URLs**
+  (`.htaccess` bei Hostinger) und das **Google Business Profil** — im lokalen Umfeld
+  entscheidet der Kartenausschnitt über die meisten Anfragen, nicht die Seite.
 
 ### Erledigt (27.07.2026) — CRO/SEO-Durchgang über alle 7 Seiten
 Basis: 4-dimensionales Audit (Reihenfolge/CRO, SEO-Inhalt, SEO-Technik, CTA/Vertrauen), jeder Befund adversarial verifiziert.
