@@ -391,6 +391,21 @@ Bewusst NICHT umgehängt, weil der Funnel dort ein Rückschritt wäre:
 - **Inhaber-Abschnitt** — „Sie bekommen mich. Nicht ein Callcenter." verträgt kein Frageformular.
 - **Impuls-WhatsApp-Knöpfe** in den Zwischen-Zeilen nach Komplettpaket und Referenzen.
 
+### Google-Bewertungen auf der Seite (seit 30.07.2026)
+Im Kontaktband jeder Seite und im Funnel neben den Anfrage-Knöpfen steht:
+**★★★★★ 5,0 bei 20 Bewertungen · GOOGLE** — verlinkt aufs Profil
+`https://www.google.com/maps?cid=13331389069326705679` (CID aus der Maps-Adresse
+0x479b3ff869837a1f:**0xb9029bb9cfbe640f**, hexadezimal → dezimal).
+
+⚠️ **Die Zahlen sind fest im HTML** (Klasse `.bewertung`). Ändert sich die Bewertung,
+müssen sie nachgezogen werden — sonst steht eine falsche Angabe auf der Seite.
+Stand bei Einbau: 5,0 · 20 Rezensionen · 373 Kundeninteraktionen.
+
+**Bewusst KEIN `aggregateRating` im JSON-LD.** Google zeigt selbst eingetragene
+Bewertungssterne für LocalBusiness seit 2019 nicht mehr an und wertet sie als
+„self-serving" — im schlimmsten Fall eine manuelle Maßnahme. Die Sterne kommen
+ohnehin aus dem Unternehmensprofil in die Suchergebnisse.
+
 ### Entfernt
 Die Zahlenleiste mit "500+ zufriedene Kunden" wurde gestrichen — geschätzte Rundzahlen wirken schwächer als ein konkreter Satz. An ihrer Stelle steht jetzt der Zeitplaner. Das Gründungsjahr 2018 ist in die Fußzeile gewandert.
 

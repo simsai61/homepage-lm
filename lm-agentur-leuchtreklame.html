@@ -916,6 +916,17 @@
   .cta-band > .wrap > .rev > p{color:var(--muted);font-size:clamp(16px,1.8vw,19px);max-width:54ch;margin:0 auto var(--sp-4)}
   .cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
   .cta-note{color:var(--muted);font-size:14px;margin-top:14px}
+  /* Google-Bewertungen — echte Zahlen, verlinkt aufs Profil. Bei Änderung nachziehen! */
+  .bewertung{
+    display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:center;
+    padding:9px 16px;border:1px solid var(--line);border-radius:100px;
+    background:var(--surface);font-size:14.5px;color:var(--muted);
+    transition:border-color .3s,background .3s;
+  }
+  .bewertung:hover{border-color:var(--glow-dim);background:var(--surface-2)}
+  .bewertung .sterne{color:#F5B942;letter-spacing:1px;font-size:15px}
+  .bewertung b{color:var(--text);font-weight:600}
+  .bewertung .quelle{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
   /* Kompakte Anfrage-Zeile am Ende einer Sektion */
   .sec-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin-top:var(--sp-5);text-align:center}
   .sec-cta .sec-cta-q{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(17px,2vw,20px)}
@@ -1564,6 +1575,7 @@
         </a>
         <a href="mailto:info@lm-agentur.at" class="btn btn-ghost">E-Mail</a>
       </div>
+      <p style="margin-top:18px"><a class="bewertung" href="https://www.google.com/maps?cid=13331389069326705679" rel="noopener" aria-label="5,0 von 5 Sternen bei 20 Google-Bewertungen — Profil ansehen"><span class="sterne" aria-hidden="true">★★★★★</span><span><b>5,0</b> bei 20 Bewertungen</span><span class="quelle">Google</span></a></p>
     </div>
 
     <div class="contact-card rev" style="--d:120ms">
