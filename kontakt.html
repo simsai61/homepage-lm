@@ -10,6 +10,7 @@
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#14171F">
+<meta name="facebook-domain-verification" content="aeyis6j9a8gyjd5uk57l8wdkfenh43">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ländle Blitz Marketing">
 <meta property="og:title" content="Angebot für Werbetechnik anfragen | Ländle Blitz Marketing">
@@ -1097,8 +1098,8 @@
     color:var(--text);font-family:inherit;font-size:17px;padding:16px 18px;min-height:56px;
   }
   .fn-date input:focus{outline:2px solid var(--glow-dim);outline-offset:2px}
-  .fn-date .btn{width:100%;justify-content:center;margin-top:14px;border:0;cursor:pointer;font-family:inherit}
-  .fn-date .btn[disabled]{opacity:.4;cursor:default;pointer-events:none}
+  .fn-weiter{width:100%;justify-content:center;margin-top:14px;border:0;cursor:pointer;font-family:inherit}
+  .fn-weiter:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none;pointer-events:none}
 
   .fn-nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:var(--sp-4)}
   .fn-back{color:var(--muted);font-size:14.5px;background:none;border:none;cursor:pointer;padding:10px 2px}
@@ -1198,7 +1199,7 @@
           <span class="fld-label">Eröffnungstermin</span>
           <input type="date" id="fnDate">
         </label>
-        <button type="button" class="btn btn-primary" id="fnDateNext" disabled>
+        <button type="button" class="btn btn-primary fn-weiter" id="fnWeiter" disabled>
           Weiter
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
@@ -1627,26 +1628,32 @@
     if (e.target.closest('[data-skip]')) { stand.termin = null; weiter('s3'); return; }
   });
 
-  /* Datum: nie automatisch weiterspringen. Auf dem iPhone feuert `change` schon
-     beim Drehen des Datumsrads — der Besucher wäre auf der nächsten Frage, bevor
-     sein Termin fertig eingestellt ist. Weiter geht es nur über den Knopf. */
-  var dateNext = document.getElementById('fnDateNext');
+  /* Auf dem iPhone ist die Datumsauswahl ein Walzenrad: iOS meldet schon beim ersten
+     Drehen einen gültigen Wert. Früher wurde deshalb mitten in der Eingabe weitergesprungen.
+     Jetzt entscheidet der Weiter-Knopf, wann es weitergeht. */
+  var weiterEl = document.getElementById('fnWeiter');
+
+  function terminGeprueft(){
+    if (!dateEl) return;
+    stand.termin = dateEl.value || null;
+    if (weiterEl) weiterEl.disabled = !dateEl.value;
+  }
+
   function terminWeiter(){
     if (!dateEl || !dateEl.value) return;
     stand.termin = dateEl.value;
     weiter('s3');
   }
+
   if (dateEl) {
-    var terminMerken = function(){
-      stand.termin = dateEl.value || null;
-      if (dateNext) dateNext.disabled = !dateEl.value;
-    };
-    dateEl.addEventListener('input',  terminMerken);
-    dateEl.addEventListener('change', terminMerken);
+    dateEl.addEventListener('input', terminGeprueft);
+    dateEl.addEventListener('change', terminGeprueft);
+    /* Am Rechner ist Enter schneller als der Griff zur Maus. */
     dateEl.addEventListener('keydown', function(e){ if (e.key === 'Enter') terminWeiter(); });
-    terminMerken();
+    terminGeprueft();
   }
-  if (dateNext) dateNext.addEventListener('click', terminWeiter);
+
+  if (weiterEl) weiterEl.addEventListener('click', terminWeiter);
 
   [nameEl, firmaEl].forEach(function(el){
     if (el) el.addEventListener('input', linkeSetzen);
