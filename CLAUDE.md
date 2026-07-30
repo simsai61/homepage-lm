@@ -240,6 +240,34 @@ Drei weitere Regeln, die nicht aufgeweicht werden dürfen:
 Der Blitz ist im Intro **inline** eingebettet, nicht aus `assets/sprite.html` — das Sprite wird
 per `fetch` nachgeladen und wäre zum Startzeitpunkt noch nicht da.
 
+### Blitz-Donner (Ton, seit 30.07.2026)
+Im Browser erzeugt (Web Audio), **keine Audiodatei**: drei Schichten — Knall (Rauschen,
+Hochpass 900 Hz, 3 ms Anstieg), Grollen (Rauschen, Tiefpass fährt 560 → 170 Hz) und ein
+Sub-Impuls (Sinus 70 → 36 Hz). Aufruf über `window.lbmDonner()`. Gesamt ca. 1,6 s,
+Spitzenpegel ~0,6 (kein Übersteuern), Anschlag rund 3-fach über dem Grollen.
+
+**Die Browserregel, die den ganzen Aufbau bestimmt:** Ton ohne vorherige Nutzeraktion wird
+blockiert — auf dem iPhone ausnahmslos. Beim **ersten** Aufruf der Startseite bleibt das
+Intro deshalb **stumm**, und daran ist nichts zu ändern. Deshalb:
+- Das Intro ruft `lbmDonner(true)` — mit dem Zusatz „nur wenn der Kontext läuft".
+  **Ohne diesen Zusatz wäre es ein Fehler:** die Klänge würden auf dem schlafenden
+  AudioContext liegen bleiben und **nachträglich losdonnern**, sobald der Besucher
+  irgendwo hintippt. Genau das ist beim Bauen passiert und wurde per Test gefunden.
+- Zusätzlich hängt der Donner am **Schild-Schalter** (nur beim Einschalten). Dort ist
+  die Nutzeraktion garantiert, also ist er dort verlässlich hörbar.
+
+Zwei Fallstricke, beide durch Messung gefunden:
+- **Wiederholungssperre nicht gegen 0 prüfen.** `currentTime` startet bei einem frischen
+  Kontext nahe 0 — eine Sperre `if (jetzt - zuletzt < 0.35) return` mit `zuletzt = 0`
+  verschluckt ausgerechnet den ersten Donner. Startwert ist deshalb `-1`.
+- **Keine Exponentialrampen für das Grollen.** Exponentiell fällt der Pegel so schnell,
+  dass nach einer halben Sekunde nichts mehr zu hören war. Jetzt lineare Stufen.
+- Prüfen ohne Ohren geht: mit `OfflineAudioContext` rendern und die Hüllkurve in
+  100-ms-Schritten messen (Spitzenpegel, hörbare Länge, Anschlag gegen Grollen).
+
+`prefers-reduced-motion` → gar kein Ton, es wird nicht einmal ein AudioContext angelegt.
+Ton liegt nur auf der Startseite, nicht auf den Unterseiten.
+
 ### Videos: nichts vorladen
 Die drei Clips liegen bei 6,5–7,8 MB. Sie stehen mit `preload="none"` und einem `poster`-Standbild
 im Dokument — beim Seitenaufruf wird **kein einziges Byte Video** geladen, erst der Klick holt die
