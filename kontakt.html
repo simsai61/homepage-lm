@@ -1765,6 +1765,10 @@
     }
     if (stand.betrieb && stand.betrieb !== 'Anderes') n += ' Es geht um einen Betrieb aus dem Bereich ' + stand.betrieb + '.';
     n += ' Können wir dazu telefonieren?';
+    try {
+      var herkunft = sessionStorage.getItem('lbm-herkunft');
+      if (herkunft) n += ' (Anfrage über: ' + herkunft + ')';
+    } catch(e){}
     return n;
   }
 
@@ -1785,6 +1789,14 @@
    Entscheidung liegt in localStorage['lbm-consent']: 'ja' | 'nein'.
    Widerruf über den Fußzeilen-Link „Cookie-Einstellungen" (data-cookie-einstellungen). */
 (function(){
+  /* Kampagnen-Herkunft merken (?q=... oder ?utm_campaign=...), damit der Anfrage-Funnel
+     sie in die Nachricht schreiben kann — ohne Cookie, nur Sitzungsspeicher. */
+  try {
+    var p = new URLSearchParams(location.search);
+    var herkunft = (p.get('q') || p.get('utm_campaign') || '').replace(/[^\wäöüÄÖÜß\- ]/g, '').slice(0, 40);
+    if (herkunft) sessionStorage.setItem('lbm-herkunft', herkunft);
+  } catch(e){}
+
   var KEY = 'lbm-consent';
   var PIXEL_ID = '1377359577678525';
   var geladen = false;

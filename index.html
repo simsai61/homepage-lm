@@ -2929,6 +2929,14 @@
    Entscheidung liegt in localStorage['lbm-consent']: 'ja' | 'nein'.
    Widerruf über den Fußzeilen-Link „Cookie-Einstellungen" (data-cookie-einstellungen). */
 (function(){
+  /* Kampagnen-Herkunft merken (?q=... oder ?utm_campaign=...), damit der Anfrage-Funnel
+     sie in die Nachricht schreiben kann — ohne Cookie, nur Sitzungsspeicher. */
+  try {
+    var p = new URLSearchParams(location.search);
+    var herkunft = (p.get('q') || p.get('utm_campaign') || '').replace(/[^\wäöüÄÖÜß\- ]/g, '').slice(0, 40);
+    if (herkunft) sessionStorage.setItem('lbm-herkunft', herkunft);
+  } catch(e){}
+
   var KEY = 'lbm-consent';
   var PIXEL_ID = '1377359577678525';
   var geladen = false;
