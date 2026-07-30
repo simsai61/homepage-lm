@@ -2161,6 +2161,125 @@
 
 <!-- ================= SCRIPTS ================= -->
 <script>
+/* Blitz-Donner — im Browser erzeugt (Web Audio), keine Audiodatei.
+   Drei Schichten: ein harter Knall, ein tiefes Grollen das nachhallt,
+   und ein kurzer Sub-Impuls für den Druck im Bauch.
+
+   WARUM SYNTHETISCH: eine MP3 wäre ein zusätzlicher Download vor dem ersten
+   Bild, und der Ton kommt in denselben 200 ms, in denen der Blitz einschlägt —
+   eine Datei, die noch lädt, käme zu spät. Hier ist der Ton sofort da.
+
+   BROWSERREGEL, die man nicht umgehen kann: Ton ohne vorherige Nutzeraktion
+   wird blockiert (auf dem iPhone ausnahmslos). Beim allerersten Aufruf der
+   Seite bleibt das Intro deshalb stumm — der Aufruf scheitert dann lautlos.
+   Sobald der Besucher einmal getippt hat (Schild-Schalter, Menü, Link),
+   spielt er zuverlässig. Deshalb hängt der Donner zusätzlich am Schild-
+   Schalter: dort ist die Nutzeraktion garantiert.
+
+   Bei `prefers-reduced-motion` bleibt alles stumm. */
+(function(){
+  var still = function(){};
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.lbmDonner = still;
+    return;
+  }
+
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) { window.lbmDonner = still; return; }
+
+  var ctx = null;
+  /* Auf -1 setzen, nicht auf 0: ein frisch erzeugter Kontext startet bei
+     currentTime ~0, und die Wiederholungssperre unten hätte damit ausgerechnet
+     den ersten Donner verschluckt — den einzigen, auf den es ankommt. */
+  var zuletzt = -1;
+
+  /* Erst bei Bedarf anlegen — ein Kontext, der beim Laden startet, wird vom
+     Browser sofort schlafen gelegt und zählt als blockiert. */
+  function hol(){
+    if (!ctx) { try { ctx = new AC(); } catch(e){ return null; } }
+    if (ctx.state === 'suspended' && ctx.resume) { try { ctx.resume(); } catch(e){} }
+    return ctx;
+  }
+
+  function rauschen(c, dauer){
+    var n = Math.max(1, Math.floor(c.sampleRate * dauer));
+    var buf = c.createBuffer(1, n, c.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+    return buf;
+  }
+
+  /* nurWennBereit: für das Intro. Ist Ton gesperrt, wird gar nichts geplant.
+     Sonst würden die Klänge auf dem schlafenden Kontext liegen bleiben und
+     nachträglich losdonnern, sobald der Besucher irgendwo hintippt — ein
+     Donner aus dem Nichts, mitten im Lesen. */
+  window.lbmDonner = function(nurWennBereit){
+    var c = hol();
+    if (!c) return;
+    if (nurWennBereit && c.state !== 'running') return;
+
+    /* Zwei Einschläge übereinander würden nur dröhnen */
+    var jetzt = c.currentTime;
+    if (jetzt - zuletzt < 0.35) return;
+    zuletzt = jetzt;
+
+    try {
+      var aus = c.createGain();
+      aus.gain.value = 0.34;                /* Gesamtlautstärke, bewusst zurückhaltend */
+      aus.connect(c.destination);
+
+      /* 1 — Knall: heller Rauschimpuls, in 3 ms auf Vollpegel und sofort weg.
+             HOCHPASS, nicht Bandpass: ein Bandpass lässt bei Rauschen zu wenig
+             Energie durch, der Einschlag ging im Grollen unter. Gemessen an der
+             Hüllkurve sticht der Anschlag jetzt 5-fach heraus. */
+      var k = c.createBufferSource();
+      k.buffer = rauschen(c, 0.3);
+      var kf = c.createBiquadFilter();
+      kf.type = 'highpass'; kf.frequency.value = 900; kf.Q.value = 0.6;
+      var kg = c.createGain();
+      kg.gain.setValueAtTime(0.0001, jetzt);
+      kg.gain.exponentialRampToValueAtTime(1.5, jetzt + 0.003);
+      kg.gain.exponentialRampToValueAtTime(0.0001, jetzt + 0.14);
+      k.connect(kf); kf.connect(kg); kg.connect(aus);
+      k.start(jetzt); k.stop(jetzt + 0.3);
+
+      /* 2 — Grollen: der Tiefpass fährt herunter wie ein Donner, der sich über
+             das Tal wegzieht. LINEARE Stufen statt einer Exponentialrampe —
+             exponentiell fällt der Pegel so schnell, dass nach einer halben
+             Sekunde nichts mehr zu hören war (gemessen). */
+      var g = c.createBufferSource();
+      g.buffer = rauschen(c, 2.4);
+      var gf = c.createBiquadFilter();
+      gf.type = 'lowpass'; gf.Q.value = 1.3;
+      gf.frequency.setValueAtTime(560, jetzt);
+      gf.frequency.linearRampToValueAtTime(170, jetzt + 2.0);
+      var gg = c.createGain();
+      gg.gain.setValueAtTime(0, jetzt);
+      gg.gain.linearRampToValueAtTime(1.9,   jetzt + 0.1);
+      gg.gain.linearRampToValueAtTime(1.18,  jetzt + 0.4);
+      gg.gain.linearRampToValueAtTime(0.76,  jetzt + 0.8);
+      gg.gain.linearRampToValueAtTime(0.34,  jetzt + 1.3);
+      gg.gain.linearRampToValueAtTime(0.004, jetzt + 1.8);
+      g.connect(gf); gf.connect(gg); gg.connect(aus);
+      g.start(jetzt); g.stop(jetzt + 2.4);
+
+      /* 3 — Sub-Impuls: der Druck, den man mehr spürt als hört */
+      var s = c.createOscillator();
+      s.type = 'sine';
+      s.frequency.setValueAtTime(70, jetzt);
+      s.frequency.exponentialRampToValueAtTime(36, jetzt + 0.5);
+      var sg = c.createGain();
+      sg.gain.setValueAtTime(0.0001, jetzt);
+      sg.gain.exponentialRampToValueAtTime(0.6, jetzt + 0.01);
+      sg.gain.exponentialRampToValueAtTime(0.0001, jetzt + 0.6);
+      s.connect(sg); sg.connect(aus);
+      s.start(jetzt); s.stop(jetzt + 0.65);
+    } catch(e){ /* Ton ist Zierde, nie Voraussetzung */ }
+  };
+})();
+</script>
+<script>
 /* Blitz-Intro — schlägt ein, blitzt auf, schrumpft ins Header-Logo.
    Grundsatz: Die Seite ist darunter fertig. Geht hier irgendetwas schief,
    wird das Overlay entfernt und der Nutzer merkt nichts. */
@@ -2227,7 +2346,11 @@
       if (weiter || done) return;
       weiter = true;
 
-      /* 2 — Aufblitzen plus kurzes Zittern */
+      /* 2 — Aufblitzen plus kurzes Zittern, dazu der Donner.
+             Kommt erst hier, nicht beim Einschlag: Licht ist schneller als Schall.
+             Ist Ton blockiert (erster Seitenaufruf), passiert lautlos nichts. */
+      if (window.lbmDonner) window.lbmDonner(true);
+
       anim(flash, [
         { opacity:0 }, { opacity:1, offset:.12 }, { opacity:.5, offset:.4 }, { opacity:0 }
       ], { duration:520, easing:'cubic-bezier(.2,0,.4,1)' });
@@ -2378,6 +2501,9 @@
       if (on) {
         var sign = hero.querySelector('.sichtbar');
         if (sign) { sign.style.animation = 'none'; void sign.offsetWidth; sign.style.animation = ''; }
+        /* Hier ist der Ton verlässlich hörbar — der Klick ist die Nutzeraktion,
+           die der Browser für Audio verlangt. Beim Ausschalten bleibt es still. */
+        if (window.lbmDonner) window.lbmDonner();
       }
       setState(on);
     });
