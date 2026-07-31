@@ -11,7 +11,6 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:540px;height:960px;overflow:hidden;background:#14171F}
   #stage{position:relative;width:540px;height:960px;overflow:hidden;font-family:'Inter',sans-serif}
-  /* wandernder Marken-Glow wie der Pastellverlauf der Referenz, nur dunkel */
   .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
   #b1{width:520px;height:520px;background:#E8628F}
   #b2{width:460px;height:460px;background:#F2A65A}
@@ -19,43 +18,63 @@
   #dim{position:absolute;inset:0;background:rgba(20,23,31,.55)}
   .layer{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0}
 
-  /* 1: Kinetische Typo */
-  #typo{gap:6px}
-  #typo .ln{font-family:'Space Grotesk';font-weight:700;font-size:64px;line-height:1.08;letter-spacing:-.02em;color:#F2F1EA;display:flex;gap:16px}
-  #typo .w{opacity:0;transform:translateY(24px)}
-  #typo .stirbt{color:#F2A65A;text-shadow:0 0 34px rgba(242,166,90,.55)}
+  /* Schritt-Kennung oben */
+  .step-tag{position:absolute;top:120px;left:0;right:0;display:flex;justify-content:center}
+  .step-tag span{font-family:'IBM Plex Mono';font-weight:500;font-size:13px;letter-spacing:.26em;text-transform:uppercase;
+    color:#F2A65A;border:1px solid rgba(242,166,90,.45);border-radius:999px;padding:10px 22px;background:rgba(20,23,31,.6)}
 
-  /* 2: Eingabefeld */
-  #ask .pill{width:460px;min-height:110px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:28px;
-    padding:30px 30px;font-size:21px;color:#F2F1EA;box-shadow:0 24px 70px rgba(0,0,0,.45)}
-  #ask .pill .cur{display:inline-block;width:2px;height:24px;background:#E8628F;vertical-align:-4px;margin-left:2px}
-  #ask .hint{margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.22em;color:#8A8F9E;text-transform:uppercase}
+  /* Szene 1: Intro */
+  #intro{gap:30px}
+  #intro .bolt{width:96px;color:#F2A65A;filter:drop-shadow(0 0 30px rgba(242,166,90,.65))}
+  #intro .howto{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#8A8F9E}
+  #intro h1{font-family:'Space Grotesk';font-weight:700;font-size:52px;line-height:1.1;letter-spacing:-.02em;color:#F2F1EA;text-align:center;width:460px}
+  #intro h1 em{font-style:normal;color:#F2A65A}
+  #intro .w{display:inline-block;opacity:0;transform:translateY(22px)}
 
-  /* 3: Karten */
-  #cards{gap:22px}
-  .card{width:440px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:22px;display:flex;align-items:center;gap:18px;
-    padding:20px 22px;opacity:0;transform:translateY(46px) scale(.97);box-shadow:0 18px 50px rgba(0,0,0,.4)}
-  .card .ic{width:54px;height:54px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-  .card .ic svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .card h3{font-family:'Space Grotesk';font-weight:600;font-size:21px;color:#F2F1EA}
-  .card p{font-size:15px;color:#8A8F9E;margin-top:2px}
-  .card p b{color:#F2A65A;font-weight:600}
+  /* Karten-Grundlook */
+  .panel{width:460px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:26px;padding:28px 30px;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+  .fld-label{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.22em;color:#8A8F9E;text-transform:uppercase;margin-bottom:12px}
+  .expl{margin-top:22px;font-size:19px;line-height:1.5;color:#F2F1EA;text-align:center;width:430px}
+  .expl b{color:#F2A65A;font-weight:600}
 
-  /* 4: Antwort */
-  #answer .box{width:460px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:24px;padding:28px 30px;box-shadow:0 24px 70px rgba(0,0,0,.45)}
-  #answer .tag{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.22em;color:#F2A65A;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-  #answer .tag::before{content:'';width:20px;height:1px;background:#F2A65A}
-  #answer .txt{font-size:20px;line-height:1.55;color:#F2F1EA;min-height:190px}
-  #answer .txt b{color:#F2A65A;font-weight:600}
-  #answer .txt .warn{color:#E8628F;font-weight:600}
+  /* Szene 2: Termin */
+  #s-date .datebox{display:flex;align-items:center;justify-content:space-between;background:#20252F;border:1.5px solid #2C3140;border-radius:16px;padding:20px 22px;font-size:23px;color:#F2F1EA}
+  #s-date .datebox .cur{display:inline-block;width:2px;height:26px;background:#E8628F;vertical-align:-4px;margin-left:2px}
+  #s-date .cal{width:26px;height:26px;stroke:#8A8F9E;fill:none;stroke-width:1.8}
 
-  /* 5: Abschluss */
+  /* Szene 3: Vorhaben */
+  #s-mode .seg{display:flex;flex-wrap:wrap;gap:12px}
+  #s-mode .opt{border:1.5px solid #2C3140;border-radius:999px;padding:14px 24px;font-size:19px;color:#F2F1EA;background:#20252F;position:relative}
+  #s-mode .opt.hot{background:#6B3346;border-color:#E8628F;color:#fff}
+  #s-mode .ring{position:absolute;inset:-9px;border:2px solid #E8628F;border-radius:999px;opacity:0}
+
+  /* Szene 4: Einschätzung */
+  #s-verdict .vbox{border:1.5px solid rgba(232,98,143,.55);background:rgba(107,51,70,.28);border-radius:20px;padding:24px 26px}
+  #s-verdict .vh{display:flex;gap:12px;align-items:flex-start;font-family:'Space Grotesk';font-weight:600;font-size:23px;color:#F2F1EA;line-height:1.25}
+  #s-verdict .vh .warn{width:26px;height:26px;flex-shrink:0;stroke:#E8628F;fill:none;stroke-width:2;margin-top:2px}
+  #s-verdict .vt{margin-top:12px;font-size:17.5px;line-height:1.55;color:#C9CCD6;min-height:110px}
+  #s-verdict .vt b{color:#F2A65A;font-weight:600}
+
+  /* Szene 5: WhatsApp */
+  #s-wa .chat{width:460px;background:#0B141A;border-radius:26px;padding:0 0 24px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+  #s-wa .chead{display:flex;align-items:center;gap:14px;background:#1F2C33;padding:16px 20px}
+  #s-wa .chead .av{width:42px;height:42px;border-radius:50%;background:#F2A65A;display:flex;align-items:center;justify-content:center}
+  #s-wa .chead .av svg{width:22px;color:#14171F}
+  #s-wa .chead b{color:#E9EDEF;font-size:17px;display:block}
+  #s-wa .chead span{color:#8696A0;font-size:13px}
+  #s-wa .bubble{margin:22px 18px 0 auto;max-width:360px;background:#005C4B;color:#E9EDEF;
+    border-radius:14px 14px 4px 14px;padding:14px 16px;font-size:16.5px;line-height:1.5;min-height:132px;position:relative}
+  #s-wa .bubble .meta{display:flex;justify-content:flex-end;gap:5px;align-items:center;margin-top:8px;font-size:12px;color:#8696A0}
+  #s-wa .bubble .meta svg{width:17px;height:12px}
+  #s-wa .autonote{margin-top:22px;font-size:18px;line-height:1.5;color:#F2F1EA;text-align:center;width:430px}
+  #s-wa .autonote b{color:#25D366;font-weight:600}
+
+  /* Szene 6: Finale */
   #fin{gap:26px}
   #fin .logo{width:330px;color:#F2F1EA;filter:drop-shadow(0 0 26px rgba(232,98,143,.35))}
   #fin .claim{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;letter-spacing:.26em;text-transform:uppercase;color:#F2A65A;text-shadow:0 0 22px rgba(242,166,90,.5)}
-  #fin .btn{display:flex;align-items:center;gap:12px;background:#25D366;color:#0B1B10;font-weight:600;font-size:19px;
-    padding:17px 30px;border-radius:999px;box-shadow:0 16px 50px rgba(37,211,102,.35)}
-  #fin .btn svg{width:24px;height:24px;fill:#0B1B10}
+  #fin .url{font-size:19px;color:#C9CCD6}
+  #fin .url b{color:#F2F1EA}
 </style>
 </head>
 <body>
@@ -63,57 +82,84 @@
   <div class="blob" id="b1"></div><div class="blob" id="b2"></div><div class="blob" id="b3"></div>
   <div id="dim"></div>
 
-  <div class="layer" id="typo">
-    <div class="ln"><span class="w">Wer</span><span class="w">nicht</span><span class="w">wirbt,</span></div>
-    <div class="ln"><span class="w stirbt">stirbt.</span></div>
+  <!-- 1: Intro -->
+  <div class="layer" id="intro">
+    <svg class="bolt" viewBox="99.45 71.64 16.05 26.59" fill="currentColor" fill-rule="evenodd"><path d="M100.45,87.38l6.1-.91-2.9,10.76,10.85-16.08-7.32,1.09,2.07-9.61-8.8,14.74Z"/></svg>
+    <div class="howto w">How to</div>
+    <h1><span class="w">Unser</span> <span class="w"><em>Eröffnungs-</em></span><br><span class="w"><em>Zeitplaner</em></span><br><span class="w">in&nbsp;30&nbsp;Sekunden.</span></h1>
   </div>
 
-  <div class="layer" id="ask">
-    <div class="pill"><span id="askTxt"></span><span class="cur" id="askCur"></span></div>
-    <div class="hint">Eröffnungs-Zeitplaner</div>
+  <!-- 2: Schritt 1 Termin -->
+  <div class="layer" id="s-date">
+    <div class="panel">
+      <div class="fld-label">Eröffnungstermin</div>
+      <div class="datebox"><span><span id="dateTxt"></span><span class="cur" id="dateCur"></span></span>
+        <svg class="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+      </div>
+    </div>
+    <div class="expl">Tragen Sie ein, <b>wann Sie aufsperren</b>.</div>
   </div>
 
-  <div class="layer" id="cards">
-    <div class="card" id="c1">
-      <div class="ic" style="background:#E8628F"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div>
-      <div><h3>Logo &amp; Erscheinungsbild</h3><p>Gestaltung · <b>2 Wochen</b></p></div>
+  <!-- 3: Schritt 2 Vorhaben -->
+  <div class="layer" id="s-mode">
+    <div class="panel">
+      <div class="fld-label">Ihr Vorhaben</div>
+      <div class="seg">
+        <div class="opt" id="o1">Leuchtschild</div>
+        <div class="opt" id="o2">Werbepylon</div>
+        <div class="opt" id="o3">Komplettpaket<div class="ring" id="ring"></div></div>
+      </div>
     </div>
-    <div class="card" id="c2">
-      <div class="ic" style="background:#F2A65A"><svg viewBox="0 0 24 24"><path d="M4 4h16v9H4z"/><path d="M8 13v7"/><path d="M16 13v7"/><path d="M12 2v2"/></svg></div>
-      <div><h3>Leuchtschild</h3><p>Produktion · <b>3 Wochen</b></p></div>
-    </div>
-    <div class="card" id="c3">
-      <div class="ic" style="background:#C93C77"><svg viewBox="0 0 24 24"><path d="M3 13l2-6h14l2 6v5h-3M6 18H3v-5"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/></svg></div>
-      <div><h3>KFZ-Folierung</h3><p>Im Haus · <b>eingeplant</b></p></div>
-    </div>
+    <div class="expl">Wählen Sie, <b>was Sie brauchen</b> — die Seite rechnet den Vorlauf zurück.</div>
   </div>
 
-  <div class="layer" id="answer">
-    <div class="box">
-      <div class="tag">Ihre Einschätzung</div>
-      <div class="txt" id="ansTxt"></div>
+  <!-- 4: Schritt 3 Einschätzung -->
+  <div class="layer" id="s-verdict">
+    <div class="panel">
+      <div class="vbox">
+        <div class="vh"><svg class="warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5"/><circle cx="12" cy="18" r=".4"/></svg><span>Es wird knapp — 3&nbsp;Wochen fehlen.</span></div>
+        <div class="vt" id="vTxt"></div>
+      </div>
     </div>
+    <div class="expl">Sie bekommen eine <b>ehrliche Einschätzung</b> — keine Vertröstung.</div>
   </div>
 
+  <!-- 5: Schritt 4 WhatsApp -->
+  <div class="layer" id="s-wa">
+    <div class="chat">
+      <div class="chead">
+        <div class="av"><svg viewBox="99.45 71.64 16.05 26.59" fill="currentColor"><path d="M100.45,87.38l6.1-.91-2.9,10.76,10.85-16.08-7.32,1.09,2.07-9.61-8.8,14.74Z"/></svg></div>
+        <div><b>Ländle Blitz Marketing</b><span>Sait Simsek</span></div>
+      </div>
+      <div class="bubble"><span id="waTxt"></span>
+        <div class="meta" id="waMeta" style="opacity:0">09:41
+          <svg viewBox="0 0 18 12" fill="none" stroke="#53BDEB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6l3.5 4L11 1"/><path d="M7 6l3.5 4L17 1"/></svg>
+        </div>
+      </div>
+      <div style="height:10px"></div>
+    </div>
+    <div class="autonote">Die Nachricht ist <b>automatisch vorbefüllt</b> — Termin und Vorhaben stehen schon drin.</div>
+  </div>
+
+  <!-- 6: Finale -->
   <div class="layer" id="fin">
     <svg class="logo" viewBox="0 0 324.66 97.23" id="finLogo"></svg>
     <div class="claim">Wer nicht wirbt, stirbt.</div>
-    <div class="btn">
-      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2z"/></svg>
-      Per WhatsApp anfragen
-    </div>
+    <div class="url">Jetzt ausprobieren: <b>lm-agentur.at</b></div>
   </div>
+
+  <div class="step-tag" id="stepTag" style="opacity:0"><span id="stepTxt"></span></div>
 </div>
 
 <script>
-/* Deterministische Zeitleiste: render(t) wird von außen pro Frame aufgerufen. */
 const $=q=>document.querySelector(q);
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
-const ease=x=>1-Math.pow(1-x,3);           // easeOutCubic
-const seg=(t,a,b)=>clamp((t-a)/(b-a),0,1); // 0..1 innerhalb [a,b]
+const ease=x=>1-Math.pow(1-x,3);
+const seg=(t,a,b)=>clamp((t-a)/(b-a),0,1);
 
-const ASK='Ich eröffne am 11. September …';
-const ANS=[['Start spätestens ','n'],['10. Juli','b'],['. ','n'],['Es wird knapp — ','w'],['wir ziehen vor, was sofort wirkt:','n'],[' Logo, Print, Bekleidung zuerst.','n']];
+const DATE='11.09.2026';
+const VERD='Wir ziehen dann vor, was sofort wirkt: Logo, Printmedien und Arbeitsbekleidung zuerst — Sie eröffnen sichtbar.';
+const WA='Ich eröffne am 11.09.2026 und interessiere mich für: Komplettpaket. Laut Ihrem Zeitplaner brauche ich rund 9 Wochen Vorlauf.';
 
 fetch('../assets/logo.svg').then(r=>r.text()).then(s=>{
   const doc=new DOMParser().parseFromString(s,'image/svg+xml').documentElement;
@@ -123,57 +169,70 @@ fetch('../assets/logo.svg').then(r=>r.text()).then(s=>{
   window.logoReady=true;
 });
 
+/* Szenenfenster [ein, aus] */
+const SC={intro:[0,4.6], date:[4.6,9.2], mode:[9.2,13.6], verdict:[13.6,19.2], wa:[19.2,26.2], fin:[26.2,29.5]};
+function vis(el,[a,b],t,slide=20){
+  const p=ease(seg(t,a,a+.45)) * (t<b-.4?1:1-ease(seg(t,b-.4,b)));
+  el.style.opacity=p; el.style.transform=`translateY(${slide*(1-ease(seg(t,a,a+.55)))}px)`;
+  return p;
+}
+
 function render(t){
-  /* Hintergrund-Blobs wandern langsam */
   const b1=$('#b1'),b2=$('#b2'),b3=$('#b3');
-  b1.style.left=(-140+40*Math.sin(t*.5))+'px';        b1.style.top=(-120+60*Math.cos(t*.4))+'px';
-  b2.style.right=(-120+50*Math.cos(t*.45))+'px';      b2.style.bottom=(-100+45*Math.sin(t*.55))+'px';
+  b1.style.left=(-140+40*Math.sin(t*.5))+'px'; b1.style.top=(-120+60*Math.cos(t*.4))+'px';
+  b2.style.right=(-120+50*Math.cos(t*.45))+'px'; b2.style.bottom=(-100+45*Math.sin(t*.55))+'px';
   b2.style.left='auto'; b2.style.top='auto';
-  b3.style.left=(160+70*Math.sin(t*.3+2))+'px';       b3.style.top=(430+50*Math.cos(t*.35+1))+'px';
+  b3.style.left=(160+70*Math.sin(t*.3+2))+'px'; b3.style.top=(430+50*Math.cos(t*.35+1))+'px';
 
-  /* Szene 1: 0–3.2 Typo */
-  const typo=$('#typo');
-  typo.style.opacity = t<3.2 ? 1 : 1-ease(seg(t,3.2,3.7));
-  const ws=[...document.querySelectorAll('#typo .w')];
-  ws.forEach((w,i)=>{ const p=ease(seg(t,.35+i*.5,.95+i*.5)); w.style.opacity=p; w.style.transform=`translateY(${24*(1-p)}px)`; });
-  typo.style.transform=`scale(${1+0.02*t})`;
-
-  /* Szene 2: 3.6–7.0 Eingabe tippt sich */
-  const ask=$('#ask');
-  ask.style.opacity = ease(seg(t,3.6,4.1)) * (t<6.6?1:1-ease(seg(t,6.6,7.0)));
-  ask.style.transform=`translateY(${20*(1-ease(seg(t,3.6,4.2)))}px)`;
-  const n=Math.floor(seg(t,4.2,6.2)*ASK.length);
-  $('#askTxt').textContent=ASK.slice(0,n);
-  $('#askCur').style.opacity=(Math.floor(t*2.6)%2===0)?1:0;
-
-  /* Szene 3: 7.0–10.2 Karten */
-  const cards=$('#cards');
-  cards.style.opacity = ease(seg(t,7.0,7.35)) * (t<9.8?1:1-ease(seg(t,9.8,10.2)));
-  [['#c1',7.1],['#c2',7.5],['#c3',7.9]].forEach(([id,t0])=>{
-    const p=ease(seg(t,t0,t0+.55)); const c=$(id);
-    c.style.opacity=p; c.style.transform=`translateY(${46*(1-p)}px) scale(${.97+.03*p})`;
+  /* Intro: Blitz schlägt ein, Titel Wort für Wort */
+  const intro=$('#intro');
+  intro.style.opacity = t<SC.intro[1]-.4 ? 1 : 1-ease(seg(t,SC.intro[1]-.4,SC.intro[1]));
+  const bp=ease(seg(t,.15,.75));
+  const bolt=$('#intro .bolt');
+  bolt.style.transform=`translateY(${-260*(1-bp)}px) scaleY(${1.4-.4*bp})`;
+  bolt.style.opacity=seg(t,.15,.35);
+  [...document.querySelectorAll('#intro .w')].forEach((w,i)=>{
+    const p=ease(seg(t,1.0+i*.45,1.55+i*.45)); w.style.opacity=p; w.style.transform=`translateY(${22*(1-p)}px)`;
   });
 
-  /* Szene 4: 10.2–13.6 Antwort streamt */
-  const ans=$('#answer');
-  ans.style.opacity = ease(seg(t,10.2,10.6)) * (t<13.2?1:1-ease(seg(t,13.2,13.6)));
-  ans.style.transform=`translateY(${18*(1-ease(seg(t,10.2,10.7)))}px)`;
-  const total=ANS.reduce((s,[x])=>s+x.length,0);
-  let m=Math.floor(seg(t,10.7,12.9)*total), html='';
-  for(const [txt,kind] of ANS){
-    if(m<=0) break;
-    const part=txt.slice(0,m); m-=txt.length;
-    html += kind==='b'?`<b>${part}</b>` : kind==='w'?`<span class="warn">${part}</span>` : part;
-  }
-  $('#ansTxt').innerHTML=html;
+  /* Schritt-Tag oben */
+  const steps=[[SC.date,'Schritt 1 · Termin'],[SC.mode,'Schritt 2 · Vorhaben'],[SC.verdict,'Schritt 3 · Einschätzung'],[SC.wa,'Schritt 4 · Anfrage']];
+  let tagP=0, tagTxt='';
+  for(const [[a,b],txt] of steps){ if(t>=a&&t<b){ tagP=ease(seg(t,a,a+.4))*(t<b-.4?1:1-ease(seg(t,b-.4,b))); tagTxt=txt; } }
+  $('#stepTag').style.opacity=tagP; if(tagTxt) $('#stepTxt').textContent=tagTxt;
 
-  /* Szene 5: 13.6–16.5 Finale */
+  /* Schritt 1: Datum tippt sich */
+  vis($('#s-date'),SC.date,t);
+  const n=Math.floor(seg(t,5.4,7.0)*DATE.length);
+  $('#dateTxt').textContent=DATE.slice(0,n);
+  $('#dateCur').style.opacity=(Math.floor(t*2.6)%2===0)?1:0;
+
+  /* Schritt 2: Komplettpaket wird gewählt */
+  vis($('#s-mode'),SC.mode,t);
+  const sel=ease(seg(t,10.6,11.1));
+  const o3=$('#o3');
+  if(sel>0.5) o3.classList.add('hot'); else o3.classList.remove('hot');
+  o3.style.transform=`scale(${1+.06*Math.sin(Math.PI*seg(t,10.6,11.2))})`;
+  const ring=$('#ring');
+  const rp=seg(t,10.5,11.3);
+  ring.style.opacity=rp>0? (1-rp)*.9 : 0;
+  ring.style.transform=`scale(${1+.45*rp})`;
+
+  /* Schritt 3: Einschätzung streamt */
+  vis($('#s-verdict'),SC.verdict,t);
+  const m=Math.floor(seg(t,14.4,17.4)*VERD.length);
+  $('#vTxt').innerHTML=VERD.slice(0,m).replace('Logo, Printmedien und Arbeitsbekleidung','<b>Logo, Printmedien und Arbeitsbekleidung</b>');
+
+  /* Schritt 4: WhatsApp-Nachricht tippt sich, dann Häkchen */
+  vis($('#s-wa'),SC.wa,t);
+  const w=Math.floor(seg(t,20.0,24.0)*WA.length);
+  $('#waTxt').textContent=WA.slice(0,w);
+  $('#waMeta').style.opacity=seg(t,24.2,24.6);
+
+  /* Finale */
   const fin=$('#fin');
-  fin.style.opacity=ease(seg(t,13.6,14.1));
-  fin.style.transform=`scale(${.96+.04*ease(seg(t,13.6,14.3))})`;
-  const bp=ease(seg(t,14.4,14.9));
-  $('#fin .btn').style.transform=`scale(${bp<1?(.6+.48*bp-.08*Math.sin(bp*Math.PI)):1})`;
-  $('#fin .btn').style.opacity=seg(t,14.4,14.6);
+  fin.style.opacity=ease(seg(t,SC.fin[0],SC.fin[0]+.5));
+  fin.style.transform=`scale(${.96+.04*ease(seg(t,SC.fin[0],SC.fin[0]+.7))})`;
 }
 window.render=render;
 </script>
