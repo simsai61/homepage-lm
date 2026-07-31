@@ -478,7 +478,10 @@
   .gal-dot[aria-current="true"]{background:var(--glow);width:26px;border-radius:100px}
   .gal-dot-hit{
     width:26px;height:26px;display:flex;align-items:center;justify-content:center;padding:0;
+    position:relative;
   }
+  /* Unsichtbarer Ueberhang: Tippflaeche ~42px, Optik unveraendert */
+  .gal-dot-hit::after{content:"";position:absolute;inset:-8px;border-radius:50%}
   .gal-count{
     font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--muted);
   }
@@ -1062,6 +1065,8 @@
         <div><b>Seit 2018</b><span>Zuhause in Vorarlberg</span></div>
       </li>
     </ul>
+
+    <p style="margin-top:22px"><a class="bewertung" href="https://www.google.com/maps?cid=13331389069326705679" rel="noopener" aria-label="5,0 von 5 Sternen bei 20 Google-Bewertungen — Profil ansehen"><span class="sterne" aria-hidden="true">★★★★★</span><span><b>5,0</b> bei 20 Bewertungen</span><span class="quelle">Google</span></a></p>
   </div>
 </section>
 
