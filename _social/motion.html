@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; font-weight:700; src:url(../assets/fonts/space-grotesk-700-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Space Grotesk'; font-weight:600; src:url(../assets/fonts/space-grotesk-600-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Inter'; font-weight:400; src:url(../assets/fonts/inter-400-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Inter'; font-weight:600; src:url(../assets/fonts/inter-600-latin.woff2) format('woff2'); }
+  @font-face { font-family:'IBM Plex Mono'; font-weight:500; src:url(../assets/fonts/ibm-plex-mono-500-latin.woff2) format('woff2'); }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:540px;height:960px;overflow:hidden;background:#14171F}
+  #stage{position:relative;width:540px;height:960px;overflow:hidden;font-family:'Inter',sans-serif}
+  /* wandernder Marken-Glow wie der Pastellverlauf der Referenz, nur dunkel */
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+  #b1{width:520px;height:520px;background:#E8628F}
+  #b2{width:460px;height:460px;background:#F2A65A}
+  #b3{width:420px;height:420px;background:#C93C77}
+  #dim{position:absolute;inset:0;background:rgba(20,23,31,.55)}
+  .layer{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0}
+
+  /* 1: Kinetische Typo */
+  #typo{gap:6px}
+  #typo .ln{font-family:'Space Grotesk';font-weight:700;font-size:64px;line-height:1.08;letter-spacing:-.02em;color:#F2F1EA;display:flex;gap:16px}
+  #typo .w{opacity:0;transform:translateY(24px)}
+  #typo .stirbt{color:#F2A65A;text-shadow:0 0 34px rgba(242,166,90,.55)}
+
+  /* 2: Eingabefeld */
+  #ask .pill{width:460px;min-height:110px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:28px;
+    padding:30px 30px;font-size:21px;color:#F2F1EA;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+  #ask .pill .cur{display:inline-block;width:2px;height:24px;background:#E8628F;vertical-align:-4px;margin-left:2px}
+  #ask .hint{margin-top:18px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.22em;color:#8A8F9E;text-transform:uppercase}
+
+  /* 3: Karten */
+  #cards{gap:22px}
+  .card{width:440px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:22px;display:flex;align-items:center;gap:18px;
+    padding:20px 22px;opacity:0;transform:translateY(46px) scale(.97);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+  .card .ic{width:54px;height:54px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .card .ic svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-family:'Space Grotesk';font-weight:600;font-size:21px;color:#F2F1EA}
+  .card p{font-size:15px;color:#8A8F9E;margin-top:2px}
+  .card p b{color:#F2A65A;font-weight:600}
+
+  /* 4: Antwort */
+  #answer .box{width:460px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:24px;padding:28px 30px;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+  #answer .tag{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.22em;color:#F2A65A;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  #answer .tag::before{content:'';width:20px;height:1px;background:#F2A65A}
+  #answer .txt{font-size:20px;line-height:1.55;color:#F2F1EA;min-height:190px}
+  #answer .txt b{color:#F2A65A;font-weight:600}
+  #answer .txt .warn{color:#E8628F;font-weight:600}
+
+  /* 5: Abschluss */
+  #fin{gap:26px}
+  #fin .logo{width:330px;color:#F2F1EA;filter:drop-shadow(0 0 26px rgba(232,98,143,.35))}
+  #fin .claim{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;letter-spacing:.26em;text-transform:uppercase;color:#F2A65A;text-shadow:0 0 22px rgba(242,166,90,.5)}
+  #fin .btn{display:flex;align-items:center;gap:12px;background:#25D366;color:#0B1B10;font-weight:600;font-size:19px;
+    padding:17px 30px;border-radius:999px;box-shadow:0 16px 50px rgba(37,211,102,.35)}
+  #fin .btn svg{width:24px;height:24px;fill:#0B1B10}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="blob" id="b1"></div><div class="blob" id="b2"></div><div class="blob" id="b3"></div>
+  <div id="dim"></div>
+
+  <div class="layer" id="typo">
+    <div class="ln"><span class="w">Wer</span><span class="w">nicht</span><span class="w">wirbt,</span></div>
+    <div class="ln"><span class="w stirbt">stirbt.</span></div>
+  </div>
+
+  <div class="layer" id="ask">
+    <div class="pill"><span id="askTxt"></span><span class="cur" id="askCur"></span></div>
+    <div class="hint">Eröffnungs-Zeitplaner</div>
+  </div>
+
+  <div class="layer" id="cards">
+    <div class="card" id="c1">
+      <div class="ic" style="background:#E8628F"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div>
+      <div><h3>Logo &amp; Erscheinungsbild</h3><p>Gestaltung · <b>2 Wochen</b></p></div>
+    </div>
+    <div class="card" id="c2">
+      <div class="ic" style="background:#F2A65A"><svg viewBox="0 0 24 24"><path d="M4 4h16v9H4z"/><path d="M8 13v7"/><path d="M16 13v7"/><path d="M12 2v2"/></svg></div>
+      <div><h3>Leuchtschild</h3><p>Produktion · <b>3 Wochen</b></p></div>
+    </div>
+    <div class="card" id="c3">
+      <div class="ic" style="background:#C93C77"><svg viewBox="0 0 24 24"><path d="M3 13l2-6h14l2 6v5h-3M6 18H3v-5"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/></svg></div>
+      <div><h3>KFZ-Folierung</h3><p>Im Haus · <b>eingeplant</b></p></div>
+    </div>
+  </div>
+
+  <div class="layer" id="answer">
+    <div class="box">
+      <div class="tag">Ihre Einschätzung</div>
+      <div class="txt" id="ansTxt"></div>
+    </div>
+  </div>
+
+  <div class="layer" id="fin">
+    <svg class="logo" viewBox="0 0 324.66 97.23" id="finLogo"></svg>
+    <div class="claim">Wer nicht wirbt, stirbt.</div>
+    <div class="btn">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2z"/></svg>
+      Per WhatsApp anfragen
+    </div>
+  </div>
+</div>
+
+<script>
+/* Deterministische Zeitleiste: render(t) wird von außen pro Frame aufgerufen. */
+const $=q=>document.querySelector(q);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-x,3);           // easeOutCubic
+const seg=(t,a,b)=>clamp((t-a)/(b-a),0,1); // 0..1 innerhalb [a,b]
+
+const ASK='Ich eröffne am 11. September …';
+const ANS=[['Start spätestens ','n'],['10. Juli','b'],['. ','n'],['Es wird knapp — ','w'],['wir ziehen vor, was sofort wirkt:','n'],[' Logo, Print, Bekleidung zuerst.','n']];
+
+fetch('../assets/logo.svg').then(r=>r.text()).then(s=>{
+  const doc=new DOMParser().parseFromString(s,'image/svg+xml').documentElement;
+  const svg=$('#finLogo'); svg.innerHTML=doc.innerHTML;
+  [...doc.attributes].forEach(a=>{ if(a.name!=='width'&&a.name!=='height') svg.setAttribute(a.name,a.value); });
+  svg.style.color='#F2F1EA';
+  window.logoReady=true;
+});
+
+function render(t){
+  /* Hintergrund-Blobs wandern langsam */
+  const b1=$('#b1'),b2=$('#b2'),b3=$('#b3');
+  b1.style.left=(-140+40*Math.sin(t*.5))+'px';        b1.style.top=(-120+60*Math.cos(t*.4))+'px';
+  b2.style.right=(-120+50*Math.cos(t*.45))+'px';      b2.style.bottom=(-100+45*Math.sin(t*.55))+'px';
+  b2.style.left='auto'; b2.style.top='auto';
+  b3.style.left=(160+70*Math.sin(t*.3+2))+'px';       b3.style.top=(430+50*Math.cos(t*.35+1))+'px';
+
+  /* Szene 1: 0–3.2 Typo */
+  const typo=$('#typo');
+  typo.style.opacity = t<3.2 ? 1 : 1-ease(seg(t,3.2,3.7));
+  const ws=[...document.querySelectorAll('#typo .w')];
+  ws.forEach((w,i)=>{ const p=ease(seg(t,.35+i*.5,.95+i*.5)); w.style.opacity=p; w.style.transform=`translateY(${24*(1-p)}px)`; });
+  typo.style.transform=`scale(${1+0.02*t})`;
+
+  /* Szene 2: 3.6–7.0 Eingabe tippt sich */
+  const ask=$('#ask');
+  ask.style.opacity = ease(seg(t,3.6,4.1)) * (t<6.6?1:1-ease(seg(t,6.6,7.0)));
+  ask.style.transform=`translateY(${20*(1-ease(seg(t,3.6,4.2)))}px)`;
+  const n=Math.floor(seg(t,4.2,6.2)*ASK.length);
+  $('#askTxt').textContent=ASK.slice(0,n);
+  $('#askCur').style.opacity=(Math.floor(t*2.6)%2===0)?1:0;
+
+  /* Szene 3: 7.0–10.2 Karten */
+  const cards=$('#cards');
+  cards.style.opacity = ease(seg(t,7.0,7.35)) * (t<9.8?1:1-ease(seg(t,9.8,10.2)));
+  [['#c1',7.1],['#c2',7.5],['#c3',7.9]].forEach(([id,t0])=>{
+    const p=ease(seg(t,t0,t0+.55)); const c=$(id);
+    c.style.opacity=p; c.style.transform=`translateY(${46*(1-p)}px) scale(${.97+.03*p})`;
+  });
+
+  /* Szene 4: 10.2–13.6 Antwort streamt */
+  const ans=$('#answer');
+  ans.style.opacity = ease(seg(t,10.2,10.6)) * (t<13.2?1:1-ease(seg(t,13.2,13.6)));
+  ans.style.transform=`translateY(${18*(1-ease(seg(t,10.2,10.7)))}px)`;
+  const total=ANS.reduce((s,[x])=>s+x.length,0);
+  let m=Math.floor(seg(t,10.7,12.9)*total), html='';
+  for(const [txt,kind] of ANS){
+    if(m<=0) break;
+    const part=txt.slice(0,m); m-=txt.length;
+    html += kind==='b'?`<b>${part}</b>` : kind==='w'?`<span class="warn">${part}</span>` : part;
+  }
+  $('#ansTxt').innerHTML=html;
+
+  /* Szene 5: 13.6–16.5 Finale */
+  const fin=$('#fin');
+  fin.style.opacity=ease(seg(t,13.6,14.1));
+  fin.style.transform=`scale(${.96+.04*ease(seg(t,13.6,14.3))})`;
+  const bp=ease(seg(t,14.4,14.9));
+  $('#fin .btn').style.transform=`scale(${bp<1?(.6+.48*bp-.08*Math.sin(bp*Math.PI)):1})`;
+  $('#fin .btn').style.opacity=seg(t,14.4,14.6);
+}
+window.render=render;
+</script>
+</body>
+</html>
