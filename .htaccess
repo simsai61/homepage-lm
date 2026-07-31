@@ -120,6 +120,35 @@ RewriteRule \.(md|markdown)$ - [R=404,L]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 6 — Zeichensatz
+# 6 — Browser-Cache
+#
+# Die Assets (50 MB, vor allem Bilder und Videos) aendern sich selten, tragen
+# aber keine Versionsnummern im Dateinamen. Deshalb moderate Fristen statt
+# „1 Jahr immutable": Wird eine Datei unter gleichem Namen ersetzt, sehen
+# Besucher die alte Version schlimmstenfalls einige Tage.
+#
+# HTML bleibt bewusst ungecacht (no-cache = jedes Mal nachfragen), damit ein
+# Deploy sofort sichtbar ist. Die Seiten sind klein, das kostet fast nichts.
+# ─────────────────────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp  "access plus 7 days"
+  ExpiresByType image/png   "access plus 7 days"
+  ExpiresByType image/jpeg  "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 7 days"
+  ExpiresByType video/mp4   "access plus 30 days"
+  ExpiresByType font/woff2  "access plus 30 days"
+  ExpiresByType text/css    "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 7 — Zeichensatz
 # ─────────────────────────────────────────────────────────────────────────────
 AddDefaultCharset UTF-8
