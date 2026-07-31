@@ -22,153 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="de_AT">
 <meta name="twitter:card" content="summary_large_image">
-<style>
-/* Schriften lokal gehostet (DSGVO) — Dateien unter assets/fonts/ */
-  /* IBM Plex Mono 400 latin-ext */
-  @font-face {
-    font-family: 'IBM Plex Mono';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/ibm-plex-mono-400-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* IBM Plex Mono 400 latin */
-  @font-face {
-    font-family: 'IBM Plex Mono';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/ibm-plex-mono-400-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* IBM Plex Mono 500 latin-ext */
-  @font-face {
-    font-family: 'IBM Plex Mono';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/ibm-plex-mono-500-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* IBM Plex Mono 500 latin */
-  @font-face {
-    font-family: 'IBM Plex Mono';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/ibm-plex-mono-500-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* Inter 400 latin-ext */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/inter-400-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* Inter 400 latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(assets/fonts/inter-400-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* Inter 500 latin-ext */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/inter-500-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* Inter 500 latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/inter-500-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* Inter 600 latin-ext */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(assets/fonts/inter-600-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* Inter 600 latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(assets/fonts/inter-600-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* Space Grotesk 500 latin-ext */
-  @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/space-grotesk-500-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* Space Grotesk 500 latin */
-  @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(assets/fonts/space-grotesk-500-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* Space Grotesk 600 latin-ext */
-  @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(assets/fonts/space-grotesk-600-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* Space Grotesk 600 latin */
-  @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(assets/fonts/space-grotesk-600-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* Space Grotesk 700 latin-ext */
-  @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(assets/fonts/space-grotesk-700-latin-ext.woff2) format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* Space Grotesk 700 latin */
-  @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(assets/fonts/space-grotesk-700-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-</style>
+<link rel="stylesheet" href="assets/base.css">
 <script>
 (function(){
   var de = document.documentElement;
@@ -1175,6 +1029,11 @@
         Angebot anfragen
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
+      <a href="https://wa.me/436643724808?text=Hallo!%20Ich%20er%C3%B6ffne%20bald%20und%20brauche%20Werbetechnik."
+         rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+        WhatsApp
+      </a>
       <a href="#zeitplan" class="btn btn-ghost">Reicht meine Zeit noch?</a>
     </div>
     <ul class="hero-proof">
@@ -1343,6 +1202,119 @@
       <a href="tel:+436643724808" class="btn btn-ghost">Anrufen</a>
     </div>
 
+  </div>
+</section>
+
+<!-- ============ LEISTUNGEN ============ -->
+<section id="leistungen">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Full-Service</span>
+      <h2>Was wir machen.</h2>
+      <p>Einzeln buchbar — im Komplettpaket greifen die Teile ineinander.</p>
+    </div>
+
+    <div class="svc-grid">
+      <a class="svc rise" href="lm-agentur-leuchtreklame.html">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v9H4z"/><path d="M8 13v7"/><path d="M16 13v7"/><path d="M7.5 8h9"/><path d="M12 2v2"/></svg></div>
+        <h3>Leuchtreklame</h3>
+        <p>Leuchtkästen, 3D-Buchstaben, LED-Neon und Pylone — das Schild, das nach Ladenschluss weiterarbeitet.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-grafik-logodesign.html">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h3>Grafik &amp; Logodesign</h3>
+        <p>Wortmarke, Signet und Farbwelt — so gebaut, dass sie auf Schild, Jacke und Bus gleich gut funktionieren.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-printmedien.html" style="--d:70ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v13H4z"/><path d="M4 9h16"/><path d="M8 17v3h8v-3"/></svg></div>
+        <h3>Printmedien</h3>
+        <p>Visitenkarten, Flyer, Speisekarten, Banner — im Haus gedruckt, in einem Rutsch abgestimmt.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-arbeitsbekleidung.html" style="--d:140ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l3 2 3-2 5 3-2 4-2-1v10H8V9L6 10 4 6z"/></svg></div>
+        <h3>Arbeitsbekleidung</h3>
+        <p>Bestickt oder bedruckt, aus eigener Produktion. Nachbestellen geht auch in zwei Jahren noch.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-werbeartikel.html">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8H4v12h16z"/><path d="M2 8h20v4H2z"/><path d="M12 8v12"/><path d="M12 8S9.5 3 7.5 3 5 6 7 7.5 12 8 12 8z"/><path d="M12 8s2.5-5 4.5-5S19 6 17 7.5 12 8 12 8z"/></svg></div>
+        <h3>Werbeartikel</h3>
+        <p>Vom Kugelschreiber bis zur Kaffeetasse — bedruckt mit dem Logo, das wir selbst gebaut haben.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-kfz-folierung.html" style="--d:70ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-6h14l2 6v5h-3M6 18H3v-5"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/><path d="M9.5 18h5"/></svg></div>
+        <h3>KFZ-Folierung</h3>
+        <p>Vom dezenten Schriftzug bis zur Vollfolierung. Jeder Firmenwagen wird zur fahrenden Werbefläche.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a class="svc rise" href="lm-agentur-webdesign.html" style="--d:140ms">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 9h20"/><circle cx="5" cy="6.5" r=".6" fill="currentColor"/><circle cx="7.4" cy="6.5" r=".6" fill="currentColor"/><path d="M9 22h6"/><path d="M12 18v4"/></svg></div>
+        <h3>Webdesign</h3>
+        <p>Eine Seite, die zum Schild an der Fassade passt — und auf dem Handy genauso funktioniert.</p>
+        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEUCHTREKLAME ============ -->
+<section id="leuchtreklame">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="tag">Leuchtreklame</span>
+      <h2>Leuchtreklame: der Moment, in dem es angeht.</h2>
+      <p>Neon-Optik in moderner LED-Technik — die Röhren sind neu am Markt: gleiche Wirkung wie klassisches Neon, aber bruchsicher, sparsam und wartungsarm.</p>
+    </div>
+
+    <div class="neon-stage rev">
+      <div class="neon-frame" id="neonFrame">
+        <img class="neon-off" src="assets/bilder/bellanapoli-neon-aus.webp"
+             srcset="assets/bilder/bellanapoli-neon-aus-720.webp 800w, assets/bilder/bellanapoli-neon-aus.webp 1600w"
+             sizes="(max-width:900px) 100vw, 62vw"
+             width="1600" height="1050" loading="lazy" decoding="async"
+             alt="Schriftzug Bella Napoli aus roten LED-Neonröhren auf einer Fliesenwand in Dornbirn, ausgeschaltet bei Tageslicht">
+        <img class="neon-on" src="assets/bilder/bellanapoli-neon-an.webp"
+             srcset="assets/bilder/bellanapoli-neon-an-720.webp 800w, assets/bilder/bellanapoli-neon-an.webp 1600w"
+             sizes="(max-width:900px) 100vw, 62vw"
+             width="1600" height="1034" loading="lazy" decoding="async"
+             alt="Derselbe Schriftzug Bella Napoli in Dornbirn eingeschaltet, rot leuchtend auf der dunklen Fliesenwand">
+        <span class="stamp" id="neonStamp">Aus</span>
+      </div>
+
+      <div class="neon-txt">
+        <h3>Bella Napoli</h3>
+        <p>Handgeformter Schriftzug in LED-Neon über der Theke. Dasselbe Schild, einmal aus und einmal an — legen Sie den Schalter um.</p>
+        <ul class="neon-specs">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg><span>Bis zu 80 % weniger Strom als Glasneon</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Bruchsicher — kein Glas, kein Gas</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Innen wie außen einsetzbar</span></li>
+        </ul>
+        <button type="button" class="sign-toggle" id="neonToggle" aria-pressed="false">
+          <span class="switch" aria-hidden="true"></span>
+          <span id="neonLabel">Schild einschalten</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sec-cta rev">
+      <span class="sec-cta-q">Soll Ihr Schild das nächste sein?</span>
+      <a href="https://wa.me/436643724808?text=Hallo!%20Es%20geht%20um%20eine%20Leuchtreklame."
+         rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+        Per WhatsApp anfragen
+      </a>
+      <a href="lm-agentur-leuchtreklame.html" class="btn btn-ghost">Alle Bauarten und Vorlaufzeiten</a>
+    </div>
   </div>
 </section>
 
@@ -1750,45 +1722,49 @@
   </div>
 </section>
 
-<!-- ============ LEUCHTREKLAME ============ -->
-<section id="leuchtreklame">
+<!-- ============ INHABER ============ -->
+<section id="inhaber">
   <div class="wrap">
-    <div class="section-head rev">
-      <span class="tag">Leuchtreklame</span>
-      <h2>Leuchtreklame: der Moment, in dem es angeht.</h2>
-      <p>Neon-Optik in moderner LED-Technik — die Röhren sind neu am Markt: gleiche Wirkung wie klassisches Neon, aber bruchsicher, sparsam und wartungsarm.</p>
-    </div>
-
-    <div class="neon-stage rev">
-      <div class="neon-frame" id="neonFrame">
-        <img class="neon-off" src="assets/bilder/bellanapoli-neon-aus.webp"
-             srcset="assets/bilder/bellanapoli-neon-aus-720.webp 800w, assets/bilder/bellanapoli-neon-aus.webp 1600w"
-             sizes="(max-width:900px) 100vw, 62vw"
-             width="1600" height="1050" loading="lazy" decoding="async"
-             alt="Schriftzug Bella Napoli aus roten LED-Neonröhren auf einer Fliesenwand in Dornbirn, ausgeschaltet bei Tageslicht">
-        <img class="neon-on" src="assets/bilder/bellanapoli-neon-an.webp"
-             srcset="assets/bilder/bellanapoli-neon-an-720.webp 800w, assets/bilder/bellanapoli-neon-an.webp 1600w"
-             sizes="(max-width:900px) 100vw, 62vw"
-             width="1600" height="1034" loading="lazy" decoding="async"
-             alt="Derselbe Schriftzug Bella Napoli in Dornbirn eingeschaltet, rot leuchtend auf der dunklen Fliesenwand">
-        <span class="stamp" id="neonStamp">Aus</span>
+    <div class="owner">
+      <div class="owner-media rev">
+        <img src="assets/bilder/sait-portrait.webp"
+             srcset="assets/bilder/sait-portrait-720.webp 720w, assets/bilder/sait-portrait.webp 1280w"
+             sizes="(max-width:860px) 100vw, 42vw"
+             width="1264" height="1937" loading="lazy" decoding="async"
+             alt="Sait Simsek auf einem Baugerüst über dem Werbebanner von Ländle Blitz Marketing">
+        <span class="owner-badge">Meiningen · Montage</span>
       </div>
-
-      <div class="neon-txt">
-        <h3>Bella Napoli</h3>
-        <p>Handgeformter Schriftzug in LED-Neon über der Theke. Dasselbe Schild, einmal aus und einmal an — legen Sie den Schalter um.</p>
-        <ul class="neon-specs">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg><span>Bis zu 80 % weniger Strom als Glasneon</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Bruchsicher — kein Glas, kein Gas</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Innen wie außen einsetzbar</span></li>
-        </ul>
-        <button type="button" class="sign-toggle" id="neonToggle" aria-pressed="false">
-          <span class="switch" aria-hidden="true"></span>
-          <span id="neonLabel">Schild einschalten</span>
-        </button>
-        <p style="margin-top:var(--sp-3)">
-          <a href="lm-agentur-leuchtreklame.html" class="btn btn-ghost">Alle Bauarten und Vorlaufzeiten</a>
+      <div class="owner-txt rev" style="--d:120ms">
+        <span class="tag">Der Inhaber</span>
+        <h2>Sie bekommen mich. Nicht ein Callcenter.</h2>
+        <p>
+          Ich bin <strong>Sait Simsek</strong> und führe Ländle Blitz Marketing seit 2018. Ich zeichne das Logo,
+          ich stehe bei der Produktion daneben — und wenn das Schild montiert wird, stehe ich auf dem Gerüst.
         </p>
+        <p>
+          Bei einer Neueröffnung zählt, dass jemand den Überblick behält und erreichbar ist, wenn drei Tage
+          vor der Eröffnung noch etwas dazwischenkommt. Genau dafür bin ich da.
+        </p>
+        <p>
+          Unsere Werkstatt steht in Meiningen bei Feldkirch. Montiert wird in ganz Vorarlberg —
+          unter anderem in Feldkirch, Dornbirn, Bludenz, Frastanz und Warth.
+        </p>
+        <div class="owner-sign">
+          <svg class="bolt" viewBox="99.45 71.64 16.05 26.59" aria-hidden="true"><use href="#lbm-bolt"/></svg>
+          Sait Simsek · Inhaber
+        </div>
+        <div class="owner-contact">
+          <a href="tel:+436643724808" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
+            +43 664 372 48 08
+          </a>
+          <a href="https://wa.me/436643724808?text=Hallo%20Sait%2C%20ich%20h%C3%A4tte%20gerne%20eine%20erste%20Einsch%C3%A4tzung%20f%C3%BCr%20mein%20Vorhaben."
+             rel="noopener" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+            WhatsApp an Sait
+          </a>
+          <a href="mailto:info@lm-agentur.at" class="btn btn-ghost">E-Mail schreiben</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1876,116 +1852,6 @@
     </div>
 
     <p class="planner-hint">Richtwerte aus laufenden Projekten — den genauen Plan stimmen wir im Erstgespräch auf Ihr Vorhaben ab. Dort bekommen Sie auch einen ehrlichen Kosten-Richtwert, unverbindlich.</p>
-  </div>
-</section>
-
-<!-- ============ LEISTUNGEN ============ -->
-<section id="leistungen">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="tag">Full-Service</span>
-      <h2>Was wir machen.</h2>
-      <p>Einzeln buchbar — im Komplettpaket greifen die Teile ineinander.</p>
-    </div>
-
-    <div class="svc-grid">
-      <a class="svc rise" href="lm-agentur-leuchtreklame.html">
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v9H4z"/><path d="M8 13v7"/><path d="M16 13v7"/><path d="M7.5 8h9"/><path d="M12 2v2"/></svg></div>
-        <h3>Leuchtreklame</h3>
-        <p>Leuchtkästen, 3D-Buchstaben, LED-Neon und Pylone — das Schild, das nach Ladenschluss weiterarbeitet.</p>
-        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="svc rise" href="lm-agentur-grafik-logodesign.html">
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></div>
-        <h3>Grafik &amp; Logodesign</h3>
-        <p>Wortmarke, Signet und Farbwelt — so gebaut, dass sie auf Schild, Jacke und Bus gleich gut funktionieren.</p>
-        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="svc rise" href="lm-agentur-printmedien.html" style="--d:70ms">
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v13H4z"/><path d="M4 9h16"/><path d="M8 17v3h8v-3"/></svg></div>
-        <h3>Printmedien</h3>
-        <p>Visitenkarten, Flyer, Speisekarten, Banner — im Haus gedruckt, in einem Rutsch abgestimmt.</p>
-        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="svc rise" href="lm-agentur-arbeitsbekleidung.html" style="--d:140ms">
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l3 2 3-2 5 3-2 4-2-1v10H8V9L6 10 4 6z"/></svg></div>
-        <h3>Arbeitsbekleidung</h3>
-        <p>Bestickt oder bedruckt, aus eigener Produktion. Nachbestellen geht auch in zwei Jahren noch.</p>
-        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="svc rise" href="lm-agentur-werbeartikel.html">
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8H4v12h16z"/><path d="M2 8h20v4H2z"/><path d="M12 8v12"/><path d="M12 8S9.5 3 7.5 3 5 6 7 7.5 12 8 12 8z"/><path d="M12 8s2.5-5 4.5-5S19 6 17 7.5 12 8 12 8z"/></svg></div>
-        <h3>Werbeartikel</h3>
-        <p>Vom Kugelschreiber bis zur Kaffeetasse — bedruckt mit dem Logo, das wir selbst gebaut haben.</p>
-        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="svc rise" href="lm-agentur-kfz-folierung.html" style="--d:70ms">
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-6h14l2 6v5h-3M6 18H3v-5"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/><path d="M9.5 18h5"/></svg></div>
-        <h3>KFZ-Folierung</h3>
-        <p>Vom dezenten Schriftzug bis zur Vollfolierung. Jeder Firmenwagen wird zur fahrenden Werbefläche.</p>
-        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="svc rise" href="lm-agentur-webdesign.html" style="--d:140ms">
-        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 9h20"/><circle cx="5" cy="6.5" r=".6" fill="currentColor"/><circle cx="7.4" cy="6.5" r=".6" fill="currentColor"/><path d="M9 22h6"/><path d="M12 18v4"/></svg></div>
-        <h3>Webdesign</h3>
-        <p>Eine Seite, die zum Schild an der Fassade passt — und auf dem Handy genauso funktioniert.</p>
-        <span class="svc-more">Ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ INHABER ============ -->
-<section id="inhaber">
-  <div class="wrap">
-    <div class="owner">
-      <div class="owner-media rev">
-        <img src="assets/bilder/sait-portrait.webp"
-             srcset="assets/bilder/sait-portrait-720.webp 720w, assets/bilder/sait-portrait.webp 1280w"
-             sizes="(max-width:860px) 100vw, 42vw"
-             width="1264" height="1937" loading="lazy" decoding="async"
-             alt="Sait Simsek auf einem Baugerüst über dem Werbebanner von Ländle Blitz Marketing">
-        <span class="owner-badge">Meiningen · Montage</span>
-      </div>
-      <div class="owner-txt rev" style="--d:120ms">
-        <span class="tag">Der Inhaber</span>
-        <h2>Sie bekommen mich. Nicht ein Callcenter.</h2>
-        <p>
-          Ich bin <strong>Sait Simsek</strong> und führe Ländle Blitz Marketing seit 2018. Ich zeichne das Logo,
-          ich stehe bei der Produktion daneben — und wenn das Schild montiert wird, stehe ich auf dem Gerüst.
-        </p>
-        <p>
-          Bei einer Neueröffnung zählt, dass jemand den Überblick behält und erreichbar ist, wenn drei Tage
-          vor der Eröffnung noch etwas dazwischenkommt. Genau dafür bin ich da.
-        </p>
-        <p>
-          Unsere Werkstatt steht in Meiningen bei Feldkirch. Montiert wird in ganz Vorarlberg —
-          unter anderem in Feldkirch, Dornbirn, Bludenz, Frastanz und Warth.
-        </p>
-        <div class="owner-sign">
-          <svg class="bolt" viewBox="99.45 71.64 16.05 26.59" aria-hidden="true"><use href="#lbm-bolt"/></svg>
-          Sait Simsek · Inhaber
-        </div>
-        <div class="owner-contact">
-          <a href="tel:+436643724808" class="btn btn-primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 005 5L16 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
-            +43 664 372 48 08
-          </a>
-          <a href="https://wa.me/436643724808?text=Hallo%20Sait%2C%20ich%20h%C3%A4tte%20gerne%20eine%20erste%20Einsch%C3%A4tzung%20f%C3%BCr%20mein%20Vorhaben."
-             rel="noopener" class="btn btn-wa">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.13h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.83c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.21.88 2.39 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
-            WhatsApp an Sait
-          </a>
-          <a href="mailto:info@lm-agentur.at" class="btn btn-ghost">E-Mail schreiben</a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
