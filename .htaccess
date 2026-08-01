@@ -79,6 +79,13 @@ RewriteRule ^kontakt/?$                      /kontakt.html                      
 # Werbetechnik (14 Klicks) → Leuchtreklame & Beschilderung
 RewriteRule ^werbetechnik/?$                 /lm-agentur-leuchtreklame.html      [R=301,L]
 
+# Weitere eindeutig ersetzte Leistungsadressen aus dem alten Auftritt
+RewriteRule ^3d-leuchtbuchstaben/?$           /lm-agentur-leuchtreklame.html      [R=301,L]
+RewriteRule ^webdesign/?$                     /lm-agentur-webdesign.html          [R=301,L]
+
+# Alter Referenzbereich → gleichnamiger Bereich auf der Startseite
+RewriteRule ^referenzen/?$                    /#referenzen                        [R=301,NE,L]
+
 # Designservice (11 Klicks) → Grafik & Logodesign
 RewriteRule ^designservice/?$                /lm-agentur-grafik-logodesign.html  [R=301,L]
 

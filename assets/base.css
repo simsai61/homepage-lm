@@ -144,3 +144,68 @@
     src: url(fonts/space-grotesk-700-latin.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
+
+/* Gemeinsame SEO-Inhaltsbausteine auf den Leistungsseiten */
+.seo-text-link {
+  color:var(--peach);
+  text-decoration:underline;
+  text-decoration-color:color-mix(in srgb,var(--peach) 45%,transparent);
+  text-underline-offset:3px;
+}
+.seo-text-link:hover { text-decoration-color:currentColor }
+
+.seo-faq { background:var(--surface-2) }
+.seo-faq-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  max-width:1000px;
+}
+.seo-faq-item {
+  align-self:start;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:var(--surface);
+  overflow:hidden;
+}
+.seo-faq-item summary {
+  min-height:64px;
+  padding:18px 54px 18px 20px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  color:var(--text);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(16px,1.5vw,18px);
+  font-weight:600;
+  line-height:1.35;
+  cursor:pointer;
+  list-style:none;
+}
+.seo-faq-item summary::-webkit-details-marker { display:none }
+.seo-faq-item summary::after {
+  content:'+';
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--glow);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:24px;
+  font-weight:400;
+}
+.seo-faq-item[open] summary::after { content:'−' }
+.seo-faq-item > p,
+.seo-faq-item > div {
+  margin:0;
+  padding:0 20px 20px;
+  color:var(--muted);
+  line-height:1.65;
+}
+@media (max-width:760px) {
+  .seo-faq-grid { grid-template-columns:1fr }
+  .seo-faq-item summary { min-height:58px;padding:16px 50px 16px 18px }
+  .seo-faq-item summary::after { right:18px }
+  .seo-faq-item > p,
+  .seo-faq-item > div { padding:0 18px 18px }
+}
