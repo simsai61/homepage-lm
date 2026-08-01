@@ -195,11 +195,18 @@
   font-weight:400;
 }
 .seo-faq-item[open] summary::after { content:'−' }
+.seo-faq-item[open] { border-color:var(--glow-dim) }
+.seo-faq-item[open] summary { color:var(--glow) }
 .seo-faq-item > p,
 .seo-faq-item > div {
-  margin:0;
-  padding:0 20px 20px;
-  color:var(--muted);
+  margin:0 20px 20px;
+  padding:14px 18px 14px 21px;
+  border-radius:4px;
+  /* Markenverlauf als Leiste links + leicht pink getönte Fläche */
+  background:
+    linear-gradient(180deg,#F2A65A 0%,#E8628F 55%,#C93C77 100%) left/3px 100% no-repeat,
+    color-mix(in srgb,var(--glow) 7%,var(--surface-2));
+  color:color-mix(in srgb,var(--peach) 18%,var(--text));
   line-height:1.65;
 }
 @media (max-width:760px) {
@@ -207,5 +214,5 @@
   .seo-faq-item summary { min-height:58px;padding:16px 50px 16px 18px }
   .seo-faq-item summary::after { right:18px }
   .seo-faq-item > p,
-  .seo-faq-item > div { padding:0 18px 18px }
+  .seo-faq-item > div { margin:0 16px 16px;padding:12px 15px 12px 18px }
 }
