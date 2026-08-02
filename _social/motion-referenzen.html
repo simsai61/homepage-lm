@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; font-weight:700; src:url(../assets/fonts/space-grotesk-700-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Space Grotesk'; font-weight:600; src:url(../assets/fonts/space-grotesk-600-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Inter'; font-weight:400; src:url(../assets/fonts/inter-400-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Inter'; font-weight:600; src:url(../assets/fonts/inter-600-latin.woff2) format('woff2'); }
+  @font-face { font-family:'IBM Plex Mono'; font-weight:500; src:url(../assets/fonts/ibm-plex-mono-500-latin.woff2) format('woff2'); }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:540px;height:960px;overflow:hidden;background:#14171F}
+  #stage{position:relative;width:540px;height:960px;overflow:hidden;font-family:'Inter',sans-serif}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+  #b1{width:520px;height:520px;background:#E8628F}
+  #b2{width:460px;height:460px;background:#F2A65A}
+  #b3{width:420px;height:420px;background:#C93C77}
+  #dim{position:absolute;inset:0;background:rgba(20,23,31,.55)}
+  .layer{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0}
+
+  /* Hook / Punch */
+  .big{gap:20px}
+  .big .tag{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#8A8F9E}
+  .big h1{font-family:'Space Grotesk';font-weight:700;font-size:56px;letter-spacing:-.02em;color:#F2F1EA;text-align:center;line-height:1.12;width:470px}
+  .big h1 em{font-style:normal;color:#F2A65A}
+  .big .logo{width:300px;color:#F2F1EA;filter:drop-shadow(0 0 26px rgba(232,98,143,.35));margin-top:10px}
+  .big .url{font-size:18px;color:#C9CCD6}
+  .big .url b{color:#F2F1EA}
+
+  /* Referenz-Karte */
+  .refcard{width:460px;background:#1B1F2A;border:1.5px solid #2C3140;border-radius:26px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+  .refcard .media{position:relative;height:560px;overflow:hidden;background:#0F1218}
+  .refcard .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform,opacity}
+  .refcard .media .lbl{position:absolute;top:16px;left:16px;font-family:'IBM Plex Mono';font-weight:500;font-size:12px;
+    letter-spacing:.2em;text-transform:uppercase;color:#F2F1EA;background:rgba(15,18,24,.78);border:1px solid rgba(242,241,234,.25);
+    border-radius:999px;padding:8px 16px;opacity:0}
+  .refcard .body{padding:22px 24px}
+  .refcard .meta{font-family:'IBM Plex Mono';font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#F2A65A}
+  .refcard h3{font-family:'Space Grotesk';font-weight:600;font-size:26px;color:#F2F1EA;margin-top:4px}
+  .refcard p{font-size:15.5px;color:#8A8F9E;margin-top:4px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="blob" id="b1"></div><div class="blob" id="b2"></div><div class="blob" id="b3"></div>
+  <div id="dim"></div>
+
+  <div class="layer big" id="hook">
+    <div class="tag">Referenzen</div>
+    <h1>Echte Projekte.<br><em>Keine Renderings.</em></h1>
+  </div>
+
+  <!-- AY: vorher → nachher → Nacht -->
+  <div class="layer" id="ay">
+    <div class="refcard">
+      <div class="media">
+        <img id="ay1" src="../assets/bilder/ay-vorher.webp" alt="">
+        <img id="ay2" src="../assets/bilder/ay-nachher.webp" alt="" style="opacity:0">
+        <img id="ay3" src="../assets/bilder/ay-beleuchtet.webp" alt="" style="opacity:0">
+        <span class="lbl" id="ayLbl">Vorher</span>
+      </div>
+      <div class="body">
+        <div class="meta">Gastronomie · Kompletter Neuauftritt</div>
+        <h3>AY Restaurant</h3>
+        <p>Vordachschild, 3D-Lotus und Ausleger — abends leuchtet alles.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CT Pylon -->
+  <div class="layer" id="ct">
+    <div class="refcard">
+      <div class="media"><img id="ct1" src="../assets/bilder/ct-automotive-pylon-2.webp" alt=""></div>
+      <div class="body">
+        <div class="meta">Bludenz · Autohaus</div>
+        <h3>CT Automotive</h3>
+        <p>Freistehender Werbepylon mit beleuchteter Lichtkante.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bella Napoli: aus → an -->
+  <div class="layer" id="bn">
+    <div class="refcard">
+      <div class="media">
+        <img id="bn1" src="../assets/bilder/bellanapoli-neon-aus.webp" alt="">
+        <img id="bn2" src="../assets/bilder/bellanapoli-neon-an.webp" alt="" style="opacity:0">
+        <span class="lbl" id="bnLbl">Aus</span>
+      </div>
+      <div class="body">
+        <div class="meta">Dornbirn · LED-Neon</div>
+        <h3>Bella Napoli</h3>
+        <p>Handgeformter Schriftzug über der Theke — der Moment, in dem es angeht.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Silvio Bus -->
+  <div class="layer" id="sv">
+    <div class="refcard">
+      <div class="media"><img id="sv1" src="../assets/bilder/silvio-3-fahrzeug.webp" alt=""></div>
+      <div class="body">
+        <div class="meta">Feldkirch · Vom Logo bis zum Fahrzeug</div>
+        <h3>Hausmeisterdienste Silvio</h3>
+        <p>Ein Logo, eine Handschrift — bis auf die ganze Fahrzeugseite.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="layer big" id="punch">
+    <h1>Gebaut. Montiert.<br><em>Steht.</em></h1>
+    <svg class="logo" viewBox="0 0 324.66 97.23" id="finLogo"></svg>
+    <div class="url">Alle Projekte: <b>lm-agentur.at</b> → Referenzen</div>
+  </div>
+</div>
+
+<script>
+const $=q=>document.querySelector(q);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-x,3);
+const seg=(t,a,b)=>clamp((t-a)/(b-a),0,1);
+
+fetch('../assets/logo.svg').then(r=>r.text()).then(s=>{
+  const doc=new DOMParser().parseFromString(s,'image/svg+xml').documentElement;
+  const svg=$('#finLogo'); svg.innerHTML=doc.innerHTML;
+  [...doc.attributes].forEach(a=>{ if(a.name!=='width'&&a.name!=='height') svg.setAttribute(a.name,a.value); });
+  svg.style.color='#F2F1EA';
+  window.logoReady=true;
+});
+Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))).then(()=>{ window.imgsReady=true; });
+
+const SC={hook:[0,2.6], ay:[2.6,9.4], ct:[9.4,13.8], bn:[13.8,18.8], sv:[18.8,22.8], punch:[22.8,26.6]};
+function vis(el,[a,b],t,slide=22){
+  const p=ease(seg(t,a,a+.45)) * (t<b-.4?1:1-ease(seg(t,b-.4,b)));
+  el.style.opacity=p; el.style.transform=`translateY(${slide*(1-ease(seg(t,a,a+.55)))}px)`;
+  return p;
+}
+/* Ken-Burns: sanfter Zoom übers Szenenfenster */
+function kb(img,[a,b],t,z0=1.02,z1=1.1){
+  const p=seg(t,a,b);
+  img.style.transform=`scale(${z0+(z1-z0)*p})`;
+}
+
+function render(t){
+  const b1=$('#b1'),b2=$('#b2'),b3=$('#b3');
+  b1.style.left=(-140+40*Math.sin(t*.5))+'px'; b1.style.top=(-120+60*Math.cos(t*.4))+'px';
+  b2.style.right=(-120+50*Math.cos(t*.45))+'px'; b2.style.bottom=(-100+45*Math.sin(t*.55))+'px';
+  b2.style.left='auto'; b2.style.top='auto';
+  b3.style.left=(160+70*Math.sin(t*.3+2))+'px'; b3.style.top=(430+50*Math.cos(t*.35+1))+'px';
+
+  const hook=$('#hook');
+  hook.style.opacity = ease(seg(t,.1,.5)) * (t<SC.hook[1]-.4?1:1-ease(seg(t,SC.hook[1]-.4,SC.hook[1])));
+  hook.style.transform=`scale(${1+.015*t})`;
+
+  /* AY: vorher (2s) → nachher (2.2s) → Nacht */
+  vis($('#ay'),SC.ay,t);
+  kb($('#ay1'),SC.ay,t); kb($('#ay2'),SC.ay,t); kb($('#ay3'),SC.ay,t,1.06,1.14);
+  const f2=ease(seg(t,4.9,5.5)), f3=ease(seg(t,7.0,7.6));
+  $('#ay2').style.opacity=f2*(1-f3); $('#ay3').style.opacity=f3;
+  const ayl=$('#ayLbl');
+  ayl.style.opacity=ease(seg(t,3.0,3.4));
+  ayl.textContent = t<5.2 ? 'Vorher' : (t<7.3 ? 'Nachher' : 'Bei Nacht');
+
+  /* CT */
+  vis($('#ct'),SC.ct,t);
+  kb($('#ct1'),SC.ct,t,1.03,1.12);
+
+  /* Bella Napoli: aus → an mit Aufleuchten */
+  vis($('#bn'),SC.bn,t);
+  kb($('#bn1'),SC.bn,t); kb($('#bn2'),SC.bn,t);
+  const an=ease(seg(t,15.6,16.2));
+  $('#bn2').style.opacity=an;
+  $('#bn2').style.filter=`brightness(${1+.5*Math.sin(Math.PI*seg(t,15.6,16.6))})`;
+  const bnl=$('#bnLbl');
+  bnl.style.opacity=ease(seg(t,14.2,14.6));
+  bnl.textContent = t<15.9 ? 'Aus' : 'An';
+
+  /* Silvio */
+  vis($('#sv'),SC.sv,t);
+  kb($('#sv1'),SC.sv,t,1.03,1.12);
+
+  const punch=$('#punch');
+  punch.style.opacity=ease(seg(t,SC.punch[0],SC.punch[0]+.5));
+  punch.style.transform=`scale(${.96+.04*ease(seg(t,SC.punch[0],SC.punch[0]+.7))})`;
+}
+window.render=render;
+</script>
+</body>
+</html>

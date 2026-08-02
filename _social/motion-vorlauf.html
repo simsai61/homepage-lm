@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face { font-family:'Space Grotesk'; font-weight:700; src:url(../assets/fonts/space-grotesk-700-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Space Grotesk'; font-weight:600; src:url(../assets/fonts/space-grotesk-600-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Inter'; font-weight:400; src:url(../assets/fonts/inter-400-latin.woff2) format('woff2'); }
+  @font-face { font-family:'Inter'; font-weight:600; src:url(../assets/fonts/inter-600-latin.woff2) format('woff2'); }
+  @font-face { font-family:'IBM Plex Mono'; font-weight:500; src:url(../assets/fonts/ibm-plex-mono-500-latin.woff2) format('woff2'); }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:540px;height:960px;overflow:hidden;background:#14171F}
+  #stage{position:relative;width:540px;height:960px;overflow:hidden;font-family:'Inter',sans-serif}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+  #b1{width:520px;height:520px;background:#E8628F}
+  #b2{width:460px;height:460px;background:#F2A65A}
+  #b3{width:420px;height:420px;background:#C93C77}
+  #dim{position:absolute;inset:0;background:rgba(20,23,31,.55)}
+  .layer{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0}
+
+  /* Hook */
+  #hook{gap:20px}
+  #hook .tag{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#8A8F9E}
+  #hook h1{font-family:'Space Grotesk';font-weight:700;font-size:64px;letter-spacing:-.02em;color:#F2F1EA;text-align:center}
+  #hook h1 em{font-style:normal;color:#F2A65A}
+  #hook .frage{font-size:23px;color:#C9CCD6}
+
+  /* Timeline */
+  #tl .kopf{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;width:440px}
+  #tl .zahl{font-family:'Space Grotesk';font-weight:700;font-size:88px;letter-spacing:-.03em;color:#F2A65A;line-height:1;text-shadow:0 0 34px rgba(242,166,90,.4);min-width:110px}
+  #tl .einheit{font-family:'Space Grotesk';font-weight:600;font-size:30px;color:#F2F1EA}
+  #tl .einheit small{display:block;font-family:'IBM Plex Mono';font-weight:500;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8A8F9E;margin-top:6px}
+  #tl .liste{width:440px;position:relative;padding-left:34px}
+  #tl .strich{position:absolute;left:10px;top:8px;width:2px;background:#2C3140;height:calc(100% - 16px)}
+  #tl .strich i{display:block;width:2px;background:linear-gradient(180deg,#F2A65A,#E8628F);height:0}
+  #tl .ms{position:relative;padding:11px 0;opacity:0;transform:translateX(18px)}
+  #tl .ms::before{content:'';position:absolute;left:-30px;top:19px;width:10px;height:10px;border-radius:50%;background:#2C3140;border:2px solid #14171F}
+  #tl .ms.an::before{background:#E8628F;box-shadow:0 0 12px rgba(232,98,143,.8)}
+  #tl .ms .wo{font-family:'IBM Plex Mono';font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#F2A65A}
+  #tl .ms .was{font-family:'Space Grotesk';font-weight:600;font-size:21px;color:#F2F1EA;margin-top:1px}
+  #tl .ms .was small{font-family:'Inter';font-weight:400;font-size:15px;color:#8A8F9E}
+  #tl .ms.ziel .was{color:#F2A65A}
+
+  /* Punch */
+  #punch{gap:24px}
+  #punch h2{font-family:'Space Grotesk';font-weight:700;font-size:46px;letter-spacing:-.02em;color:#F2F1EA;text-align:center;width:460px;line-height:1.15}
+  #punch h2 em{font-style:normal;color:#F2A65A}
+  #punch .logo{width:300px;color:#F2F1EA;filter:drop-shadow(0 0 26px rgba(232,98,143,.35));margin-top:10px}
+  #punch .url{font-size:18px;color:#C9CCD6}
+  #punch .url b{color:#F2F1EA}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="blob" id="b1"></div><div class="blob" id="b2"></div><div class="blob" id="b3"></div>
+  <div id="dim"></div>
+
+  <div class="layer" id="hook">
+    <div class="tag">Vorlaufzeit</div>
+    <h1 id="hookH"></h1>
+    <div class="frage">Wie lange brauchen wir wirklich?</div>
+  </div>
+
+  <div class="layer" id="tl">
+    <div class="kopf">
+      <div class="zahl" id="zahl">0</div>
+      <div class="einheit">Wochen<small>vom Anruf bis zur Eröffnung</small></div>
+    </div>
+    <div class="liste" id="liste"><div class="strich"><i id="fill"></i></div></div>
+  </div>
+
+  <div class="layer" id="punch">
+    <h2 id="punchH"></h2>
+    <svg class="logo" viewBox="0 0 324.66 97.23" id="finLogo"></svg>
+    <div class="url">Rechnen Sie selbst: <b>lm-agentur.at</b> → Zeitplaner</div>
+  </div>
+</div>
+
+<script>
+const $=q=>document.querySelector(q);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-x,3);
+const seg=(t,a,b)=>clamp((t-a)/(b-a),0,1);
+
+const VAR={
+  schild:{ titel:'Das <em>Leuchtschild</em>.', total:7, prod:'3 Wochen',
+    punch:'Eröffnung in <em>7 Wochen</em>?<br>Dann ist Ihr Start: <em>heute</em>.',
+    steps:[[0,'Erstgespräch','Vorhaben, Gebäude, Termin'],[1,'Gestaltung','Logo und Erscheinungsbild'],[3,'Aufmaß & Freigabe','Maße vor Ort, Produktionsdaten'],[3,'Produktion','3 Wochen'],[6,'Montage','Sait kommt selbst'],[7,'Eröffnung','das Schild leuchtet']]},
+  pylon:{ titel:'Der <em>Werbepylon</em>.', total:9, prod:'5 Wochen',
+    punch:'Eröffnung in <em>9 Wochen</em>?<br>Dann ist Ihr Start: <em>heute</em>.',
+    steps:[[0,'Erstgespräch','Vorhaben, Standort, Termin'],[1,'Gestaltung','Logo und Erscheinungsbild'],[3,'Aufmaß & Freigabe','Fundament, Genehmigung'],[3,'Produktion','5 Wochen'],[8,'Montage','mit dem Kran gesetzt'],[9,'Eröffnung','der Pylon steht']]},
+  paket:{ titel:'Das <em>Komplettpaket</em>.', total:9, prod:'5 Wochen',
+    punch:'Sie eröffnen in <em>9 Wochen</em>?<br>Dann ist Ihr Start: <em>heute</em>.',
+    steps:[[0,'Erstgespräch','Vorhaben, Gebäude, Termin'],[1,'Gestaltung','Logo und Erscheinungsbild'],[3,'Aufmaß & Freigabe','Maße, Produktionsdaten'],[3,'Produktion','5 Wochen — alles parallel'],[8,'Montage','Schild, Bus, Team komplett'],[9,'Eröffnung','nichts fehlt']]}
+};
+const v = VAR[new URLSearchParams(location.search).get('v') || 'schild'];
+
+$('#hookH').innerHTML=v.titel;
+$('#punchH').innerHTML=v.punch;
+const liste=$('#liste');
+v.steps.forEach(([wo,was,sub],i)=>{
+  const d=document.createElement('div');
+  d.className='ms'+(i===v.steps.length-1?' ziel':'');
+  d.innerHTML=`<div class="wo">Woche ${wo}</div><div class="was">${was} <small>— ${sub}</small></div>`;
+  liste.appendChild(d);
+});
+
+fetch('../assets/logo.svg').then(r=>r.text()).then(s=>{
+  const doc=new DOMParser().parseFromString(s,'image/svg+xml').documentElement;
+  const svg=$('#finLogo'); svg.innerHTML=doc.innerHTML;
+  [...doc.attributes].forEach(a=>{ if(a.name!=='width'&&a.name!=='height') svg.setAttribute(a.name,a.value); });
+  svg.style.color='#F2F1EA';
+  window.logoReady=true;
+});
+
+const SC={hook:[0,2.8], tl:[2.8,9.8], punch:[9.8,13.4]};
+
+function render(t){
+  const b1=$('#b1'),b2=$('#b2'),b3=$('#b3');
+  b1.style.left=(-140+40*Math.sin(t*.5))+'px'; b1.style.top=(-120+60*Math.cos(t*.4))+'px';
+  b2.style.right=(-120+50*Math.cos(t*.45))+'px'; b2.style.bottom=(-100+45*Math.sin(t*.55))+'px';
+  b2.style.left='auto'; b2.style.top='auto';
+  b3.style.left=(160+70*Math.sin(t*.3+2))+'px'; b3.style.top=(430+50*Math.cos(t*.35+1))+'px';
+
+  /* Hook */
+  const hook=$('#hook');
+  hook.style.opacity = ease(seg(t,.1,.5)) * (t<SC.hook[1]-.4?1:1-ease(seg(t,SC.hook[1]-.4,SC.hook[1])));
+  hook.style.transform=`translateY(${16*(1-ease(seg(t,.1,.7)))}px) scale(${1+.015*t})`;
+
+  /* Timeline */
+  const tl=$('#tl');
+  tl.style.opacity = ease(seg(t,SC.tl[0],SC.tl[0]+.45)) * (t<SC.tl[1]-.4?1:1-ease(seg(t,SC.tl[1]-.4,SC.tl[1])));
+  tl.style.transform=`translateY(${20*(1-ease(seg(t,SC.tl[0],SC.tl[0]+.55)))}px)`;
+  const p=ease(seg(t,3.3,8.6));
+  $('#zahl').textContent=Math.round(p*v.total);
+  $('#fill').style.height=(p*100)+'%';
+  const mss=[...document.querySelectorAll('#tl .ms')];
+  mss.forEach((ms,i)=>{
+    const t0=3.3+i*(5.3/v.steps.length);
+    const q=ease(seg(t,t0,t0+.5));
+    ms.style.opacity=q; ms.style.transform=`translateX(${18*(1-q)}px)`;
+    if(q>0.6) ms.classList.add('an'); else ms.classList.remove('an');
+  });
+
+  /* Punch */
+  const punch=$('#punch');
+  punch.style.opacity=ease(seg(t,SC.punch[0],SC.punch[0]+.5));
+  punch.style.transform=`scale(${.96+.04*ease(seg(t,SC.punch[0],SC.punch[0]+.7))})`;
+}
+window.render=render;
+</script>
+</body>
+</html>
