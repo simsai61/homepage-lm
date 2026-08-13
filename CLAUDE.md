@@ -590,13 +590,21 @@ Conversions zählen" — ersetzt durch neues Asset vom 13.8. (erbt Konto-Standar
 bei Anlage „Wird überprüft" = normale Prüfung). Anrufe ≥20 Sek. über die
 Anzeigen-Nummer zählen ab jetzt als Conversion.
 
-**Website-Conversion-Tracking (offen):**
-`assets/ads-tracking.js` liegt auf allen Seiten, ist aber INAKTIV bis die drei
-Konstanten gefüllt sind (Consent Mode v2, ad_storage denied — vor Aktivierung
-Datenschutzerklärung um Google-Ads-Absatz ergänzen!). Sait muss in Google Ads
-unter Zielvorhaben → Conversions anlegen: (1) „Anrufe über Anzeigen" (ohne
-Code), (2) Website-Aktionen „WhatsApp-Klick" + „Anruf-Klick Website", dann
-Conversion-ID (AW-…) + beide Labels liefern → Konstanten eintragen, pushen.
+**Website-Lead-Messung LIVE (13.8., über GA4-Import statt AW-Tag):**
+Architektur: Die Seite hat ein strenges Consent-Banner (localStorage
+'lbm-consent', Skript in jeder Seite) — GA4 G-3PXCCTM8CC + Meta-Pixel laden NUR
+nach Zustimmung; Datenschutz verspricht „ohne Zustimmung keine Verbindung zu
+Google". Deshalb KEIN separates AW-Tag (Conversion-ID AW-18360926524 nur
+dokumentiert, unbenutzt). Stattdessen: kontakt.html feuert seit jeher
+`generate_lead` (Schlüsselereignis in GA4-Property 375036309, live, mit Ads
+verknüpft, Ads-Conversion-Aktion existiert — fehlt darum in der Import-Auswahl
+des Wizards). `assets/ads-tracking.js` (auf allen Seiten eingebunden) meldet
+jetzt Kontakt-Klicks (WhatsApp/tel/mailto) AUCH auf den Leistungsseiten als
+generate_lead + Meta-Lead — consent-gated (nur wenn window.gtag/fbq existieren),
+.fn-cta ausgenommen (Funnel meldet selbst, keine Doppelzählung).
+NOCH ZU VERIFIZIEREN: ob die bestehende generate_lead-Conversion-Aktion in Ads
+als PRIMÄR zählt (Conversions-Seite rendert im Pane nicht; ggf. Sait fragen
+oder Wizard-Endscreen). GA-Konto a120558745, Property p375036309.
 
 **Achtung Browser-Pane:** Die Bereiche Zielvorhaben/Conversions, Datenmanager
 und Google-Tag rendern im eingebauten Claude-Browser NICHT (Adblock-Erkennung
