@@ -910,11 +910,104 @@
   "telephone": "+436643724808",
   "email": "info@lm-agentur.at",
   "foundingDate": "2018",
-  "founder": { "@type": "Person", "name": "Sait Simsek" },
-  "address": { "@type": "PostalAddress", "streetAddress": "Tannenfeldstrasse 3", "postalCode": "6812", "addressLocality": "Meiningen", "addressRegion": "Vorarlberg", "addressCountry": "AT" },
-  "areaServed": "Vorarlberg",
-  "sameAs": ["https://www.instagram.com/laendleblitzmarketing/"],
-  "image": "https://www.lm-agentur.at/assets/bilder/og-image.jpg"
+  "founder": {
+    "@type": "Person",
+    "name": "Sait Simsek"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Tannenfeldstrasse 3",
+    "postalCode": "6812",
+    "addressLocality": "Meiningen",
+    "addressRegion": "Vorarlberg",
+    "addressCountry": "AT"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Vorarlberg"
+  },
+  "sameAs": [
+    "https://www.instagram.com/laendleblitzmarketing/",
+    "https://www.threads.com/@laendleblitzmarketing"
+  ],
+  "image": "https://www.lm-agentur.at/assets/bilder/og-image.jpg",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.2920783,
+    "longitude": 9.5812954
+  },
+  "logo": "https://www.lm-agentur.at/assets/logo.svg",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Leistungen",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Leuchtreklame & Leuchtschilder",
+          "url": "https://www.lm-agentur.at/lm-agentur-leuchtreklame.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Fahrzeugbeschriftung & KFZ-Folierung",
+          "url": "https://www.lm-agentur.at/lm-agentur-kfz-folierung.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Arbeitsbekleidung mit Stick & Druck",
+          "url": "https://www.lm-agentur.at/lm-agentur-arbeitsbekleidung.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Grafik & Logodesign",
+          "url": "https://www.lm-agentur.at/lm-agentur-grafik-logodesign.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Printmedien & Drucksorten",
+          "url": "https://www.lm-agentur.at/lm-agentur-printmedien.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Webdesign",
+          "url": "https://www.lm-agentur.at/lm-agentur-webdesign.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Werbeartikel",
+          "url": "https://www.lm-agentur.at/lm-agentur-werbeartikel.html"
+        }
+      }
+    ]
+  },
+  "knowsAbout": [
+    "Leuchtreklame",
+    "Werbetechnik",
+    "Fahrzeugbeschriftung",
+    "Beschilderung",
+    "Arbeitsbekleidung",
+    "Logodesign",
+    "Digitaldruck"
+  ]
 }
 </script>
 <style id="lbmConsentCss">
@@ -2786,7 +2879,7 @@
     if (weeksLeft >= cfg.total + 2) {
       kind = 'ok';
       title = 'Sie sind gut dran.';
-      text = 'Für ein ' + cfg.label.toLowerCase() + ' brauchen wir rund ' + cfg.total +
+      text = 'Ein ' + cfg.label + ' braucht rund ' + cfg.total +
              ' Wochen. Sie haben ' + Math.floor(weeksLeft) +
              ' Wochen Zeit — genug Luft für saubere Gestaltung und Abstimmung.';
     } else if (weeksLeft >= cfg.total) {
