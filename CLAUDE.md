@@ -581,7 +581,16 @@ Sitelinks 4→6 (neu: Webdesign, Druck & Printmedien), Leuchtreklame-Anzeige von
 „Schlecht" auf „Sehr gut" (15 Titel, 4 Textzeilen). Konkurrenz-Namen als
 Negativs hat Sait bewusst abgelehnt („3 lassen").
 
-**Conversion-Tracking (offen, nur Saits Browser kann den letzten Schritt):**
+**Anruf-Conversions EINGERICHTET (13.8., via „+ Erstellen"-Wizard — der rendert
+im Pane, die normale Conversions-Seite nicht!):** Aktion „Anrufe über Anzeigen"
+(Anruf-Lead, primär, zählt eine, Mindestdauer 20 Sek.), als Konto-Standard unter
+Zielvorhaben → Conversions → Einstellungen → Anruf-Conversion-Aktion gesetzt.
+Achtung: Das alte Anruf-Asset (31.7.) hatte den Asset-Override „Anrufe nicht als
+Conversions zählen" — ersetzt durch neues Asset vom 13.8. (erbt Konto-Standard,
+bei Anlage „Wird überprüft" = normale Prüfung). Anrufe ≥20 Sek. über die
+Anzeigen-Nummer zählen ab jetzt als Conversion.
+
+**Website-Conversion-Tracking (offen):**
 `assets/ads-tracking.js` liegt auf allen Seiten, ist aber INAKTIV bis die drei
 Konstanten gefüllt sind (Consent Mode v2, ad_storage denied — vor Aktivierung
 Datenschutzerklärung um Google-Ads-Absatz ergänzen!). Sait muss in Google Ads
