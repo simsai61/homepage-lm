@@ -1,57 +1,40 @@
-/* Google-Ads-Conversion-Tracking für lm-agentur.at
+/* Lead-Messung auf allen Seiten — Ergänzung zum Anfrage-Funnel (kontakt.html).
  *
- * Zweck: Meldet Klicks auf WhatsApp- und Telefon-Links als Conversions an
- * Google Ads, damit die Kampagne "Werbetechnik Vorarlberg — Suche" endlich
- * misst, was die Klicks bringen.
+ * Zweck: Die Google-Ads-Anzeigen führen auf die Leistungsseiten. Dort gibt es
+ * WhatsApp- und Telefon-Knöpfe, aber bisher meldete nur der Anfrage-Funnel
+ * einen Lead. Dieses Skript meldet Kontakt-Klicks auf ALLEN Seiten als
+ * „generate_lead" an Google Analytics (dort Schlüsselereignis, mit dem
+ * Google-Ads-Konto verknüpft) und als „Lead" an das Meta-Pixel.
  *
- * AKTIVIERUNG (solange ADS_ID leer ist, tut dieses Skript exakt nichts):
- * 1. In Google Ads: Zielvorhaben → Conversions → Neue Conversion-Aktion
- *    → Website → manuell: "WhatsApp-Klick" (Lead) und "Anruf-Klick Website" (Lead)
- * 2. Bei "Tag einrichten" → "Selbst einrichten": Conversion-ID (AW-…) und
- *    die beiden Labels ablesen und unten eintragen.
- * 3. Vor dem Livegang: Datenschutzerklärung um Google-Ads-Absatz ergänzen.
+ * Datenschutz: Es wird NICHTS geladen und NICHTS übertragen, solange der
+ * Besucher nicht im Cookie-Banner zugestimmt hat — ohne Zustimmung existieren
+ * window.gtag/window.fbq nicht, und dieses Skript tut dann exakt nichts.
+ * Das entspricht dem Versprechen der Datenschutzerklärung.
  *
- * Datenschutz: Consent Mode v2, ad_storage standardmäßig DENIED — es werden
- * keine Werbe-Cookies gesetzt, Conversions laufen als cookielose Pings.
+ * Hinweis: Der Anfrage-Funnel (kontakt.html) meldet seine eigenen CTA-Klicks
+ * selbst (Bereich .fn-cta) — diese Klicks werden hier übersprungen, damit
+ * kein Lead doppelt gezählt wird.
+ *
+ * Nicht verwendet, aber dokumentiert: Google-Ads-Conversion-ID AW-18360926524
+ * (falls später direktes Ads-Tagging statt GA4-Import gewünscht ist).
  */
 (function () {
-  var ADS_ID = '';          // z. B. 'AW-123456789'  — leer = Skript inaktiv
-  var LABEL_WHATSAPP = '';  // Label der Aktion "WhatsApp-Klick"
-  var LABEL_ANRUF = '';     // Label der Aktion "Anruf-Klick Website"
-
-  if (!ADS_ID) return;
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  window.gtag = window.gtag || gtag;
-
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied'
-  });
-  gtag('js', new Date());
-  gtag('config', ADS_ID);
-
-  var s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ADS_ID;
-  document.head.appendChild(s);
-
-  function melden(label) {
-    if (label) gtag('event', 'conversion', { send_to: ADS_ID + '/' + label });
-  }
-
-  // Capture-Phase, damit auch dynamisch befüllte CTAs (kontakt.html) erfasst werden
   document.addEventListener('click', function (e) {
     var el = e.target;
     while (el && el.tagName !== 'A') el = el.parentElement;
     if (!el || !el.href) return;
-    if (el.href.indexOf('wa.me/') !== -1 || el.href.indexOf('api.whatsapp.com') !== -1) {
-      melden(LABEL_WHATSAPP);
-    } else if (el.href.indexOf('tel:') === 0) {
-      melden(LABEL_ANRUF);
-    }
+
+    // Funnel-Klicks meldet kontakt.html selbst — nicht doppelt zählen
+    if (el.closest && el.closest('.fn-cta')) return;
+
+    var kanal = null;
+    if (el.href.indexOf('wa.me/') !== -1 || el.href.indexOf('api.whatsapp.com') !== -1) kanal = 'WhatsApp';
+    else if (el.href.indexOf('tel:') === 0) kanal = 'Anruf';
+    else if (el.href.indexOf('mailto:') === 0) kanal = 'E-Mail';
+    if (!kanal) return;
+
+    // Nur nach Zustimmung existieren gtag/fbq (siehe Consent-Banner-Skript)
+    if (window.gtag) gtag('event', 'generate_lead', { kanal: kanal, quelle: 'seite' });
+    if (window.fbq) fbq('track', 'Lead');
   }, true);
 })();
