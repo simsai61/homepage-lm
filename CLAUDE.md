@@ -564,3 +564,36 @@ Die alte Instagram-Schnittstelle für private Konten wurde am 4. Dezember 2024 a
 - Kopfzeile, Fußzeile, Kontaktkarte und Prozess-Zeitleiste sind auf allen Seiten baugleich
 - Nach jeder Änderung an einer Datei mit mehreren Skriptblöcken auf globale Namenskollisionen prüfen
 - Effekte sparsam dosieren: Die Seite verkauft Handwerk, nicht Webdesign
+
+---
+
+## 8. Google Ads (Stand 13.8.2026)
+
+Konto „Ländle Blitz Marketing", Kundennummer 598-431-9466 (ocid 8444578298), eine
+Suchkampagne „Werbetechnik Vorarlberg — Suche" (10 €/Tag, Klicks maximieren, nur
+Google-Suche, Standort Vorarlberg). 3 Anzeigengruppen: Fahrzeugbeschriftung,
+Komplettpaket Neueröffnung, Anzeigengruppe 1 (= Leuchtreklame).
+
+Erledigt am 13.8.: Konflikt-Keyword „vollfolierung auto" entfernt (Negativ
+„vollfolierung" blieb), 8 Negativ-Keywords ergänzt (schweiz, zürich, graz,
+willhaben, ppf, chrome delete, selbst gestalten, was sind → 62 gesamt),
+Sitelinks 4→6 (neu: Webdesign, Druck & Printmedien), Leuchtreklame-Anzeige von
+„Schlecht" auf „Sehr gut" (15 Titel, 4 Textzeilen). Konkurrenz-Namen als
+Negativs hat Sait bewusst abgelehnt („3 lassen").
+
+**Conversion-Tracking (offen, nur Saits Browser kann den letzten Schritt):**
+`assets/ads-tracking.js` liegt auf allen Seiten, ist aber INAKTIV bis die drei
+Konstanten gefüllt sind (Consent Mode v2, ad_storage denied — vor Aktivierung
+Datenschutzerklärung um Google-Ads-Absatz ergänzen!). Sait muss in Google Ads
+unter Zielvorhaben → Conversions anlegen: (1) „Anrufe über Anzeigen" (ohne
+Code), (2) Website-Aktionen „WhatsApp-Klick" + „Anruf-Klick Website", dann
+Conversion-ID (AW-…) + beide Labels liefern → Konstanten eintragen, pushen.
+
+**Achtung Browser-Pane:** Die Bereiche Zielvorhaben/Conversions, Datenmanager
+und Google-Tag rendern im eingebauten Claude-Browser NICHT (Adblock-Erkennung
+bzw. leere Seite; mehrfach verifiziert, auch per SPA-Navigation). Nicht erneut
+versuchen — das ist Nutzer-Aufgabe. Empfehlung „Dynamische Bilder" wartet auf
+Saits Rechte-Bestätigung (Dialog verlangt Erklärung über Bildrechte der
+Landingpages — nicht stellvertretend abhaken). google-ads-bilder/ enthält
+vorbereitete Bild-Assets; Upload ebenfalls nur durch Sait möglich (kein
+Datei-Dialog im Pane).
