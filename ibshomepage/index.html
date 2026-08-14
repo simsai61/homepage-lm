@@ -151,15 +151,23 @@ nav.desk a:hover{color:var(--paper)}
   user-select:none;
 }
 .weg-label{position:absolute; left:5vw; bottom:13svh; z-index:4}
-.weg-label b{font-family:Archivo,Inter,sans-serif; font-weight:900; font-size:clamp(1.2rem,2.6vw,2rem); text-transform:uppercase; display:block}
+/* Zeilenmasken: beim Beat-Wechsel schieben die Zeilen von unten herein */
+.weg-label b,.weg-label span{display:block; overflow:hidden}
+.weg-label b{font-family:Archivo,Inter,sans-serif; font-weight:900; font-size:clamp(1.2rem,2.6vw,2rem); text-transform:uppercase}
 .weg-label span{color:var(--muted); font-size:.9rem}
+.weg-label b i,.weg-label span i{display:block; font-style:normal}
+.swap b i{animation:zeileRein .45s cubic-bezier(.2,.7,.2,1) both}
+.swap span i{animation:zeileRein .45s .06s cubic-bezier(.2,.7,.2,1) both}
+.weg-num i{display:block; font-style:normal}
+.swap-num i{animation:zeileRein .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes zeileRein{from{transform:translateY(110%)}to{transform:none}}
 
 /* Boden und Route */
 .boden{position:absolute; left:0; right:0; bottom:12svh; height:1px; background:var(--line); z-index:2}
 .fahrlinie{position:absolute; left:0; right:0; top:44svh; border-top:2px dashed var(--line); z-index:1}
 
 /* Die Motive: bodenbündig, per Skript bewegt */
-.obj{position:absolute; z-index:3; will-change:transform}
+.obj{position:absolute; z-index:3; will-change:transform; transform-origin:50% 100%}
 .obj img{width:100%; height:auto; display:block}
 .obj::after{content:""; position:absolute; left:8%; right:8%; bottom:-2.5%; height:7%;
   border-radius:50%; background:rgba(20,20,20,.18); filter:blur(10px)}
@@ -183,6 +191,15 @@ nav.desk a:hover{color:var(--paper)}
 .finale h3{font-size:clamp(2.2rem,6vw,4.6rem); font-weight:900; line-height:1.02; text-transform:uppercase}
 .finale h3 em{font-style:normal; color:var(--orange)}
 .finale p{color:var(--mutedD); max-width:52ch; margin-top:20px}
+/* Zeilen der Wand kommen gestaffelt, sobald die Wand oben ist */
+.finale .ln{display:block; overflow:hidden}
+.finale .ln i{display:block; font-style:normal; transform:translateY(115%); transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.finale.auf .ln:nth-child(1) i{transition-delay:.05s}
+.finale.auf .ln:nth-child(2) i{transition-delay:.14s}
+.finale.auf .mono,.finale.auf p{transition-delay:.3s}
+.finale.auf .ln i{transform:none}
+.finale .mono,.finale p{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease}
+.finale.auf .mono,.finale.auf p{opacity:1; transform:none}
 @media(max-width:760px){
   #weg{height:420svh}
   .obj-schiff{width:88vw; top:calc(44svh - 4.4vw)}
@@ -359,15 +376,15 @@ html.rv .rev.in{opacity:1; transform:none}
            width="1350" height="794" decoding="async">
     </div>
 
-    <div class="weg-num" id="wegNum" aria-hidden="true">01</div>
+    <div class="weg-num" id="wegNum" aria-hidden="true"><i>01</i></div>
     <div class="weg-label" id="wegLabel">
-      <b id="wegLabelB">Verschifft</b><span id="wegLabelS">Im Container ab Werk</span>
+      <b><i id="wegLabelB">Verschifft</i></b><span><i id="wegLabelS">Im Container ab Werk</i></span>
     </div>
 
     <div class="finale" id="finale">
       <div class="wrap">
         <div class="mono">I.B.S. Baustoffhandel</div>
-        <h3>Alles für Ihren Rohbau.<br><em>Aus einer Hand.</em></h3>
+        <h3><span class="ln"><i>Alles für Ihren Rohbau.</i></span><span class="ln"><i><em>Aus einer Hand.</em></i></span></h3>
         <p>Fertigung, Verschiffung, Verzollung, Zustellung — ein Ansprechpartner
         trägt die Verantwortung für den ganzen Weg.</p>
       </div>
@@ -534,50 +551,71 @@ html.rv .rev.in{opacity:1; transform:none}
     return;
   }
 
+  var numI=num.querySelector('i');
   function setzeBeat(i){
     if(i===beat) return; beat=i;
-    num.textContent='0'+(i+1);
+    numI.textContent='0'+(i+1);
     labelB.textContent=TEXTE[i][0]; labelS.textContent=TEXTE[i][1];
+    /* Zeilenmasken-Animation neu anstoßen */
+    label.classList.remove('swap'); num.classList.remove('swap-num');
+    void label.offsetWidth;
+    label.classList.add('swap'); num.classList.add('swap-num');
   }
 
-  function rechne(){
-    warte=false;
+  /* Ziel- und Ist-Werte: der Scroll setzt nur Ziele, ein Dauerläufer
+     gleitet gedämpft hinterher — das nimmt der Bewegung jede Härte. */
+  var ziel={s:110,st:120,l:130,wand:0,deck:1,linie:1};
+  var ist ={s:110,st:120,l:130,wand:0,deck:1,linie:1};
+  var sichtbar=false, lPrev=130, stPrev=120;
+
+  function zielen(){
     var r=wrap.getBoundingClientRect();
-    if(r.bottom<0 || r.top>innerHeight) return;
+    sichtbar=!(r.bottom<-innerHeight || r.top>2*innerHeight);
+    if(!sichtbar) return;
     var p=klemm(-r.top/(r.height-innerHeight));
 
-    /* Schiff: zieht von rechts nach links über die Fahrlinie */
     var a=seg(p,0,0.30);
-    schiff.style.transform='translateX('+(110-215*a)+'vw) rotate('+(Math.sin(a*9)*0.7)+'deg)';
-    var linieSicht=klemm(1-seg(p,0.24,0.32));
-    fahrlinie.style.opacity=linieSicht;
+    ziel.s=110-215*a;
+    ziel.linie=klemm(1-seg(p,0.24,0.32));
 
-    /* Stapler: kommt von rechts, hält mittig, setzt zurück */
-    var ein=aus(seg(p,0.26,0.44)), halt=seg(p,0.44,0.52), weg=rein(seg(p,0.52,0.64));
-    var sx=120-89*ein+130*weg;                      /* 120 → 31 (Mitte) → zurück */
-    var wippe=(halt>0&&halt<1)?Math.sin(halt*6.28)*0.5:0;
-    stapler.style.transform='translateX('+sx+'vw) rotate('+wippe+'deg)';
+    var ein=aus(seg(p,0.26,0.44)), weg=rein(seg(p,0.52,0.64));
+    ziel.st=120-89*ein+130*weg;                     /* 120 → 31 (Mitte) → zurück */
 
-    /* LKW: kommt von rechts, hält mittig, fährt links hinaus */
     var lein=aus(seg(p,0.58,0.76)), lweg=rein(seg(p,0.82,0.96));
-    var lx=130-130*lein-190*lweg;                   /* 130 → Mitte → -190 */
-    lkw.style.transform='translateX('+lx+'vw)';
-    /* leichtes Nicken beim Anhalten */
-    if(lein>0.9&&lein<1){ lkw.style.transform+=' rotate('+((1-lein)*10*0.8)+'deg)'; }
+    ziel.l=130-130*lein-190*lweg;                   /* 130 → Mitte → -190 */
 
-    /* Beschriftung */
     setzeBeat(p<0.30?0:p<0.62?1:2);
-    var deck=klemm(1-seg(p,0.84,0.92));
-    label.style.opacity=deck; num.style.opacity=deck; kopf.style.opacity=deck;
-
-    /* Typo-Wand */
-    var wand=aus(seg(p,0.86,1));
-    finale.style.transform='translateY('+(101-101*wand)+'%)';
+    ziel.deck=klemm(1-seg(p,0.84,0.92));
+    ziel.wand=aus(seg(p,0.86,1));
   }
-  function onScroll(){ if(!warte){ warte=true; requestAnimationFrame(rechne); } }
-  addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',onScroll);
-  rechne();
+
+  function tick(){
+    if(sichtbar){
+      var D=0.14;
+      for(var k in ziel){ ist[k]+=(ziel[k]-ist[k])*D; }
+
+      /* Fahr-Neigung aus der tatsächlichen Geschwindigkeit:
+         beim Beschleunigen lehnt sich das Fahrzeug zurück, beim
+         Bremsen nach vorn — das verkauft die Bewegung. */
+      var lv=ist.l-lPrev; lPrev=ist.l;
+      var sv=ist.st-stPrev; stPrev=ist.st;
+      var lLean=Math.max(-2.2,Math.min(2.2,lv*1.1));
+      var sLean=Math.max(-2.2,Math.min(2.2,sv*1.2));
+
+      schiff.style.transform='translateX('+ist.s+'vw) rotate('+(Math.sin(seg(ist.s,-105,110)*9)*0.7)+'deg)';
+      fahrlinie.style.opacity=ist.linie;
+      stapler.style.transform='translateX('+ist.st+'vw) rotate('+sLean+'deg)';
+      lkw.style.transform='translateX('+ist.l+'vw) rotate('+(-lLean)+'deg)';
+      label.style.opacity=ist.deck; num.style.opacity=ist.deck; kopf.style.opacity=ist.deck;
+      finale.style.transform='translateY('+(101-101*ist.wand)+'%)';
+      finale.classList.toggle('auf', ziel.wand>0.55);
+    }
+    requestAnimationFrame(tick);
+  }
+  addEventListener('scroll',zielen,{passive:true});
+  addEventListener('resize',zielen);
+  zielen();
+  requestAnimationFrame(tick);
 })();
 
 /* Globus: gepunktete Kugel mit leuchtender Route Türkei → Vorarlberg */
