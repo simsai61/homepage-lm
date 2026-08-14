@@ -33,14 +33,18 @@ def bauen():
     html = re.sub(r'\s*srcset="[^"]*"', '', html)
     html = re.sub(r'\s*sizes="[^"]*"', '', html)
 
+    MIME = {'webp': 'image/webp', 'png': 'image/png', 'svg': 'image/svg+xml',
+            'mp4': 'video/mp4'}
+
     def einbetten(treffer):
-        pfad = os.path.join(HIER, treffer.group(1))
+        attr, pfad_rel = treffer.group(1), treffer.group(2)
+        pfad = os.path.join(HIER, pfad_rel)
         with open(pfad, 'rb') as f:
             b64 = base64.b64encode(f.read()).decode()
-        endung = 'webp' if pfad.endswith('.webp') else 'png'
-        return f'src="data:image/{endung};base64,{b64}"'
+        mime = MIME[pfad_rel.rsplit('.', 1)[1]]
+        return f'{attr}="data:{mime};base64,{b64}"'
 
-    html, anzahl = re.subn(r'src="(assets/(?:bilder|frei)/[^"]+\.(?:webp|png))"',
+    html, anzahl = re.subn(r'(src|href|poster)="(assets/[^"]+\.(?:webp|png|svg|mp4))"',
                            einbetten, html)
     if anzahl == 0:
         raise SystemExit('Kein einziges Bild eingebettet — Pfade geprüft?')
