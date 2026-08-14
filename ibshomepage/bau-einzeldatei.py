@@ -29,6 +29,8 @@ def bauen():
 
     # preload zeigt auf eine Datei, die es in der Einzelfassung nicht gibt
     html = re.sub(r'<link rel="preload".*?>\s*', '', html, flags=re.S)
+    # WebM-Zweitspur weglassen — sonst steckt jedes Video doppelt in der Datei
+    html = re.sub(r'\s*<source src="[^"]+\.webm"[^>]*>', '', html)
     # nur eine Bildgröße im Dokument, also keine Auswahl mehr nötig
     html = re.sub(r'\s*srcset="[^"]*"', '', html)
     html = re.sub(r'\s*sizes="[^"]*"', '', html)

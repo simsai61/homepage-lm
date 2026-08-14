@@ -3,43 +3,42 @@
 Alle Fotos über Adobe Stock lizenziert (Konto I.B.S. / Sait Simsek).
 Originale liegen nicht im Repo — hier stehen nur die aufbereiteten WebP-Dateien.
 
-### `assets/bilder/` — ganze Fotos
+### `assets/bilder/` — Fotos
 
 | Datei | Adobe-Stock-ID | Motiv | Verwendung |
 |---|---|---|---|
 | `hafen-hero.webp` | 314039797 | Containerterminal, Kräne als Silhouette im Gegenlicht | Hero, Vollbild |
 | `fertigung-schweissen.webp` | 1442170548 | Schweißer an Stahlprofilen, Funkenflug | Abschnitt „Fertigung" |
-| `ozean.webp` | 506727011 | leere Wasserfläche (oberes Drittel des Originals) | Untergrund der Schiff-Szene |
 
-### `assets/frei/` — freigestellte Motive, mit Transparenz
+### `assets/videos/` — die drei Szenen im Abschnitt „Der Weg"
 
-| Datei | Adobe-Stock-ID | Motiv | Verwendung |
-|---|---|---|---|
-| `schiff.webp` | 506727011 | Containerschiff von oben, ohne Wasser | Szene 01, fährt quer durchs Bild |
-| `stapler.webp` | 238579281 | Reachstacker mit gehobenem Container | Szene 02, fährt herein und hebt |
-| `lkw.webp` | 49975472 | Sattelzug mit Container | Szene 03, fährt durchs Bild |
+KI-generiert mit Higgsfield (Bild: Nano Banana 2, Video: 5 s, Kamera statisch)
+über das Kundenkonto, am 14.08.2026. Keine Stock-Lizenzen nötig.
+
+| Datei | Motiv | Szene |
+|---|---|---|
+| `schiff.mp4/.webm` | Containerschiff von oben, rote Container, Kielwasser | 01 — Verschifft |
+| `stapler.mp4/.webm` | Roter Reachstacker verlädt Container auf roten LKW | 02 — Umgeschlagen |
+| `lkw.mp4/.webm` | Kirschroter Sattelzug mit Container auf Landstraße | 03 — Zugestellt |
+
+Die Fahrzeuge wurden gezielt in Kirschrot (Markenfarbe #BE1622) bestellt.
+
+### `assets/` — Marke
+
+`ibslogo.svg` (Original vom Kunden), `ibslogo-hell.svg` (Schwarz→Weiß für dunkle
+Flächen), `favicon.svg` (Bildzeichen per viewBox-Zuschnitt).
 
 ## Aufbereitung
 
-Ganze Fotos: Zuschnitt und Umwandlung mit Pillow, je zwei Größen (1920px und 1100px,
+Fotos: Zuschnitt und Umwandlung mit Pillow, je zwei Größen (1920px und 1100px,
 Suffix `-1100`), WebP Qualität 80, eingebunden per `srcset`/`sizes`.
+`hafen-hero` beim Zuschnitt bei 55 % der Höhe ansetzen, damit die Kräne im Bild bleiben.
 
-Freistellung mit `rembg` (Modell `isnet-general-use`), danach als WebP mit Alphakanal —
-zusammen rund 280 KB. Die drei Motive liegen auf gezeichneten Untergründen (Ozeanfoto,
-Hof-Verlauf, Fahrbahn) und werden per Scrollstand bewegt; sie brauchen deshalb saubere
-Kanten und dürfen keinen Rest des Originalhintergrunds tragen.
+Videos: Quelle 1928×1076 → 1280px, H.264 CRF 26 + WebP-Poster; zusätzlich eine
+VP9/WebM-Spur (CRF 34) für Browser ohne H.264 (Linux-Firefox/Chromium und der
+Playwright-Chromium der Tests — dort war „no supported sources" der Hinweis).
+Es spielt immer nur das Video der aktiven Szene; außerhalb der Sektion wird pausiert.
 
-## Fallstricke, alle beim Bauen aufgetreten
-
-**Schriftzug im Schiff-Foto.** Das Original trägt „DELIVERY BY SHIP" ab etwa 62 % der
-Bildhöhe. Wird das Bild ohne vorherigen Zuschnitt durch die Freistellung geschickt,
-erkennt sie den Schriftzug als Motiv und nimmt ihn mit. Deshalb: **erst auf 60 % der
-Höhe beschneiden, dann freistellen.**
-
-**Leitplanke im LKW-Foto.** Die Freistellung nimmt die Leitplanke am Straßenrand mit,
-weil sie am Fahrzeug anschließt. Sie wird über die Spaltenhöhe der Deckkraft entfernt:
-Spalten mit weniger als 250 px Motivhöhe gehören zur Planke, nicht zum LKW.
-
-**Zuschnitt-Anker.** `hafen-hero` bei 55 % der Höhe ansetzen, damit die Kräne
-vollständig im Bild bleiben. Beim Stapler-Original bei 18 %, sonst fällt die
-Oberkante des gehobenen Containers weg.
+Frühere Fassungen dieser Sektion (Fotowechsel, dann freigestellte, scrollbewegte
+Motive) sind durch die Videos ersetzt; die Freistell-Fallstricke stehen in der
+Git-Historie dieser Datei.
