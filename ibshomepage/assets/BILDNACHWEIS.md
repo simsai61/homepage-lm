@@ -10,18 +10,25 @@ Originale liegen nicht im Repo — hier stehen nur die aufbereiteten WebP-Dateie
 | `hafen-hero.webp` | 314039797 | Containerterminal, Kräne als Silhouette im Gegenlicht | Hero, Vollbild |
 | `fertigung-schweissen.webp` | 1442170548 | Schweißer an Stahlprofilen, Funkenflug | Abschnitt „Fertigung" |
 
-### `assets/videos/` — die drei Szenen im Abschnitt „Der Weg"
+### `assets/schnitt/` — freigestellte Motive für die offene Scroll-Bühne „Der Weg"
 
-KI-generiert mit Higgsfield (Bild: Nano Banana 2, Video: 5 s, Kamera statisch)
-über das Kundenkonto, am 14.08.2026. Keine Stock-Lizenzen nötig.
+Nach dem Vorbild des Referenz-Reels fahren die Motive **frei auf der weißen
+Seite** (keine Box, kein Video) — der Scrollstand treibt die Bewegung.
 
-| Datei | Motiv | Szene |
+| Datei | Quelle (Adobe Stock) | Bearbeitung |
 |---|---|---|
-| `schiff.mp4/.webm` | Containerschiff von oben, rote Container, Kielwasser | 01 — Verschifft |
-| `stapler.mp4/.webm` | Roter Reachstacker verlädt Container auf roten LKW | 02 — Umgeschlagen |
-| `lkw.mp4/.webm` | Kirschroter Sattelzug mit Container auf Landstraße | 03 — Zugestellt |
+| `schiff.webp` | 506727011 | freigestellt (rembg), Text-/Wasserbereich abgeschnitten |
+| `stapler.webp` | 238579281 | freigestellt, **gespiegelt**, Container Blau→Kirschrot umgefärbt |
+| `lkw.webp` | 49975472 | freigestellt, Leitplanke entfernt, Kabine Blau→Kirschrot umgefärbt |
 
-Die Fahrzeuge wurden gezielt in Kirschrot (Markenfarbe #BE1622) bestellt.
+Umfärbung: HSV-Drehung nur für satte Blautöne (H 0,52–0,75 · S>0,25) nach
+Kirschrot — Glasflächen bleiben unberührt, weil sie zu wenig Sättigung haben.
+
+### `assets/videos/` — Higgsfield-Clips (aktuell nicht eingebunden)
+
+KI-generiert am 14.08.2026 über das Kundenkonto (je 5 s, 1280px, H.264+VP9).
+Waren als Szenen eingebaut, wurden zugunsten der offenen Scroll-Bühne wieder
+ausgebaut — behalten für spätere Verwendung (z. B. Social Media, Hero).
 
 ### `assets/` — Marke
 
