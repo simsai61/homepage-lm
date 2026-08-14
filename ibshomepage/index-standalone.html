@@ -6,7 +6,8 @@
 <!-- EINZELDATEI-FASSUNG — automatisch erzeugt von bau-einzeldatei.py.
      Bilder stecken als data-URI im Dokument, damit die Datei ohne den
      Ordner assets/ läuft. Änderungen gehören in index.html. -->
-<title>Stahl &amp; Baubedarf für Betonfertigteile | I.B.S. Handel</title>
+<title>Stahl &amp; Baubedarf für Betonfertigteile | I.B.S. Baustoffhandel</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="description" content="I.B.S. Handel, Meiningen: Metallkupplungen für Betonfertigteile aus eigener Fertigung, dazu Mehrschichtplatten, Bindedraht, Schalungen und Hüllwellrohre. Per Container von der Türkei nach Österreich.">
 <meta name="theme-color" content="#0D0D0F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,12 +22,12 @@
 :root{
   /* I.B.S.-Farben: Kirschrot, Weiß, Schwarz */
   --bg:      #0D0D0F;   /* Schwarz, Hero & Bänder */
-  --ink:     #141414;   /* Text auf hell */
+  --ink:     #1D1D1B;   /* Text auf hell */
   --paper:   #FFFFFF;   /* helle Sektionen */
   --paper2:  #F3F3F3;
   --steel:   #A8ADB5;
-  --orange:  #C8102E;   /* Kirschrot, Hauptakzent (Variablenname historisch) */
-  --blue:    #141414;   /* Zweitakzent jetzt Schwarz */
+  --orange:  #BE1622;   /* Kirschrot, Hauptakzent (Variablenname historisch) */
+  --blue:    #1D1D1B;   /* Zweitakzent jetzt Schwarz */
   --muted:   #6E7278;
   --mutedD:  #9BA0A8;
   --line:    #E3E3E3;
@@ -54,13 +55,10 @@ header{
   transition:background .3s;
 }
 header.solid{background:rgba(11,14,20,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--lineD)}
-.brand{display:flex; align-items:center; gap:12px; text-decoration:none}
-.brand-box{
-  width:38px;height:38px; border:2px solid var(--orange); display:grid; place-items:center;
-  font-family:Archivo,Inter,sans-serif; font-weight:900; font-size:15px; color:var(--orange);
-}
-.brand-tx{font-family:Archivo,Inter,sans-serif; font-weight:800; font-size:1.02rem; letter-spacing:.06em}
-.brand-tx small{display:block; font-family:'IBM Plex Mono',monospace; font-weight:400; font-size:.56rem; letter-spacing:.3em; color:var(--mutedD)}
+.brand{display:flex; align-items:center; text-decoration:none}
+/* height:auto Pflicht — sonst gewinnen die width/height-Attribute des <img> */
+.brand-logo{height:40px; width:auto}
+@media(max-width:900px){.brand-logo{height:34px}}
 nav.desk{display:flex; gap:28px}
 nav.desk a{text-decoration:none; font-size:.82rem; font-weight:500; color:var(--mutedD); transition:color .2s}
 nav.desk a:hover{color:var(--paper)}
@@ -271,8 +269,7 @@ html.rv .rev.in{opacity:1; transform:none}
 
 <header id="hd">
   <a class="brand" href="#top">
-    <span class="brand-box">IBS</span>
-    <span class="brand-tx">I.B.S. HANDEL<small>STAHL · BAUBEDARF · MEININGEN</small></span>
+    <img class="brand-logo" src="assets/ibslogo-hell.svg" alt="I.B.S. Baustoffhandel GmbH &amp; Co KG" width="737" height="165">
   </a>
   <nav class="desk">
     <a href="#fertigung">Fertigung</a>
@@ -409,22 +406,22 @@ html.rv .rev.in{opacity:1; transform:none}
     Rohbau — ab Lager Meiningen oder direkt im Container.</p>
     <div class="sort-grid">
       <div class="sort-card rev"><span class="tag">Eigenfertigung</span>
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="4" y="21" width="20" height="12" rx="2" stroke="#141414" stroke-width="3"/><rect x="30" y="21" width="20" height="12" rx="2" stroke="#C8102E" stroke-width="3"/><path d="M24 27h6" stroke="#12151C" stroke-width="3"/></svg>
+        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="4" y="21" width="20" height="12" rx="2" stroke="#1D1D1B" stroke-width="3"/><rect x="30" y="21" width="20" height="12" rx="2" stroke="#BE1622" stroke-width="3"/><path d="M24 27h6" stroke="#12151C" stroke-width="3"/></svg>
         <b>Metallkupplungen</b><p>Verbindungen für Betonfertigteile aus eigener Fertigung — CE-zertifiziert, auf Wunsch nach Maß.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="6" y="14" width="42" height="8" stroke="#141414" stroke-width="3"/><rect x="6" y="24" width="42" height="8" stroke="#C8102E" stroke-width="3"/><rect x="6" y="34" width="42" height="8" stroke="#141414" stroke-width="3"/></svg>
+        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="6" y="14" width="42" height="8" stroke="#1D1D1B" stroke-width="3"/><rect x="6" y="24" width="42" height="8" stroke="#BE1622" stroke-width="3"/><rect x="6" y="34" width="42" height="8" stroke="#1D1D1B" stroke-width="3"/></svg>
         <b>Mehrschichtplatten</b><p>Holz-Mehrschichtplatten für Schalung und Ausbau — formstabil, in gängigen Formaten.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><circle cx="27" cy="27" r="16" stroke="#C8102E" stroke-width="3"/><path d="M27 11c8 6 8 26 0 32M27 11c-8 6-8 26 0 32" stroke="#141414" stroke-width="2.4"/></svg>
+        <svg class="ic" viewBox="0 0 54 54" fill="none"><circle cx="27" cy="27" r="16" stroke="#BE1622" stroke-width="3"/><path d="M27 11c8 6 8 26 0 32M27 11c-8 6-8 26 0 32" stroke="#1D1D1B" stroke-width="2.4"/></svg>
         <b>Bindedraht</b><p>Geglühter Bindedraht für die Bewehrung — als Ring oder Stangendraht, palettenweise.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><path d="M8 44V16l38-6v28z" stroke="#141414" stroke-width="3"/><path d="M20 42V13" stroke="#C8102E" stroke-width="3"/><path d="M34 40V11" stroke="#C8102E" stroke-width="3"/></svg>
+        <svg class="ic" viewBox="0 0 54 54" fill="none"><path d="M8 44V16l38-6v28z" stroke="#1D1D1B" stroke-width="3"/><path d="M20 42V13" stroke="#BE1622" stroke-width="3"/><path d="M34 40V11" stroke="#BE1622" stroke-width="3"/></svg>
         <b>Schalungen</b><p>Schalungssysteme und Zubehör für Wand und Decke — abgestimmt auf die Platten im Sortiment.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><path d="M6 32c4-8 8 8 12 0s8 8 12 0 8 8 12 0 6 4 6 4" stroke="#C8102E" stroke-width="3"/><path d="M6 22c4-8 8 8 12 0s8 8 12 0 8 8 12 0 6 4 6 4" stroke="#141414" stroke-width="3"/></svg>
+        <svg class="ic" viewBox="0 0 54 54" fill="none"><path d="M6 32c4-8 8 8 12 0s8 8 12 0 8 8 12 0 6 4 6 4" stroke="#BE1622" stroke-width="3"/><path d="M6 22c4-8 8 8 12 0s8 8 12 0 8 8 12 0 6 4 6 4" stroke="#1D1D1B" stroke-width="3"/></svg>
         <b>Hüllwellrohre</b><p>Hüllwellrohre für den Spannbeton — sauber gewickelt, in allen gängigen Durchmessern.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="8" y="18" width="38" height="24" rx="2" stroke="#141414" stroke-width="3"/><path d="M14 18v24M22 18v24M30 18v24M38 18v24" stroke="#C8102E" stroke-width="2.2"/></svg>
+        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="8" y="18" width="38" height="24" rx="2" stroke="#1D1D1B" stroke-width="3"/><path d="M14 18v24M22 18v24M30 18v24M38 18v24" stroke="#BE1622" stroke-width="2.2"/></svg>
         <b>Sonderanfertigung</b><p>Sie brauchen ein Stahlteil, das es so nicht gibt? Unsere Schlosserei fertigt nach Zeichnung.</p></div>
     </div>
   </div>
@@ -465,7 +462,7 @@ html.rv .rev.in{opacity:1; transform:none}
 
 <footer>
   <div class="wrap">
-    <span>© 2026 I.B.S. Handel · Meiningen, Vorarlberg</span>
+    <span>© 2026 I.B.S. Baustoffhandel GmbH &amp; Co KG · Meiningen, Vorarlberg</span>
     <nav>
       <a href="#sortiment">Sortiment</a>
       <a href="#kontakt">Kontakt</a>
@@ -607,7 +604,7 @@ html.rv .rev.in{opacity:1; transform:none}
     cx.strokeStyle='rgba(255,107,44,.92)'; cx.lineWidth=DPR*2.2;
     cx.shadowColor='rgba(255,107,44,.8)'; cx.shadowBlur=DPR*10; cx.stroke(); cx.shadowBlur=0;
     var pa=bogen(0,rot), pb=bogen(1,rot);
-    cx.fillStyle='#C8102E'; cx.beginPath(); cx.arc(pa[0],pa[1],DPR*4,0,7); cx.fill();
+    cx.fillStyle='#BE1622'; cx.beginPath(); cx.arc(pa[0],pa[1],DPR*4,0,7); cx.fill();
     cx.fillStyle='#4D9FFF'; cx.beginPath(); cx.arc(pb[0],pb[1],DPR*4,0,7); cx.fill();
     cx.font='500 '+(10*DPR)+'px "IBM Plex Mono", monospace';
     cx.fillStyle='rgba(242,240,234,.8)';
@@ -615,7 +612,7 @@ html.rv .rev.in{opacity:1; transform:none}
     cx.fillText('MEININGEN', pb[0]-72*DPR, pb[1]-10*DPR);
     if(!rm){
       var tt=(t*.22)%1, q2=bogen(tt,rot);
-      cx.fillStyle='#fff'; cx.shadowColor='#C8102E'; cx.shadowBlur=DPR*14;
+      cx.fillStyle='#fff'; cx.shadowColor='#BE1622'; cx.shadowBlur=DPR*14;
       cx.beginPath(); cx.arc(q2[0],q2[1],DPR*3,0,7); cx.fill(); cx.shadowBlur=0;
     }
   }
