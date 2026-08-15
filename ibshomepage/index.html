@@ -232,6 +232,10 @@ nav.desk a:hover{color:var(--paper)}
 .sort-card{background:var(--paper); padding:34px 28px; position:relative; transition:background .25s}
 .sort-card:hover{background:#fff}
 .sort-card .ic{width:52px;height:52px; margin-bottom:20px}
+/* Echtes Produktfoto oben in der Karte, randlos bis an die Kartenkante */
+.sort-card .foto{margin:-34px -28px 22px; aspect-ratio:16/10; overflow:hidden; border-bottom:1px solid var(--line)}
+.sort-card .foto img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
+.sort-card:hover .foto img{transform:scale(1.04)}
 .sort-card b{font-family:Archivo,Inter,sans-serif; font-weight:800; font-size:1.06rem; text-transform:uppercase; display:block; margin-bottom:8px}
 .sort-card p{font-size:.88rem; color:var(--muted)}
 .sort-card .tag{position:absolute; top:20px; right:20px; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.16em; color:var(--blue); border:1px solid currentColor; border-radius:999px; padding:3px 10px}
@@ -261,6 +265,24 @@ nav.desk a:hover{color:var(--paper)}
 .k-card a{color:var(--ink); text-decoration:none; border-bottom:2px solid var(--orange)}
 @media(max-width:860px){.kontakt .grid{grid-template-columns:1fr; gap:38px}}
 
+/* ---------- Einblicke: echte Fotos aus Fertigung und Logistik ---------- */
+.einblicke .eb-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:44px}
+.eb{position:relative; aspect-ratio:4/3; overflow:hidden; border-radius:4px}
+/* doppelt so breit -> doppeltes Seitenverhältnis, sonst sprengt die Kachel die Zeile */
+.eb.breit{grid-column:span 2; aspect-ratio:8/3}
+.eb img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
+.eb:hover img{transform:scale(1.04)}
+.eb figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:26px 14px 10px;
+  background:linear-gradient(rgba(13,13,15,0), rgba(13,13,15,.82));
+  font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--mutedD);
+}
+@media(max-width:760px){
+  .einblicke .eb-grid{grid-template-columns:1fr 1fr; gap:8px}
+  .eb figcaption{position:static; background:none; padding:8px 2px 0}
+}
+
 /* ---------- Fußzeile ---------- */
 footer{background:#080A0F; padding:34px 0; border-top:1px solid var(--lineD)}
 footer .wrap{display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap}
@@ -288,6 +310,7 @@ html.rv .rev.in{opacity:1; transform:none}
     <a href="#fertigung">Fertigung</a>
     <a href="#weg">Der Weg</a>
     <a href="#sortiment">Sortiment</a>
+    <a href="#einblicke">Einblicke</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
   <a class="cta" href="#kontakt">Anfrage senden</a>
@@ -297,6 +320,7 @@ html.rv .rev.in{opacity:1; transform:none}
   <a href="#fertigung">Fertigung</a>
   <a href="#weg">Der Weg</a>
   <a href="#sortiment">Sortiment</a>
+  <a href="#einblicke">Einblicke</a>
   <a href="#kontakt">Kontakt</a>
   <a href="#kontakt" class="hl">Anfrage senden</a>
 </nav>
@@ -333,12 +357,12 @@ html.rv .rev.in{opacity:1; transform:none}
 <section class="light sec" id="fertigung">
   <div class="wrap split">
     <figure class="fig rev">
-      <img src="assets/bilder/fertigung-schweissen.webp"
-           srcset="assets/bilder/fertigung-schweissen-1100.webp 1100w, assets/bilder/fertigung-schweissen.webp 1920w"
+      <img src="assets/bilder/brueder.webp"
+           srcset="assets/bilder/brueder-720.webp 720w, assets/bilder/brueder.webp 1440w"
            sizes="(max-width:900px) 92vw, 560px"
-           alt="Schweißer bearbeitet Stahlprofile in einer Fertigungshalle, Funkenflug am Werkstück"
-           loading="lazy" decoding="async" width="1920" height="1280">
-      <figcaption>Eigene Schlosserei — Serien und Sonderanfertigungen nach Zeichnung.</figcaption>
+           alt="Die Brüder Simsek in der eigenen Fertigung, vor ihnen Stahlkupplungen"
+           loading="lazy" decoding="async" width="1440" height="960">
+      <figcaption>Die Brüder Simsek in der eigenen Fertigung — vor ihnen: Stahlkupplungen.</figcaption>
     </figure>
     <div>
       <div class="mono rev">Wer wir sind</div>
@@ -428,13 +452,13 @@ html.rv .rev.in{opacity:1; transform:none}
     nach internationalen Schweißnormen, in Vorarlberg qualitätsgeprüft.</p>
     <div class="sort-grid">
       <div class="sort-card rev"><span class="tag">Eigenfertigung</span>
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="4" y="21" width="20" height="12" rx="2" stroke="#1D1D1B" stroke-width="3"/><rect x="30" y="21" width="20" height="12" rx="2" stroke="#BE1622" stroke-width="3"/><path d="M24 27h6" stroke="#12151C" stroke-width="3"/></svg>
+        <div class="foto"><img src="assets/bilder/kupplung.webp" srcset="assets/bilder/kupplung-720.webp 720w, assets/bilder/kupplung.webp 1440w" sizes="(max-width:900px) 92vw, 370px" alt="Stahlkupplung mit vier Ankerbolzen aus der eigenen Fertigung" loading="lazy" decoding="async" width="1440" height="900"></div>
         <b>Stahlkupplungen</b><p>Verbindungen für Betonfertigteile aus eigener Fertigung — CE-zertifiziert, auf Wunsch nach Maß.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="6" y="14" width="42" height="8" stroke="#1D1D1B" stroke-width="3"/><rect x="6" y="24" width="42" height="8" stroke="#BE1622" stroke-width="3"/><rect x="6" y="34" width="42" height="8" stroke="#1D1D1B" stroke-width="3"/></svg>
+        <div class="foto"><img src="assets/bilder/container-platten.webp" srcset="assets/bilder/container-platten-720.webp 720w, assets/bilder/container-platten.webp 1200w" sizes="(max-width:900px) 92vw, 370px" alt="Kisten mit Film-Faced-Mehrschichtplatten, CE-gekennzeichnet, im Schiffscontainer" loading="lazy" decoding="async" width="1200" height="900"></div>
         <b>Mehrschichtplatten</b><p>Holz-Mehrschichtplatten für Schalung und Ausbau — formstabil, in gängigen Formaten.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><circle cx="27" cy="27" r="16" stroke="#BE1622" stroke-width="3"/><path d="M27 11c8 6 8 26 0 32M27 11c-8 6-8 26 0 32" stroke="#1D1D1B" stroke-width="2.4"/></svg>
+        <div class="foto"><img src="assets/bilder/bindedrahtmaeuse.webp" srcset="assets/bilder/bindedrahtmaeuse-720.webp 720w, assets/bilder/bindedrahtmaeuse.webp 1400w" sizes="(max-width:900px) 92vw, 370px" alt="Kübel mit Bindedrahtmäusen mit I.B.S.-Etikett" loading="lazy" decoding="async" width="1400" height="875"></div>
         <b>Bindedraht &amp; Bindedrahtmäuse</b><p>Geglühter Bindedraht und Bindedrahtmäuse für die Bewehrung — palettenweise.</p></div>
       <div class="sort-card rev">
         <svg class="ic" viewBox="0 0 54 54" fill="none"><path d="M8 44V16l38-6v28z" stroke="#1D1D1B" stroke-width="3"/><path d="M20 42V13" stroke="#BE1622" stroke-width="3"/><path d="M34 40V11" stroke="#BE1622" stroke-width="3"/></svg>
@@ -443,8 +467,25 @@ html.rv .rev.in{opacity:1; transform:none}
         <svg class="ic" viewBox="0 0 54 54" fill="none"><path d="M6 32c4-8 8 8 12 0s8 8 12 0 8 8 12 0 6 4 6 4" stroke="#BE1622" stroke-width="3"/><path d="M6 22c4-8 8 8 12 0s8 8 12 0 8 8 12 0 6 4 6 4" stroke="#1D1D1B" stroke-width="3"/></svg>
         <b>Hüllwellrohre</b><p>Hüllwellrohre für den Spannbeton — sauber gewickelt, in allen gängigen Durchmessern.</p></div>
       <div class="sort-card rev">
-        <svg class="ic" viewBox="0 0 54 54" fill="none"><rect x="8" y="18" width="38" height="24" rx="2" stroke="#1D1D1B" stroke-width="3"/><path d="M14 18v24M22 18v24M30 18v24M38 18v24" stroke="#BE1622" stroke-width="2.2"/></svg>
+        <div class="foto"><img src="assets/bilder/sonderform.webp" srcset="assets/bilder/sonderform-720.webp 720w, assets/bilder/sonderform.webp 1024w" sizes="(max-width:900px) 92vw, 370px" alt="Sonderanfertigung aus Stahl in der Bearbeitung" loading="lazy" decoding="async" width="1024" height="640"></div>
         <b>Sonderanfertigung</b><p>Stahl und Aluminium nach Zeichnung, in Großmengen — und wenn ein Produkt nicht mehr hergestellt wird oder zu teuer ist, finden wir gleichwertigen Ersatz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EINBLICKE ============ -->
+<section class="einblicke sec" id="einblicke">
+  <div class="wrap">
+    <div class="mono rev" style="color:var(--orange)">Einblicke</div>
+    <h2 class="rev">Fertigung, Verladung, Zustellung.</h2>
+    <div class="eb-grid">
+      <figure class="eb breit rev"><img src="assets/bilder/ibs-kisten.webp" srcset="assets/bilder/ibs-kisten-720.webp 720w, assets/bilder/ibs-kisten.webp 1600w" sizes="(max-width:760px) 92vw, 580px" alt="I.B.S.-Kisten mit Mehrschichtplatten vor Containern am Werk" loading="lazy" decoding="async" width="1600" height="900"><figcaption>Ware ab Werk, verpackt in I.B.S.-Kisten</figcaption></figure>
+      <figure class="eb rev"><img src="assets/bilder/pruefung.webp" srcset="assets/bilder/pruefung-720.webp 720w, assets/bilder/pruefung.webp 1440w" sizes="(max-width:760px) 46vw, 280px" alt="Stahlkupplung in der Belastungsprüfung" loading="lazy" decoding="async" width="1440" height="1080"><figcaption>Belastungsprüfung</figcaption></figure>
+      <figure class="eb rev"><img src="assets/bilder/kupplung-detail.webp" srcset="assets/bilder/kupplung-detail-720.webp 720w, assets/bilder/kupplung-detail.webp 1440w" sizes="(max-width:760px) 46vw, 280px" alt="Stahlkupplung im Detail" loading="lazy" decoding="async" width="1440" height="1080"><figcaption>Kupplung im Detail</figcaption></figure>
+      <figure class="eb rev"><img src="assets/bilder/verladung.webp" srcset="assets/bilder/verladung-720.webp 720w, assets/bilder/verladung.webp 1290w" sizes="(max-width:760px) 46vw, 280px" alt="Verladung von Paletten im Schiffscontainer" loading="lazy" decoding="async" width="1290" height="967"><figcaption>Verladung im Container</figcaption></figure>
+      <figure class="eb rev"><img src="assets/bilder/lager.webp" srcset="assets/bilder/lager-720.webp 720w, assets/bilder/lager.webp 721w" sizes="(max-width:760px) 46vw, 280px" alt="I.B.S.-Kisten im Lager" loading="lazy" decoding="async" width="721" height="540"><figcaption>Lager</figcaption></figure>
+      <figure class="eb rev"><img src="assets/bilder/lkw-beladen.webp" srcset="assets/bilder/lkw-beladen-720.webp 720w, assets/bilder/lkw-beladen.webp 921w" sizes="(max-width:760px) 46vw, 280px" alt="Beladener LKW mit Stahlpaletten" loading="lazy" decoding="async" width="921" height="576"><figcaption>Beladen für die Zustellung</figcaption></figure>
+      <figure class="eb rev"><img src="assets/bilder/zustellung.webp" srcset="assets/bilder/zustellung-720.webp 720w, assets/bilder/zustellung.webp 1536w" sizes="(max-width:760px) 46vw, 280px" alt="Palettenweise Zustellung beim Kunden" loading="lazy" decoding="async" width="1536" height="1152"><figcaption>Zustellung beim Kunden</figcaption></figure>
     </div>
   </div>
 </section>
