@@ -629,7 +629,10 @@ html.rv .rev.in{opacity:1; transform:none}
   requestAnimationFrame(tick);
 })();
 
-/* Globus: gepunktete Kugel mit leuchtender Route Türkei → Vorarlberg */
+/* Globus: Österreich als Knotenpunkt, Verbindungslinien aus mehreren
+   Regionen (Türkei, Naher Osten, Zentralasien, China). Der Globus dreht
+   langsam durch; Linien und Beschriftungen tauchen mit der Erdkrümmung
+   auf und verschwinden wieder. */
 (function(){
   var cv=document.getElementById('globe'); if(!cv) return;
   var cx=cv.getContext('2d'), W,H,R, DPR=Math.min(devicePixelRatio||1,2);
@@ -649,43 +652,85 @@ html.rv .rev.in{opacity:1; transform:none}
     var la=lat*Math.PI/180, lo=(lon+rot)*Math.PI/180;
     return [W/2+Math.cos(la)*Math.sin(lo)*R, H/2-Math.sin(la)*R, Math.cos(la)*Math.cos(lo)];
   }
-  var A=[41,29], B=[47.3,9.8];          /* Istanbul → Meiningen */
-  function bogen(t,rot){
-    var p=proj(A[0]+(B[0]-A[0])*t, A[1]+(B[1]-A[1])*t, rot);
-    var sc=1+Math.sin(t*Math.PI)*.14;
+
+  var HUB=[47.3,9.8,'ÖSTERREICH'];
+  var QUELLEN=[
+    [41.0, 29.0,'TÜRKEI',       0.00],
+    [25.2, 55.3,'NAHER OSTEN',  0.37],
+    [41.3, 69.2,'ZENTRALASIEN', 0.61],
+    [31.2,121.5,'CHINA',        0.82]
+  ];
+  function bogen(A,t,rot){
+    var p=proj(A[0]+(HUB[0]-A[0])*t, A[1]+(HUB[1]-A[1])*t, rot);
+    var sc=1+Math.sin(t*Math.PI)*.16;
     return [W/2+(p[0]-W/2)*sc, H/2+(p[1]-H/2)*sc, p[2]];
   }
+  function klemm(v){ return v<0?0:v>1?1:v; }
+
   function zeichne(t){
-    var rot=-19+Math.sin(t*.12)*7;
+    /* langsame Dauerdrehung — China und Europa wechseln sich im Blick ab */
+    var rot=-14 - t*4.5;
     cx.clearRect(0,0,W,H);
     var g=cx.createRadialGradient(W/2,H/2,R*.82,W/2,H/2,R*1.28);
-    g.addColorStop(0,'rgba(14,99,200,0)'); g.addColorStop(.55,'rgba(14,99,200,.3)'); g.addColorStop(1,'rgba(14,99,200,0)');
+    g.addColorStop(0,'rgba(190,22,34,0)'); g.addColorStop(.55,'rgba(190,22,34,.22)'); g.addColorStop(1,'rgba(190,22,34,0)');
     cx.fillStyle=g; cx.beginPath(); cx.arc(W/2,H/2,R*1.28,0,7); cx.fill();
-    var g2=cx.createLinearGradient(W/2,H/2-R,W/2,H/2-R*.3);
-    g2.addColorStop(0,'rgba(255,107,44,.55)'); g2.addColorStop(1,'rgba(255,107,44,0)');
-    cx.strokeStyle=g2; cx.lineWidth=DPR*3;
-    cx.beginPath(); cx.arc(W/2,H/2,R,Math.PI*1.15,Math.PI*1.85); cx.stroke();
     for(var i=0;i<punkte.length;i++){
       var p=proj(punkte[i][0],punkte[i][1],rot);
       if(p[2]<0) continue;
       cx.fillStyle='rgba(143,166,188,'+(.12+p[2]*.5).toFixed(3)+')';
       cx.beginPath(); cx.arc(p[0],p[1],DPR*(1+p[2]),0,7); cx.fill();
     }
-    cx.beginPath();
-    for(var j=0;j<=40;j++){ var q=bogen(j/40,rot); j?cx.lineTo(q[0],q[1]):cx.moveTo(q[0],q[1]); }
-    cx.strokeStyle='rgba(255,107,44,.92)'; cx.lineWidth=DPR*2.2;
-    cx.shadowColor='rgba(255,107,44,.8)'; cx.shadowBlur=DPR*10; cx.stroke(); cx.shadowBlur=0;
-    var pa=bogen(0,rot), pb=bogen(1,rot);
-    cx.fillStyle='#BE1622'; cx.beginPath(); cx.arc(pa[0],pa[1],DPR*4,0,7); cx.fill();
-    cx.fillStyle='#4D9FFF'; cx.beginPath(); cx.arc(pb[0],pb[1],DPR*4,0,7); cx.fill();
     cx.font='500 '+(10*DPR)+'px "IBM Plex Mono", monospace';
-    cx.fillStyle='rgba(242,240,234,.8)';
-    cx.fillText('TÜRKEI', pa[0]+9*DPR, pa[1]+15*DPR);
-    cx.fillText('MEININGEN', pb[0]-72*DPR, pb[1]-10*DPR);
-    if(!rm){
-      var tt=(t*.22)%1, q2=bogen(tt,rot);
-      cx.fillStyle='#fff'; cx.shadowColor='#BE1622'; cx.shadowBlur=DPR*14;
-      cx.beginPath(); cx.arc(q2[0],q2[1],DPR*3,0,7); cx.fill(); cx.shadowBlur=0;
+
+    /* Verbindungslinien: Deckkraft je Abschnitt aus der Tiefe (z) —
+       hinter dem Horizont wird nicht gezeichnet */
+    for(var k=0;k<QUELLEN.length;k++){
+      var Q=QUELLEN[k], vor=bogen(Q,0,rot);
+      var N=44, alt=bogen(Q,0,rot);
+      for(var j=1;j<=N;j++){
+        var q=bogen(Q,j/N,rot);
+        var a=klemm((Math.min(alt[2],q[2])+0.08)*2.4)*.85;
+        if(a>0.02){
+          cx.strokeStyle='rgba(230,64,84,'+a.toFixed(3)+')';
+          cx.lineWidth=DPR*1.9;
+          cx.beginPath(); cx.moveTo(alt[0],alt[1]); cx.lineTo(q[0],q[1]); cx.stroke();
+        }
+        alt=q;
+      }
+      /* Quellpunkt + Name, nur auf der zugewandten Seite */
+      if(vor[2]>0.06){
+        var av=klemm((vor[2]-0.06)*3);
+        cx.fillStyle='rgba(230,64,84,'+(av*.95).toFixed(3)+')';
+        cx.beginPath(); cx.arc(vor[0],vor[1],DPR*3.4,0,7); cx.fill();
+        cx.fillStyle='rgba(242,240,234,'+(av*.8).toFixed(3)+')';
+        cx.fillText(Q[2], vor[0]+8*DPR, vor[1]+14*DPR);
+      }
+      /* Wanderpunkt zum Knoten, zeitversetzt je Linie */
+      if(!rm){
+        var tt=(t*.20+Q[3])%1, w=bogen(Q,tt,rot);
+        if(w[2]>0){
+          cx.fillStyle='#fff'; cx.shadowColor='#BE1622'; cx.shadowBlur=DPR*12;
+          cx.beginPath(); cx.arc(w[0],w[1],DPR*2.6,0,7); cx.fill(); cx.shadowBlur=0;
+        }
+      }
+    }
+
+    /* Knotenpunkt Österreich: Ring + Puls */
+    var hb=proj(HUB[0],HUB[1],rot);
+    if(hb[2]>0){
+      var ah=klemm((hb[2]+0.05)*2);
+      var puls=rm?0:(t*.9)%1;
+      cx.strokeStyle='rgba(190,22,34,'+((1-puls)*.55*ah).toFixed(3)+')';
+      cx.lineWidth=DPR*1.6;
+      cx.beginPath(); cx.arc(hb[0],hb[1],DPR*(5+puls*14),0,7); cx.stroke();
+      cx.fillStyle='#BE1622'; cx.shadowColor='#BE1622'; cx.shadowBlur=DPR*10;
+      cx.beginPath(); cx.arc(hb[0],hb[1],DPR*4.6,0,7); cx.fill(); cx.shadowBlur=0;
+      cx.fillStyle='#fff';
+      cx.beginPath(); cx.arc(hb[0],hb[1],DPR*1.8,0,7); cx.fill();
+      cx.font='600 '+(11*DPR)+'px "IBM Plex Mono", monospace';
+      cx.fillStyle='rgba(242,240,234,'+(ah*.95).toFixed(3)+')';
+      cx.fillText(HUB[2], hb[0]-34*DPR, hb[1]-13*DPR);
+      cx.font='500 '+(10*DPR)+'px "IBM Plex Mono", monospace';
     }
   }
   if(rm){ zeichne(0); return; }
