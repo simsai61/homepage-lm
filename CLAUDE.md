@@ -602,6 +602,15 @@ des Wizards). `assets/ads-tracking.js` (auf allen Seiten eingebunden) meldet
 jetzt Kontakt-Klicks (WhatsApp/tel/mailto) AUCH auf den Leistungsseiten als
 generate_lead + Meta-Lead — consent-gated (nur wenn window.gtag/fbq existieren),
 .fn-cta ausgenommen (Funnel meldet selbst, keine Doppelzählung).
+Stand 15.8.: ERSTE CONVERSION gemessen (Klick vom 11.8., 19,26 EUR Kosten
+je Conv.) — Messkette funktioniert. Alle Anzeigen nach den Edits wieder AKTIV
+(Leuchtreklame jetzt Effektivitaet „Gut"), Anruf-Asset AKTIV. Einzige
+Ablehnung: Unternehmensname-Asset „Laendle Blitz Marketing" („irrelevanter
+Name") — kosmetisch, Anzeigen laufen mit Domain-Namen; Fix braucht
+Werbetreibenden-Verifizierung durch Sait. Klick-Rueckgang 13./14.8. erklaert:
+Junk-Keywords pausiert (65 % der Klicks waren Privat-Intent), Impressionen
++227 in 7 Tagen, dazu Feiertagswochenende (15.8.) und Betriebsurlaub bis 14.8.
+Vereinbart: bis Mitte KW naechste Woche laufen lassen, dann mit Daten urteilen.
 NOCH ZU VERIFIZIEREN: ob die bestehende generate_lead-Conversion-Aktion in Ads
 als PRIMÄR zählt (Conversions-Seite rendert im Pane nicht; ggf. Sait fragen
 oder Wizard-Endscreen). GA-Konto a120558745, Property p375036309.
