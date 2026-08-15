@@ -213,7 +213,8 @@ nav.desk a:hover{color:var(--paper)}
 .route{background:var(--bg); position:relative; overflow:hidden; border-top:1px solid var(--lineD)}
 .route .grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
 .globe-box{position:relative; aspect-ratio:1; width:100%; max-width:520px; margin:0 auto}
-.globe-box canvas{width:100%; height:100%}
+.globe-box canvas{width:100%; height:100%; cursor:grab; touch-action:pan-y}
+.globe-box canvas:active{cursor:grabbing}
 .route .mono{color:var(--orange)}
 .route h2{font-size:clamp(2rem,4.4vw,3.2rem); font-weight:900; margin:14px 0 20px}
 .route p{color:var(--mutedD); max-width:44ch}
@@ -658,7 +659,8 @@ html.rv .rev.in{opacity:1; transform:none}
     [41.0, 29.0,'TÜRKEI',       0.00],
     [25.2, 55.3,'NAHER OSTEN',  0.37],
     [41.3, 69.2,'ZENTRALASIEN', 0.61],
-    [31.2,121.5,'CHINA',        0.82]
+    [31.2,121.5,'CHINA',        0.82],
+    [13.7,100.5,'SÜDOSTASIEN',  0.19]
   ];
   function bogen(A,t,rot){
     var p=proj(A[0]+(HUB[0]-A[0])*t, A[1]+(HUB[1]-A[1])*t, rot);
@@ -667,9 +669,22 @@ html.rv .rev.in{opacity:1; transform:none}
   }
   function klemm(v){ return v<0?0:v>1?1:v; }
 
+  /* Drehstand: läuft von allein weiter, die Maus (oder der Finger) darf
+     jederzeit eingreifen — beim Ziehen pausiert die Automatik. */
+  var rot=-14, zieht=false, zx=0;
+  cv.addEventListener('pointerdown',function(e){ zieht=true; zx=e.clientX; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener('pointermove',function(e){
+    if(!zieht) return;
+    rot+=(e.clientX-zx)*0.35; zx=e.clientX;
+    if(rm) zeichne(0);
+  });
+  cv.addEventListener('pointerup',function(){ zieht=false; });
+  cv.addEventListener('pointercancel',function(){ zieht=false; });
+
+  /* Sammel-Beschriftung über der Region statt einzelner Ländernamen */
+  var ASIEN=[38,88];
+
   function zeichne(t){
-    /* langsame Dauerdrehung — China und Europa wechseln sich im Blick ab */
-    var rot=-14 - t*4.5;
     cx.clearRect(0,0,W,H);
     var g=cx.createRadialGradient(W/2,H/2,R*.82,W/2,H/2,R*1.28);
     g.addColorStop(0,'rgba(190,22,34,0)'); g.addColorStop(.55,'rgba(190,22,34,.22)'); g.addColorStop(1,'rgba(190,22,34,0)');
@@ -697,13 +712,12 @@ html.rv .rev.in{opacity:1; transform:none}
         }
         alt=q;
       }
-      /* Quellpunkt + Name, nur auf der zugewandten Seite */
+      /* Quellpunkt ohne Namen — die Herkunftsregionen bleiben bewusst
+         unbenannt (die Seite spricht nur von Drittländern) */
       if(vor[2]>0.06){
         var av=klemm((vor[2]-0.06)*3);
         cx.fillStyle='rgba(230,64,84,'+(av*.95).toFixed(3)+')';
         cx.beginPath(); cx.arc(vor[0],vor[1],DPR*3.4,0,7); cx.fill();
-        cx.fillStyle='rgba(242,240,234,'+(av*.8).toFixed(3)+')';
-        cx.fillText(Q[2], vor[0]+8*DPR, vor[1]+14*DPR);
       }
       /* Wanderpunkt zum Knoten, zeitversetzt je Linie */
       if(!rm){
@@ -713,6 +727,16 @@ html.rv .rev.in{opacity:1; transform:none}
           cx.beginPath(); cx.arc(w[0],w[1],DPR*2.6,0,7); cx.fill(); cx.shadowBlur=0;
         }
       }
+    }
+
+    /* Sammel-Beschriftung ASIEN, mittig über den Quellregionen */
+    var as=proj(ASIEN[0],ASIEN[1],rot);
+    if(as[2]>0.08){
+      var aa=klemm((as[2]-0.08)*2.5);
+      cx.font='600 '+(11*DPR)+'px "IBM Plex Mono", monospace';
+      cx.fillStyle='rgba(242,240,234,'+(aa*.75).toFixed(3)+')';
+      cx.fillText('ASIEN', as[0]-18*DPR, as[1]-8*DPR);
+      cx.font='500 '+(10*DPR)+'px "IBM Plex Mono", monospace';
     }
 
     /* Knotenpunkt Österreich: Ring + Puls */
@@ -734,14 +758,18 @@ html.rv .rev.in{opacity:1; transform:none}
     }
   }
   if(rm){ zeichne(0); return; }
-  var t0=0, sichtbar=true;
+  var t0=0, tv=0, sichtbar=true;
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ sichtbar=es[0].isIntersecting; },{threshold:0})
       .observe(cv.parentElement);
   }
   requestAnimationFrame(function lauf(ts){
     if(!t0) t0=ts;
-    if(sichtbar) zeichne((ts-t0)/1000);
+    var dt=Math.min(0.05,(ts-t0)/1000-tv); tv=(ts-t0)/1000;
+    if(sichtbar){
+      if(!zieht) rot-=4.5*dt;            /* Automatik pausiert beim Ziehen */
+      zeichne(tv);
+    }
     requestAnimationFrame(lauf);
   });
 })();
